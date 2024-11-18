@@ -6,7 +6,7 @@
 #    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/11/17 17:59:03 by ymanchon         ###   ########.fr        #
+#    Updated: 2024/11/18 16:47:30 by ymanchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,10 @@ NAME = cub3b
 
 CC = @cc
 
-SRCS =	./srcs/cub3d.c	\
+SRCS =	./srcs/cub3d.c		\
+		./srcs/hooks.c		\
+		./srcs/init.c		\
+		./srcs/terminate.c	\
 		\
 		./main.c
 
@@ -54,7 +57,7 @@ LIBFT_P = ./libft
 
 LIB = $(LIBFT_P)/libft.a \
 
-EXTERN_LIB = -lm
+EXTERN_LIB = -lm -L./MLX42-2.4.1/build -lmlx42 -lglfw
 
 # ############## #
 #*    REGLES    *#
