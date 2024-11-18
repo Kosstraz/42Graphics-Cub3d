@@ -15,7 +15,7 @@
 - Touche ESC fermer la fenetre			--> Y	✅
 - Croix fermer la fenetre				--> Y	✅
 - Argument de programme MAP + parsing	--> Y
-- Raycasting							--> ?
+- Raycasting							--> M
 
 ##		Bonus:
 
