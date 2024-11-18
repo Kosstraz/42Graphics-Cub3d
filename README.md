@@ -1,28 +1,27 @@
 ##		IDEES:
 
-- Creation procedurale de la carte
-- Lumieres (lampe de poche eventuellement)
-- ECS (entities component system)
-- Rotation camera avec la souris (en Y)
+- Creation procedurale de la carte			--> Y
+- Lumieres (lampe de poche eventuellement)	--> Y
+- ECS (entities component system)			--> M
+- Orientation des ennemis					--> M
+- Rotation camera avec la souris (en Y)		--> M
+- Rajouter de la verticalite				--> M
+- Multijoueur								--> Y
 
 ##		Obligatoire:
 
-- Collision
-- Texture (SUD/EST/WEST/NORD)
-- Murs...
-- Cartes xpm
-- Sol/plafond couleur differente
-- Touche W,A,S,D
-- Touche ESC fermer la fenetre
-- Croix fermer la fenetre
-- Image mlx
-- Argument de programme MAP + parsing
+- Touche W,A,S,D						--> Y	✅
+- Touche C								--> Y	✅
+- Touche ESC fermer la fenetre			--> Y	✅
+- Croix fermer la fenetre				--> Y	✅
+- Argument de programme MAP + parsing	--> Y
+- Raycasting							--> ?
 
 ##		Bonus:
 
-- Ennemi (monstre)
-- Objet (consommable: vie, munitions, ...)
-- Minicarte
-- Portes ouvrables et fermables
-- Animations
-- Rotation camera avec la souris (en X)
+- Ennemi (monstre)							--> M
+- Objet (consommable: vie, munitions, ...)	--> Y
+- Minicarte									--> Y
+- Portes ouvrables et fermables				--> Y
+- Animations								--> M
+- Rotation camera avec la souris (en X)		--> M

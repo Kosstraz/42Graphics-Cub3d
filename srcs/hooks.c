@@ -4,13 +4,16 @@ void	cub3d_key_hook(mlx_key_data_t keyd, t_core *core)
 {
 	if (keyd.action == MLX_PRESS)
 	{
-		if (keyd.key == MLX_KEY_ESCAPE)
-			mlx_close_window(core->mlx);
+		handle_esc_key(keyd, core);
+		handle_pressing_alt_key(keyd, core);
+		handle_player_key(keyd, core);
 	}
 	else if (keyd.action == MLX_RELEASE)
 	{
+		handle_releasing_alt_key(keyd, core);
+		handle_crouchplayer_key(keyd, core);
 	}
-	else
+	else if (keyd.action == MLX_REPEAT)
 	{
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:50 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/18 16:52:40 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/18 22:41:14 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 void	game(t_core *core)
 {
-	// raycasting
-	// 
+	if (!core->mouse_visible)
+		mlx_set_mouse_pos(core->mlx, core->half_width, core->half_height);
 }
 
 void	cub3d(t_core *core)
 {
+	init_core(core);
+	parse_map(core);
 	init_mlx_env(core);
 	setup_mlx_hooks(core);
 	mlx_loop(core->mlx);
