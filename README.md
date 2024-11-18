@@ -19,7 +19,7 @@
 
 ##		Bonus:
 
-- Ennemi (monstre)							--> M
+- Ennemi (monstre, mini IA)							--> M
 - Objet (consommable: vie, munitions, ...)	--> Y
 - Minicarte									--> Y
 - Portes ouvrables et fermables				--> Y
