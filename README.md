@@ -25,3 +25,4 @@
 - Portes ouvrables et fermables				--> Y
 - Animations								--> M
 - Rotation camera avec la souris (en X)		--> M
+- Collision        --> M
