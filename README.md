@@ -16,6 +16,7 @@
 - Croix fermer la fenetre				--> Y	✅
 - Argument de programme MAP + parsing	--> Y
 - Raycasting							--> M
+- Application des textures --> M
 
 ##		Bonus:
 
