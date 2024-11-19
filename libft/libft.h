@@ -217,6 +217,13 @@ ssize_t	ft_rev_isspaceptr(const char *s, ssize_t start);
 			/* **************************** */
 			/* **************************** */
 
+// Savoir à quelle position se trouve le premier caractère de 'set' trouvé dans 'str'
+// Sinon renvoie -1
+ssize_t	ft_containsanychr(const char *str, const char *set);
+// Savoir si c correspond a un des caractères de 'set'
+// 1 true
+// 0 false
+char	ft_isanychr(const char c, const char *set);
 void	ft_striteri(char *str, void (*f)(unsigned int, char *));
 void	ft_strsjoinstr(char ***strs, char *str);
 void	ft_strsfjoinstr(char ***strs, char *str);

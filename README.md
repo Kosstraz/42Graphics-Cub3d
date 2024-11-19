@@ -14,16 +14,16 @@
 - Touche C								--> Y	✅
 - Touche ESC fermer la fenetre			--> Y	✅
 - Croix fermer la fenetre				--> Y	✅
-- Argument de programme MAP + parsing	--> Y
+- Argument de programme MAP + parsing	--> Y	✅
 - Raycasting							--> M
-- Application des textures --> M
+- Application des textures				--> M
 
 ##		Bonus:
 
-- Ennemi (monstre, mini IA)							--> M
+- Ennemi (monstre, mini IA)					--> M
 - Objet (consommable: vie, munitions, ...)	--> Y
 - Minicarte									--> Y
 - Portes ouvrables et fermables				--> Y
 - Animations								--> M
 - Rotation camera avec la souris (en X)		--> M
-- Collision        --> M
+- Collision									--> M

@@ -1,3 +1,3 @@
 objs/./srcs/utils_colors.obj: srcs/utils_colors.c includes/cub3d.h \
-  MLX42-2.4.1/include/MLX42/MLX42.h libft/libft.h includes/platform.h \
-  includes/defs.h
+ MLX42-2.4.1/include/MLX42/MLX42.h libft/libft.h includes/platform.h \
+ includes/defs.h

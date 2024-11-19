@@ -54,6 +54,8 @@ typedef struct s_map
 	t_filepath	filepath;
 	t_color		cf_colors[2];
 	size_t		bufmax;
+	size_t		*buflens;
+	size_t		buflens_size;
 	char		*file;
 	char		**buf;
 }	t_map;

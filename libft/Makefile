@@ -81,6 +81,7 @@ SRCS = 	./binary_tree/btree_apply_infix.c \
 		./parsing/ft_rev_isspaceptr.c \
 		./parsing/ft_owsequence.c \
 		\
+		./str/ft_containsanychr.c\
 		./str/ft_strisdigits.c \
 		./str/ft_chrocc.c \
 		./str/ft_strtrunc.c \

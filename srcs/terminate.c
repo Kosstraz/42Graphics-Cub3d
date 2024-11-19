@@ -18,11 +18,12 @@ void	free_core_map(t_core *core)
 	if (core)
 	{
 		ft_dfree((void **)core->map.buf);
-		ft_va_free(4,
+		ft_va_free(5,
 			core->map.filepath.north,
 			core->map.filepath.south,
 			core->map.filepath.east,
-			core->map.filepath.west);
+			core->map.filepath.west,
+			core->map.buflens);
 	}
 }
 

@@ -28,6 +28,8 @@ inline void	init_core(t_core *core)
 	init_player(&core->player);
 	core->map.bufmax = DEFMAPBUF;
 	core->map.buf = (char **)malloc(sizeof(char *) * DEFMAPBUF);
+	core->map.buflens = NULL;
+	core->map.buflens_size = 0;
 	core->map.filepath.north = NULL;
 	core->map.filepath.south = NULL;
 	core->map.filepath.east = NULL;
