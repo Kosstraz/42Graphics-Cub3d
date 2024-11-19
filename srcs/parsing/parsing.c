@@ -3,9 +3,11 @@
 inline static void	parse_texturefile_path(int fd, t_core *core)
 {
 	char	*gnl;
+	int		count;
 
+	count = 0;
 	gnl = get_next_line(fd);
-	while (gnl)
+	while (gnl && count < 4)
 	{
 		if (!ft_strncmp(gnl, "SO", 2))
 			core->map.filepath.south = ft_strdup(ft_strchr_inv(&gnl[2], ' '));
@@ -15,17 +17,13 @@ inline static void	parse_texturefile_path(int fd, t_core *core)
 			core->map.filepath.east = ft_strdup(ft_strchr_inv(&gnl[2], ' '));
 		else if (!ft_strncmp(gnl, "WE", 2))
 			core->map.filepath.west = ft_strdup(ft_strchr_inv(&gnl[2], ' '));
+		if (!ft_strncmp(gnl, "SO", 2) || !ft_strncmp(gnl, "NO", 2)
+			|| !ft_strncmp(gnl, "EA", 2) || !ft_strncmp(gnl, "WE", 2))
+			count++;
 		free(gnl);
 		gnl = get_next_line(fd);
 	}
-	if (!core->map.filepath.north)
-		exit_strerror(NORTH_TEXTURE_FILE_INVALID_T, core);
-	else if (!core->map.filepath.south)
-		exit_strerror(SOUTH_TEXTURE_FILE_INVALID_T, core);
-	else if (!core->map.filepath.east)
-		exit_strerror(EAST_TEXTURE_FILE_INVALID_T, core);
-	else if (!core->map.filepath.west)
-		exit_strerror(WEST_TEXTURE_FILE_INVALID_T, core);
+	parse_texturefile_path_error(core);
 }
 
 inline static void	parse_cf_colors(int fd, t_core *core)
@@ -36,7 +34,7 @@ inline static void	parse_cf_colors(int fd, t_core *core)
 	cf[0] = FALSE;
 	cf[1] = FALSE;
 	gnl = get_next_line(fd);
-	while (gnl)
+	while (gnl && (!cf[0] || !cf[1]))
 	{
 		if (!ft_strncmp(gnl, "C", 1))
 		{
@@ -51,10 +49,7 @@ inline static void	parse_cf_colors(int fd, t_core *core)
 		free(gnl);
 		gnl = get_next_line(fd);
 	}
-	if (!cf[0] || core->map.cf_colors[0]._overflow)
-		exit_strerror(CEILING_COLOR_FORMAT_INCORRECT_T, core);
-	else if (!cf[1] || core->map.cf_colors[1]._overflow)
-		exit_strerror(FLOOR_COLOR_FORMAT_INCORRECT_T, core);
+	parse_cf_colors_error(cf, core);
 }
 
 void	parse_map(t_core *core)

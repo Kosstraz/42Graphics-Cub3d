@@ -58,6 +58,10 @@ void	cub3d_resize_hook(int width, int height, t_core *core);
 void	cub3d_mouse_hook(mouse_key_t button, action_t action,
 			modifier_key_t mods, t_core *core);
 
+	//* parsing/parsing_check_errors.c
+void	parse_texturefile_path_error(t_core *core);
+void	parse_cf_colors_error(BOOL cf[2], t_core *core);
+
 	//* parsing/parsing.c
 void	parse_map(t_core *core);
 

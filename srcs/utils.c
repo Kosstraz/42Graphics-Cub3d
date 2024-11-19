@@ -30,31 +30,27 @@ t_color	stocol(const char *str)
 
 	ret._overflow = FALSE;
 	i = 0;
-	while (str[i])
-	{
-		while (!ft_isdigit(str[i++]))
-			;
-		tmp = ft_atoi(&str[i]);
-		if (tmp > 255)
-			ret._overflow = TRUE;
-		ret.r = tmp;
-		while (ft_isdigit(str[i++]))
-			;
-		while (!ft_isdigit(str[i++]))
-			;
-		tmp = ft_atoi(&str[i]);
-		if (tmp > 255)
-			ret._overflow = TRUE;
-		ret.g = tmp;
-		while (ft_isdigit(str[i++]))
-			;
-		while (!ft_isdigit(str[i++]))
-			;
-		tmp = ft_atoi(&str[i]);
-		if (tmp > 255)
-			ret._overflow = TRUE;
-		ret.b = tmp;
-		i++;
-	}
+	while (!ft_isdigit(str[i++]))
+		;
+	tmp = ft_atoi(&str[i]);
+	if (tmp > 255)
+		ret._overflow = TRUE;
+	ret.r = tmp;
+	while (ft_isdigit(str[i++]))
+		;
+	while (!ft_isdigit(str[i++]))
+		;
+	tmp = ft_atoi(&str[i]);
+	if (tmp > 255)
+		ret._overflow = TRUE;
+	ret.g = tmp;
+	while (ft_isdigit(str[i++]))
+		;
+	while (!ft_isdigit(str[i++]))
+		;
+	tmp = ft_atoi(&str[i]);
+	if (tmp > 255)
+		ret._overflow = TRUE;
+	ret.b = tmp;
 	return (ret);
 }

@@ -34,15 +34,16 @@ NAME = cub3b
 
 CC = @cc
 
-SRCS =	./srcs/cub3d.c			\
-		./srcs/hooks.c			\
-		./srcs/hook_resize.c	\
-		./srcs/key_handling.c	\
-		./srcs/init.c			\
-		./srcs/terminate.c		\
-		./srcs/utils.c			\
+SRCS =	./srcs/cub3d.c							\
+		./srcs/hooks.c							\
+		./srcs/hook_resize.c					\
+		./srcs/key_handling.c					\
+		./srcs/init.c							\
+		./srcs/terminate.c						\
+		./srcs/utils.c							\
 		\
-		./srcs/parsing/parsing.c\
+		./srcs/parsing/parsing.c				\
+		./srcs/parsing/parsing_check_errors.c	\
 		\
 		./main.c
 
@@ -62,7 +63,7 @@ LIBFT_P = ./libft
 
 LIB = $(LIBFT_P)/libft.a \
 
-EXTERN_LIB = -lm -L./MLX42-2.4.1/build -lmlx42 -lglfw -lGL -lGLU -lX11 -lXxf86vm -lXrandr -lpthread -lXi
+EXTERN_LIB = -lm -L./MLX42-2.4.1/build -fPIE -lmlx42 -lglfw -lGL -lGLU -lX11 -lXxf86vm -lXrandr -lpthread -lXi
 
 # ############## #
 #*    REGLES    *#

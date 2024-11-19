@@ -33,6 +33,8 @@ inline void	init_core(t_core *core)
 	core->map.filepath.west = NULL;
 	core->map.cf_colors[0] = ctocol(0, 0, 0);
 	core->map.cf_colors[1] = ctocol(0, 0, 0);
+	core->map.cf_colors[0]._overflow = FALSE;
+	core->map.cf_colors[1]._overflow = FALSE;
 }
 
 inline void	init_mlx_env(t_core *core)
