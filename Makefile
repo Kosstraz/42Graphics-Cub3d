@@ -6,7 +6,7 @@
 #    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/11/18 22:40:20 by ymanchon         ###   ########.fr        #
+#    Updated: 2024/11/19 19:33:53 by ymanchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,10 +40,11 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/key_handling.c					\
 		./srcs/init.c							\
 		./srcs/terminate.c						\
-		./srcs/utils.c							\
+		./srcs/utils_colors.c					\
 		\
 		./srcs/parsing/parsing.c				\
 		./srcs/parsing/parsing_check_errors.c	\
+		./srcs/parsing/parse_asciimap.c		\
 		\
 		./main.c
 
@@ -63,7 +64,7 @@ LIBFT_P = ./libft
 
 LIB = $(LIBFT_P)/libft.a \
 
-EXTERN_LIB = -lm -L./MLX42-2.4.1/build -fPIE -lmlx42 -lglfw -lGL -lGLU -lX11 -lXxf86vm -lXrandr -lpthread -lXi
+EXTERN_LIB = -lm -L./MLX42-2.4.1/build -fPIE -ldl -lmlx42 -lglfw -lGL -lGLU -lX11 -lXxf86vm -lXrandr -lpthread -lXi
 
 # ############## #
 #*    REGLES    *#

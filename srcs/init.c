@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/18 22:56:01 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/19 19:35:55 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ inline void	init_core(t_core *core)
 	core->half_height = DEFHEIGHT / 2.f;
 	core->half_width = DEFWIDTH / 2.f;
 	init_player(&core->player);
-	core->map.buf = NULL;
+	core->map.bufmax = DEFMAPBUF;
+	core->map.buf = (char **)malloc(sizeof(char *) * DEFMAPBUF);
 	core->map.filepath.north = NULL;
 	core->map.filepath.south = NULL;
 	core->map.filepath.east = NULL;

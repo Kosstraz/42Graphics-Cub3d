@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 20:09:36 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/18 23:09:53 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/19 19:01:25 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 			/* **************************** */
 			/* **************************** */
 
+void	*ft_realloc(void *ptr, size_t oldsize, size_t newsize);
 /*
 	@param ac Le nombre de paramètres à 'free'
 	@param ... Les paramètres qui seront 'free'

@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/18 22:53:14 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/19 19:02:54 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,16 @@
 	//*	default values
 # define DEFWIDTH	800
 # define DEFHEIGHT	600
+# define DEFMAPBUF	5
 
 	//* constants specifics to cub3d
 # define GAME_TITLE		"Alien Isolation"
 # define MAX_LIFE		100
-# define CROUCH_OFFSET	//inserer int
+# define CROUCH_OFFSET	//{inserer int}
+
+# define CUB3D_WALL		'1'
+# define CUB3D_VOID		'0'
+# define CUB3D_PLAYER	"NSEW"
 
 	//* generic constants
 # define TRUE	1
@@ -43,8 +48,8 @@
 # define FLOOR_COLOR_FORMAT_INCORRECT_T		"Floor color format is incorrect\n"
 
 # define MAP_NO_PLAYER_SPAWN_T		"There is no player spawn\n"
-# define MAP_PLAYER_BLOCKED_T		"The player is blocked at the spawn\n"
 # define MAP_PLACE_WITH_NO_WALL_T	"A place with no wall exist\n"
+# define MAP_UNKNOW_SYMBOL_T		"An unknow symbol is on the map config\n"
 
 # define FILE_BAD_EXTENSION_T "Please let a \"*.cub\" file\n"
 # define FILE_CONFIGURATION_T "Maybe review order of the .cub configuration\n"

@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-inline static void	parse_texturefile_path(int fd, t_core *core)
+static void	parse_texturefile_path(int fd, t_core *core)
 {
 	char	*gnl;
 	int		count;
@@ -26,7 +26,7 @@ inline static void	parse_texturefile_path(int fd, t_core *core)
 	parse_texturefile_path_error(core);
 }
 
-inline static void	parse_cf_colors(int fd, t_core *core)
+static void	parse_cf_colors(int fd, t_core *core)
 {
 	char	*gnl;
 	BOOL	cf[2];
@@ -61,5 +61,6 @@ void	parse_map(t_core *core)
 		exit_strerror(IMPOSSIBLE_TO_OPEN, core);
 	parse_texturefile_path(fd, core);
 	parse_cf_colors(fd, core);
+	parse_asciimap(fd, core);
 	close(fd);
 }

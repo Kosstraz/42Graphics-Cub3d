@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/18 23:32:38 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/19 19:35:30 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_map
 {
 	t_filepath	filepath;
 	t_color		cf_colors[2];
+	size_t		bufmax;
 	char		*file;
 	char		**buf;
 }	t_map;

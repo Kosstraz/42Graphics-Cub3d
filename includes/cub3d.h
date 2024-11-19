@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/18 23:36:56 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/19 19:32:40 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,11 @@ void	handle_esc_key(mlx_key_data_t keyd, t_core *core);
 void	handle_player_key(mlx_key_data_t keyd, t_core *core);
 void	handle_crouchplayer_key(mlx_key_data_t keyd, t_core *core);
 
-	//* utils
+	//* utils_colors
 t_color	ctocol(t_uchar r, t_uchar g, t_uchar b);
 t_uint	coltohexa(t_color col);
 t_color	stocol(const char *str);
+void	print_color(t_color col);
 
 	//* hooks.c
 void	cub3d_close_hook(t_core *core);
@@ -57,6 +58,9 @@ void	cub3d_scroll_hook(double xdelta, double ydelta, t_core *core);
 void	cub3d_resize_hook(int width, int height, t_core *core);
 void	cub3d_mouse_hook(mouse_key_t button, action_t action,
 			modifier_key_t mods, t_core *core);
+
+	//* parsing/parsing_asciimap.c
+void	parse_asciimap(int fd, t_core *core);
 
 	//* parsing/parsing_check_errors.c
 void	parse_texturefile_path_error(t_core *core);

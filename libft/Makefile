@@ -6,7 +6,7 @@
 #    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/11/17 17:32:35 by ymanchon         ###   ########.fr        #
+#    Updated: 2024/11/19 19:01:36 by ymanchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,7 @@ SRCS = 	./binary_tree/btree_apply_infix.c \
 		./lst/ft_lstnew_bonus.c \
 		./lst/ft_lstsize_bonus.c \
 		\
+		./mem/ft_realloc.c\
 		./mem/ft_dfree.c \
 		./mem/ft_va_free.c \
 		./mem/ft_va_free_exit.c \
