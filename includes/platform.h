@@ -16,22 +16,25 @@
 # include "MLX42-2.4.1/include/MLX42/MLX42.h"
 # include "defs.h"
 
+	//* classic typedef
 typedef void			(*t_mlx_loopfunc)(void *);
 typedef unsigned char	t_uchar;
 typedef unsigned int	t_uint;
 
+
+
+	//* some utilities
 typedef struct s_pos
 {
 	float	x;
 	float	y;
 }	t_pos;
 
-typedef struct s_player
+typedef struct s_minmax
 {
-	int		life;
-	t_pos	position;
-	BOOL	crouched;
-}	t_player;
+	int	min;
+	int	max;
+}	t_minmax;
 
 typedef struct s_color
 {
@@ -40,6 +43,16 @@ typedef struct s_color
 	t_uchar	b;
 	BOOL	_overflow;
 }	t_color;
+
+
+
+	//* CORE
+typedef struct s_player
+{
+	int		life;
+	t_pos	position;
+	BOOL	crouched;
+}	t_player;
 
 typedef struct s_filepath
 {
@@ -56,6 +69,7 @@ typedef struct s_map
 	size_t		bufmax;
 	size_t		*buflens;
 	size_t		buflens_size;
+	BOOL		generated;
 	char		*file;
 	char		**buf;
 }	t_map;
@@ -70,5 +84,30 @@ typedef struct s_core
 	BOOL		mouse_visible;
 	char		*_strerror;
 }	t_core;
+
+
+	//*	for MAP GENERATION
+typedef struct s_gen_config
+{
+	t_minmax	x;
+	t_minmax	y;
+	t_minmax	yfreq;
+	//t_minmax	xfreq; <-- same than yfreq, can change
+	char		spawn1_orientation;
+}	t_gen_config;
+
+typedef struct s_gen_utils
+{
+	size_t	freq_index;
+	size_t	freq_val;
+	int		luck_player_spawn_now;
+	BOOL	player_has_spawned;
+}	t_gen_utils;
+
+typedef struct s_gen_context
+{
+	t_gen_config	config;
+	t_gen_utils		utils;
+}	t_gen_context;
 
 #endif

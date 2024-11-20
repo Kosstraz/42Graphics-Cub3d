@@ -20,8 +20,8 @@ void	game(t_core *core)
 
 void	cub3d(t_core *core)
 {
-	init_core(core);
-	parse_map(core);
+	if (!core->map.generated)
+		parse_map(core);
 	init_mlx_env(core);
 	setup_mlx_hooks(core);
 	mlx_loop(core->mlx);

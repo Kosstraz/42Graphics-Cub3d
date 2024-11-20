@@ -41,10 +41,16 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/init.c							\
 		./srcs/terminate.c						\
 		./srcs/utils_colors.c					\
+		./srcs/debug.c							\
 		\
 		./srcs/parsing/parsing.c				\
 		./srcs/parsing/parsing_check_errors.c	\
-		./srcs/parsing/parse_asciimap.c		\
+		./srcs/parsing/parse_asciimap.c			\
+		\
+		./srcs/pc/procedural_creation.c			\
+		./srcs/pc/utils.c						\
+		./srcs/pc/algo.c						\
+		./srcs/pc/algo_delegate.c				\
 		\
 		./main.c
 

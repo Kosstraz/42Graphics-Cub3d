@@ -18,6 +18,17 @@
 # define DEFHEIGHT	600
 # define DEFMAPBUF	5
 
+# define DEFMAPX_MIN	21
+# define DEFMAPX_MAX	42
+# define DEFMAPY_MIN	10
+# define DEFMAPY_MAX	25
+# define DEFFREQ_MIN	1
+
+# define DEFLUCK		5
+
+# define DEFFREQ_MAX_MULTIPLIER		0.2f
+# define DEFFREQ_MAX_PRETTY_OFFSET	2
+
 	//* constants specifics to cub3d
 # define GAME_TITLE		"Alien Isolation"
 # define MAX_LIFE		100

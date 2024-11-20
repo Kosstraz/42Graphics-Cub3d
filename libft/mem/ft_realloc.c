@@ -20,8 +20,8 @@ void	*ft_realloc(void *ptr, size_t oldsize, size_t newsize)
 	if (!ptr)
 		return (ret);
 	if (oldsize > newsize)
-		newsize = oldsize;
-	ret = ft_memcpy(ret, ptr, newsize);
+		oldsize = newsize;
+	ret = ft_memmove(ret, ptr, oldsize);
 	free(ptr);
 	return (ret);
 }

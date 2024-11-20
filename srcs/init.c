@@ -26,6 +26,7 @@ inline void	init_core(t_core *core)
 	core->half_height = DEFHEIGHT / 2.f;
 	core->half_width = DEFWIDTH / 2.f;
 	init_player(&core->player);
+	core->map.generated = FALSE;
 	core->map.bufmax = DEFMAPBUF;
 	core->map.buf = (char **)malloc(sizeof(char *) * DEFMAPBUF);
 	core->map.buflens = NULL;

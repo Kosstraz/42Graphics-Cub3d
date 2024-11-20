@@ -22,14 +22,6 @@ unsigned int	coltohexa(t_color col)
 	);
 }
 
-void	print_color(t_color col)
-{
-	ft_printf("r: %d   g: %d   b: %d", col.r, col.g, col.b);
-	if (col._overflow)
-		ft_printf("    OVERFLOWED!");
-	ft_printf("\n");
-}
-
 t_color	stocol(const char *str)
 {
 	size_t	i;
