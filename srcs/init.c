@@ -25,6 +25,7 @@ inline void	init_core(t_core *core)
 	core->mouse_visible = FALSE;
 	core->half_height = DEFHEIGHT / 2.f;
 	core->half_width = DEFWIDTH / 2.f;
+	core->fpsimg = NULL;
 	init_player(&core->player);
 	core->map.generated = FALSE;
 	core->map.bufmax = DEFMAPBUF;

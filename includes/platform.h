@@ -79,6 +79,7 @@ typedef struct s_core
 	mlx_t		*mlx;
 	t_player	player;
 	t_map		map;
+	mlx_image_t	*fpsimg;
 	float		half_width;
 	float		half_height;
 	BOOL		mouse_visible;

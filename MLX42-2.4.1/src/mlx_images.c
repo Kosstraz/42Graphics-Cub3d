@@ -209,6 +209,8 @@ void mlx_delete_image(mlx_t* mlx, mlx_image_t* image)
 	mlx_ctx_t* mlxctx = mlx->context;
 
 	// Delete all instances in the render queue
+	if (!image)
+		return ;
 	mlx_list_t* quelst;
 	while ((quelst = mlx_lstremove(&mlxctx->render_queue, image, &mlx_equal_inst)))
 		mlx_freen(2, quelst->content, quelst);
