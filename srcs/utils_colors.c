@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_colors.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/20 16:00:49 by ymanchon          #+#    #+#             */
+/*   Updated: 2024/11/20 16:00:50 by ymanchon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 	// char[3] to color
@@ -25,32 +37,23 @@ unsigned int	coltohexa(t_color col)
 t_color	stocol(const char *str)
 {
 	size_t	i;
+	char	**split;
 	int		tmp;
 	t_color	ret;
 
 	ret._overflow = FALSE;
+	split = ft_split(str, ',');
 	i = 0;
-	while (!ft_isdigit(str[i]))
+	while (split[i])
+	{
+		tmp = ft_atoi(split[i]);
+		if (tmp > 255)
+			ret._overflow = TRUE;
 		i++;
-	tmp = ft_atoi(&str[i]);
-	if (tmp > 255)
-		ret._overflow = TRUE;
-	ret.r = tmp;
-	while (ft_isdigit(str[i]))
-		i++;
-	while (!ft_isdigit(str[i]))
-		i++;
-	tmp = ft_atoi(&str[i]);
-	if (tmp > 255)
-		ret._overflow = TRUE;
-	ret.g = tmp;
-	while (ft_isdigit(str[i]))
-		i++;
-	while (!ft_isdigit(str[i]))
-		i++;
-	tmp = ft_atoi(&str[i]);
-	if (tmp > 255)
-		ret._overflow = TRUE;
+	}
+
+	ft_dfree((void **)split);
+	ret.bytes_wrote = i;
 	ret.b = tmp;
 	return (ret);
 }

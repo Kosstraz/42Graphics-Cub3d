@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/19 19:32:40 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:21:32 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,12 @@ void	generate(t_gen_context *context, t_core *core);
 
 	//* pc/algo_delegate.c
 char	put_outline_walls(size_t x, size_t y, t_core *core);
-void	try_spawn_player(t_gen_context *context, size_t y, size_t x, t_core *core);
+void	fill_line(t_gen_context *context, size_t x, size_t y, t_core *core);
+void	try_shift_line(t_gen_context *context, size_t y, t_core *core);
+void	try_spawn_player(
+			t_gen_context *context,
+			size_t y,
+			size_t x,
+			t_core *core);
 
 #endif

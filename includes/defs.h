@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/19 19:02:54 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/20 18:10:31 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define DEFMAPY_MAX	25
 # define DEFFREQ_MIN	1
 
-# define DEFLUCK		5
+# define DEFLUCK		20
 
 # define DEFFREQ_MAX_MULTIPLIER		0.2f
 # define DEFFREQ_MAX_PRETTY_OFFSET	2
@@ -37,6 +37,7 @@
 # define CUB3D_WALL		'1'
 # define CUB3D_VOID		'0'
 # define CUB3D_PLAYER	"NSEW"
+# define CUB3D_BLOCKS	"01 "
 
 	//* generic constants
 # define TRUE	1
@@ -48,7 +49,8 @@
 
 # define PARSING_ERROR_T	"Error\n"
 
-# define IMPOSSIBLE_TO_OPEN	"Impossible to open file\n"
+# define BAD_EXTENSION_FILE_T	"Bad extension file, please put a .cub file\n"
+# define IMPOSSIBLE_TO_OPEN		"Impossible to open file\n"
 
 # define NORTH_TEXTURE_FILE_INVALID_T	"North texture file is invalid\n"
 # define SOUTH_TEXTURE_FILE_INVALID_T	"South texture file is invalid\n"
@@ -59,8 +61,10 @@
 # define FLOOR_COLOR_FORMAT_INCORRECT_T		"Floor color format is incorrect\n"
 
 # define MAP_NO_PLAYER_SPAWN_T		"There is no player spawn\n"
+# define MAP_PLAYER_REDIFINED_T		"The player has been redefined\n"
 # define MAP_PLACE_WITH_NO_WALL_T	"A place with no wall exist\n"
 # define MAP_UNKNOW_SYMBOL_T		"An unknow symbol is on the map config\n"
+# define MAP_INVALID_CHARACTER_T	"An invalid character is on the map .cub\n"
 
 # define FILE_BAD_EXTENSION_T "Please let a \"*.cub\" file\n"
 # define FILE_CONFIGURATION_T "Maybe review order of the .cub configuration\n"

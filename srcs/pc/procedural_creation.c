@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   procedural_creation.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/20 16:00:38 by ymanchon          #+#    #+#             */
+/*   Updated: 2024/11/20 16:06:58 by ymanchon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 inline static void	init_gen_config(t_gen_context *context)
@@ -12,6 +24,7 @@ inline static void	init_gen_config(t_gen_context *context)
 	context->utils.freq_index = 0;
 	context->utils.freq_val = 0;
 	context->utils.player_has_spawned = FALSE;
+	context->utils.average_line_len = 0;
 }
 
 inline static void	config_generation(t_gen_context *context, t_core *core)

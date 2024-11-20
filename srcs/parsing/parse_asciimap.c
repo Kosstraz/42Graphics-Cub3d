@@ -54,7 +54,11 @@ inline static void	parse_asciilines_check_zero(int x, int y, t_core *core)
 	}
 }
 
-static void	parse_asciilines(const char *line, BOOL *player_spawn, int cur, t_core *core)
+static void	parse_asciilines(
+	const char *line,
+	BOOL *player_spawn,
+	int cur,
+	t_core *core)
 {
 	int		i;
 	int		linesize;
@@ -75,6 +79,10 @@ static void	parse_asciilines(const char *line, BOOL *player_spawn, int cur, t_co
 			parse_asciilines_check_zero(i, cur, core);
 		if (!*player_spawn && ft_isanychr(line[i], CUB3D_PLAYER))
 			*player_spawn = TRUE;
+		else if (*player_spawn && ft_isanychr(line[i], CUB3D_PLAYER))
+			exit_strerror(MAP_PLAYER_REDIFINED_T, core);
+		else if (!ft_isanychr(line[i], CUB3D_BLOCKS))
+			exit_strerror(MAP_INVALID_CHARACTER_T, core);
 		i++;
 	}
 }

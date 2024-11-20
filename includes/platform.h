@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/19 19:35:30 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:06:10 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_color
 	t_uchar	r;
 	t_uchar	g;
 	t_uchar	b;
+	t_uchar	bytes_wrote;
 	BOOL	_overflow;
 }	t_color;
 
@@ -101,6 +102,7 @@ typedef struct s_gen_utils
 {
 	size_t	freq_index;
 	size_t	freq_val;
+	int		average_line_len;
 	int		luck_player_spawn_now;
 	BOOL	player_has_spawned;
 }	t_gen_utils;

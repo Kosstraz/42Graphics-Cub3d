@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:50 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/18 22:41:14 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/20 18:14:01 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,11 @@ void	game(t_core *core)
 
 void	cub3d(t_core *core)
 {
-	if (!core->map.generated)
+	if (ft_strncmp_rev(core->map.file, ".cub", 3)
+		|| (!ft_strncmp_rev(core->map.file, ".cub", 3)
+			&& ft_strlen(core->map.file) == 4))
+		exit_strerror(BAD_EXTENSION_FILE_T, core);
+	else if (!core->map.generated)
 		parse_map(core);
 	init_mlx_env(core);
 	setup_mlx_hooks(core);

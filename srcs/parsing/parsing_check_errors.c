@@ -14,8 +14,10 @@ inline void	parse_texturefile_path_error(t_core *core)
 
 inline void	parse_cf_colors_error(BOOL cf[2], t_core *core)
 {
-	if (!cf[0] || core->map.cf_colors[0]._overflow)
+	if (!cf[0] || core->map.cf_colors[0]._overflow
+		|| core->map.cf_colors[0].bytes_wrote != 3)
 		exit_strerror(CEILING_COLOR_FORMAT_INCORRECT_T, core);
-	else if (!cf[1] || core->map.cf_colors[1]._overflow)
+	else if (!cf[1] || core->map.cf_colors[1]._overflow
+		|| core->map.cf_colors[1].bytes_wrote != 3)
 		exit_strerror(FLOOR_COLOR_FORMAT_INCORRECT_T, core);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algo_delegate.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/20 16:00:37 by ymanchon          #+#    #+#             */
+/*   Updated: 2024/11/20 18:20:08 by ymanchon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 char	put_outline_walls(size_t x, size_t y, t_core *core)
@@ -19,7 +31,11 @@ char	put_outline_walls(size_t x, size_t y, t_core *core)
 	return (CUB3D_VOID);
 }
 
-inline void	try_spawn_player(t_gen_context *context, size_t y, size_t x, t_core *core)
+inline void	try_spawn_player(
+	t_gen_context *context,
+	size_t y,
+	size_t x,
+	t_core *core)
 {
 	if (rand_btw(0, context->utils.luck_player_spawn_now) == 0
 		&& !context->utils.player_has_spawned)
@@ -33,4 +49,36 @@ inline void	try_spawn_player(t_gen_context *context, size_t y, size_t x, t_core 
 		core->map.buf[y][x] = context->config.spawn1_orientation;
 		context->utils.player_has_spawned = TRUE;
 	}
+}
+
+inline void	try_shift_line(t_gen_context *context, size_t y, t_core *core)
+{
+	char	*tmp;
+	size_t	nb_of_spaces;
+	size_t	i;
+
+	if (core->map.buflens[y] < (size_t)context->utils.average_line_len)
+	{
+		nb_of_spaces = rand_btw(
+				core->map.buflens[y],
+				context->utils.average_line_len);
+		i = 0;
+		nb_of_spaces /= 3;
+		tmp = NULL;
+		while (i < nb_of_spaces)
+		{
+			tmp = ft_strfjoin(tmp, " ");
+			i++;
+		}
+		core->map.buf[y] = ft_strffjoin(tmp, core->map.buf[y]);
+		core->map.buflens[y] += ft_strlen(core->map.buf[y]);	
+	}
+}
+
+void	fill_line(t_gen_context *context, size_t x, size_t y, t_core *core)
+{
+	(void)context;
+	(void)x;
+	(void)y;
+	(void)core;
 }
