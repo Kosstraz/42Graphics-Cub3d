@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/20 18:10:31 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/21 15:04:49 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 
 # define DEFFREQ_MAX_MULTIPLIER		0.2f
 # define DEFFREQ_MAX_PRETTY_OFFSET	2
+
+# define DEFUNIT	8
+# define DEFPLAYERMOVEMENTS	0.1f
 
 	//* constants specifics to cub3d
 # define GAME_TITLE		"Alien Isolation"

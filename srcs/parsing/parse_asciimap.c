@@ -95,6 +95,7 @@ void	parse_asciimap(int fd, t_core *core)
 	i = 0;
 	player_spawn = FALSE;
 	save_asciimap(fd, core);
+	core->map.buflens_max = ft_maxul(core->map.buflens, core->map.buflens_size);
 	core->map.bufmax = ft_strlen2(core->map.buf);
 	while (core->map.buf[i])
 	{

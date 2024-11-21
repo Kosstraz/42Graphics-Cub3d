@@ -6,7 +6,7 @@
 #    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/11/19 19:01:36 by ymanchon         ###   ########.fr        #
+#    Updated: 2024/11/21 13:38:33 by ymanchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -120,6 +120,7 @@ SRCS = 	./binary_tree/btree_apply_infix.c \
 		./str/ft_strinsert.c \
 		./str/ft_va_strjoin.c \
 		\
+		./utils/ft_max.c\
 		./utils/ft_count_words.c \
 		./utils/ft_intlen.c \
 		./utils/ft_convert_base2.c \

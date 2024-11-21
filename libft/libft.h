@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 20:09:36 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/19 19:01:25 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:39:19 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # ifndef CMP_BTREE
 #  define CMP_BTREE
 # endif
+
+typedef unsigned int	t_uint;
 
 			/* **************************** */
 			/* **************************** */
@@ -340,6 +342,11 @@ char	*ft_strfinsert(char *str, const char *insert_, int at);
 			/* **************************** */
 			/* **************************** */
 
+size_t	ft_maxul(size_t *tab, size_t size);
+ssize_t	ft_maxl(ssize_t *tab, size_t size);
+int		ft_maxi(int *tab, size_t size);
+t_uint	ft_maxui(t_uint *tab, size_t size);
+char	ft_maxc(char *tab, size_t size);
 void	ft_swap64(long long *a, long long *b);
 void	ft_swap32(int *a, int *b);
 void	ft_swap16(short *a, short *b);

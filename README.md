@@ -22,7 +22,7 @@
 
 - Ennemi (monstre, mini IA)					--> M
 - Objet (consommable: vie, munitions, ...)	--> Y
-- Minicarte									--> Y
+- Minicarte									--> Y	✅
 - Portes ouvrables et fermables				--> Y
 - Animations								--> M
 - Rotation camera avec la souris (en X)		--> M

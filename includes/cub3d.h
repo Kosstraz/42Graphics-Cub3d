@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/20 16:21:32 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/20 21:09:18 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "libft.h"
 # include "platform.h"
 # include "defs.h"
+# include "enums.h"
 
 	/*
 		CORE
@@ -100,5 +101,18 @@ void	try_spawn_player(
 			size_t y,
 			size_t x,
 			t_core *core);
+
+	/*
+		RENDERING
+	*/
+
+	//* rendering/show_fps.c
+void	show_fps(t_core *core);
+
+	/*
+		MINIMAP
+	*/
+
+void	draw_minimap(t_core *core);
 
 #endif

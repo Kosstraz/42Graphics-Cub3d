@@ -6,28 +6,29 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:50 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/20 18:14:01 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/21 15:05:55 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	show_fps(t_core *core)
+inline static void	put_images_to_window(t_core *core)
 {
-	char		*fps;
-
-	mlx_delete_image(core->mlx, core->fpsimg);
-	fps = ft_itoa((int)(1.0 / core->mlx->delta_time));
-	core->fpsimg = mlx_put_string(core->mlx, fps, 0, 0);
-	free(fps);
-	mlx_image_to_window(core->mlx, core->fpsimg, 0, 0);
+	mlx_image_to_window(core->mlx, core->imgs.fps, 0, 0);
+	mlx_image_to_window(
+		core->mlx,
+		core->imgs.minimap,
+		core->mlx->width - core->map.buflens_max * DEFUNIT - 10,
+		10);
 }
 
 void	game(t_core *core)
 {
 	if (!core->mouse_visible)
 		mlx_set_mouse_pos(core->mlx, core->half_width, core->half_height);
+	draw_minimap(core);
 	show_fps(core);
+	put_images_to_window(core);
 }
 
 void	cub3d(t_core *core)

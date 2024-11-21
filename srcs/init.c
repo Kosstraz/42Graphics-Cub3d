@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/20 16:00:46 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/21 15:02:55 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,8 @@ inline static void	init_player(t_player *player)
 	player->crouched = FALSE;
 }
 
-inline void	init_core(t_core *core)
+inline static void	init_core_map(t_core *core)
 {
-	core->mouse_visible = FALSE;
-	core->half_height = DEFHEIGHT / 2.f;
-	core->half_width = DEFWIDTH / 2.f;
-	core->fpsimg = NULL;
-	init_player(&core->player);
 	core->map.generated = FALSE;
 	core->map.bufmax = DEFMAPBUF;
 	core->map.buf = (char **)malloc(sizeof(char *) * DEFMAPBUF);
@@ -42,6 +37,17 @@ inline void	init_core(t_core *core)
 	core->map.cf_colors[1]._overflow = FALSE;
 }
 
+inline void	init_core(t_core *core)
+{
+	core->mouse_visible = FALSE;
+	core->half_height = DEFHEIGHT / 2.f;
+	core->half_width = DEFWIDTH / 2.f;
+	core->imgs.fps = NULL;
+	core->imgs.minimap = NULL;
+	init_player(&core->player);
+	init_core_map(core);
+}
+
 inline void	init_mlx_env(t_core *core)
 {
 	mlx_set_setting(MLX_MAXIMIZED, true);
@@ -52,7 +58,9 @@ inline void	init_mlx_env(t_core *core)
 		exit(1);
 	mlx_set_cursor_mode(core->mlx, MLX_MOUSE_HIDDEN);
 	mlx_set_mouse_pos(core->mlx, core->half_width, core->half_height);
-
+	core->imgs.minimap = mlx_new_image(core->mlx,
+		core->map.buflens_max * DEFUNIT,
+		core->map.bufmax * DEFUNIT);
 }
 
 inline void	setup_mlx_hooks(t_core *core)

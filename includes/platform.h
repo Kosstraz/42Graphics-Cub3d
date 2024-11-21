@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/20 16:06:10 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:30:02 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_map
 	t_filepath	filepath;
 	t_color		cf_colors[2];
 	size_t		bufmax;
+	size_t		buflens_max;
 	size_t		*buflens;
 	size_t		buflens_size;
 	BOOL		generated;
@@ -75,16 +76,22 @@ typedef struct s_map
 	char		**buf;
 }	t_map;
 
+typedef struct s_img_container
+{
+	mlx_image_t	*fps;
+	mlx_image_t	*minimap;
+}	t_img_container;
+
 typedef struct s_core
 {
-	mlx_t		*mlx;
-	t_player	player;
-	t_map		map;
-	mlx_image_t	*fpsimg;
-	float		half_width;
-	float		half_height;
-	BOOL		mouse_visible;
-	char		*_strerror;
+	t_img_container	imgs;
+	mlx_t			*mlx;
+	t_player		player;
+	t_map			map;
+	float			half_width;
+	float			half_height;
+	BOOL			mouse_visible;
+	char			*_strerror;
 }	t_core;
 
 

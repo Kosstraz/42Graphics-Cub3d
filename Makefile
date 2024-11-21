@@ -6,7 +6,7 @@
 #    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/11/19 19:33:53 by ymanchon         ###   ########.fr        #
+#    Updated: 2024/11/21 14:11:57 by ymanchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,9 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/pc/utils.c						\
 		./srcs/pc/algo.c						\
 		./srcs/pc/algo_delegate.c				\
+		\
+		./srcs/rendering/show_fps.c				\
+		./srcs/rendering/minimap.c				\
 		\
 		./main.c
 

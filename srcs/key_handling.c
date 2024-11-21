@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/20 16:00:49 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/21 15:04:56 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,19 @@ inline void	handle_player_key(mlx_key_data_t keyd, t_core *core)
 {
 	if (keyd.key == MLX_KEY_A)
 	{
-		core->player.position.x -= 1;
+		core->player.position.x -= DEFPLAYERMOVEMENTS;
 	}
 	else if (keyd.key == MLX_KEY_D)
 	{
-		core->player.position.x += 1;
+		core->player.position.x += DEFPLAYERMOVEMENTS;
 	}
 	if (keyd.key == MLX_KEY_W)
 	{
-		core->player.position.y += 1;
+		core->player.position.y += DEFPLAYERMOVEMENTS;
 	}
 	else if (keyd.key == MLX_KEY_S)
 	{
-		core->player.position.y -= 1;
+		core->player.position.y -= DEFPLAYERMOVEMENTS;
 	}
 }
 
