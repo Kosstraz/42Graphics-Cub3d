@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/20 21:09:18 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/22 18:59:46 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	handle_releasing_alt_key(mlx_key_data_t keyd, t_core *core);
 void	handle_esc_key(mlx_key_data_t keyd, t_core *core);
 void	handle_player_key(mlx_key_data_t keyd, t_core *core);
 void	handle_crouchplayer_key(mlx_key_data_t keyd, t_core *core);
+void	handle_movement(t_map *map, t_player *player, float deltaX, float deltaY);
 
 	//* utils_colors
 t_color	ctocol(t_uchar r, t_uchar g, t_uchar b);

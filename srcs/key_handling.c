@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/22 18:43:14 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/22 19:00:20 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,19 @@ inline void	handle_player_key(mlx_key_data_t keyd, t_core *core)
 {
 	if (keyd.key == MLX_KEY_A)
 	{
-		core->player.position.x -= DEFPLAYERMOVEMENTS * 10;
+		handle_movement(&core->map, &core->player, DEFPLAYERMOVEMENTS * 10, 0);
 	}
 	else if (keyd.key == MLX_KEY_D)
 	{
-		core->player.position.x += DEFPLAYERMOVEMENTS * 10;
+		handle_movement(&core->map, &core->player, -DEFPLAYERMOVEMENTS * 10, 0);
 	}
 	if (keyd.key == MLX_KEY_W)
 	{
-		core->player.position.y += DEFPLAYERMOVEMENTS * 10;
+		handle_movement(&core->map, &core->player, 0, DEFPLAYERMOVEMENTS * 10);
 	}
 	else if (keyd.key == MLX_KEY_S)
 	{
-		core->player.position.y -= DEFPLAYERMOVEMENTS * 10;
+		handle_movement(&core->map, &core->player, 0, -DEFPLAYERMOVEMENTS * 10);
 	}
 }
 
