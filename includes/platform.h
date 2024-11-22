@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   platform.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/21 13:30:02 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/22 18:27:37 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,15 @@ typedef struct s_pos
 {
 	float	x;
 	float	y;
+	float	z;
 }	t_pos;
+
+typedef struct s_vector
+{
+	float	dx;
+	float	dy;
+	float	dz;
+}	t_vector;
 
 typedef struct s_minmax
 {
@@ -53,6 +61,8 @@ typedef struct s_player
 	int		life;
 	t_pos	position;
 	BOOL	crouched;
+	t_vector	movement;
+	t_vector	view;
 }	t_player;
 
 typedef struct s_filepath

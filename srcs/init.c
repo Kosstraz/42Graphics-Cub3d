@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/21 15:02:55 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/22 18:28:16 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ inline static void	init_player(t_player *player)
 {
 	player->position.x = 0.0f;
 	player->position.y = 0.0f;
+	player->view.dx = 0.0f;
+	player->view.dy = 0.0f;
+	player->view.dz = 0.0f;
 	player->life = MAX_LIFE;
 	player->crouched = FALSE;
 }
