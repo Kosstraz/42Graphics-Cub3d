@@ -25,6 +25,9 @@
 # define DEFFREQ_MIN	1
 
 # define DEFLUCK		20
+# define NB_RAYS		1
+# define FOV			90
+# define DELTA			0
 
 # define DEFFREQ_MAX_MULTIPLIER		0.2f
 # define DEFFREQ_MAX_PRETTY_OFFSET	2

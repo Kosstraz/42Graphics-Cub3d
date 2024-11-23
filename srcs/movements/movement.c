@@ -12,16 +12,12 @@
 
 #include "cub3d.h"
 
-void	handle_movement(t_map *map, t_player *player, float deltaX, float deltaY)
-{
-	int	x;
-	int	y;
-
-	x =  (int) player->position()
-	if (player->position.x > 0)
-	{
-		if (map->buf[player->position])
-	}
-	player->position.x += deltaX;
-	player->position.y += deltaY;
-}
+// void	handle_movement(t_map *map, t_player *player, float deltaX, float deltaY)
+// {
+// 	if (player->position.x > 0)
+// 	{
+// 		if (map->buf[player->position])
+// 	}
+// 	player->position.x += deltaX;
+// 	player->position.y += deltaY;
+// }

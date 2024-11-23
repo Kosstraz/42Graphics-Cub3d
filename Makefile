@@ -55,6 +55,10 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/rendering/show_fps.c				\
 		./srcs/rendering/minimap.c				\
 		\
+		./srcs/raycasting/raycast.c\
+		\
+		./srcs/movements/movement.c\
+		\
 		./main.c
 
 LMAKE = @make --no-print-directory -C

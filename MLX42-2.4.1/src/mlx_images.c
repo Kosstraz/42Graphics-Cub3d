@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   mlx_images.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/28 02:29:06 by W2Wizard          #+#    #+#             */
-/*   Updated: 2024/11/21 14:26:00 by ymanchon         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   mlx_images.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: W2Wizard <main@w2wizard.dev>                 +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2021/12/28 02:29:06 by W2Wizard      #+#    #+#                 */
+/*   Updated: 2023/03/30 16:36:39 by ntamayo-      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,8 +209,6 @@ void mlx_delete_image(mlx_t* mlx, mlx_image_t* image)
 	mlx_ctx_t* mlxctx = mlx->context;
 
 	// Delete all instances in the render queue
-	if (!image)
-		return ;
 	mlx_list_t* quelst;
 	while ((quelst = mlx_lstremove(&mlxctx->render_queue, image, &mlx_equal_inst)))
 		mlx_freen(2, quelst->content, quelst);

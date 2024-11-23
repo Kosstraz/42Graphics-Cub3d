@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   mlx_font.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 12:01:37 by W2Wizard          #+#    #+#             */
-/*   Updated: 2024/11/21 14:28:18 by ymanchon         ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   mlx_font.c                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: W2Wizard <main@w2wizard.dev>                 +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/02/22 12:01:37 by W2Wizard      #+#    #+#                 */
+/*   Updated: 2022/06/27 19:53:36 by lde-la-h      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ mlx_image_t* mlx_put_string(mlx_t* mlx, const char* str, int32_t x, int32_t y)
 	for (size_t i = 0; i < len; i++, imgoffset += FONT_WIDTH)
 		mlx_draw_char(strimage, mlx_get_texoffset(str[i]), imgoffset);
 
-	//if (mlx_image_to_window(mlx, strimage, x, y) == -1)
-	//	return (mlx_delete_image(mlx, strimage), NULL);
+	if (mlx_image_to_window(mlx, strimage, x, y) == -1)
+		return (mlx_delete_image(mlx, strimage), NULL);
 	return (strimage);
 }
