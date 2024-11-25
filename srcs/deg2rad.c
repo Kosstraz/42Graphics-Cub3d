@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:12:53 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/11/25 16:13:49 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/25 20:19:26 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 double	deg2rad(double deg)
 {
-	return (deg / 360 * PI);
+	return (deg / 180 * PI);
 }

@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:17:39 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/11/25 17:09:53 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/25 20:39:33 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,15 @@ void	orientation_minimap(t_core *core)
 	int		i;
 	float	di;
 	float	angle;
+	float	length;
 	i = 0;
-	di = 6;		
+	di = 3;		
 	start.x = core->player.position.x * DEFUNIT;
 	start.y = core->player.position.y * DEFUNIT;
 	while (i < 20)
 	{
 		angle = core->player.view.angle - 30 + di * i;
+		length = ray_cast(core, angle);
 		dx = cos(deg2rad(angle)) * 20;
 		dy = sin(deg2rad(angle)) * 20;
 		end.x = start.x + dx;

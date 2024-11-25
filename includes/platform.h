@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 15:13:58 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/25 20:54:38 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,5 +143,19 @@ typedef struct s_gen_context
 	t_gen_config	config;
 	t_gen_utils		utils;
 }	t_gen_context;
+
+typedef struct s_ivector
+{
+	int	x;
+	int	y;
+	int	z;
+}	t_ivector;
+
+typedef struct s_fvector
+{
+	float	x;
+	float	y;
+	float	z;
+}	t_fvector;
 
 #endif
