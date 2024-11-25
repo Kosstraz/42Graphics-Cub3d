@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/22 18:28:16 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/25 15:02:29 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@ inline void	init_core(t_core *core)
 	core->half_width = DEFWIDTH / 2.f;
 	core->imgs.fps = NULL;
 	core->imgs.minimap = NULL;
+	core->minimap.position.x = 0;
+	core->minimap.position.y = 0;
+	core->minimap.size.x = 0;
+	core->minimap.size.y = 0;
 	init_player(&core->player);
 	init_core_map(core);
 }
@@ -61,9 +65,11 @@ inline void	init_mlx_env(t_core *core)
 		exit(1);
 	mlx_set_cursor_mode(core->mlx, MLX_MOUSE_HIDDEN);
 	mlx_set_mouse_pos(core->mlx, core->half_width, core->half_height);
+	core->minimap.size.x = core->map.buflens_max * DEFUNIT;
+	core->minimap.size.y = core->map.bufmax * DEFUNIT;
 	core->imgs.minimap = mlx_new_image(core->mlx,
-		core->map.buflens_max * DEFUNIT,
-		core->map.bufmax * DEFUNIT);
+		core->minimap.size.x,
+		core->minimap.size.y);
 }
 
 inline void	setup_mlx_hooks(t_core *core)

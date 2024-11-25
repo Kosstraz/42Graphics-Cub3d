@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/22 18:59:46 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/25 20:40:36 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,13 +107,14 @@ void	try_spawn_player(
 		RENDERING
 	*/
 
-	//* rendering/show_fps.c
 void	show_fps(t_core *core);
-
-	/*
-		MINIMAP
-	*/
-
+void	mlx_put_line(mlx_image_t *image, t_pos a, t_pos b, t_color_type color);
 void	draw_minimap(t_core *core);
+void	draw_square(mlx_image_t *image, t_pos a, t_color_type color);
+void	orientation_minimap(t_core *core);
+float	ray_cast(t_core *core, float angle);
+
+double	deg2rad(double deg);
+
 
 #endif

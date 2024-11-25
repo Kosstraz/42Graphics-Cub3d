@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:38 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/20 16:06:58 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/25 14:58:09 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,5 @@ void	generate_map(t_core *core)
 	config_generation(&context, core);
 	print_configuration(context, *core);
 	generate(&context, core);
+	core->map.buflens_max = ft_maxul(core->map.buflens, core->map.buflens_size);
 }

@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/22 18:27:37 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/25 20:54:38 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,18 @@ typedef struct s_pos
 	float	z;
 }	t_pos;
 
+typedef struct s_posi
+{
+	int	x;
+	int	y;
+}	t_posi;
+
 typedef struct s_vector
 {
 	float	dx;
 	float	dy;
 	float	dz;
+	float	angle;
 }	t_vector;
 
 typedef struct s_minmax
@@ -73,6 +80,12 @@ typedef struct s_filepath
 	char	*west;
 }	t_filepath;
 
+typedef struct s_minimap
+{
+	t_posi	position;
+	t_posi	size;
+}	t_minimap;
+
 typedef struct s_map
 {
 	t_filepath	filepath;
@@ -98,6 +111,7 @@ typedef struct s_core
 	mlx_t			*mlx;
 	t_player		player;
 	t_map			map;
+	t_minimap		minimap;
 	float			half_width;
 	float			half_height;
 	BOOL			mouse_visible;
@@ -129,5 +143,19 @@ typedef struct s_gen_context
 	t_gen_config	config;
 	t_gen_utils		utils;
 }	t_gen_context;
+
+typedef struct s_ivector
+{
+	int	x;
+	int	y;
+	int	z;
+}	t_ivector;
+
+typedef struct s_fvector
+{
+	float	x;
+	float	y;
+	float	z;
+}	t_fvector;
 
 #endif

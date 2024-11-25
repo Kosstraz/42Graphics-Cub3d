@@ -6,7 +6,7 @@
 #    By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/11/22 14:01:23 by mkhoury          ###   ########.fr        #
+#    Updated: 2024/11/25 16:14:40 by mkhoury          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,14 +52,18 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/pc/algo.c						\
 		./srcs/pc/algo_delegate.c				\
 		\
+		./srcs/rendering/draw_line.c			\
 		./srcs/rendering/show_fps.c				\
 		./srcs/rendering/minimap.c				\
+		./srcs/rendering/draw_square.c 			\
+		./srcs/rendering/draw_orientation.c 	\
 		\
 		./srcs/raycasting/raycast.c\
 		\
 		./srcs/movements/movement.c\
 		\
-		./main.c
+		./main.c\
+		./srcs/deg2rad.c
 
 LMAKE = @make --no-print-directory -C
 

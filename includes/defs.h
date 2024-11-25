@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defs.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/21 15:04:49 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/25 15:14:13 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,25 @@
 # define DEFHEIGHT	600
 # define DEFMAPBUF	5
 
-# define DEFMAPX_MIN	21
-# define DEFMAPX_MAX	42
+# define DEFMAPX_MIN	15
+# define DEFMAPX_MAX	30
 # define DEFMAPY_MIN	10
-# define DEFMAPY_MAX	25
-# define DEFFREQ_MIN	1
+# define DEFMAPY_MAX	20
+# define DEFFREQ_MIN	3
 
 # define DEFLUCK		20
-# define NB_RAYS		1
+
+# define NB_RAYS		10
 # define FOV			90
 # define DELTA			0
+# define PI				3.14159
 
 # define DEFFREQ_MAX_MULTIPLIER		0.2f
 # define DEFFREQ_MAX_PRETTY_OFFSET	2
 
-# define DEFUNIT	8
-# define DEFPLAYERMOVEMENTS	0.1f
+# define DEFUNIT		8
+# define DEFHALFUNIT	4
+# define DEFPLAYERSPEED	0.1f
 
 	//* constants specifics to cub3d
 # define GAME_TITLE		"Alien Isolation"
