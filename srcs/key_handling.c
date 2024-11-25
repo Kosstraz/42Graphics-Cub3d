@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 15:07:04 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/25 16:30:47 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,23 @@ inline void	handle_player_key(mlx_key_data_t keyd, t_core *core)
 {
 	if (keyd.key == MLX_KEY_A)
 	{
-		core->player.position.x -= DEFPLAYERSPEED;
+		if (core->map.buf[(int)roundf(core->player.position.y)][(int)roundf(core->player.position.x - DEFPLAYERSPEED)] == CUB3D_VOID)
+			core->player.position.x -= DEFPLAYERSPEED;
 	}
 	else if (keyd.key == MLX_KEY_D)
 	{
-		core->player.position.x += DEFPLAYERSPEED;
+		if (core->map.buf[(int)roundf(core->player.position.y)][(int)roundf(core->player.position.x + DEFPLAYERSPEED)] == CUB3D_VOID)
+			core->player.position.x += DEFPLAYERSPEED;
 	}
 	if (keyd.key == MLX_KEY_W)
 	{
-		core->player.position.y -= DEFPLAYERSPEED;
+		if (core->map.buf[(int)roundf(core->player.position.y - DEFPLAYERSPEED)][(int)roundf(core->player.position.x)] == CUB3D_VOID)
+			core->player.position.y -= DEFPLAYERSPEED;
 	}
 	else if (keyd.key == MLX_KEY_S)
 	{
-		core->player.position.y += DEFPLAYERSPEED;
+		if (core->map.buf[(int)roundf(core->player.position.y + DEFPLAYERSPEED)][(int)roundf(core->player.position.x)] == CUB3D_VOID)
+			core->player.position.y += DEFPLAYERSPEED;
 	}
 }
 
