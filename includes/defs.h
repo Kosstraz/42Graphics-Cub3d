@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defs.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/21 15:04:49 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/25 14:38:13 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@
 # define DEFFREQ_MIN	1
 
 # define DEFLUCK		20
-# define NB_RAYS		1
+
+# define NB_RAYS		10
 # define FOV			90
 # define DELTA			0
+# define PI				3.14159
 
 # define DEFFREQ_MAX_MULTIPLIER		0.2f
 # define DEFFREQ_MAX_PRETTY_OFFSET	2

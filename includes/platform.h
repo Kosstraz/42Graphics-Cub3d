@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/22 18:27:37 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/25 13:11:44 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_vector
 	float	dx;
 	float	dy;
 	float	dz;
+	float	angle;
 }	t_vector;
 
 typedef struct s_minmax
