@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:19:35 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/11/25 14:38:39 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/25 15:04:50 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,6 @@
 
 void	cast_ray(t_core *core, int i)
 {
-	//float angle;
-
-	//angle = FOV / NB_RAYS * i;
-	// int	x1;
-	// int	y1;
-	// int	x2;
-	// int y2;
-	// float	x_wall;
-	// float	y_wall;
-
-	// x1 = core->player.position.x;
-	// y1 = core->player.position.y;
 	int		h_w;
 	int		mx, my;
 	float	ra;
