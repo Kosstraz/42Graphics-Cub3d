@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:52 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/18 23:15:22 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/25 15:03:20 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	main(int ac, char **av)
 	if (ac == 1)
 		generate_map(&core);
 	print_map(core);
-	if (ac == 1)					// accepter ac=1 pour la generation procedurale de map
-		exit_strerror(CONCEDE_MAP, NULL);
+	//if (ac == 1)					// accepter ac=1 pour la generation procedurale de map
+	//	exit_strerror(CONCEDE_MAP, NULL);
 	core.map.file = av[1];
 	cub3d(&core);
 	return (0);

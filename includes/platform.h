@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 13:11:44 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/25 15:13:58 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ typedef struct s_pos
 	float	y;
 	float	z;
 }	t_pos;
+
+typedef struct s_posi
+{
+	int	x;
+	int	y;
+}	t_posi;
 
 typedef struct s_vector
 {
@@ -74,6 +80,12 @@ typedef struct s_filepath
 	char	*west;
 }	t_filepath;
 
+typedef struct s_minimap
+{
+	t_posi	position;
+	t_posi	size;
+}	t_minimap;
+
 typedef struct s_map
 {
 	t_filepath	filepath;
@@ -99,6 +111,7 @@ typedef struct s_core
 	mlx_t			*mlx;
 	t_player		player;
 	t_map			map;
+	t_minimap		minimap;
 	float			half_width;
 	float			half_height;
 	BOOL			mouse_visible;

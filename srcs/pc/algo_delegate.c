@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:37 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/20 18:20:08 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/25 15:10:24 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,16 @@ inline void	try_spawn_player(
 	{
 		core->map.buf[y][x] = context->config.spawn1_orientation;
 		context->utils.player_has_spawned = TRUE;
+		core->player.position.x = x;
+		core->player.position.y = y;
 	}
 	else if (y == core->map.bufmax - 2
 		&& !context->utils.player_has_spawned)
 	{
 		core->map.buf[y][x] = context->config.spawn1_orientation;
 		context->utils.player_has_spawned = TRUE;
+		core->player.position.x = x;
+		core->player.position.y = y;
 	}
 }
 
@@ -70,8 +74,8 @@ inline void	try_shift_line(t_gen_context *context, size_t y, t_core *core)
 			tmp = ft_strfjoin(tmp, " ");
 			i++;
 		}
+		core->map.buflens[y] += ft_strlen(tmp);
 		core->map.buf[y] = ft_strffjoin(tmp, core->map.buf[y]);
-		core->map.buflens[y] += ft_strlen(core->map.buf[y]);	
 	}
 }
 

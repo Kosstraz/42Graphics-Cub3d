@@ -78,7 +78,11 @@ static void	parse_asciilines(
 		else if (line[i] == CUB3D_VOID)
 			parse_asciilines_check_zero(i, cur, core);
 		if (!*player_spawn && ft_isanychr(line[i], CUB3D_PLAYER))
+		{
+			core->player.position.x = i;
+			core->player.position.y = cur;
 			*player_spawn = TRUE;
+		}
 		else if (*player_spawn && ft_isanychr(line[i], CUB3D_PLAYER))
 			exit_strerror(MAP_PLAYER_REDIFINED_T, core);
 		else if (!ft_isanychr(line[i], CUB3D_BLOCKS))
