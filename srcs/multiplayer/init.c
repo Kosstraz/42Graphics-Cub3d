@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/17 17:44:52 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 19:04:09 by ymanchon         ###   ########.fr       */
+/*   Created: 2024/11/25 18:13:37 by ymanchon          #+#    #+#             */
+/*   Updated: 2024/11/25 18:23:18 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+void	init_network(t_core *core)
 {
-	t_core	core;
-
-	multiplayer_menu(&core);
-	init_core(&core);
-	if (!core.multi.is_active || core.multi.is_host)
-	{
-		if (ac == 1)
-			generate_map(&core);
-		core.map.file = av[1];
-	}
-	cub3d(&core);
-	return (0);
+	core->multi.is_host = FALSE;
+	core->multi.network.fd = -1;
+	core->multi.network.com = -1;
+	ft_memset(
+		&core->multi.network.sock,
+		0,
+		sizeof(struct sockaddr_in));
 }

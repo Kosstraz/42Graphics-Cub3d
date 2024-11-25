@@ -6,13 +6,14 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 15:04:11 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/25 18:15:28 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLATFORM_H
 # define PLATFORM_H
 
+# include <netinet/in.h>
 # include "MLX42-2.4.1/include/MLX42/MLX42.h"
 # include "defs.h"
 
@@ -64,9 +65,9 @@ typedef struct s_color
 	//* CORE
 typedef struct s_player
 {
-	int		life;
-	t_pos	position;
-	BOOL	crouched;
+	int			life;
+	t_pos		position;
+	BOOL		crouched;
 	t_vector	movement;
 	t_vector	view;
 }	t_player;
@@ -104,6 +105,24 @@ typedef struct s_img_container
 	mlx_image_t	*minimap;
 }	t_img_container;
 
+typedef struct s_net
+{
+	//struct sockaddr_in	client;
+	//struct sockaddr_in	server;
+	//int					cfd;
+	//int					sfd;
+	struct sockaddr_in	sock;
+	int					fd;
+	int					com;
+}	t_net;
+
+typedef struct s_multi
+{
+	BOOL	is_active;
+	BOOL	is_host;
+	t_net	network;
+}	t_multi;
+
 typedef struct s_core
 {
 	t_img_container	imgs;
@@ -111,6 +130,7 @@ typedef struct s_core
 	t_player		player;
 	t_map			map;
 	t_minimap		minimap;
+	t_multi			multi;
 	float			half_width;
 	float			half_height;
 	BOOL			mouse_visible;

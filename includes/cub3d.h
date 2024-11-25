@@ -6,13 +6,23 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 15:05:57 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/25 18:16:36 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# define _XOPEN_SOURCE 700
+
+	// pre alpha 0.1
+# include <sys/socket.h>
+# include <netinet/in.h>
+# include <arpa/inet.h>
+# include <netdb.h>
+# include <poll.h>
+
+# include <fcntl.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
@@ -109,5 +119,17 @@ void	try_spawn_player(
 void	show_fps(t_core *core);
 void	mlx_put_line(mlx_image_t *image, t_pos a, t_pos b, t_color_type color);
 void	draw_minimap(t_core *core);
+
+	/*
+		MULTIJOUEUR
+	*/
+
+void	multiplayer_menu(t_core *core);
+void	setup_server(t_core *core);
+void	setup_client(char *address, t_core *core);
+void	close_connection(t_core *core);
+void	send_map(t_core *core);
+void	recv_map(t_core *core);
+void	init_network(t_core *core);
 
 #endif

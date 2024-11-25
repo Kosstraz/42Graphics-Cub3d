@@ -6,12 +6,15 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 15:09:22 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/25 18:38:03 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFS_H
 # define DEFS_H
+
+	//* multi
+# define PORT	4243
 
 	//*	default values
 # define DEFWIDTH	800
