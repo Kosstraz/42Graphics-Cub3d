@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 18:15:28 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/25 19:19:33 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,6 @@ typedef struct s_img_container
 
 typedef struct s_net
 {
-	//struct sockaddr_in	client;
-	//struct sockaddr_in	server;
-	//int					cfd;
-	//int					sfd;
 	struct sockaddr_in	sock;
 	int					fd;
 	int					com;
@@ -127,7 +123,7 @@ typedef struct s_core
 {
 	t_img_container	imgs;
 	mlx_t			*mlx;
-	t_player		player;
+	t_player		player[2];
 	t_map			map;
 	t_minimap		minimap;
 	t_multi			multi;
@@ -146,6 +142,7 @@ typedef struct s_gen_config
 	t_minmax	yfreq;
 	//t_minmax	xfreq; <-- same than yfreq, can change
 	char		spawn1_orientation;
+	char		spawn2_orientation;
 }	t_gen_config;
 
 typedef struct s_gen_utils
@@ -154,7 +151,8 @@ typedef struct s_gen_utils
 	size_t	freq_val;
 	int		average_line_len;
 	int		luck_player_spawn_now;
-	BOOL	player_has_spawned;
+	BOOL	player1_has_spawned;
+	BOOL	player2_has_spawned;
 }	t_gen_utils;
 
 typedef struct s_gen_context

@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 17:20:32 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/25 19:41:23 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,18 @@ inline void	init_core(t_core *core)
 	core->minimap.position.y = 0;
 	core->minimap.size.x = 0;
 	core->minimap.size.y = 0;
-	init_player(&core->player);
+	init_player(&core->player[0]);
+	init_player(&core->player[1]);
 	init_core_map(core);
 }
 
 inline void	init_mlx_env(t_core *core)
 {
 	mlx_set_setting(MLX_MAXIMIZED, true);
-	core->mlx = mlx_init(DEFWIDTH, DEFHEIGHT, GAME_TITLE, true);
+	if (core->multi.is_host)
+		core->mlx = mlx_init(DEFWIDTH, DEFHEIGHT, GAME_TITLE_S, true);
+	else
+		core->mlx = mlx_init(DEFWIDTH, DEFHEIGHT, GAME_TITLE, true);
 	if (!core->mlx->window)
 		exit_cub3d(1, core);
 	else if (!core->mlx)

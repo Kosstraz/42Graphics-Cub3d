@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:50 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 19:13:06 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/25 20:03:46 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ inline static void	put_images_to_window(t_core *core)
 
 void	game(t_core *core)
 {
-	//if (core->multi.is_active)
-	//		... poll events
+	//recv_any_element(core);
 	if (!core->mouse_visible)
 		mlx_set_mouse_pos(core->mlx, core->half_width, core->half_height);
 	// draw ray casting
@@ -52,7 +51,6 @@ void	cub3d(t_core *core)
 	}
 	else if (core->multi.is_active)
 		recv_map(core);
-	print_map(*core);
 	init_mlx_env(core);
 	setup_mlx_hooks(core);
 	mlx_loop(core->mlx);

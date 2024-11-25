@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 18:16:36 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/25 19:32:51 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,5 +131,7 @@ void	close_connection(t_core *core);
 void	send_map(t_core *core);
 void	recv_map(t_core *core);
 void	init_network(t_core *core);
+void	send_element(void *what, size_t size, char poll_id, t_core *core);
+void	recv_any_element(t_core *core);
 
 #endif

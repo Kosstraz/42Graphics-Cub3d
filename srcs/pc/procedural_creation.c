@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:38 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 16:48:46 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/25 19:39:33 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ inline static void	init_gen_config(t_gen_context *context)
 	context->config.yfreq.min = DEFFREQ_MIN;
 	context->config.yfreq.max = DEFFREQ_MIN;
 	context->config.spawn1_orientation = CUB3D_PLAYER[rand_btw(0, 3)];
+	context->config.spawn2_orientation = CUB3D_PLAYER[rand_btw(0, 3)];
 	context->utils.freq_index = 0;
 	context->utils.freq_val = 0;
-	context->utils.player_has_spawned = FALSE;
+	context->utils.player1_has_spawned = FALSE;
+	context->utils.player2_has_spawned = FALSE;
 	context->utils.average_line_len = 0;
 }
 
