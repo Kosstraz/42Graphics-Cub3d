@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handling.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/22 18:43:14 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/25 15:07:04 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,19 @@ inline void	handle_player_key(mlx_key_data_t keyd, t_core *core)
 {
 	if (keyd.key == MLX_KEY_A)
 	{
-		core->player.position.x -= DEFPLAYERMOVEMENTS * 10;
+		core->player.position.x -= DEFPLAYERSPEED;
 	}
 	else if (keyd.key == MLX_KEY_D)
 	{
-		core->player.position.x += DEFPLAYERMOVEMENTS * 10;
+		core->player.position.x += DEFPLAYERSPEED;
 	}
 	if (keyd.key == MLX_KEY_W)
 	{
-		core->player.position.y += DEFPLAYERMOVEMENTS * 10;
+		core->player.position.y -= DEFPLAYERSPEED;
 	}
 	else if (keyd.key == MLX_KEY_S)
 	{
-		core->player.position.y -= DEFPLAYERMOVEMENTS * 10;
+		core->player.position.y += DEFPLAYERSPEED;
 	}
 }
 

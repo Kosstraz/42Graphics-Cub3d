@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/20 20:01:57 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/25 14:59:14 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void	generate_xline(t_gen_context *context, size_t y, t_core *core)
 		}
 		++x;
 	}
-	//try_shift_line(context, y, core);
+	try_shift_line(context, y, core);
 	--context->utils.luck_player_spawn_now;
 }
 
@@ -96,6 +96,13 @@ static void	put_last_walls(size_t y, t_core *core)
 				core->map.buf[y][x] = CUB3D_WALL;
 			else if (x <= core->map.buflens[y + 1] && core->map.buf[y + 1][x - 1] == ' ')
 				core->map.buf[y][x] = CUB3D_WALL;
+			else if (core->map.buf[y][x] == CUB3D_VOID)
+			{
+				if (x >= core->map.buflens[y - 1])
+					core->map.buf[y][x] = CUB3D_WALL;
+				if (x >= core->map.buflens[y + 1])
+					core->map.buf[y][x] = CUB3D_WALL;
+			}
 		//}
 		++x;
 	}
@@ -110,10 +117,7 @@ void	generate(t_gen_context *context, t_core *core)
 		deduction_of_xline_size(*context, y++, core);
 	y = 0;
 	while (y < core->map.buflens_size)
-	{
-		context->utils.average_line_len += core->map.buflens[y];
-		y++;
-	}
+		context->utils.average_line_len += core->map.buflens[y++];
 	context->utils.average_line_len /= core->map.buflens_size * 1.0f;
 	y = 0;
 	while (y < core->map.bufmax)

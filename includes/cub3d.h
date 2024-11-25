@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/20 21:09:18 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/25 15:05:57 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,13 +106,8 @@ void	try_spawn_player(
 		RENDERING
 	*/
 
-	//* rendering/show_fps.c
 void	show_fps(t_core *core);
-
-	/*
-		MINIMAP
-	*/
-
+void	mlx_put_line(mlx_image_t *image, t_pos a, t_pos b, t_color_type color);
 void	draw_minimap(t_core *core);
 
 #endif

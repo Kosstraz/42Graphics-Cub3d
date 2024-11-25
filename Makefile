@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+         #
+#    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/11/22 14:01:23 by mkhoury          ###   ########.fr        #
+#    Updated: 2024/11/25 15:06:20 by ymanchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/pc/algo.c						\
 		./srcs/pc/algo_delegate.c				\
 		\
+		./srcs/rendering/draw_line.c			\
 		./srcs/rendering/show_fps.c				\
 		./srcs/rendering/minimap.c				\
 		\

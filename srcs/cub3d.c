@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:50 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/22 14:30:53 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/25 14:59:58 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 inline static void	put_images_to_window(t_core *core)
 {
 	mlx_image_to_window(core->mlx, core->imgs.fps, 0, 0);
+	core->minimap.position.x = core->mlx->width - core->map.buflens_max * DEFUNIT - 10;
+	core->minimap.position.y = 10;
 	mlx_image_to_window(
 		core->mlx,
 		core->imgs.minimap,
-		core->mlx->width - core->map.buflens_max * DEFUNIT - 10,
-		10);
+		core->minimap.position.x,
+		core->minimap.position.y);
 }
 
 void	game(t_core *core)
