@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:52 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 19:04:09 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/26 19:15:47 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 
 	multiplayer_menu(&core);
 	init_core(&core);
-	if (!core.multi.is_active || core.multi.is_host)
+	if (!core.network.is_active || core.network.is_host)
 	{
 		if (ac == 1)
 			generate_map(&core);

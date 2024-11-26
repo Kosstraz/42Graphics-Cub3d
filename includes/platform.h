@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/26 15:44:08 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/26 19:20:45 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,19 +105,33 @@ typedef struct s_img_container
 	mlx_image_t	*minimap;
 }	t_img_container;
 
-typedef struct s_net
+typedef struct s_layer
 {
-	struct sockaddr_in	sock;
-	int					fd;
-	int					com;
-}	t_net;
+	char	**pixels;
+}	t_layer;
 
-typedef struct s_multi
+typedef struct s_udp
+{
+	int					fd;
+	struct sockaddr_in	com;
+	socklen_t			len;
+}	t_udp;
+
+typedef struct s_tcp
+{
+	int					com;
+	int					fd;
+	struct sockaddr_in	sock;
+}	t_tcp;
+
+typedef struct s_network
 {
 	BOOL	is_active;
 	BOOL	is_host;
-	t_net	network;
-}	t_multi;
+	char	*hostaddr;
+	t_udp	udp;
+	t_tcp	tcp;
+}	t_network;
 
 typedef struct s_input_action
 {
@@ -135,7 +149,7 @@ typedef struct s_core
 	t_input_action	input_action;
 	t_map			map;
 	t_minimap		minimap;
-	t_multi			multi;
+	t_network		network;
 	float			half_width;
 	float			half_height;
 	BOOL			mouse_visible;

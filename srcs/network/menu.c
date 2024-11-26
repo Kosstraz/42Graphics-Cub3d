@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:50:43 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/26 15:50:29 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:45:12 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	demande_addresspoint(t_core *core)
 
 	ft_printf("Adresse : ");
 	scanf("%s", address);
-	setup_client(address, core);
+	setup_client_tcp(address, core);
 }
 
 static void	show_addresspoint(t_core *core)
@@ -35,12 +35,13 @@ static void	show_addresspoint(t_core *core)
 	char			*ipv4;
 	char			buffer[256];
 	struct hostent	*hostaddr;
+
 	gethostname(buffer, sizeof(buffer));
 	hostaddr = gethostbyname(buffer);
 	ipv4 = inet_ntoa(*(struct in_addr *)hostaddr->h_addr_list[0]);
 	ft_printf("Vous pouvez-vous connecter sur l'adresse : %s:%d\n", ipv4, PORT);
-	setup_server(core);
-	core->multi.is_host = TRUE;
+	setup_server_tcp(core);
+	core->network.is_host = TRUE;
 }
 
 static void	create_or_join(t_core *core)
@@ -77,10 +78,10 @@ void	multiplayer_menu(t_core *core)
 	}
 	clear_terminal();
 	if (choice == '1')
-		core->multi.is_active = FALSE;
+		core->network.is_active = FALSE;
 	else
 	{
-		core->multi.is_active = TRUE;
+		core->network.is_active = TRUE;
 		create_or_join(core);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:37 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 19:22:49 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:35:29 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ inline void	try_spawn_player(
 		core->player[0].position.x = x;
 		core->player[0].position.y = y;
 	}
-	else if (core->multi.is_active)
+	else if (core->network.is_active)
 		try_spawn_player2(context, y, x, core);
 }
 

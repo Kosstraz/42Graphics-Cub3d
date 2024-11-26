@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/26 15:49:12 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:36:19 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include <unistd.h>
 # include <math.h>
 # include <sys/time.h>
+# include <errno.h>
 # include "MLX42-2.4.1/include/MLX42/MLX42.h"
 # include "libft.h"
 # include "platform.h"
@@ -128,13 +129,19 @@ void	draw_minimap(t_core *core);
 	*/
 
 void	multiplayer_menu(t_core *core);
-void	setup_server(t_core *core);
-void	setup_client(char *address, t_core *core);
-void	close_connection(t_core *core);
+void	setup_server_udp(t_core *core);
+void	setup_client_udp(t_core *core);
+void	setup_server_tcp(t_core *core);
+void	setup_client_tcp(char *address, t_core *core);
+void	close_tcp_connection(t_core *core);
+void	close_udp_connection(t_core *core);
+void	close_all_connections(t_core *core);
 void	send_map(t_core *core);
 void	recv_map(t_core *core);
 void	init_network(t_core *core);
-void	send_element(void *what, size_t size, char poll_id, t_core *core);
-void	recv_any_element(t_core *core);
+void	tcp_send(void *what, size_t size, t_core *core);
+void	tcp_recv(void *what, size_t size, t_core *core);
+void	udp_send(void *what, size_t size, t_core *core, char id);
+void	udp_recvs(t_core *core);
 
 #endif

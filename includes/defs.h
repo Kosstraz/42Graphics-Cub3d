@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/26 15:51:49 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:50:54 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 	//* multi
 # define PORT	4243
 
-# define POLL_PLAYER	(char)0
+# define POLL_SYNC_TO_SERVER	(char)-1
+# define POLL_NONE				(char)0
+# define POLL_PLAYER			(char)1
 
 # define LOCAL		0
 # define DISTANT	1
@@ -51,6 +53,9 @@
 # define CUB3D_VOID		'0'
 # define CUB3D_PLAYER	"NSEW"
 # define CUB3D_BLOCKS	"01 "
+
+# define C	0
+# define F	1
 
 	//* generic constants
 # define TRUE	1
