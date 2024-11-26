@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:50:43 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 19:10:33 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:50:29 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,26 +32,13 @@ static void	demande_addresspoint(t_core *core)
 
 static void	show_addresspoint(t_core *core)
 {
-	struct addrinfo		hints;
-	struct addrinfo		*res;
-	struct sockaddr_in	*ip;
-	char				*port;
-	char				ip_str[INET_ADDRSTRLEN];
-
-	ft_memset(&hints, 0, sizeof(struct addrinfo));
-	hints.ai_family = AF_INET;
-	port = ft_itoa(PORT);
-	if (getaddrinfo(NULL, port, &hints, &res) != 0)
-	{
-		ft_printf("Erreur lors de l'essaie de la recuperation de l'adresse IPv4.\n");
-		free(port);
-		exit(0);
-	}
-	free(port);
-	ip = (struct sockaddr_in *)res->ai_addr;
-	inet_ntop(AF_INET, &ip->sin_addr, ip_str, sizeof(ip_str));
-	freeaddrinfo(res);
-	ft_printf("Vous pouvez-vous connecter sur l'adresse : %s:%d\n", ip_str, PORT);
+	char			*ipv4;
+	char			buffer[256];
+	struct hostent	*hostaddr;
+	gethostname(buffer, sizeof(buffer));
+	hostaddr = gethostbyname(buffer);
+	ipv4 = inet_ntoa(*(struct in_addr *)hostaddr->h_addr_list[0]);
+	ft_printf("Vous pouvez-vous connecter sur l'adresse : %s:%d\n", ipv4, PORT);
 	setup_server(core);
 	core->multi.is_host = TRUE;
 }

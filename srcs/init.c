@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 19:41:23 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:44:26 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ inline void	init_core(t_core *core)
 	core->minimap.position.y = 0;
 	core->minimap.size.x = 0;
 	core->minimap.size.y = 0;
+	core->input_action.key_w = FALSE;
+	core->input_action.key_a = FALSE;
+	core->input_action.key_s = FALSE;
+	core->input_action.key_d = FALSE;
 	init_player(&core->player[0]);
 	init_player(&core->player[1]);
 	init_core_map(core);

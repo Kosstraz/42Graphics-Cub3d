@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 19:19:33 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:44:08 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,11 +119,20 @@ typedef struct s_multi
 	t_net	network;
 }	t_multi;
 
+typedef struct s_input_action
+{
+	BOOL	key_w;
+	BOOL	key_a;
+	BOOL	key_s;
+	BOOL	key_d;
+}	t_input_action;
+
 typedef struct s_core
 {
 	t_img_container	imgs;
 	mlx_t			*mlx;
 	t_player		player[2];
+	t_input_action	input_action;
 	t_map			map;
 	t_minimap		minimap;
 	t_multi			multi;

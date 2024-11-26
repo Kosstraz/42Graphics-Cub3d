@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:50 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 20:03:46 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:47:11 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ inline static void	put_images_to_window(t_core *core)
 
 void	game(t_core *core)
 {
-	//recv_any_element(core);
+	player_check_movements(core);
+	recv_any_element(core);
 	if (!core->mouse_visible)
 		mlx_set_mouse_pos(core->mlx, core->half_width, core->half_height);
 	// draw ray casting

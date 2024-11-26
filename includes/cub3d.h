@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 19:32:51 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:49:12 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@
 		CORE
 	*/
 
+void	player_check_movements(t_core *core);
+
 	//* main files (cub3d.c)
 void	cub3d(t_core *core);
 void	game(t_core *core);
@@ -57,7 +59,8 @@ void	free_core_map(t_core *core);
 void	handle_pressing_alt_key(mlx_key_data_t keyd, t_core *core);
 void	handle_releasing_alt_key(mlx_key_data_t keyd, t_core *core);
 void	handle_esc_key(mlx_key_data_t keyd, t_core *core);
-void	handle_player_key(mlx_key_data_t keyd, t_core *core);
+void	handle_player_key_press(mlx_key_data_t keyd, t_core *core);
+void	handle_player_key_release(mlx_key_data_t keyd, t_core *core);
 void	handle_crouchplayer_key(mlx_key_data_t keyd, t_core *core);
 
 	//* utils_colors

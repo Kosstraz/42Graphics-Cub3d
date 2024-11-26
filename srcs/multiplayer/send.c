@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:50:18 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 19:57:02 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/26 14:16:36 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	send_map(t_core *core)
 	}
 	send(core->multi.network.com, &core->map.buflens_max, sizeof(size_t), 0);
 	send(core->multi.network.com, &core->player[0], sizeof(t_player), 0);
+	send(core->multi.network.com, &core->player[1], sizeof(t_player), 0);
 }
 
 void	recv_map(t_core *core)
@@ -49,6 +50,7 @@ void	recv_map(t_core *core)
 	core->map.buf[y] = NULL;
 	recv(core->multi.network.com, &core->map.buflens_max, sizeof(size_t), 0);
 	recv(core->multi.network.com, &core->player[1], sizeof(t_player), 0);
+	recv(core->multi.network.com, &core->player[0], sizeof(t_player), 0);
 }
 
 inline void	send_element(void *what, size_t size, char poll_id, t_core *core)

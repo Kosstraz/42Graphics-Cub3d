@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 20:05:21 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/26 15:51:49 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # define PORT	4243
 
 # define POLL_PLAYER	(char)0
+
+# define LOCAL		0
+# define DISTANT	1
 
 	//*	default values
 # define DEFWIDTH	800
@@ -36,7 +39,7 @@
 
 # define DEFUNIT		8
 # define DEFHALFUNIT	4
-# define DEFPLAYERSPEED	0.2f
+# define DEFPLAYERSPEED	3.f
 
 	//* constants specifics to cub3d
 # define GAME_TITLE		"Alien Isolation"

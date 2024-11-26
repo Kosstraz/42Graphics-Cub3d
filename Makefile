@@ -6,7 +6,7 @@
 #    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/11/25 18:22:27 by ymanchon         ###   ########.fr        #
+#    Updated: 2024/11/26 15:48:49 by ymanchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,8 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/multiplayer/send.c				\
 		./srcs/multiplayer/mutual_addr.c		\
 		./srcs/multiplayer/init.c				\
+		\
+		./srcs/movements/movements.c			\
 		\
 		./main.c
 
