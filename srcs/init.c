@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 15:02:29 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/26 18:33:40 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ inline void	init_core(t_core *core)
 	core->minimap.size.y = 0;
 	init_player(&core->player);
 	init_core_map(core);
+	init_cast(&core->cast, core->player);
 }
 
 inline void	init_mlx_env(t_core *core)

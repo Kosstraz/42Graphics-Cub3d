@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 20:54:38 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/26 18:44:03 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,16 @@ typedef struct s_color
 	BOOL	_overflow;
 }	t_color;
 
-
+typedef struct s_casting
+{
+	float		casts[2000];
+	float		angle[2000];
+	float		di;
+	int			hfov;
+	t_pos		last_pose;
+	t_vector	last_view;
+	int			last_width;
+}	t_casting;
 
 	//* CORE
 typedef struct s_player
@@ -116,6 +125,7 @@ typedef struct s_core
 	float			half_height;
 	BOOL			mouse_visible;
 	char			*_strerror;
+	t_casting		cast;
 }	t_core;
 
 

@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:19:35 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/11/25 21:13:09 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/26 15:47:35 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ float	ray_cast(t_core *core, float angle)
 	t_fvector	vector_dir;
 	t_ivector	step;
 	t_fvector	side;
-	t_ivector	ray_start;
+	t_fvector	ray_start;
 	t_ivector	map_check;
 
 	

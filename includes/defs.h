@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 15:14:13 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/26 18:34:50 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define DEFLUCK		20
 
 # define NB_RAYS		10
-# define FOV			90
+# define FOV			60
 # define DELTA			0
 # define PI				3.14159
 

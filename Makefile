@@ -6,7 +6,7 @@
 #    By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/11/25 16:14:40 by mkhoury          ###   ########.fr        #
+#    Updated: 2024/11/26 18:28:43 by mkhoury          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/terminate.c						\
 		./srcs/utils_colors.c					\
 		./srcs/debug.c							\
+		./srcs/init_cast.c 						\
 		\
 		./srcs/parsing/parsing.c				\
 		./srcs/parsing/parsing_check_errors.c	\
@@ -59,6 +60,7 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/rendering/draw_orientation.c 	\
 		\
 		./srcs/raycasting/raycast.c\
+		./srcs/raycasting/calcul_raycast.c 		\
 		\
 		./srcs/movements/movement.c\
 		\

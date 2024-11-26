@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 20:40:36 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/26 18:33:01 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ void	draw_minimap(t_core *core);
 void	draw_square(mlx_image_t *image, t_pos a, t_color_type color);
 void	orientation_minimap(t_core *core);
 float	ray_cast(t_core *core, float angle);
+void	init_cast(t_casting *cast, t_player player);
+void	calcul_casts(t_core *core);
 
 double	deg2rad(double deg);
 

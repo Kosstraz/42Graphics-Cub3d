@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:17:39 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/11/25 20:39:33 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/26 18:27:11 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,16 @@ void	orientation_minimap(t_core *core)
 	float	angle;
 	float	length;
 	i = 0;
-	di = 3;		
+	
 	start.x = core->player.position.x * DEFUNIT;
 	start.y = core->player.position.y * DEFUNIT;
-	while (i < 20)
+	while (i < core->mlx->width)
 	{
-		angle = core->player.view.angle - 30 + di * i;
-		length = ray_cast(core, angle);
-		dx = cos(deg2rad(angle)) * length;
-		dy = sin(deg2rad(angle)) * length;
+		dx = cos(deg2rad(core->cast.angle[i])) * core->cast.casts[i];
+		dy = sin(deg2rad(core->cast.angle[i])) * core->cast.casts[i];
 		end.x = start.x + dx;
 		end.y = start.y + dy;
 		mlx_put_line(core->imgs.minimap, start, end, Red);
-		di += 1/6;
 		i++;
 	}
 
