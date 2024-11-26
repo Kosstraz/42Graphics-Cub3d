@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:24:27 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/26 15:53:02 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:17:37 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	setup_client(char *address, t_core *core)
 {
 	core->multi.network.fd = socket(AF_INET, SOCK_STREAM, 0);
-	inet_pton(AF_INET, address, (struct sockaddr *)&core->multi.network.sock);
+	inet_pton(AF_INET, address, (in_addr_t *)&core->multi.network.sock.sin_addr.s_addr);
 	core->multi.network.sock.sin_family = AF_INET;
 	core->multi.network.sock.sin_port = htons(PORT);
 	if (connect(core->multi.network.fd, (struct sockaddr *)&core->multi.network.sock, sizeof(struct sockaddr_in)) == -1)
