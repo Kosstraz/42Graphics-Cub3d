@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:47 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 17:59:21 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:58:21 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	free_core_map(t_core *core)
 {
 	if (core)
 	{
-		if (core->multi.is_active)
+		if (core->network.is_active)
 			close_connection(core);
 		ft_dfree((void **)core->map.buf);
 		ft_va_free(5,
@@ -43,7 +43,7 @@ void	free_core_map(t_core *core)
 
 void	free_core(t_core *core)
 {
-	if (core->multi.is_active)
+	if (core->network.is_active)
 		close_connection(core);
 	free_core_map(core);
 	mlx_delete_image(core->mlx, core->imgs.minimap);

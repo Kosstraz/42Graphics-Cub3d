@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/26 15:44:26 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:58:21 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ inline void	init_core(t_core *core)
 inline void	init_mlx_env(t_core *core)
 {
 	mlx_set_setting(MLX_MAXIMIZED, true);
-	if (core->multi.is_host)
+	if (core->network.is_host)
 		core->mlx = mlx_init(DEFWIDTH, DEFHEIGHT, GAME_TITLE_S, true);
 	else
 		core->mlx = mlx_init(DEFWIDTH, DEFHEIGHT, GAME_TITLE, true);

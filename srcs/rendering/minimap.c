@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:43:52 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 20:01:20 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:58:21 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,6 @@ void	draw_minimap(t_core *core)
 		++y;
 	}
 	draw_player(&core->player[0], Blue, core);
-	if (core->multi.is_active)
+	if (core->network.is_active)
 		draw_player(&core->player[1], Green, core);
 }
