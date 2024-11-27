@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 15:44:02 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/27 18:59:28 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 	*/
 
 void	player_check_movements(t_core *core);
+void	player_check_orientationraycast(t_core *core);
 
 	//* main files (cub3d.c)
 void	cub3d(t_core *core);
@@ -111,15 +112,18 @@ void	try_spawn_player(
 			t_core *core);
 
 void	init_layer(mlx_image_t *img, t_layer *layer);
+void	fill_layer(t_layer *layer, t_col_t color);
+void	free_layer(t_layer *layer);
 
 	/*
 		RENDERING
 	*/
 
+t_col_t	increase_lighting(t_color_type col, int by);
 void	show_fps(t_core *core);
 void	mlx_put_line(t_layer *layer, t_pos a, t_pos b, t_color_type color);
 void	draw_minimap(t_core *core);
-void	draw_square(mlx_image_t *image, t_pos a, t_color_type color);
+void	draw_square(t_layer *layer, t_pos a, t_color_type color);
 char	cmppixel(
 			uint32_t x,
 			uint32_t y,

@@ -6,11 +6,24 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:58:34 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 15:53:59 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/27 18:58:51 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+inline void	free_layer(t_layer *layer)
+{
+	int	y;
+
+	if (layer->pixels)
+	{
+		y = 0;
+		while (layer->pixels[y])
+			free(layer->pixels[y++]);
+		free(layer->pixels);
+	}
+}
 
 inline void	init_layer(mlx_image_t *img, t_layer *layer)
 {
@@ -19,8 +32,7 @@ inline void	init_layer(mlx_image_t *img, t_layer *layer)
 	uint32_t	x;
 
 	y = 0;
-	if (layer->pixels)
-		ft_dfree((void **)layer->pixels);
+	free_layer(layer);
 	layer->pixels
 		= (uint32_t ***)malloc(sizeof(uint32_t **) * (img->height + 1));
 	while (y < img->height)
@@ -41,16 +53,17 @@ inline void	init_layer(mlx_image_t *img, t_layer *layer)
 	layer->width = img->width;
 }
 
-// 1 --> same
-// 0 --> not same
+// 1	--> same
+// 0	--> not same
+// -1	--> out of bounds
 inline char	cmppixel(
 	uint32_t x,
 	uint32_t y,
 	t_color_type color,
 	t_layer *layer)
 {
-	if (y < layer->height && x < layer->width)
-		return (*(layer->pixels)[y][x] == color);
+	//if ((y >= 0 && y < layer->height) && (x >= 0 && x < layer->width))
+	return (*(layer->pixels[y][x]) == color);
 }
 
 inline void	draw_pixel(uint32_t x,
@@ -58,6 +71,24 @@ inline void	draw_pixel(uint32_t x,
 	t_color_type color,
 	t_layer *layer)
 {
-	if (y < layer->height && x < layer->width)
-		*(layer->pixels)[y][x] = color;
+	if ((y >= 0 && y < layer->height) && (x >= 0 && x < layer->width))
+		*(layer->pixels[y][x]) = (uint32_t)color;
+}
+
+void	fill_layer(t_layer *layer, t_color_type color)
+{
+	uint32_t	x;
+	uint32_t	y;
+
+	y = 0;
+	while (y < layer->height)
+	{
+		x = 0;
+		while (x < layer->width)
+		{
+			draw_pixel(x, y, color, layer);
+			++x;
+		}
+		++y;
+	}
 }

@@ -6,11 +6,20 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:49 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 15:19:26 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:47:36 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+t_color_type	increase_lighting(t_color_type col, int by)
+{
+	t_color_type	ret;
+
+	ret = col;
+	ret = (by << 24) | (ret & 0x00ffffff);
+	return (ret);
+}
 
 	// char[3] to color
 t_color	ctocol(t_uchar r, t_uchar g, t_uchar b)
@@ -21,17 +30,6 @@ t_color	ctocol(t_uchar r, t_uchar g, t_uchar b)
 	ret.b = b;
 	ret._overflow = FALSE;
 	return (ret);
-}
-
-	// color to int (hexa val) 0xRRGGBBAA with A=f
-unsigned int	coltohexa(t_color col)
-{
-	return (
-		(col.r << 16)
-		| (col.g << 8)
-		| (col.b << 4)
-		| (0x000000ff & 0xff)
-	);
 }
 
 t_color	stocol(const char *str)

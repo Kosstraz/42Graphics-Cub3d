@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:37 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 15:28:14 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/27 16:56:00 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	put_outline_walls(size_t x, size_t y, t_core *core)
 	return (CUB3D_VOID);
 }
 
-inline void	try_spawn_player2(
+inline static void	try_spawn_player2(
 	t_gen_context *context,
 	size_t y,
 	size_t x,
@@ -42,16 +42,16 @@ inline void	try_spawn_player2(
 	{
 		core->map.buf[y][x] = context->config.spawn2_orientation;
 		context->utils.player2_has_spawned = TRUE;
-		core->player[1].position.x = x;
-		core->player[1].position.y = y;
+		core->player[DISTANT].position.x = x;
+		core->player[DISTANT].position.y = y;
 	}
 	else if (y == core->map.bufmax - 2
 		&& !context->utils.player2_has_spawned)
 	{
 		core->map.buf[y][x] = context->config.spawn2_orientation;
 		context->utils.player2_has_spawned = TRUE;
-		core->player[1].position.x = x;
-		core->player[1].position.y = y;
+		core->player[DISTANT].position.x = x;
+		core->player[DISTANT].position.y = y;
 	}
 }
 
@@ -66,16 +66,16 @@ inline void	try_spawn_player(
 	{
 		core->map.buf[y][x] = context->config.spawn1_orientation;
 		context->utils.player1_has_spawned = TRUE;
-		core->player[0].position.x = x;
-		core->player[0].position.y = y;
+		core->player[LOCAL].position.x = x;
+		core->player[LOCAL].position.y = y;
 	}
 	else if (y == core->map.bufmax - 2
 		&& !context->utils.player1_has_spawned)
 	{
 		core->map.buf[y][x] = context->config.spawn1_orientation;
 		context->utils.player1_has_spawned = TRUE;
-		core->player[0].position.x = x;
-		core->player[0].position.y = y;
+		core->player[LOCAL].position.x = x;
+		core->player[LOCAL].position.y = y;
 	}
 	else if (core->network.is_active)
 		try_spawn_player2(context, y, x, core);

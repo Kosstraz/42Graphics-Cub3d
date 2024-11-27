@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 15:36:38 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:25:22 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,8 @@ typedef struct s_input_action
 	BOOL	key_a;
 	BOOL	key_s;
 	BOOL	key_d;
+	BOOL	key_right;
+	BOOL	key_left;
 }	t_input_action;
 
 typedef struct s_core

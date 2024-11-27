@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 15:50:40 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/27 18:26:32 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,8 @@
 
 inline static void	init_player(t_player *player)
 {
-	player->position.x = 0.0f;
-	player->position.y = 0.0f;
-	player->view.dx = 0.0f;
-	player->view.dy = 0.0f;
-	player->view.dz = 0.0f;
+	ft_memset(player, 0, sizeof(t_player));
 	player->life = MAX_LIFE;
-	player->crouched = FALSE;
 }
 
 inline static void	init_core_map(t_core *core)
@@ -58,6 +53,8 @@ inline void	init_core(t_core *core)
 	core->input_action.key_a = FALSE;
 	core->input_action.key_s = FALSE;
 	core->input_action.key_d = FALSE;
+	core->input_action.key_right = FALSE;
+	core->input_action.key_left = FALSE;
 	core->layer[MINIMAP_LAYER].pixels = NULL;
 	core->layer[CAST_LAYER].pixels = NULL;
 	core->fps_cooldown = 0;
@@ -69,7 +66,7 @@ inline void	init_core(t_core *core)
 
 inline void	init_mlx_env(t_core *core)
 {
-	//mlx_set_setting(MLX_MAXIMIZED, true);
+	mlx_set_setting(MLX_MAXIMIZED, true);
 	if (core->network.is_host)
 		core->mlx = mlx_init(DEFWIDTH, DEFHEIGHT, GAME_TITLE_S, true);
 	else

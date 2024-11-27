@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 15:50:31 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/27 18:26:39 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # define DISTANT	1
 
 	//*	default values
-# define DEFWIDTH	1800
-# define DEFHEIGHT	900
+# define DEFWIDTH	800
+# define DEFHEIGHT	600
 # define DEFMAPBUF	5
 
 # define DEFMAPX_MIN	15

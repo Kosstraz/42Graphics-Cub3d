@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 21:05:01 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 15:31:41 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:46:40 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ typedef enum e_color_type
 	Green = 0xff00ff00,
 	Blue = 0xffff0000,
 	Player = 0xff0404B4,
-	Void = 0xffA4A4A4,
-	Wall = 0xff585858
+	Void = 0x03A4A4A4,
+	Wall = 0xff4A4A4A
 }	t_color_type;
+
+typedef t_color_type	t_col_t;
 
 #endif

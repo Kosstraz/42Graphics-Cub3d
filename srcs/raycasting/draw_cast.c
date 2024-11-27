@@ -43,10 +43,9 @@ void	draw_col(int x, float length, t_core *core)
 	col = 0x11ff0000 - 0x11111111 * (long)(length / 5);
 	//printf("%f %i\n", nb_pixels, (int) nb_pixels);
 	i = 0;
-	while (i < (int) nb_pixels)
+	while (i < (int)nb_pixels)
 	{
 		y = 400.f + ((float) i - nb_pixels / 2.f);
-		//mlx_put_pixel(core->imgs.cast, x,(int) y, col);
 		draw_pixel(x, (int)y, col, &core->layer[CAST_LAYER]);
 		i++;
 	}
@@ -57,7 +56,7 @@ void	draw_cast(t_core *core)
 	int	i;
 
 	i = 0;
-	//clear_img(core);
+	clear_img(core);
 	while (i < core->mlx->width)
 	{
 		draw_col(i, core->cast.casts[i], core);

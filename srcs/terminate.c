@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:47 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 15:19:56 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/27 18:59:15 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	free_core_map(t_core *core)
 {
 	if (core)
 	{
+		free_layer(&core->layer[MINIMAP_LAYER]);
+		free_layer(&core->layer[CAST_LAYER]);
 		if (core->network.is_active)
 			close_connection(core);
 		ft_dfree((void **)core->map.buf);

@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 15:37:51 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/27 17:09:57 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,10 @@ inline void	handle_player_key_press(mlx_key_data_t keyd, t_core *core)
 		core->input_action.key_w = TRUE;
 	else if (keyd.key == MLX_KEY_S)
 		core->input_action.key_s = TRUE;
-	else if (keyd.key == MLX_KEY_RIGHT)
-	{
-		core->player[LOCAL].view.angle += 5;
-		if (core->player[LOCAL].view.angle >= 360)
-			core->player[LOCAL].view.angle = 0;
-	}
+	if (keyd.key == MLX_KEY_RIGHT)
+		core->input_action.key_right = TRUE;
 	else if (keyd.key == MLX_KEY_LEFT)
-	{
-		core->player[LOCAL].view.angle -= 5;
-		if (core->player[LOCAL].view.angle <= 0)
-			core->player[LOCAL].view.angle = 360;
-	}		
+		core->input_action.key_left = TRUE;	
 }
 
 inline void	handle_player_key_release(mlx_key_data_t keyd, t_core *core)
@@ -71,6 +63,10 @@ inline void	handle_player_key_release(mlx_key_data_t keyd, t_core *core)
 		core->input_action.key_w = FALSE;
 	else if (keyd.key == MLX_KEY_S)
 		core->input_action.key_s = FALSE;
+	if (keyd.key == MLX_KEY_RIGHT)
+		core->input_action.key_right = FALSE;
+	else if (keyd.key == MLX_KEY_LEFT)
+		core->input_action.key_left = FALSE;	
 }
 
 inline void	handle_crouchplayer_key(mlx_key_data_t keyd, t_core *core)
