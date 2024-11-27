@@ -1,12 +1,12 @@
-/* ************************************************************************** */
+	/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   draw_cast.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 10:52:09 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/11/27 15:09:44 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/27 15:49:52 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	clear_img(t_core *core)
 		j = 0;
 		while (j < core->mlx->width)
 		{
-			mlx_put_pixel(core->imgs.cast, j, i, 0x00111111);
+			//mlx_put_pixel(core->imgs.cast, j, i, 0x00111111);
+			draw_pixel(j, i, 0x00111111, &core->layer[CAST_LAYER]);
 			j++;
 		}
 		i++;
@@ -37,18 +38,18 @@ void	draw_col(int x, float length, t_core *core)
 	float	nb_pixels;
 	long	col;
 	long	dark;
-	
+
 	nb_pixels = 1000 / (length / 2);
-	col = 0x11ff0000 - 0x11111111 * (length / 5);
+	col = 0x11ff0000 - 0x11111111 * (long)(length / 5);
 	//printf("%f %i\n", nb_pixels, (int) nb_pixels);
 	i = 0;
 	while (i < (int) nb_pixels)
 	{
 		y = 400.f + ((float) i - nb_pixels / 2.f);
-		mlx_put_pixel(core->imgs.cast, x,(int) y, col);
+		//mlx_put_pixel(core->imgs.cast, x,(int) y, col);
+		draw_pixel(x, (int)y, col, &core->layer[CAST_LAYER]);
 		i++;
 	}
-	
 }
 
 void	draw_cast(t_core *core)
@@ -56,7 +57,7 @@ void	draw_cast(t_core *core)
 	int	i;
 
 	i = 0;
-	clear_img(core);
+	//clear_img(core);
 	while (i < core->mlx->width)
 	{
 		draw_col(i, core->cast.casts[i], core);

@@ -79,8 +79,8 @@ static void	parse_asciilines(
 			parse_asciilines_check_zero(i, cur, core);
 		if (!*player_spawn && ft_isanychr(line[i], CUB3D_PLAYER))
 		{
-			core->player.position.x = i;
-			core->player.position.y = cur;
+			core->player[LOCAL].position.x = i;
+			core->player[LOCAL].position.y = cur;
 			*player_spawn = TRUE;
 		}
 		else if (*player_spawn && ft_isanychr(line[i], CUB3D_PLAYER))

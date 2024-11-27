@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cast.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:28:29 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/11/27 15:00:35 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/27 15:59:15 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	init_cast_2(t_casting *cast)
 
 void	init_cast(t_casting *cast, t_player player)
 {
+	ft_memset(cast, 0, sizeof(t_casting));
 	cast->last_pose.x = player.position.x;
 	cast->last_pose.y = player.position.y;
 	cast->last_pose.z = player.position.z;

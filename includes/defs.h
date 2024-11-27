@@ -3,19 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   defs.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 14:50:23 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/27 15:50:31 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFS_H
 # define DEFS_H
 
+	//* multi
+# define PORT	4243
+
+# define POLL_PLAYER	(char)0
+
+# define LOCAL		0
+# define DISTANT	1
+
 	//*	default values
-# define DEFWIDTH	800
-# define DEFHEIGHT	600
+# define DEFWIDTH	1800
+# define DEFHEIGHT	900
 # define DEFMAPBUF	5
 
 # define DEFMAPX_MIN	15
@@ -31,15 +39,16 @@
 # define DELTA			0
 # define PI				3.14159f
 
-# define DEFFREQ_MAX_MULTIPLIER		0.2f
-# define DEFFREQ_MAX_PRETTY_OFFSET	2
+# define DEFFREQ_MAX_MULTIPLIER		0.3f
+# define DEFFREQ_MAX_PRETTY_OFFSET	3
 
 # define DEFUNIT		8
 # define DEFHALFUNIT	4
-# define DEFPLAYERSPEED	0.1f
+# define DEFPLAYERSPEED	3.f
 
 	//* constants specifics to cub3d
 # define GAME_TITLE		"Alien Isolation"
+# define GAME_TITLE_S	"Alien Isolation - Host"
 # define MAX_LIFE		100
 # define CROUCH_OFFSET	//{inserer int}
 
@@ -48,10 +57,17 @@
 # define CUB3D_PLAYER	"NSEW"
 # define CUB3D_BLOCKS	"01 "
 
+# define MINIMAP_LAYER	0
+# define CAST_LAYER		1
+
+# define C	0
+# define F	1
+
 	//* generic constants
 # define TRUE	1
 # define FALSE	0
 # define BOOL	char
+# define BPP	sizeof(int32_t)
 
 	//* error constants
 # define CONCEDE_MAP	"Please concede map .cub in program argument\n"

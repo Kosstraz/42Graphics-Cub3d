@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:38 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 14:58:09 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:27:24 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ inline static void	init_gen_config(t_gen_context *context)
 	context->config.yfreq.min = DEFFREQ_MIN;
 	context->config.yfreq.max = DEFFREQ_MIN;
 	context->config.spawn1_orientation = CUB3D_PLAYER[rand_btw(0, 3)];
+	context->config.spawn2_orientation = CUB3D_PLAYER[rand_btw(0, 3)];
 	context->utils.freq_index = 0;
 	context->utils.freq_val = 0;
-	context->utils.player_has_spawned = FALSE;
+	context->utils.player1_has_spawned = FALSE;
+	context->utils.player2_has_spawned = FALSE;
 	context->utils.average_line_len = 0;
 }
 
@@ -45,7 +47,7 @@ void	generate_map(t_core *core)
 
 	init_gen_config(&context);
 	config_generation(&context, core);
-	print_configuration(context, *core);
+	//print_configuration(context, *core);
 	generate(&context, core);
 	core->map.buflens_max = ft_maxul(core->map.buflens, core->map.buflens_size);
 }

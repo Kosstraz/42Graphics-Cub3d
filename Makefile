@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+         #
+#    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/11/27 11:35:12 by mkhoury          ###   ########.fr        #
+#    Updated: 2024/11/27 15:43:33 by ymanchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/utils_colors.c					\
 		./srcs/debug.c							\
 		./srcs/init_cast.c 						\
+		./srcs/layer.c							\
 		\
 		./srcs/parsing/parsing.c				\
 		./srcs/parsing/parsing_check_errors.c	\
@@ -63,7 +64,12 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/raycasting/calcul_raycast.c 		\
 		./srcs/raycasting/draw_cast.c 			\
 		\
-		./srcs/movements/movement.c\
+		./srcs/network/init.c					\
+		./srcs/network/menu.c					\
+		./srcs/network/mutual_addr.c			\
+		./srcs/network/send.c					\
+		\
+		./srcs/movements/movement.c				\
 		\
 		./main.c\
 		./srcs/deg2rad.c

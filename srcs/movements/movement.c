@@ -3,21 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 18:42:44 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/11/25 14:43:28 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/27 15:29:23 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	handle_movement(t_map *map, t_player *player, float deltaX, float deltaY)
+inline void	player_check_movements(t_core *core)
 {
-	// if (player->position.x > 0)
-	// {
-	// 	if (map->buf[player->position])
-	// }
-	player->position.x += deltaX;
-	player->position.y += deltaY;
+	if (core->input_action.key_a == TRUE)
+	{
+		//if (core->map.buf[(int)roundf(core->player[LOCAL].position.y)][(int)roundf(core->player[0].position.x - DEFPLAYERSPEED)] == CUB3D_VOID)
+			core->player[LOCAL].position.x -= DEFPLAYERSPEED * core->mlx->delta_time;
+		send_element(&core->player[LOCAL], sizeof(t_player), POLL_PLAYER, core);
+	}
+	else if (core->input_action.key_d == TRUE)
+	{
+		//if (core->map.buf[(int)roundf(core->player[0].position.y)][(int)roundf(core->player[0].position.x + DEFPLAYERSPEED)] == CUB3D_VOID)
+			core->player[0].position.x += DEFPLAYERSPEED * core->mlx->delta_time;
+		send_element(&core->player[LOCAL], sizeof(t_player), POLL_PLAYER, core);
+	}
+	if (core->input_action.key_w == TRUE)
+	{
+		//if (core->map.buf[(int)roundf(core->player[0].position.y - DEFPLAYERSPEED)][(int)roundf(core->player[0].position.x)] == CUB3D_VOID)
+			core->player[0].position.y -= DEFPLAYERSPEED * core->mlx->delta_time;
+		send_element(&core->player[LOCAL], sizeof(t_player), POLL_PLAYER, core);
+	}
+	else if (core->input_action.key_s == TRUE)
+	{
+		//if (core->map.buf[(int)roundf(core->player[0].position.y + DEFPLAYERSPEED)][(int)roundf(core->player[0].position.x)] == CUB3D_VOID)
+			core->player[0].position.y += DEFPLAYERSPEED * core->mlx->delta_time;
+		send_element(&core->player[LOCAL], sizeof(t_player), POLL_PLAYER, core);
+	}
 }

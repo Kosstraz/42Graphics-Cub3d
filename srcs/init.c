@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 14:56:29 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/27 15:50:40 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ inline static void	init_core_map(t_core *core)
 	core->map.filepath.south = NULL;
 	core->map.filepath.east = NULL;
 	core->map.filepath.west = NULL;
-	core->map.cf_colors[0] = ctocol(0, 0, 0);
-	core->map.cf_colors[1] = ctocol(0, 0, 0);
-	core->map.cf_colors[0]._overflow = FALSE;
-	core->map.cf_colors[1]._overflow = FALSE;
+	core->map.cf_colors[C] = ctocol(0, 0, 0);
+	core->map.cf_colors[F] = ctocol(0, 0, 0);
+	core->map.cf_colors[C]._overflow = FALSE;
+	core->map.cf_colors[F]._overflow = FALSE;
 }
 
 inline void	init_core(t_core *core)
@@ -54,15 +54,26 @@ inline void	init_core(t_core *core)
 	core->minimap.position.y = 0;
 	core->minimap.size.x = 0;
 	core->minimap.size.y = 0;
-	init_player(&core->player);
+	core->input_action.key_w = FALSE;
+	core->input_action.key_a = FALSE;
+	core->input_action.key_s = FALSE;
+	core->input_action.key_d = FALSE;
+	core->layer[MINIMAP_LAYER].pixels = NULL;
+	core->layer[CAST_LAYER].pixels = NULL;
+	core->fps_cooldown = 0;
+	init_player(&core->player[0]);
+	init_player(&core->player[1]);
 	init_core_map(core);
-	init_cast(&core->cast, core->player);
+	init_cast(&core->cast, core->player[LOCAL]);
 }
 
 inline void	init_mlx_env(t_core *core)
 {
 	//mlx_set_setting(MLX_MAXIMIZED, true);
-	core->mlx = mlx_init(DEFWIDTH, DEFHEIGHT, GAME_TITLE, true);
+	if (core->network.is_host)
+		core->mlx = mlx_init(DEFWIDTH, DEFHEIGHT, GAME_TITLE_S, true);
+	else
+		core->mlx = mlx_init(DEFWIDTH, DEFHEIGHT, GAME_TITLE, true);
 	if (!core->mlx->window)
 		exit_cub3d(1, core);
 	else if (!core->mlx)
@@ -75,7 +86,9 @@ inline void	init_mlx_env(t_core *core)
 		core->minimap.size.x,
 		core->minimap.size.y);
 	core->imgs.cast = mlx_new_image(core->mlx, core->mlx->width, core->mlx->height);
-	printf("%i %i init\n", core->mlx->width, core->mlx->height);
+	init_layer(core->imgs.minimap, &core->layer[MINIMAP_LAYER]);
+	init_layer(core->imgs.cast, &core->layer[CAST_LAYER]);
+	//printf("%i %i init\n", core->mlx->width, core->mlx->height);
 }
 
 inline void	setup_mlx_hooks(t_core *core)

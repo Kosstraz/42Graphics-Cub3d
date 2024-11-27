@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   platform.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 14:59:52 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/27 15:36:38 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,29 @@ typedef struct s_casting
 	int			last_width;
 }	t_casting;
 
+
+	//* NETWORKING
+typedef struct s_tcp
+{
+	struct sockaddr_in	sock;
+	int					fd;
+	int					com;
+}	t_tcp;
+
+typedef struct s_network
+{
+	BOOL	is_active;
+	BOOL	is_host;
+	t_tcp	tcp;
+}	t_network;
+
+
 	//* CORE
 typedef struct s_player
 {
-	int		life;
-	t_pos	position;
-	BOOL	crouched;
+	int			life;
+	t_pos		position;
+	BOOL		crouched;
 	t_vector	movement;
 	t_vector	view;
 }	t_player;
@@ -115,18 +132,37 @@ typedef struct s_img_container
 	mlx_image_t	*cast;
 }	t_img_container;
 
+typedef struct s_layer
+{
+	uint32_t	***pixels;
+	uint32_t	height;
+	uint32_t	width;
+}	t_layer;
+
+typedef struct s_input_action
+{
+	BOOL	key_w;
+	BOOL	key_a;
+	BOOL	key_s;
+	BOOL	key_d;
+}	t_input_action;
+
 typedef struct s_core
 {
 	t_img_container	imgs;
 	mlx_t			*mlx;
-	t_player		player;
+	t_player		player[2];
+	t_layer			layer[2];
+	t_input_action	input_action;
 	t_map			map;
 	t_minimap		minimap;
+	t_network		network;
+	t_casting		cast;
 	float			half_width;
 	float			half_height;
 	BOOL			mouse_visible;
+	int				fps_cooldown;
 	char			*_strerror;
-	t_casting		cast;
 }	t_core;
 
 
@@ -138,6 +174,7 @@ typedef struct s_gen_config
 	t_minmax	yfreq;
 	//t_minmax	xfreq; <-- same than yfreq, can change
 	char		spawn1_orientation;
+	char		spawn2_orientation;
 }	t_gen_config;
 
 typedef struct s_gen_utils
@@ -146,7 +183,8 @@ typedef struct s_gen_utils
 	size_t	freq_val;
 	int		average_line_len;
 	int		luck_player_spawn_now;
-	BOOL	player_has_spawned;
+	BOOL	player1_has_spawned;
+	BOOL	player2_has_spawned;
 }	t_gen_utils;
 
 typedef struct s_gen_context

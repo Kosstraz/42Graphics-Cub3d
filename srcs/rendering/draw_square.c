@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_square.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:32:18 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/11/26 14:00:06 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/27 15:39:31 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ void	draw_square(mlx_image_t *image, t_pos a, t_color_type color)
 		while (j < 3)
 		{
 			mlx_put_pixel(image, x, y, color);
-			x++;
-			j++;
+			//draw_pixel()
+			++x;
+			++j;
 		}
-		y++;
-		i++;
+		++y;
+		++i;
 	}
 }

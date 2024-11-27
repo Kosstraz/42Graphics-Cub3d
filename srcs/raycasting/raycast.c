@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:19:35 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/11/27 15:00:03 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/27 16:03:56 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,10 @@ float	ray_cast(t_core *core, float angle)
 	t_fvector	ray_start;
 	t_ivector	map_check;
 
-	ray_start.x = core->player.position.x;
-	ray_start.y = core->player.position.y;
+	ft_memset(&vector_dir, 0, sizeof(t_fvector));
+	ft_memset(&map_check, 0, sizeof(t_ivector));
+	ray_start.x = core->player[LOCAL].position.x;
+	ray_start.y = core->player[LOCAL].position.y;
 	map_check.x = (int) ray_start.x;
 	map_check.y	= (int) ray_start.y;
 	vector_dir.x = cosf(deg2rad(angle));

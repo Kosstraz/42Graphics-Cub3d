@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calcul_raycast.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:46:55 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/11/27 14:59:57 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/27 15:40:32 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ void	calcul_casts(t_core *core)
 	i = 0;
 	while (i < core->mlx->width)
 	{
-		core->cast.angle[i] = core->player.view.angle - (float) core->cast.hfov + core->cast.di * (float) i;
+		core->cast.angle[i] = core->player[LOCAL].view.angle - (float) core->cast.hfov + core->cast.di * (float) i;
 		core->cast.casts[i] = ray_cast(core, core->cast.angle[i]);
 		i++;
 	}
-	save_cast(&core->cast, core->player, core->mlx->width);
+	save_cast(&core->cast, core->player[LOCAL], core->mlx->width);
 }

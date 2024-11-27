@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 14:59:14 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:27:50 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void	generate_xline(t_gen_context *context, size_t y, t_core *core)
 		}
 		++x;
 	}
-	try_shift_line(context, y, core);
+	//try_shift_line(context, y, core);
 	--context->utils.luck_player_spawn_now;
 }
 

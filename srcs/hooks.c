@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:44 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 15:01:27 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:23:27 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ void	cub3d_key_hook(mlx_key_data_t keyd, t_core *core)
 {
 	if (keyd.action == MLX_PRESS)
 	{
-		handle_player_key(keyd, core);
+		handle_player_key_press(keyd, core);
 		handle_esc_key(keyd, core);
 		handle_pressing_alt_key(keyd, core);
 	}
 	else if (keyd.action == MLX_REPEAT)
 	{
-		handle_player_key(keyd, core);
 	}
 	else if (keyd.action == MLX_RELEASE)
 	{
+		handle_player_key_release(keyd, core);
 		handle_releasing_alt_key(keyd, core);
 		handle_crouchplayer_key(keyd, core);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:43:52 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 14:18:40 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/27 15:51:08 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,16 @@ inline static void	draw_ascii_on_minimap(
 {
 	size_t	i;
 	size_t	j;
+	size_t	y;
 
 	i = 0;
 	while (i < DEFUNIT)
 	{
 		j = 0;
+		y = i + yoffset;
 		while (j < DEFUNIT)
 		{
-			mlx_put_pixel(core->imgs.minimap,
-				j + xoffset,
-				i + yoffset,
-				coltype);
+			draw_pixel(j + xoffset, y, coltype, &core->layer[MINIMAP_LAYER]);
 			++j;
 		}
 		++i;
@@ -52,25 +51,23 @@ inline static void	draw_ascii_branch(size_t x, size_t y, t_core *core)
 		draw_ascii_on_minimap(Transparent, x * DEFUNIT, y * DEFUNIT, core);
 }
 
-inline static void	draw_player(t_core *core)
+inline static void	draw_player(
+	t_player *player, t_color_type color, t_core *core)
 {
 	t_pos	mult;
 	t_pos	top;
 	t_pos	left;
 	t_pos	right;
 
-	mult.x = core->player.position.x * DEFUNIT;
-	mult.y = core->player.position.y * DEFUNIT;
+	mult.x = player->position.x * DEFUNIT;
+	mult.y = player->position.y * DEFUNIT;
 	top.x = mult.x + DEFHALFUNIT;
 	top.y = mult.y;
 	left.x = mult.x;
 	left.y = mult.y + DEFUNIT - 1;
 	right.x = mult.x + DEFUNIT;
 	right.y = mult.y + DEFUNIT - 1;
-	//mlx_put_line(core->imgs.minimap, left, right, Red);
-	//mlx_put_line(core->imgs.minimap, left, top, Red);
-	//mlx_put_line(core->imgs.minimap, right, top, Red);
-	draw_square(core->imgs.minimap, mult, Green);
+	draw_square(core->imgs.minimap, mult, color);
 }
 
 void	draw_minimap(t_core *core)
@@ -86,6 +83,8 @@ void	draw_minimap(t_core *core)
 			draw_ascii_branch(x++, y, core);
 		++y;
 	}
-	draw_player(core);
+	draw_player(&core->player[LOCAL], Blue, core);
+	if (core->network.is_active)
+		draw_player(&core->player[DISTANT], Green, core);
 	orientation_minimap(core);
 }

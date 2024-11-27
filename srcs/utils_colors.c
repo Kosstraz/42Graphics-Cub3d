@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:49 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/20 16:00:50 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:19:26 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ unsigned int	coltohexa(t_color col)
 		(col.r << 16)
 		| (col.g << 8)
 		| (col.b << 4)
-		| 0x000000ff
+		| (0x000000ff & 0xff)
 	);
 }
 

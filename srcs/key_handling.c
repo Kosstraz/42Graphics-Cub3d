@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handling.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 20:20:55 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/27 15:37:51 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,49 +37,49 @@ inline void	handle_releasing_alt_key(mlx_key_data_t keyd, t_core *core)
 }
 
 // normalisation vectorielle necessaire
-inline void	handle_player_key(mlx_key_data_t keyd, t_core *core)
+inline void	handle_player_key_press(mlx_key_data_t keyd, t_core *core)
 {
 	if (keyd.key == MLX_KEY_A)
-	{
-		//if (core->map.buf[(int)roundf(core->player.position.y)][(int)roundf(core->player.position.x - DEFPLAYERSPEED)] == CUB3D_VOID)
-			core->player.position.x -= DEFPLAYERSPEED;
-	}
+		core->input_action.key_a = TRUE;
 	else if (keyd.key == MLX_KEY_D)
-	{
-	//	if (core->map.buf[(int)roundf(core->player.position.y)][(int)roundf(core->player.position.x + DEFPLAYERSPEED)] == CUB3D_VOID)
-			core->player.position.x += DEFPLAYERSPEED;
-	}
+		core->input_action.key_d = TRUE;
 	if (keyd.key == MLX_KEY_W)
-	{
-	//	if (core->map.buf[(int)roundf(core->player.position.y - DEFPLAYERSPEED)][(int)roundf(core->player.position.x)] == CUB3D_VOID)
-			core->player.position.y -= DEFPLAYERSPEED;
-	}
+		core->input_action.key_w = TRUE;
 	else if (keyd.key == MLX_KEY_S)
+		core->input_action.key_s = TRUE;
+	else if (keyd.key == MLX_KEY_RIGHT)
 	{
-	//	if (core->map.buf[(int)roundf(core->player.position.y + DEFPLAYERSPEED)][(int)roundf(core->player.position.x)] == CUB3D_VOID)
-			core->player.position.y += DEFPLAYERSPEED;
+		core->player[LOCAL].view.angle += 5;
+		if (core->player[LOCAL].view.angle >= 360)
+			core->player[LOCAL].view.angle = 0;
 	}
-	else if (keyd.key == 262)
+	else if (keyd.key == MLX_KEY_LEFT)
 	{
-		core->player.view.angle += 5;
-		if (core->player.view.angle >= 360)
-			core->player.view.angle = 0;
-	}
-	else if (keyd.key == 263)
-	{
-		core->player.view.angle -= 5;
-		if (core->player.view.angle <= 0)
-			core->player.view.angle = 360;
+		core->player[LOCAL].view.angle -= 5;
+		if (core->player[LOCAL].view.angle <= 0)
+			core->player[LOCAL].view.angle = 360;
 	}		
+}
+
+inline void	handle_player_key_release(mlx_key_data_t keyd, t_core *core)
+{
+	if (keyd.key == MLX_KEY_A)
+		core->input_action.key_a = FALSE;
+	else if (keyd.key == MLX_KEY_D)
+		core->input_action.key_d = FALSE;
+	if (keyd.key == MLX_KEY_W)
+		core->input_action.key_w = FALSE;
+	else if (keyd.key == MLX_KEY_S)
+		core->input_action.key_s = FALSE;
 }
 
 inline void	handle_crouchplayer_key(mlx_key_data_t keyd, t_core *core)
 {
 	if (keyd.key == MLX_KEY_C)
 	{
-		if (core->player.crouched == FALSE)
-			core->player.crouched = TRUE;
+		if (core->player[LOCAL].crouched == FALSE)
+			core->player[LOCAL].crouched = TRUE;
 		else
-			core->player.crouched = FALSE;
+			core->player[LOCAL].crouched = FALSE;
 	}
 }
