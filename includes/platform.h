@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/26 18:44:03 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/27 14:59:52 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ typedef struct s_color
 
 typedef struct s_casting
 {
-	float		casts[2000];
-	float		angle[2000];
+	float		casts[1920];
+	float		angle[1920];
 	float		di;
 	int			hfov;
 	t_pos		last_pose;
@@ -112,6 +112,7 @@ typedef struct s_img_container
 {
 	mlx_image_t	*fps;
 	mlx_image_t	*minimap;
+	mlx_image_t	*cast;
 }	t_img_container;
 
 typedef struct s_core

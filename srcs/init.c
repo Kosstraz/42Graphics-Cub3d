@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/26 18:33:40 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/27 14:56:29 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ inline static void	init_core_map(t_core *core)
 
 inline void	init_core(t_core *core)
 {
+	int	i;
+
+	i = 0;
 	core->mouse_visible = FALSE;
 	core->half_height = DEFHEIGHT / 2.f;
 	core->half_width = DEFWIDTH / 2.f;
@@ -58,7 +61,7 @@ inline void	init_core(t_core *core)
 
 inline void	init_mlx_env(t_core *core)
 {
-	mlx_set_setting(MLX_MAXIMIZED, true);
+	//mlx_set_setting(MLX_MAXIMIZED, true);
 	core->mlx = mlx_init(DEFWIDTH, DEFHEIGHT, GAME_TITLE, true);
 	if (!core->mlx->window)
 		exit_cub3d(1, core);
@@ -71,6 +74,8 @@ inline void	init_mlx_env(t_core *core)
 	core->imgs.minimap = mlx_new_image(core->mlx,
 		core->minimap.size.x,
 		core->minimap.size.y);
+	core->imgs.cast = mlx_new_image(core->mlx, core->mlx->width, core->mlx->height);
+	printf("%i %i init\n", core->mlx->width, core->mlx->height);
 }
 
 inline void	setup_mlx_hooks(t_core *core)

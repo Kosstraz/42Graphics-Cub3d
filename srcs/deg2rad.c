@@ -6,13 +6,13 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:12:53 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/11/25 20:19:26 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/27 14:50:14 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-double	deg2rad(double deg)
+float	deg2rad(float deg)
 {
-	return (deg / 180 * PI);
+	return (deg / 180.f * PI);
 }

@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   draw_col.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/17 17:44:52 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 15:00:27 by mkhoury          ###   ########.fr       */
+/*   Created: 2024/11/27 10:58:34 by mkhoury           #+#    #+#             */
+/*   Updated: 2024/11/27 10:59:01 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+void	draw_col(t_core *core)
 {
-	t_core	core;
-
-	init_core(&core);
-	if (ac == 1)
-		generate_map(&core);
-	print_map(core);
-	//if (ac == 1)					// accepter ac=1 pour la generation procedurale de map
-	//	exit_strerror(CONCEDE_MAP, NULL);
-	core.map.file = av[1];
-
-	cub3d(&core);
-	return (0);
+	
 }

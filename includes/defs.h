@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/26 18:34:50 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/11/27 14:50:23 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@
 # define DEFLUCK		20
 
 # define NB_RAYS		10
-# define FOV			60
+# define FOV			60.f
 # define DELTA			0
-# define PI				3.14159
+# define PI				3.14159f
 
 # define DEFFREQ_MAX_MULTIPLIER		0.2f
 # define DEFFREQ_MAX_PRETTY_OFFSET	2
