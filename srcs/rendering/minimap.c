@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:43:52 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/26 20:58:21 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:25:20 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,16 @@ inline static void	draw_ascii_on_minimap(
 {
 	size_t	i;
 	size_t	j;
+	size_t	y;
 
 	i = 0;
 	while (i < DEFUNIT)
 	{
 		j = 0;
+		y = i + yoffset;
 		while (j < DEFUNIT)
 		{
-			mlx_put_pixel(core->imgs.minimap,
-				j + xoffset,
-				i + yoffset,
-				coltype);
+			draw_pixel(j + xoffset, y, coltype, &core->layer[MINIMAP_LAYER]);
 			++j;
 		}
 		++i;
@@ -68,9 +67,9 @@ inline static void	draw_player(
 	left.y = mult.y + DEFUNIT - 1;
 	right.x = mult.x + DEFUNIT;
 	right.y = mult.y + DEFUNIT - 1;
-	mlx_put_line(core->imgs.minimap, left, right, color);
-	mlx_put_line(core->imgs.minimap, left, top, color);
-	mlx_put_line(core->imgs.minimap, right, top, color);
+	mlx_put_line(&core->layer[MINIMAP_LAYER], left, right, color); //core->imgs.minimap
+	mlx_put_line(&core->layer[MINIMAP_LAYER], left, top, color); //core->imgs.minimap
+	mlx_put_line(&core->layer[MINIMAP_LAYER], right, top, color); //core->imgs.minimap
 }
 
 void	draw_minimap(t_core *core)

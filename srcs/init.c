@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/26 20:58:21 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:00:09 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ inline void	init_core(t_core *core)
 	core->input_action.key_a = FALSE;
 	core->input_action.key_s = FALSE;
 	core->input_action.key_d = FALSE;
+	core->layer[MINIMAP_LAYER].pixels = NULL;
+	core->layer[MAIN_LAYER].pixels = NULL;
+	core->fps_cooldown = 0;
 	init_player(&core->player[0]);
 	init_player(&core->player[1]);
 	init_core_map(core);
@@ -62,7 +65,6 @@ inline void	init_core(t_core *core)
 
 inline void	init_mlx_env(t_core *core)
 {
-	mlx_set_setting(MLX_MAXIMIZED, true);
 	if (core->network.is_host)
 		core->mlx = mlx_init(DEFWIDTH, DEFHEIGHT, GAME_TITLE_S, true);
 	else
@@ -78,6 +80,7 @@ inline void	init_mlx_env(t_core *core)
 	core->imgs.minimap = mlx_new_image(core->mlx,
 		core->minimap.size.x,
 		core->minimap.size.y);
+	init_layer(core->imgs.minimap, &core->layer[MINIMAP_LAYER]);
 }
 
 inline void	setup_mlx_hooks(t_core *core)

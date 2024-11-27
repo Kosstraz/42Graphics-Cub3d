@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/26 15:51:49 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:39:23 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # define DISTANT	1
 
 	//*	default values
-# define DEFWIDTH	800
-# define DEFHEIGHT	600
+# define DEFWIDTH	1800
+# define DEFHEIGHT	900
 # define DEFMAPBUF	5
 
 # define DEFMAPX_MIN	15
@@ -52,10 +52,14 @@
 # define CUB3D_PLAYER	"NSEW"
 # define CUB3D_BLOCKS	"01 "
 
+# define MINIMAP_LAYER	0
+# define MAIN_LAYER		1
+
 	//* generic constants
 # define TRUE	1
 # define FALSE	0
 # define BOOL	char
+# define BPP sizeof(int32_t)
 
 	//* error constants
 # define CONCEDE_MAP	"Please concede map .cub in program argument\n"

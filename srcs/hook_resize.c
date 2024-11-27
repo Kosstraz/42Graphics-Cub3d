@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:43 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/25 15:01:12 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:12:33 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	cub3d_resize_hook(int width, int height, t_core *core)
 {
+	init_layer(core->imgs.minimap, &core->layer[MINIMAP_LAYER]);
 	core->half_width = width / 2.f;
 	core->half_height = height / 2.f;
 	mlx_delete_image(core->mlx, core->imgs.minimap);

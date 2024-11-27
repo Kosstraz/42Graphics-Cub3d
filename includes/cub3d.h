@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/26 15:49:12 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:24:48 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,13 +115,25 @@ void	try_spawn_player(
 			size_t x,
 			t_core *core);
 
+void	init_layer(mlx_image_t *img, t_layer *layer);
+
 	/*
 		RENDERING
 	*/
 
 void	show_fps(t_core *core);
-void	mlx_put_line(mlx_image_t *image, t_pos a, t_pos b, t_color_type color);
+void	mlx_put_line(t_layer *layer, t_pos a, t_pos b, t_color_type color);
 void	draw_minimap(t_core *core);
+char	cmppixel(
+			uint32_t x,
+			uint32_t y,
+			t_color_type color,
+			t_layer *layer);
+void	draw_pixel(
+			uint32_t x,
+			uint32_t y,
+			t_color_type color,
+			t_layer *layer);
 
 	/*
 		MULTIJOUEUR

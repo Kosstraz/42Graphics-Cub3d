@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:50 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/26 20:58:21 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:06:28 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ inline static void	put_images_to_window(t_core *core)
 
 void	game(t_core *core)
 {
+	recv_any_element(core);
 	player_check_movements(core);
 	recv_any_element(core);
 	if (!core->mouse_visible)
@@ -35,6 +36,7 @@ void	game(t_core *core)
 	draw_minimap(core);
 	show_fps(core);
 	put_images_to_window(core);
+	recv_any_element(core);
 }
 
 void	cub3d(t_core *core)

@@ -6,7 +6,7 @@
 #    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/11/26 15:48:49 by ymanchon         ###   ########.fr        #
+#    Updated: 2024/11/27 14:03:38 by ymanchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/terminate.c						\
 		./srcs/utils_colors.c					\
 		./srcs/debug.c							\
+		./srcs/layer.c						\
 		\
 		./srcs/parsing/parsing.c				\
 		./srcs/parsing/parsing_check_errors.c	\

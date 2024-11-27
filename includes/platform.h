@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/26 21:00:31 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:59:57 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,9 @@ typedef struct s_img_container
 
 typedef struct s_layer
 {
-	char	**pixels;
+	uint32_t	***pixels;
+	uint32_t	height;
+	uint32_t	width;
 }	t_layer;
 
 typedef struct s_tcp
@@ -137,6 +139,7 @@ typedef struct s_core
 	t_img_container	imgs;
 	mlx_t			*mlx;
 	t_player		player[2];
+	t_layer			layer[2];
 	t_input_action	input_action;
 	t_map			map;
 	t_minimap		minimap;
@@ -144,6 +147,7 @@ typedef struct s_core
 	float			half_width;
 	float			half_height;
 	BOOL			mouse_visible;
+	int				fps_cooldown;
 	char			*_strerror;
 }	t_core;
 

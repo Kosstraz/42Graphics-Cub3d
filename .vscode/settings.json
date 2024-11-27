@@ -31,6 +31,8 @@
 		"typeinfo": "c",
 		"utility": "c",
 		"cub3d.h": "c",
-		"inet.h": "c"
+		"inet.h": "c",
+		"mlx42_int.h": "c",
+		"ctype.h": "c"
 	}
 }
