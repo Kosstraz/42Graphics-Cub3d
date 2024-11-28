@@ -6,72 +6,75 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 17:09:57 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/28 16:48:59 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-inline void	handle_esc_key(mlx_key_data_t keyd, t_core *core)
+inline void	handle_esc_key(int keyd, t_core *core)
 {
-	if (keyd.key == MLX_KEY_ESCAPE)
-		mlx_close_window(core->mlx);
-}
-
-inline void	handle_pressing_alt_key(mlx_key_data_t keyd, t_core *core)
-{
-	if (keyd.key == MLX_KEY_LEFT_ALT)
+	if (keyd == XK_Escape)
 	{
-		core->mouse_visible = TRUE;
-		mlx_set_cursor_mode(core->mlx, MLX_MOUSE_NORMAL);
+		free_core(core);
+		exit(0);
 	}
 }
 
-inline void	handle_releasing_alt_key(mlx_key_data_t keyd, t_core *core)
+inline void	handle_pressing_alt_key(int keyd, t_core *core)
 {
-	if (keyd.key == MLX_KEY_LEFT_ALT)
+	if (keyd == XK_Alt_L)
+	{
+		core->mouse_visible = TRUE;
+		mlx_mouse_show(core->mlx.context, core->mlx.window);
+	}
+}
+
+inline void	handle_releasing_alt_key(int keyd, t_core *core)
+{
+	if (keyd == XK_Alt_L)
 	{
 		core->mouse_visible = FALSE;
-		mlx_set_cursor_mode(core->mlx, MLX_MOUSE_HIDDEN);
+		mlx_mouse_hide(core->mlx.context, core->mlx.window);
 	}
 }
 
 // normalisation vectorielle necessaire
-inline void	handle_player_key_press(mlx_key_data_t keyd, t_core *core)
+inline void	handle_player_key_press(int keyd, t_core *core)
 {
-	if (keyd.key == MLX_KEY_A)
+	if (keyd == XK_a)
 		core->input_action.key_a = TRUE;
-	else if (keyd.key == MLX_KEY_D)
+	else if (keyd == XK_d)
 		core->input_action.key_d = TRUE;
-	if (keyd.key == MLX_KEY_W)
+	if (keyd == XK_w)
 		core->input_action.key_w = TRUE;
-	else if (keyd.key == MLX_KEY_S)
+	else if (keyd == XK_s)
 		core->input_action.key_s = TRUE;
-	if (keyd.key == MLX_KEY_RIGHT)
+	if (keyd == XK_Right)
 		core->input_action.key_right = TRUE;
-	else if (keyd.key == MLX_KEY_LEFT)
+	else if (keyd == XK_Left)
 		core->input_action.key_left = TRUE;	
 }
 
-inline void	handle_player_key_release(mlx_key_data_t keyd, t_core *core)
+inline void	handle_player_key_release(int keyd, t_core *core)
 {
-	if (keyd.key == MLX_KEY_A)
+	if (keyd == XK_a)
 		core->input_action.key_a = FALSE;
-	else if (keyd.key == MLX_KEY_D)
+	else if (keyd == XK_d)
 		core->input_action.key_d = FALSE;
-	if (keyd.key == MLX_KEY_W)
+	if (keyd == XK_w)
 		core->input_action.key_w = FALSE;
-	else if (keyd.key == MLX_KEY_S)
+	else if (keyd == XK_s)
 		core->input_action.key_s = FALSE;
-	if (keyd.key == MLX_KEY_RIGHT)
+	if (keyd == XK_Right)
 		core->input_action.key_right = FALSE;
-	else if (keyd.key == MLX_KEY_LEFT)
+	else if (keyd == XK_Left)
 		core->input_action.key_left = FALSE;	
 }
 
-inline void	handle_crouchplayer_key(mlx_key_data_t keyd, t_core *core)
+inline void	handle_crouchplayer_key(int keyd, t_core *core)
 {
-	if (keyd.key == MLX_KEY_C)
+	if (keyd == XK_c)
 	{
 		if (core->player[LOCAL].crouched == FALSE)
 			core->player[LOCAL].crouched = TRUE;

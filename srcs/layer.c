@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:58:34 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 18:58:51 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/28 17:07:42 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ inline void	free_layer(t_layer *layer)
 	}
 }
 
-inline void	init_layer(mlx_image_t *img, t_layer *layer)
+inline void	init_layer(t_image *img, t_layer *layer)
 {
 	int			precalcul;
 	uint32_t	y;
@@ -43,7 +43,7 @@ inline void	init_layer(mlx_image_t *img, t_layer *layer)
 		precalcul = y * img->width;
 		while (x < img->width)
 		{
-			layer->pixels[y][x] = (uint32_t *)&img->pixels[(precalcul + x) * BPP];
+			layer->pixels[y][x] = (uint32_t *)&img->pixels[(precalcul + x) * img->info.bpp];
 			++x;
 		}
 		++y;

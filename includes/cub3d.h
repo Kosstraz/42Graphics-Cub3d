@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 18:59:28 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/28 16:50:33 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,17 @@
 # include <unistd.h>
 # include <math.h>
 # include <sys/time.h>
-# include "MLX42-2.4.1/include/MLX42/MLX42.h"
+# include "mlx/mlx.h"
+# include "mlx/mlx_int.h"
 # include "libft.h"
 # include "platform.h"
 # include "defs.h"
 # include "enums.h"
+
+int		cub_put_image_to_window(t_image *img, int atX, int atY, t_core *core);
+void	cub_mlx_init(t_core *core);
+void	cub_new_image(t_image *img, int sizeX, int sizeY, t_core *core);
+long	start_chrono_point(void);
 
 	/*
 		CORE
@@ -52,12 +58,12 @@ void	free_core(t_core *core);
 void	free_core_map(t_core *core);
 
 	//* key_handing
-void	handle_pressing_alt_key(mlx_key_data_t keyd, t_core *core);
-void	handle_releasing_alt_key(mlx_key_data_t keyd, t_core *core);
-void	handle_esc_key(mlx_key_data_t keyd, t_core *core);
-void	handle_player_key_press(mlx_key_data_t keyd, t_core *core);
-void	handle_player_key_release(mlx_key_data_t keyd, t_core *core);
-void	handle_crouchplayer_key(mlx_key_data_t keyd, t_core *core);
+void	handle_pressing_alt_key(int keyd, t_core *core);
+void	handle_releasing_alt_key(int keyd, t_core *core);
+void	handle_esc_key(int keyd, t_core *core);
+void	handle_player_key_press(int keyd, t_core *core);
+void	handle_player_key_release(int keyd, t_core *core);
+void	handle_crouchplayer_key(int keyd, t_core *core);
 
 	//* utils_colors
 t_color	ctocol(t_uchar r, t_uchar g, t_uchar b);
@@ -71,12 +77,8 @@ void	print_map(t_core core);
 
 	//* hooks.c
 void	cub3d_close_hook(t_core *core);
-void	cub3d_key_hook(mlx_key_data_t keyd, t_core *core);
-void	cub3d_cursor_hook(double xpos, double ypos, t_core *core);
-void	cub3d_scroll_hook(double xdelta, double ydelta, t_core *core);
-void	cub3d_resize_hook(int width, int height, t_core *core);
-void	cub3d_mouse_hook(mouse_key_t button, action_t action,
-			modifier_key_t mods, t_core *core);
+void	cub3d_key_hook(int keyd, t_core *core);
+void	cub3d_mouse_hook(int x, int y, t_core *core);
 
 	/*
 		PARSING
@@ -111,7 +113,7 @@ void	try_spawn_player(
 			size_t x,
 			t_core *core);
 
-void	init_layer(mlx_image_t *img, t_layer *layer);
+void	init_layer(t_image *img, t_layer *layer);
 void	fill_layer(t_layer *layer, t_col_t color);
 void	free_layer(t_layer *layer);
 

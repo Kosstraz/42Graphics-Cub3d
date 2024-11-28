@@ -6,40 +6,46 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:50 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 19:27:22 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/28 16:47:59 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-inline static void	put_images_to_window(t_core *core)
+inline static void	put_all_images_to_window(t_core *core)
 {
-	mlx_image_to_window(core->mlx, core->imgs.cast, 0, 0);
-	mlx_image_to_window(core->mlx, core->imgs.fps, 0, 0);
-	core->minimap.position.x = core->mlx->width - core->map.buflens_max * DEFUNIT - 10;
+	core->minimap.position.x
+		= core->mlx.width - core->map.buflens_max * DEFUNIT - 10;
 	core->minimap.position.y = 10;
-	mlx_image_to_window(
-		core->mlx,
-		core->imgs.minimap,
+	cub_put_image_to_window(&core->imgs.cast, 0, 0, core);
+	cub_put_image_to_window(
+		&core->imgs.minimap,
 		core->minimap.position.x,
-		core->minimap.position.y);
+		core->minimap.position.y,
+		core);
 }
 
 void	game(t_core *core)
 {
+	struct timeval	start;
+	struct timeval	end;
+
+	gettimeofday(&start, NULL);
 	player_check_movements(core);
 	recv_any_element(core);
 	player_check_orientationraycast(core);
 	if (!core->mouse_visible)
-		mlx_set_mouse_pos(core->mlx, core->half_width, core->half_height);
+		mlx_mouse_move(core->mlx.context, core->mlx.window, core->mlx.half_width, core->mlx.half_height);
 	// draw ray casting
 	// draw entity
 	calcul_casts(core);
 	//draw_cast(core);
 	draw_minimap(core);
 	show_fps(core);
-	put_images_to_window(core);
+	put_all_images_to_window(core);
 	recv_any_element(core);
+	gettimeofday(&end, NULL);
+	core->delta_time = end.tv_sec - start.tv_sec;
 }
 
 void	cub3d(t_core *core)
@@ -61,6 +67,6 @@ void	cub3d(t_core *core)
 	//printf("%i %i apres init \n", core->mlx->width, core->mlx->height);
 	setup_mlx_hooks(core);
 	//printf("%i %i hooks \n", core->mlx->width, core->mlx->height);
-	mlx_loop(core->mlx);
+	mlx_loop(core->mlx.context);
 	free_core(core);
 }

@@ -18,10 +18,10 @@ void	clear_img(t_core *core)
 	int	j;
 
 	i = 0;
-	while (i < core->mlx->height)
+	while (i < core->mlx.height)
 	{
 		j = 0;
-		while (j < core->mlx->width)
+		while (j < core->mlx.width)
 		{
 			//mlx_put_pixel(core->imgs.cast, j, i, 0x00111111);
 			draw_pixel(j, i, 0x00111111, &core->layer[CAST_LAYER]);
@@ -57,7 +57,7 @@ void	draw_cast(t_core *core)
 
 	i = 0;
 	clear_img(core);
-	while (i < core->mlx->width)
+	while (i < core->mlx.width)
 	{
 		draw_col(i, core->cast.casts[i], core);
 		i++;

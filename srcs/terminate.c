@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:47 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 18:59:15 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/28 16:03:58 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ void	free_core(t_core *core)
 	if (core->network.is_active)
 		close_connection(core);
 	free_core_map(core);
-	mlx_delete_image(core->mlx, core->imgs.minimap);
-	mlx_delete_image(core->mlx, core->imgs.fps);
-	mlx_terminate(core->mlx);
+	mlx_destroy_image(core->mlx.context, core->imgs.minimap.context);
+	mlx_destroy_image(core->mlx.context, core->imgs.fps.context);
+	mlx_destroy_window(core->mlx.context, core->mlx.window);
+	mlx_destroy_display(core->mlx.context);
+	free(core->mlx.context);
 }

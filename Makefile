@@ -6,7 +6,7 @@
 #    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/11/27 19:19:46 by ymanchon         ###   ########.fr        #
+#    Updated: 2024/11/28 17:09:46 by ymanchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,6 @@ CC = @cc
 
 SRCS =	./srcs/cub3d.c							\
 		./srcs/hooks.c							\
-		./srcs/hook_resize.c					\
 		./srcs/key_handling.c					\
 		./srcs/init.c							\
 		./srcs/terminate.c						\
@@ -48,6 +47,8 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/parsing/parsing.c				\
 		./srcs/parsing/parsing_check_errors.c	\
 		./srcs/parsing/parse_asciimap.c			\
+		\
+		./srcs/mlx_helper/helper1.c				\
 		\
 		./srcs/pc/procedural_creation.c			\
 		./srcs/pc/utils.c						\
@@ -90,7 +91,7 @@ LIBFT_P = ./libft
 
 LIB = $(LIBFT_P)/libft.a \
 
-EXTERN_LIB = -L./MLX42-2.4.1/build -ldl -lm -lmlx42 -lglfw -lGL -lGLU -lX11 -lXxf86vm -lXrandr -lpthread -lXi
+EXTERN_LIB = -L./mlx -lm -lpthread -lmlx -lX11 -lXext -lXxf86vm -lXrandr -lXi
 
 # ############## #
 #*    REGLES    *#

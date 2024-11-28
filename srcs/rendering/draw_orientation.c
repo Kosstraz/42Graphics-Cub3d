@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:17:39 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/11/27 17:47:21 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/28 16:27:49 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	orientation_minimap(t_core *core)
 	i = 0;
 	start.x = core->player[LOCAL].position.x * DEFUNIT;
 	start.y = core->player[LOCAL].position.y * DEFUNIT;
-	while (i < core->mlx->width)
+	while (i < core->mlx.width)
 	{
 		dx = cosf(deg2rad(core->cast.angle[i])) * core->cast.casts[i];
 		dy = sinf(deg2rad(core->cast.angle[i])) * core->cast.casts[i];

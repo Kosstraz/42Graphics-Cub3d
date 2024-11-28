@@ -6,18 +6,22 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 17:25:22 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/11/28 16:52:46 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLATFORM_H
 # define PLATFORM_H
 
-# include "MLX42-2.4.1/include/MLX42/MLX42.h"
+# include "mlx/mlx.h"
+# include "mlx/mlx_int.h"
 # include "defs.h"
 
 	//* classic typedef
-typedef void			(*t_mlx_loopfunc)(void *);
+typedef int				(*t_mlx_loopfunc)();
+typedef int				(*t_mlx_mousefunc)();
+typedef int				(*t_mlx_keyfunc)();
+
 typedef unsigned char	t_uchar;
 typedef unsigned int	t_uint;
 
@@ -89,6 +93,34 @@ typedef struct s_network
 
 
 	//* CORE
+
+typedef struct s_mlx
+{
+	float	half_width;
+	float	half_height;
+	int		width;
+	int		height;
+	void	*window;
+	void	*context;
+}	t_mlx;
+
+typedef struct s_img_details
+{
+	int	bpp;
+	int	endian;
+	int	size_line;
+}	t_img_details;
+
+typedef struct s_image
+{
+	t_img_details	info;
+	uint32_t		width;
+	uint32_t		height;
+	t_posi			position;
+	void			*context;
+	char			*pixels;
+}	t_image;
+
 typedef struct s_player
 {
 	int			life;
@@ -127,9 +159,9 @@ typedef struct s_map
 
 typedef struct s_img_container
 {
-	mlx_image_t	*fps;
-	mlx_image_t	*minimap;
-	mlx_image_t	*cast;
+	t_image	fps;
+	t_image	minimap;
+	t_image	cast;
 }	t_img_container;
 
 typedef struct s_layer
@@ -152,7 +184,7 @@ typedef struct s_input_action
 typedef struct s_core
 {
 	t_img_container	imgs;
-	mlx_t			*mlx;
+	t_mlx			mlx;
 	t_player		player[2];
 	t_layer			layer[2];
 	t_input_action	input_action;
@@ -160,11 +192,10 @@ typedef struct s_core
 	t_minimap		minimap;
 	t_network		network;
 	t_casting		cast;
-	float			half_width;
-	float			half_height;
 	BOOL			mouse_visible;
 	int				fps_cooldown;
 	char			*_strerror;
+	float			delta_time;
 }	t_core;
 
 
