@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 18:59:28 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/03 17:27:35 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ char	cmppixel(
 			uint32_t y,
 			t_color_type color,
 			t_layer *layer);
-void	draw_pixel(
+int	draw_pixel(
 			uint32_t x,
 			uint32_t y,
 			t_color_type color,
@@ -154,6 +154,9 @@ void	recv_map(t_core *core);
 void	init_network(t_core *core);
 void	send_element(void *what, size_t size, char poll_id, t_core *core);
 void	recv_any_element(t_core *core);
+
+long int	get_time2(void);
+void		clear_img(t_core *core);
 
 
 #endif

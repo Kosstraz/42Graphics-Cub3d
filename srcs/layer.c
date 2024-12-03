@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   layer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:58:34 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 18:58:51 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/03 17:16:20 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,17 @@ inline char	cmppixel(
 	return (*(layer->pixels[y][x]) == color);
 }
 
-inline void	draw_pixel(uint32_t x,
+inline int	draw_pixel(uint32_t x,
 	uint32_t y,
 	t_color_type color,
 	t_layer *layer)
 {
 	if ((y >= 0 && y < layer->height) && (x >= 0 && x < layer->width))
+	{
 		*(layer->pixels[y][x]) = (uint32_t)color;
+		return (true);
+	}
+	return (false);
 }
 
 void	fill_layer(t_layer *layer, t_color_type color)

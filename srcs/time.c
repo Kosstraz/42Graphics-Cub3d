@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   show_fps.c                                         :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 14:44:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/03 16:24:01 by mkhoury          ###   ########.fr       */
+/*   Created: 2024/12/03 16:30:22 by mkhoury           #+#    #+#             */
+/*   Updated: 2024/12/03 17:26:58 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	show_fps(t_core *core)
+long int	get_time2(void)
 {
-	char		*fps;
+	struct timeval	tv;
 
-	if (core->fps_cooldown == 0)
-	{
-		mlx_delete_image(core->mlx, core->imgs.fps);
-		fps = ft_itoa((int)(1.0f / (float)core->mlx->delta_time));
-		core->imgs.fps = mlx_put_string(core->mlx, fps, 0, 0);
-		core->fps_cooldown = (int)(float)round(1000 * core->mlx->delta_time);
-		free(fps);
-		core->fps_cooldown = 1000 * core->mlx->delta_time;
-	}
-	else
-		--core->fps_cooldown;
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }

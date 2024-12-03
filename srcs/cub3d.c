@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:50 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 19:27:22 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/03 17:28:06 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 inline static void	put_images_to_window(t_core *core)
 {
 	mlx_image_to_window(core->mlx, core->imgs.cast, 0, 0);
-	mlx_image_to_window(core->mlx, core->imgs.fps, 0, 0);
+	//mlx_image_to_window(core->mlx, core->imgs.fps, 0, 0);
 	core->minimap.position.x = core->mlx->width - core->map.buflens_max * DEFUNIT - 10;
 	core->minimap.position.y = 10;
 	mlx_image_to_window(
@@ -25,8 +25,13 @@ inline static void	put_images_to_window(t_core *core)
 		core->minimap.position.y);
 }
 
+
+
 void	game(t_core *core)
 {
+	long int	start;
+
+	start = get_time2();
 	player_check_movements(core);
 	recv_any_element(core);
 	player_check_orientationraycast(core);
@@ -35,11 +40,18 @@ void	game(t_core *core)
 	// draw ray casting
 	// draw entity
 	calcul_casts(core);
-	//draw_cast(core);
+	//printf("time for calcul: %ld\n", get_time() -  start);
+	clear_img(core);
+	draw_cast(core);
+	//printf("time for draw cast: %ld\n", get_time() -  start);
 	draw_minimap(core);
+	//printf("time for minimap: %ld\n", get_time() -  start);
 	show_fps(core);
+	//printf("time for fps: %ld\n", get_time() -  start);
 	put_images_to_window(core);
+	//printf("time for putimgs : %ld\n", get_time() -  start);
 	recv_any_element(core);
+	printf("end game loop: %ld\n", get_time2() -  start);
 }
 
 void	cub3d(t_core *core)

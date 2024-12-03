@@ -1,0 +1,1209 @@
+desc: (none)
+cmd: ./cub3D map.cub
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=304653306
+mem_heap_B=1757760
+mem_heap_extra_B=135040
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=427108845
+mem_heap_B=33447594
+mem_heap_extra_B=523414
+mem_stacks_B=0
+heap_tree=peak
+n7: 33447594 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 15714816 0x40330C: init_layer (layer.c:41)
+  n1: 15528960 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+   n1: 15528960 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+    n1: 15528960 0x4027CA: cub3d (cub3d.c:64)
+     n0: 15528960 0x405E8D: main (main.c:27)
+  n0: 185856 in 3 places, all below massif's threshold (1.00%)
+ n2: 7858208 0x40A0F7: mlx_new_image (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+  n1: 7764480 0x402917: cub3d_resize_hook (hook_resize.c:21)
+   n1: 7764480 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+    n1: 7764480 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+     n1: 7764480 0x4027CA: cub3d (cub3d.c:64)
+      n0: 7764480 0x405E8D: main (main.c:27)
+  n0: 93728 in 4 places, all below massif's threshold (1.00%)
+ n3: 6769968 0xD0DED44: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n2: 6148400 0xD0DEDAD: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n0: 5491568 in 1289 places, all below massif's threshold (1.00%)
+   n1: 656832 0xD429319: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 656832 in 154 places, all below massif's threshold (1.00%)
+  n2: 392704 0xD0DF933: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 359952 0xD0DFA0D: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 359952 in 5 places, all below massif's threshold (1.00%)
+   n0: 32752 in 1 place, below massif's threshold (1.00%)
+  n0: 228864 in 78 places, all below massif's threshold (1.00%)
+ n0: 1734314 in 805 places, all below massif's threshold (1.00%)
+ n1: 530144 0xD1888B9: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 530144 0xD196E2E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 530144 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 530144 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 530144 in 2 places, all below massif's threshold (1.00%)
+ n1: 428112 0xD68534E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 428112 0xD196DD5: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 428112 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 428112 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 428112 in 2 places, all below massif's threshold (1.00%)
+ n1: 412032 0xCF06802: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_mesa.so.0.0.0)
+  n0: 412032 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=3
+#-----------
+time=663122695
+mem_heap_B=33448826
+mem_heap_extra_B=523998
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=900155361
+mem_heap_B=33462138
+mem_heap_extra_B=524486
+mem_stacks_B=0
+heap_tree=detailed
+n7: 33462138 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 15714816 0x40330C: init_layer (layer.c:41)
+  n1: 15528960 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+   n1: 15528960 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+    n1: 15528960 0x4027CA: cub3d (cub3d.c:64)
+     n0: 15528960 0x405E8D: main (main.c:27)
+  n0: 185856 in 3 places, all below massif's threshold (1.00%)
+ n2: 7858208 0x40A0F7: mlx_new_image (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+  n1: 7764480 0x402917: cub3d_resize_hook (hook_resize.c:21)
+   n1: 7764480 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+    n1: 7764480 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+     n1: 7764480 0x4027CA: cub3d (cub3d.c:64)
+      n0: 7764480 0x405E8D: main (main.c:27)
+  n0: 93728 in 4 places, all below massif's threshold (1.00%)
+ n3: 6769968 0xD0DED44: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n2: 6148400 0xD0DEDAD: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n0: 5491568 in 1289 places, all below massif's threshold (1.00%)
+   n1: 656832 0xD429319: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 656832 in 154 places, all below massif's threshold (1.00%)
+  n2: 392704 0xD0DF933: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 359952 0xD0DFA0D: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 359952 in 5 places, all below massif's threshold (1.00%)
+   n0: 32752 in 1 place, below massif's threshold (1.00%)
+  n0: 228864 in 78 places, all below massif's threshold (1.00%)
+ n0: 1748858 in 805 places, all below massif's threshold (1.00%)
+ n1: 530144 0xD1888B9: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 530144 0xD196E2E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 530144 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 530144 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 530144 in 2 places, all below massif's threshold (1.00%)
+ n1: 428112 0xD68534E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 428112 0xD196DD5: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 428112 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 428112 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 428112 in 2 places, all below massif's threshold (1.00%)
+ n1: 412032 0xCF06802: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_mesa.so.0.0.0)
+  n0: 412032 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=5
+#-----------
+time=1279468002
+mem_heap_B=33464314
+mem_heap_extra_B=525478
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=1658981186
+mem_heap_B=33460874
+mem_heap_extra_B=526134
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=1848812640
+mem_heap_B=33461578
+mem_heap_extra_B=526598
+mem_stacks_B=0
+heap_tree=detailed
+n7: 33461578 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 15714816 0x40330C: init_layer (layer.c:41)
+  n1: 15528960 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+   n1: 15528960 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+    n1: 15528960 0x4027CA: cub3d (cub3d.c:64)
+     n0: 15528960 0x405E8D: main (main.c:27)
+  n0: 185856 in 3 places, all below massif's threshold (1.00%)
+ n2: 7858208 0x40A0F7: mlx_new_image (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+  n1: 7764480 0x402917: cub3d_resize_hook (hook_resize.c:21)
+   n1: 7764480 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+    n1: 7764480 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+     n1: 7764480 0x4027CA: cub3d (cub3d.c:64)
+      n0: 7764480 0x405E8D: main (main.c:27)
+  n0: 93728 in 4 places, all below massif's threshold (1.00%)
+ n3: 6769968 0xD0DED44: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n2: 6148400 0xD0DEDAD: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n0: 5491568 in 1289 places, all below massif's threshold (1.00%)
+   n1: 656832 0xD429319: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 656832 in 154 places, all below massif's threshold (1.00%)
+  n2: 392704 0xD0DF933: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 359952 0xD0DFA0D: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 359952 in 5 places, all below massif's threshold (1.00%)
+   n0: 32752 in 1 place, below massif's threshold (1.00%)
+  n0: 228864 in 78 places, all below massif's threshold (1.00%)
+ n0: 1748298 in 805 places, all below massif's threshold (1.00%)
+ n1: 530144 0xD1888B9: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 530144 0xD196E2E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 530144 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 530144 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 530144 in 2 places, all below massif's threshold (1.00%)
+ n1: 428112 0xD68534E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 428112 0xD196DD5: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 428112 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 428112 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 428112 in 2 places, all below massif's threshold (1.00%)
+ n1: 412032 0xCF06802: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_mesa.so.0.0.0)
+  n0: 412032 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=8
+#-----------
+time=2134051245
+mem_heap_B=33482387
+mem_heap_extra_B=527805
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=2513917503
+mem_heap_B=33480835
+mem_heap_extra_B=528285
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=10
+#-----------
+time=2890810122
+mem_heap_B=33481971
+mem_heap_extra_B=528973
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=3264073052
+mem_heap_B=33485086
+mem_heap_extra_B=529770
+mem_stacks_B=0
+heap_tree=detailed
+n7: 33485086 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 15714816 0x40330C: init_layer (layer.c:41)
+  n1: 15528960 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+   n1: 15528960 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+    n1: 15528960 0x4027CA: cub3d (cub3d.c:64)
+     n0: 15528960 0x405E8D: main (main.c:27)
+  n0: 185856 in 3 places, all below massif's threshold (1.00%)
+ n2: 7858208 0x40A0F7: mlx_new_image (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+  n1: 7764480 0x402917: cub3d_resize_hook (hook_resize.c:21)
+   n1: 7764480 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+    n1: 7764480 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+     n1: 7764480 0x4027CA: cub3d (cub3d.c:64)
+      n0: 7764480 0x405E8D: main (main.c:27)
+  n0: 93728 in 4 places, all below massif's threshold (1.00%)
+ n3: 6769968 0xD0DED44: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n2: 6148400 0xD0DEDAD: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n0: 5491568 in 1289 places, all below massif's threshold (1.00%)
+   n1: 656832 0xD429319: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 656832 in 154 places, all below massif's threshold (1.00%)
+  n2: 392704 0xD0DF933: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 359952 0xD0DFA0D: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 359952 in 5 places, all below massif's threshold (1.00%)
+   n0: 32752 in 1 place, below massif's threshold (1.00%)
+  n0: 228864 in 78 places, all below massif's threshold (1.00%)
+ n0: 1771806 in 811 places, all below massif's threshold (1.00%)
+ n1: 530144 0xD1888B9: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 530144 0xD196E2E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 530144 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 530144 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 530144 in 2 places, all below massif's threshold (1.00%)
+ n1: 428112 0xD68534E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 428112 0xD196DD5: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 428112 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 428112 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 428112 in 2 places, all below massif's threshold (1.00%)
+ n1: 412032 0xCF06802: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_mesa.so.0.0.0)
+  n0: 412032 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=12
+#-----------
+time=3634509560
+mem_heap_B=33487460
+mem_heap_extra_B=530460
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=4003831023
+mem_heap_B=33488461
+mem_heap_extra_B=531171
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=4375862387
+mem_heap_B=33488620
+mem_heap_extra_B=531860
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=4756213806
+mem_heap_B=33489580
+mem_heap_extra_B=532532
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=4951176986
+mem_heap_B=33490060
+mem_heap_extra_B=532900
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=5150206703
+mem_heap_B=33490540
+mem_heap_extra_B=533252
+mem_stacks_B=0
+heap_tree=detailed
+n7: 33490540 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 15714816 0x40330C: init_layer (layer.c:41)
+  n1: 15528960 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+   n1: 15528960 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+    n1: 15528960 0x4027CA: cub3d (cub3d.c:64)
+     n0: 15528960 0x405E8D: main (main.c:27)
+  n0: 185856 in 3 places, all below massif's threshold (1.00%)
+ n2: 7858208 0x40A0F7: mlx_new_image (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+  n1: 7764480 0x402917: cub3d_resize_hook (hook_resize.c:21)
+   n1: 7764480 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+    n1: 7764480 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+     n1: 7764480 0x4027CA: cub3d (cub3d.c:64)
+      n0: 7764480 0x405E8D: main (main.c:27)
+  n0: 93728 in 4 places, all below massif's threshold (1.00%)
+ n3: 6769968 0xD0DED44: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n2: 6148400 0xD0DEDAD: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n0: 5491568 in 1289 places, all below massif's threshold (1.00%)
+   n1: 656832 0xD429319: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 656832 in 154 places, all below massif's threshold (1.00%)
+  n2: 392704 0xD0DF933: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 359952 0xD0DFA0D: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 359952 in 5 places, all below massif's threshold (1.00%)
+   n0: 32752 in 1 place, below massif's threshold (1.00%)
+  n0: 228864 in 78 places, all below massif's threshold (1.00%)
+ n0: 1777260 in 811 places, all below massif's threshold (1.00%)
+ n1: 530144 0xD1888B9: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 530144 0xD196E2E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 530144 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 530144 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 530144 in 2 places, all below massif's threshold (1.00%)
+ n1: 428112 0xD68534E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 428112 0xD196DD5: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 428112 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 428112 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 428112 in 2 places, all below massif's threshold (1.00%)
+ n1: 412032 0xCF06802: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_mesa.so.0.0.0)
+  n0: 412032 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=18
+#-----------
+time=5353693864
+mem_heap_B=33491020
+mem_heap_extra_B=533540
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=19
+#-----------
+time=5561167943
+mem_heap_B=33491500
+mem_heap_extra_B=533860
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=5818929493
+mem_heap_B=33492108
+mem_heap_extra_B=534364
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=6020285622
+mem_heap_B=33494444
+mem_heap_extra_B=534796
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=6217243702
+mem_heap_B=33493852
+mem_heap_extra_B=535100
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=6410981839
+mem_heap_B=33494324
+mem_heap_extra_B=535420
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=6791806843
+mem_heap_B=33501444
+mem_heap_extra_B=536092
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=6985828127
+mem_heap_B=33502564
+mem_heap_extra_B=536404
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=7193747066
+mem_heap_B=33502428
+mem_heap_extra_B=536788
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=7400871715
+mem_heap_B=33502916
+mem_heap_extra_B=537156
+mem_stacks_B=0
+heap_tree=detailed
+n7: 33502916 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 15714816 0x40330C: init_layer (layer.c:41)
+  n1: 15528960 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+   n1: 15528960 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+    n1: 15528960 0x4027CA: cub3d (cub3d.c:64)
+     n0: 15528960 0x405E8D: main (main.c:27)
+  n0: 185856 in 3 places, all below massif's threshold (1.00%)
+ n2: 7858208 0x40A0F7: mlx_new_image (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+  n1: 7764480 0x402917: cub3d_resize_hook (hook_resize.c:21)
+   n1: 7764480 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+    n1: 7764480 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+     n1: 7764480 0x4027CA: cub3d (cub3d.c:64)
+      n0: 7764480 0x405E8D: main (main.c:27)
+  n0: 93728 in 4 places, all below massif's threshold (1.00%)
+ n3: 6769968 0xD0DED44: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n2: 6148400 0xD0DEDAD: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n0: 5491568 in 1289 places, all below massif's threshold (1.00%)
+   n1: 656832 0xD429319: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 656832 in 154 places, all below massif's threshold (1.00%)
+  n2: 392704 0xD0DF933: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 359952 0xD0DFA0D: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 359952 in 5 places, all below massif's threshold (1.00%)
+   n0: 32752 in 1 place, below massif's threshold (1.00%)
+  n0: 228864 in 78 places, all below massif's threshold (1.00%)
+ n0: 1789636 in 811 places, all below massif's threshold (1.00%)
+ n1: 530144 0xD1888B9: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 530144 0xD196E2E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 530144 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 530144 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 530144 in 2 places, all below massif's threshold (1.00%)
+ n1: 428112 0xD68534E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 428112 0xD196DD5: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 428112 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 428112 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 428112 in 2 places, all below massif's threshold (1.00%)
+ n1: 412032 0xCF06802: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_mesa.so.0.0.0)
+  n0: 412032 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=28
+#-----------
+time=7595167805
+mem_heap_B=33503380
+mem_heap_extra_B=537524
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=29
+#-----------
+time=7787840372
+mem_heap_B=33506228
+mem_heap_extra_B=537932
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=7980793024
+mem_heap_B=33506932
+mem_heap_extra_B=538380
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=8178917700
+mem_heap_B=33506284
+mem_heap_extra_B=538700
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=8389912007
+mem_heap_B=33506764
+mem_heap_extra_B=539020
+mem_stacks_B=0
+heap_tree=detailed
+n7: 33506764 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 15714816 0x40330C: init_layer (layer.c:41)
+  n1: 15528960 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+   n1: 15528960 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+    n1: 15528960 0x4027CA: cub3d (cub3d.c:64)
+     n0: 15528960 0x405E8D: main (main.c:27)
+  n0: 185856 in 3 places, all below massif's threshold (1.00%)
+ n2: 7858208 0x40A0F7: mlx_new_image (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+  n1: 7764480 0x402917: cub3d_resize_hook (hook_resize.c:21)
+   n1: 7764480 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+    n1: 7764480 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+     n1: 7764480 0x4027CA: cub3d (cub3d.c:64)
+      n0: 7764480 0x405E8D: main (main.c:27)
+  n0: 93728 in 4 places, all below massif's threshold (1.00%)
+ n3: 6769968 0xD0DED44: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n2: 6148400 0xD0DEDAD: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n0: 5491568 in 1289 places, all below massif's threshold (1.00%)
+   n1: 656832 0xD429319: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 656832 in 154 places, all below massif's threshold (1.00%)
+  n2: 392704 0xD0DF933: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 359952 0xD0DFA0D: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 359952 in 5 places, all below massif's threshold (1.00%)
+   n0: 32752 in 1 place, below massif's threshold (1.00%)
+  n0: 228864 in 78 places, all below massif's threshold (1.00%)
+ n0: 1793484 in 811 places, all below massif's threshold (1.00%)
+ n1: 530144 0xD1888B9: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 530144 0xD196E2E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 530144 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 530144 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 530144 in 2 places, all below massif's threshold (1.00%)
+ n1: 428112 0xD68534E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 428112 0xD196DD5: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 428112 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 428112 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 428112 in 2 places, all below massif's threshold (1.00%)
+ n1: 412032 0xCF06802: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_mesa.so.0.0.0)
+  n0: 412032 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=33
+#-----------
+time=8595860577
+mem_heap_B=33507244
+mem_heap_extra_B=539356
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=8793264707
+mem_heap_B=33507724
+mem_heap_extra_B=539628
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=8987625385
+mem_heap_B=33508204
+mem_heap_extra_B=540012
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=9183820943
+mem_heap_B=33508676
+mem_heap_extra_B=540364
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=9382196556
+mem_heap_B=33509164
+mem_heap_extra_B=540668
+mem_stacks_B=0
+heap_tree=detailed
+n7: 33509164 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 15714816 0x40330C: init_layer (layer.c:41)
+  n1: 15528960 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+   n1: 15528960 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+    n1: 15528960 0x4027CA: cub3d (cub3d.c:64)
+     n0: 15528960 0x405E8D: main (main.c:27)
+  n0: 185856 in 3 places, all below massif's threshold (1.00%)
+ n2: 7858208 0x40A0F7: mlx_new_image (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+  n1: 7764480 0x402917: cub3d_resize_hook (hook_resize.c:21)
+   n1: 7764480 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+    n1: 7764480 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+     n1: 7764480 0x4027CA: cub3d (cub3d.c:64)
+      n0: 7764480 0x405E8D: main (main.c:27)
+  n0: 93728 in 4 places, all below massif's threshold (1.00%)
+ n3: 6769968 0xD0DED44: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n2: 6148400 0xD0DEDAD: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n0: 5491568 in 1289 places, all below massif's threshold (1.00%)
+   n1: 656832 0xD429319: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 656832 in 154 places, all below massif's threshold (1.00%)
+  n2: 392704 0xD0DF933: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 359952 0xD0DFA0D: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 359952 in 5 places, all below massif's threshold (1.00%)
+   n0: 32752 in 1 place, below massif's threshold (1.00%)
+  n0: 228864 in 78 places, all below massif's threshold (1.00%)
+ n0: 1795884 in 811 places, all below massif's threshold (1.00%)
+ n1: 530144 0xD1888B9: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 530144 0xD196E2E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 530144 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 530144 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 530144 in 2 places, all below massif's threshold (1.00%)
+ n1: 428112 0xD68534E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 428112 0xD196DD5: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 428112 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 428112 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 428112 in 2 places, all below massif's threshold (1.00%)
+ n1: 412032 0xCF06802: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_mesa.so.0.0.0)
+  n0: 412032 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=38
+#-----------
+time=9584241328
+mem_heap_B=33509644
+mem_heap_extra_B=541036
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=9789596696
+mem_heap_B=33510124
+mem_heap_extra_B=541276
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=9989025313
+mem_heap_B=33510604
+mem_heap_extra_B=541660
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=41
+#-----------
+time=10183319790
+mem_heap_B=33511084
+mem_heap_extra_B=541932
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=10376080904
+mem_heap_B=33512156
+mem_heap_extra_B=542260
+mem_stacks_B=0
+heap_tree=detailed
+n7: 33512156 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 15714816 0x40330C: init_layer (layer.c:41)
+  n1: 15528960 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+   n1: 15528960 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+    n1: 15528960 0x4027CA: cub3d (cub3d.c:64)
+     n0: 15528960 0x405E8D: main (main.c:27)
+  n0: 185856 in 3 places, all below massif's threshold (1.00%)
+ n2: 7858208 0x40A0F7: mlx_new_image (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+  n1: 7764480 0x402917: cub3d_resize_hook (hook_resize.c:21)
+   n1: 7764480 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+    n1: 7764480 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+     n1: 7764480 0x4027CA: cub3d (cub3d.c:64)
+      n0: 7764480 0x405E8D: main (main.c:27)
+  n0: 93728 in 4 places, all below massif's threshold (1.00%)
+ n3: 6769968 0xD0DED44: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n2: 6148400 0xD0DEDAD: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n0: 5491568 in 1289 places, all below massif's threshold (1.00%)
+   n1: 656832 0xD429319: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 656832 in 154 places, all below massif's threshold (1.00%)
+  n2: 392704 0xD0DF933: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 359952 0xD0DFA0D: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 359952 in 5 places, all below massif's threshold (1.00%)
+   n0: 32752 in 1 place, below massif's threshold (1.00%)
+  n0: 228864 in 78 places, all below massif's threshold (1.00%)
+ n0: 1798876 in 811 places, all below massif's threshold (1.00%)
+ n1: 530144 0xD1888B9: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 530144 0xD196E2E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 530144 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 530144 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 530144 in 2 places, all below massif's threshold (1.00%)
+ n1: 428112 0xD68534E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 428112 0xD196DD5: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 428112 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 428112 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 428112 in 2 places, all below massif's threshold (1.00%)
+ n1: 412032 0xCF06802: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_mesa.so.0.0.0)
+  n0: 412032 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=43
+#-----------
+time=10569589185
+mem_heap_B=33512004
+mem_heap_extra_B=542596
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=44
+#-----------
+time=10763582144
+mem_heap_B=33512492
+mem_heap_extra_B=542996
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=45
+#-----------
+time=10957813379
+mem_heap_B=33512972
+mem_heap_extra_B=543364
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=11152660810
+mem_heap_B=33513452
+mem_heap_extra_B=543668
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=11348532191
+mem_heap_B=33513932
+mem_heap_extra_B=544052
+mem_stacks_B=0
+heap_tree=detailed
+n7: 33513932 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 15714816 0x40330C: init_layer (layer.c:41)
+  n1: 15528960 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+   n1: 15528960 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+    n1: 15528960 0x4027CA: cub3d (cub3d.c:64)
+     n0: 15528960 0x405E8D: main (main.c:27)
+  n0: 185856 in 3 places, all below massif's threshold (1.00%)
+ n2: 7858208 0x40A0F7: mlx_new_image (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+  n1: 7764480 0x402917: cub3d_resize_hook (hook_resize.c:21)
+   n1: 7764480 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+    n1: 7764480 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+     n1: 7764480 0x4027CA: cub3d (cub3d.c:64)
+      n0: 7764480 0x405E8D: main (main.c:27)
+  n0: 93728 in 4 places, all below massif's threshold (1.00%)
+ n3: 6769968 0xD0DED44: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n2: 6148400 0xD0DEDAD: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n0: 5491568 in 1289 places, all below massif's threshold (1.00%)
+   n1: 656832 0xD429319: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 656832 in 154 places, all below massif's threshold (1.00%)
+  n2: 392704 0xD0DF933: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 359952 0xD0DFA0D: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 359952 in 5 places, all below massif's threshold (1.00%)
+   n0: 32752 in 1 place, below massif's threshold (1.00%)
+  n0: 228864 in 78 places, all below massif's threshold (1.00%)
+ n0: 1800652 in 811 places, all below massif's threshold (1.00%)
+ n1: 530144 0xD1888B9: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 530144 0xD196E2E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 530144 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 530144 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 530144 in 2 places, all below massif's threshold (1.00%)
+ n1: 428112 0xD68534E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 428112 0xD196DD5: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 428112 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 428112 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 428112 in 2 places, all below massif's threshold (1.00%)
+ n1: 412032 0xCF06802: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_mesa.so.0.0.0)
+  n0: 412032 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=48
+#-----------
+time=11547994426
+mem_heap_B=33514716
+mem_heap_extra_B=544332
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=49
+#-----------
+time=11845635088
+mem_heap_B=33514044
+mem_heap_extra_B=544748
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=50
+#-----------
+time=11992920339
+mem_heap_B=33514404
+mem_heap_extra_B=544996
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=51
+#-----------
+time=12140313607
+mem_heap_B=33515028
+mem_heap_extra_B=545284
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=52
+#-----------
+time=12288918296
+mem_heap_B=33515396
+mem_heap_extra_B=545516
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=12441928818
+mem_heap_B=33515756
+mem_heap_extra_B=545764
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=54
+#-----------
+time=12600214005
+mem_heap_B=33516116
+mem_heap_extra_B=546028
+mem_stacks_B=0
+heap_tree=detailed
+n7: 33516116 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 15714816 0x40330C: init_layer (layer.c:41)
+  n1: 15528960 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+   n1: 15528960 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+    n1: 15528960 0x4027CA: cub3d (cub3d.c:64)
+     n0: 15528960 0x405E8D: main (main.c:27)
+  n0: 185856 in 3 places, all below massif's threshold (1.00%)
+ n2: 7858208 0x40A0F7: mlx_new_image (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+  n1: 7764480 0x402917: cub3d_resize_hook (hook_resize.c:21)
+   n1: 7764480 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+    n1: 7764480 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+     n1: 7764480 0x4027CA: cub3d (cub3d.c:64)
+      n0: 7764480 0x405E8D: main (main.c:27)
+  n0: 93728 in 4 places, all below massif's threshold (1.00%)
+ n3: 6769968 0xD0DED44: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n2: 6148400 0xD0DEDAD: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n0: 5491568 in 1289 places, all below massif's threshold (1.00%)
+   n1: 656832 0xD429319: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 656832 in 154 places, all below massif's threshold (1.00%)
+  n2: 392704 0xD0DF933: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 359952 0xD0DFA0D: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 359952 in 5 places, all below massif's threshold (1.00%)
+   n0: 32752 in 1 place, below massif's threshold (1.00%)
+  n0: 228864 in 78 places, all below massif's threshold (1.00%)
+ n0: 1802836 in 811 places, all below massif's threshold (1.00%)
+ n1: 530144 0xD1888B9: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 530144 0xD196E2E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 530144 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 530144 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 530144 in 2 places, all below massif's threshold (1.00%)
+ n1: 428112 0xD68534E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 428112 0xD196DD5: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 428112 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 428112 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 428112 in 2 places, all below massif's threshold (1.00%)
+ n1: 412032 0xCF06802: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_mesa.so.0.0.0)
+  n0: 412032 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=55
+#-----------
+time=12760445288
+mem_heap_B=33516476
+mem_heap_extra_B=546292
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=56
+#-----------
+time=12918914381
+mem_heap_B=33525012
+mem_heap_extra_B=546500
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=13077876075
+mem_heap_B=33529484
+mem_heap_extra_B=546772
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=58
+#-----------
+time=13238762112
+mem_heap_B=33529604
+mem_heap_extra_B=546956
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=59
+#-----------
+time=13397216710
+mem_heap_B=33529964
+mem_heap_extra_B=547252
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=60
+#-----------
+time=13555772072
+mem_heap_B=33530324
+mem_heap_extra_B=547452
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=61
+#-----------
+time=13721978978
+mem_heap_B=33530684
+mem_heap_extra_B=547700
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=62
+#-----------
+time=13895901843
+mem_heap_B=33531308
+mem_heap_extra_B=547940
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=63
+#-----------
+time=14068126821
+mem_heap_B=33531676
+mem_heap_extra_B=548220
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=64
+#-----------
+time=14236765908
+mem_heap_B=33532036
+mem_heap_extra_B=548452
+mem_stacks_B=0
+heap_tree=detailed
+n7: 33532036 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 15714816 0x40330C: init_layer (layer.c:41)
+  n1: 15528960 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+   n1: 15528960 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+    n1: 15528960 0x4027CA: cub3d (cub3d.c:64)
+     n0: 15528960 0x405E8D: main (main.c:27)
+  n0: 185856 in 3 places, all below massif's threshold (1.00%)
+ n2: 7858208 0x40A0F7: mlx_new_image (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+  n1: 7764480 0x402917: cub3d_resize_hook (hook_resize.c:21)
+   n1: 7764480 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+    n1: 7764480 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+     n1: 7764480 0x4027CA: cub3d (cub3d.c:64)
+      n0: 7764480 0x405E8D: main (main.c:27)
+  n0: 93728 in 4 places, all below massif's threshold (1.00%)
+ n3: 6769968 0xD0DED44: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n2: 6148400 0xD0DEDAD: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n0: 5491568 in 1289 places, all below massif's threshold (1.00%)
+   n1: 656832 0xD429319: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 656832 in 154 places, all below massif's threshold (1.00%)
+  n2: 392704 0xD0DF933: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 359952 0xD0DFA0D: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 359952 in 5 places, all below massif's threshold (1.00%)
+   n0: 32752 in 1 place, below massif's threshold (1.00%)
+  n0: 228864 in 78 places, all below massif's threshold (1.00%)
+ n0: 1818756 in 811 places, all below massif's threshold (1.00%)
+ n1: 530144 0xD1888B9: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 530144 0xD196E2E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 530144 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 530144 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 530144 in 2 places, all below massif's threshold (1.00%)
+ n1: 428112 0xD68534E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 428112 0xD196DD5: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 428112 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 428112 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 428112 in 2 places, all below massif's threshold (1.00%)
+ n1: 412032 0xCF06802: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_mesa.so.0.0.0)
+  n0: 412032 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=65
+#-----------
+time=14394840750
+mem_heap_B=33532508
+mem_heap_extra_B=548748
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=66
+#-----------
+time=14553638839
+mem_heap_B=33532756
+mem_heap_extra_B=548948
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=67
+#-----------
+time=14710048274
+mem_heap_B=33533116
+mem_heap_extra_B=549260
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=68
+#-----------
+time=14870469498
+mem_heap_B=33533236
+mem_heap_extra_B=549412
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=69
+#-----------
+time=15030769390
+mem_heap_B=33533596
+mem_heap_extra_B=549676
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=70
+#-----------
+time=15190002698
+mem_heap_B=33533956
+mem_heap_extra_B=549908
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=71
+#-----------
+time=15347265737
+mem_heap_B=33534548
+mem_heap_extra_B=550204
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=72
+#-----------
+time=15505716851
+mem_heap_B=33536268
+mem_heap_extra_B=550476
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=73
+#-----------
+time=15667741304
+mem_heap_B=33536796
+mem_heap_extra_B=550876
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=74
+#-----------
+time=15834074560
+mem_heap_B=33537324
+mem_heap_extra_B=551164
+mem_stacks_B=0
+heap_tree=detailed
+n7: 33537324 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 15714816 0x40330C: init_layer (layer.c:41)
+  n1: 15528960 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+   n1: 15528960 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+    n1: 15528960 0x4027CA: cub3d (cub3d.c:64)
+     n0: 15528960 0x405E8D: main (main.c:27)
+  n0: 185856 in 3 places, all below massif's threshold (1.00%)
+ n2: 7858208 0x40A0F7: mlx_new_image (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+  n1: 7764480 0x402917: cub3d_resize_hook (hook_resize.c:21)
+   n1: 7764480 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+    n1: 7764480 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+     n1: 7764480 0x4027CA: cub3d (cub3d.c:64)
+      n0: 7764480 0x405E8D: main (main.c:27)
+  n0: 93728 in 4 places, all below massif's threshold (1.00%)
+ n3: 6769968 0xD0DED44: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n2: 6148400 0xD0DEDAD: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n0: 5491568 in 1289 places, all below massif's threshold (1.00%)
+   n1: 656832 0xD429319: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 656832 in 154 places, all below massif's threshold (1.00%)
+  n2: 392704 0xD0DF933: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 359952 0xD0DFA0D: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 359952 in 5 places, all below massif's threshold (1.00%)
+   n0: 32752 in 1 place, below massif's threshold (1.00%)
+  n0: 228864 in 78 places, all below massif's threshold (1.00%)
+ n0: 1824044 in 811 places, all below massif's threshold (1.00%)
+ n1: 530144 0xD1888B9: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 530144 0xD196E2E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 530144 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 530144 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 530144 in 2 places, all below massif's threshold (1.00%)
+ n1: 428112 0xD68534E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 428112 0xD196DD5: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 428112 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 428112 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 428112 in 2 places, all below massif's threshold (1.00%)
+ n1: 412032 0xCF06802: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_mesa.so.0.0.0)
+  n0: 412032 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=75
+#-----------
+time=16005446770
+mem_heap_B=33537852
+mem_heap_extra_B=551484
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=76
+#-----------
+time=16171801674
+mem_heap_B=33538164
+mem_heap_extra_B=551588
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=77
+#-----------
+time=16329079266
+mem_heap_B=33538276
+mem_heap_extra_B=551876
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=78
+#-----------
+time=16483763218
+mem_heap_B=33538660
+mem_heap_extra_B=552124
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=79
+#-----------
+time=16639193749
+mem_heap_B=33538972
+mem_heap_extra_B=552308
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=80
+#-----------
+time=16795332580
+mem_heap_B=33539076
+mem_heap_extra_B=552548
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=81
+#-----------
+time=16952405199
+mem_heap_B=33539740
+mem_heap_extra_B=552852
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=82
+#-----------
+time=17109872525
+mem_heap_B=33540052
+mem_heap_extra_B=552956
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=83
+#-----------
+time=17268287525
+mem_heap_B=33540436
+mem_heap_extra_B=553284
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=84
+#-----------
+time=17427099293
+mem_heap_B=33540820
+mem_heap_extra_B=553564
+mem_stacks_B=0
+heap_tree=detailed
+n7: 33540820 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 15714816 0x40330C: init_layer (layer.c:41)
+  n1: 15528960 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+   n1: 15528960 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+    n1: 15528960 0x4027CA: cub3d (cub3d.c:64)
+     n0: 15528960 0x405E8D: main (main.c:27)
+  n0: 185856 in 3 places, all below massif's threshold (1.00%)
+ n2: 7858208 0x40A0F7: mlx_new_image (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+  n1: 7764480 0x402917: cub3d_resize_hook (hook_resize.c:21)
+   n1: 7764480 0x496DCFB: ??? (in /usr/lib/x86_64-linux-gnu/libglfw.so.3.3)
+    n1: 7764480 0x40ADDF: mlx_loop (in /home/mkhoury/Documents/cub3D/reboot/cub3D)
+     n1: 7764480 0x4027CA: cub3d (cub3d.c:64)
+      n0: 7764480 0x405E8D: main (main.c:27)
+  n0: 93728 in 4 places, all below massif's threshold (1.00%)
+ n3: 6769968 0xD0DED44: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n2: 6148400 0xD0DEDAD: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n0: 5491568 in 1289 places, all below massif's threshold (1.00%)
+   n1: 656832 0xD429319: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 656832 in 154 places, all below massif's threshold (1.00%)
+  n2: 392704 0xD0DF933: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 359952 0xD0DFA0D: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n0: 359952 in 5 places, all below massif's threshold (1.00%)
+   n0: 32752 in 1 place, below massif's threshold (1.00%)
+  n0: 228864 in 78 places, all below massif's threshold (1.00%)
+ n0: 1827540 in 811 places, all below massif's threshold (1.00%)
+ n1: 530144 0xD1888B9: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 530144 0xD196E2E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 530144 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 530144 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 530144 in 2 places, all below massif's threshold (1.00%)
+ n1: 428112 0xD68534E: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+  n1: 428112 0xD196DD5: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+   n1: 428112 0xD0D2C19: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+    n1: 428112 0xD0D6660: ??? (in /usr/lib/x86_64-linux-gnu/dri/iris_dri.so)
+     n0: 428112 in 2 places, all below massif's threshold (1.00%)
+ n1: 412032 0xCF06802: ??? (in /usr/lib/x86_64-linux-gnu/libGLX_mesa.so.0.0.0)
+  n0: 412032 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=85
+#-----------
+time=17586137479
+mem_heap_B=33541628
+mem_heap_extra_B=553852
+mem_stacks_B=0
+heap_tree=empty
