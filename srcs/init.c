@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 18:26:32 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/03 17:48:20 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ inline void	init_core(t_core *core)
 	core->layer[MINIMAP_LAYER].pixels = NULL;
 	core->layer[CAST_LAYER].pixels = NULL;
 	core->fps_cooldown = 0;
-	init_player(&core->player[0]);
-	init_player(&core->player[1]);
+	init_player(&core->player[LOCAL]);
+	init_player(&core->player[DISTANT]);
 	init_core_map(core);
 	init_cast(&core->cast, core->player[LOCAL]);
 }
@@ -79,10 +79,14 @@ inline void	init_mlx_env(t_core *core)
 	mlx_set_mouse_pos(core->mlx, core->half_width, core->half_height);
 	core->minimap.size.x = core->map.buflens_max * DEFUNIT;
 	core->minimap.size.y = core->map.bufmax * DEFUNIT;
+	core->minimap.position.x = core->mlx->width - core->map.buflens_max * DEFUNIT - 10;
+	core->minimap.position.y = 10;
 	core->imgs.minimap = mlx_new_image(core->mlx,
 		core->minimap.size.x,
 		core->minimap.size.y);
 	core->imgs.cast = mlx_new_image(core->mlx, core->mlx->width, core->mlx->height);
+	mlx_image_to_window(core->mlx, core->imgs.minimap, core->minimap.position.x, core->minimap.position.y);
+	mlx_image_to_window(core->mlx, core->imgs.cast, 0, 0);
 	init_layer(core->imgs.minimap, &core->layer[MINIMAP_LAYER]);
 	init_layer(core->imgs.cast, &core->layer[CAST_LAYER]);
 	//printf("%i %i init\n", core->mlx->width, core->mlx->height);

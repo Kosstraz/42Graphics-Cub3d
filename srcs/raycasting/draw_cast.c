@@ -14,9 +14,9 @@
 
 void	clear_img(t_core *core)
 {
-	int	i;
-	int	j;
-	long	start;
+	uint32_t	i;
+	uint32_t	j;
+	long		start;
 
 	start = get_time2();
 	i = 0;
@@ -25,9 +25,7 @@ void	clear_img(t_core *core)
 		j = 0;
 		while (j < core->imgs.cast->width)
 		{
-			//mlx_put_pixel(core->imgs.cast, j, i, 0x00111111);
-			if (draw_pixel(j, i, 0x00111111, &core->layer[CAST_LAYER]) == false)
-				printf(" erreur au pixel i:%i j:%i taille de l'image h :%d w :%d\n",i , j, core->imgs.cast->height, core->imgs.cast->width);
+			draw_pixel(j, i, 0x00111111, &core->layer[CAST_LAYER]);
 			j++;
 		}
 		i++;
@@ -37,7 +35,7 @@ void	clear_img(t_core *core)
 
 void	draw_col(int x, float length, t_core *core)
 {
-	int	i;
+	int		i;
 	float	y;
 	float	nb_pixels;
 	long	col;
@@ -56,7 +54,7 @@ void	draw_col(int x, float length, t_core *core)
 
 void	draw_cast(t_core *core)
 {
-	int	i;
+	uint32_t	i;
 
 	i = 0;
 	while (i < core->imgs.cast->width)
