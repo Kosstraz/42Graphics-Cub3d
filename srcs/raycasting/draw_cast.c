@@ -42,7 +42,10 @@ void	draw_col(int x, float length, t_core *core)
 	long	dark;
 
 	nb_pixels = 1000 / (length / 2);
-	col = 0xff000000 - 0x00010101 * (long)(length / 100 * 256);
+	if (length > 130)
+		col = 0xff000000;
+	else
+		col = 0xff000000 - 0x00010101 * (long)(length / 130 * 256);
 	i = 0;
 	while (i < (int)nb_pixels)
 	{

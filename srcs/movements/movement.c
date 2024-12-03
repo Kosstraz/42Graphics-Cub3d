@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 18:42:44 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/03 14:12:55 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/03 18:17:29 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	move_player(t_player *player, float angle)
 	
 	cosx = cosf(deg2rad(angle));
 	siny = sinf(deg2rad(angle));
-	player->position.x += cosx * DEFPLAYERSPEED / 50.f;
-	player->position.y += siny * DEFPLAYERSPEED / 50.f;
+	player->position.x += cosx * DEFPLAYERSPEED / 200.f;
+	player->position.y += siny * DEFPLAYERSPEED / 200.f;
 }
 
 inline void	player_check_movements(t_core *core)

@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:46:55 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/03 16:50:41 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/03 18:35:17 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	calcul_casts(t_core *core)
 	{
 		core->cast.last_width = core->mlx->width;
 		core->cast.di = (float) FOV / (float) core->cast.last_width;
+		// core->cast.di = 5;
 	}
 	i = 0;
 	min = 43;
