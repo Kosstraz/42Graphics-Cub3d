@@ -16,9 +16,7 @@ void	clear_img(t_core *core)
 {
 	uint32_t	i;
 	uint32_t	j;
-	long		start;
 
-	start = get_time2();
 	i = 0;
 	while (i < core->imgs.cast->height)
 	{
@@ -30,7 +28,6 @@ void	clear_img(t_core *core)
 		}
 		i++;
 	}
-	// printf("clear %i %i time elapsed : %ld\n", core->mlx->height, core->mlx->width, get_time() - start);
 }
 
 void	draw_col(int x, float length, t_core *core)
@@ -39,17 +36,16 @@ void	draw_col(int x, float length, t_core *core)
 	float	y;
 	float	nb_pixels;
 	long	col;
-	long	dark;
 
 	nb_pixels = 1000 / (length / 2);
-	if (length > 130)
+	if (length > 100)
 		col = 0xff000000;
 	else
-		col = 0xff000000 - 0x00010101 * (long)(length / 130 * 256);
+		col = 0xff000000 - 0x00010101 * (long)(length / 100 * 256);
 	i = 0;
 	while (i < (int)nb_pixels)
 	{
-		y = (float) core->imgs.cast->height / 2.f + ((float) i - nb_pixels / 2.f);
+		y = (float) (core->imgs.cast->height / 2.f) - core->player[LOCAL].offset + ((float) i - nb_pixels / 2.f);
 		draw_pixel(x, (int)y, col, &core->layer[CAST_LAYER]);
 		++i;
 	}

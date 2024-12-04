@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+         #
+#    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/12/04 16:21:59 by mkhoury          ###   ########.fr        #
+#    Updated: 2024/12/04 20:47:35 by ymanchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/init_cast.c 						\
 		./srcs/layer.c							\
 		./srcs/time.c							\
+		./srcs/audio.c							\
 		\
 		./srcs/parsing/parsing.c				\
 		./srcs/parsing/parsing_check_errors.c	\
@@ -93,7 +94,7 @@ LIBFT_P = ./libft
 
 LIB = $(LIBFT_P)/libft.a \
 
-EXTERN_LIB = -L./MLX42-2.4.1/build -ldl -lm -lmlx42 -lglfw -lGL -lGLU -lX11 -lXxf86vm -lXrandr -lpthread -lXi
+EXTERN_LIB = -L./MLX42-2.4.1/build -ldl -lm -lmlx42 -lglfw -lGL -lGLU -lX11 -lXxf86vm -lXrandr -lpthread -lXi -lSDL2
 
 # ############## #
 #*    REGLES    *#

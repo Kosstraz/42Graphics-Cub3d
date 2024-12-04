@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_rectangle.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:05:35 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/04 20:14:29 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/04 20:52:09 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	draw_rectangle(float distance, int x, t_core *core)
 		j = 0;
 		while ( j < nb_pixel)
 		{
-			draw_pixel(x - 10 + i, j + core->imgs.cast->height / 2.f + nb_pixel, 0xff0000ff, &core->layer[CAST_LAYER]);
+			draw_pixel(x - 10 + i, j + (core->imgs.cast->height / 2.f) - core->player[LOCAL].offset + nb_pixel, 0xff0000ff, &core->layer[CAST_LAYER]);
 			j++;
 		}
 		

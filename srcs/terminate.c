@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:47 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 18:59:15 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/04 20:40:44 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ void	free_core_map(t_core *core)
 {
 	if (core)
 	{
+		mlx_delete_xpm42(core->xpms[SO]);
+		mlx_delete_xpm42(core->xpms[NO]);
+		mlx_delete_xpm42(core->xpms[EA]);
+		mlx_delete_xpm42(core->xpms[WE]);
 		free_layer(&core->layer[MINIMAP_LAYER]);
 		free_layer(&core->layer[CAST_LAYER]);
 		if (core->network.is_active)

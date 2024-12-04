@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defs.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/04 13:13:40 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/04 20:39:14 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,24 +46,38 @@
 
 # define DEFUNIT		8
 # define DEFHALFUNIT	4
-# define DEFPLAYERSPEED	3.f
+# define DEFPLAYERSPEED	1.f
 
 	//* constants specifics to cub3d
 # define GAME_TITLE		"Alien Isolation"
 # define GAME_TITLE_S	"Alien Isolation - Host"
 # define MAX_LIFE		100
-# define CROUCH_OFFSET	//{inserer int}
 
 # define CUB3D_WALL		'1'
 # define CUB3D_VOID		'0'
+# define CUB3D_DOOR		'P'
 # define CUB3D_PLAYER	"NSEW"
-# define CUB3D_BLOCKS	"01 "
+# define CUB3D_BLOCKS	"01P "
 
 # define MINIMAP_LAYER	0
 # define CAST_LAYER		1
 
 # define C	0
 # define F	1
+
+# define NO	0
+# define SO	1
+# define WE	2
+# define EA	3
+
+# define TO_OPEN	0
+# define TO_CLOSE	1
+
+# define OPEN_DOOR_T	"Ouvrir [E]"
+# define CLOSE_DOOR_T	"Fermer [E]"
+
+# define CROUCH_OFFSET	100.0
+# define CROUCH_SPEED	250.0f
 
 	//* generic constants
 # define TRUE	1

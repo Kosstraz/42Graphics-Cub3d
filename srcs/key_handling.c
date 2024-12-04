@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 17:09:57 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/04 20:42:06 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ inline void	handle_player_key_press(mlx_key_data_t keyd, t_core *core)
 		core->input_action.key_right = TRUE;
 	else if (keyd.key == MLX_KEY_LEFT)
 		core->input_action.key_left = TRUE;	
+	if (keyd.key == MLX_KEY_UP)
+		core->input_action.key_up = TRUE;
+	else if (keyd.key == MLX_KEY_DOWN)
+		core->input_action.key_down = TRUE;	
 }
 
 inline void	handle_player_key_release(mlx_key_data_t keyd, t_core *core)
@@ -66,7 +70,11 @@ inline void	handle_player_key_release(mlx_key_data_t keyd, t_core *core)
 	if (keyd.key == MLX_KEY_RIGHT)
 		core->input_action.key_right = FALSE;
 	else if (keyd.key == MLX_KEY_LEFT)
-		core->input_action.key_left = FALSE;	
+		core->input_action.key_left = FALSE;
+	if (keyd.key == MLX_KEY_UP)
+		core->input_action.key_up = FALSE;
+	else if (keyd.key == MLX_KEY_DOWN)
+		core->input_action.key_down = FALSE;	
 }
 
 inline void	handle_crouchplayer_key(mlx_key_data_t keyd, t_core *core)

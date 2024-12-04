@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:24:27 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/26 20:58:43 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/04 20:49:37 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ void	setup_client(char *address, t_core *core)
 void	setup_server(t_core *core)
 {
 	socklen_t	socklen;
-	int		uselezz;
-	int			flags;
+	int			uselezz;
 
 	socklen = sizeof(struct sockaddr_in);
 	uselezz = TRUE;

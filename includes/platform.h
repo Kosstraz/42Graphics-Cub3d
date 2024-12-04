@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   platform.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/04 13:38:33 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/04 20:38:02 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ typedef struct s_network
 typedef struct s_player
 {
 	int			life;
+	float		offset;
 	t_pos		position;
 	BOOL		crouched;
 	t_vector	movement;
@@ -148,6 +149,11 @@ typedef struct s_layer
 	uint32_t	width;
 }	t_layer;
 
+typedef struct s_utils
+{
+	mlx_image_t	*door_text[2];
+}	t_utils;
+
 typedef struct s_input_action
 {
 	BOOL	key_w;
@@ -156,10 +162,28 @@ typedef struct s_input_action
 	BOOL	key_d;
 	BOOL	key_right;
 	BOOL	key_left;
+	BOOL	key_up;
+	BOOL	key_down;
 }	t_input_action;
+
+typedef struct s_audio_data
+{
+	Uint8* audio_pos;
+	Uint32 audio_len;
+}	t_audio_data;
+
+typedef struct s_audio
+{
+	uint32_t			length;
+	uint8_t				*buffer;
+	SDL_AudioStream		*stream;
+	SDL_AudioSpec		specs;
+	SDL_AudioDeviceID	device_id;
+}	t_audio;
 
 typedef struct s_core
 {
+	t_audio			audio;
 	t_img_container	imgs;
 	mlx_t			*mlx;
 	t_player		player[2];
@@ -169,6 +193,8 @@ typedef struct s_core
 	t_minimap		minimap;
 	t_network		network;
 	t_casting		cast;
+	t_utils			utils;
+	xpm_t			*xpms[4];
 	float			half_width;
 	float			half_height;
 	BOOL			mouse_visible;

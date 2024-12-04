@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/04 19:12:56 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/04 20:39:52 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 # include <arpa/inet.h>
 # include <netdb.h>
 # include <poll.h>
+
+# include <SDL2/SDL.h>
+# include <SDL2/SDL_audio.h>
+
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
@@ -33,6 +37,7 @@
 		CORE
 	*/
 
+void	init_audiosys(t_core *core);
 void	player_check_movements(t_core *core);
 void	player_check_orientationraycast(t_core *core);
 

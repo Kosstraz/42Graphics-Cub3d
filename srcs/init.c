@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/03 17:48:20 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/04 20:50:05 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,6 @@ inline static void	init_core_map(t_core *core)
 
 inline void	init_core(t_core *core)
 {
-	int	i;
-
-	i = 0;
 	core->mouse_visible = FALSE;
 	core->half_height = DEFHEIGHT / 2.f;
 	core->half_width = DEFWIDTH / 2.f;
@@ -49,15 +46,15 @@ inline void	init_core(t_core *core)
 	core->minimap.position.y = 0;
 	core->minimap.size.x = 0;
 	core->minimap.size.y = 0;
-	core->input_action.key_w = FALSE;
-	core->input_action.key_a = FALSE;
-	core->input_action.key_s = FALSE;
-	core->input_action.key_d = FALSE;
-	core->input_action.key_right = FALSE;
-	core->input_action.key_left = FALSE;
+	ft_memset(&core->input_action, 0, sizeof(t_input_action));
+	ft_memset(&core->utils, 0, sizeof(t_utils));
 	core->layer[MINIMAP_LAYER].pixels = NULL;
 	core->layer[CAST_LAYER].pixels = NULL;
 	core->fps_cooldown = 0;
+	core->xpms[NO] = NULL;
+	core->xpms[SO] = NULL;
+	core->xpms[WE] = NULL;
+	core->xpms[EA] = NULL;
 	init_player(&core->player[LOCAL]);
 	init_player(&core->player[DISTANT]);
 	init_core_map(core);
@@ -81,6 +78,12 @@ inline void	init_mlx_env(t_core *core)
 	core->minimap.size.y = core->map.bufmax * DEFUNIT;
 	core->minimap.position.x = core->mlx->width - core->map.buflens_max * DEFUNIT - 10;
 	core->minimap.position.y = 10;
+	core->utils.door_text[TO_OPEN] = mlx_put_string(core->mlx, OPEN_DOOR_T, 0, 0);
+	core->utils.door_text[TO_CLOSE] = mlx_put_string(core->mlx, CLOSE_DOOR_T, 0, 0);
+	mlx_image_to_window(core->mlx, core->utils.door_text[TO_OPEN], core->mlx->width / 2.0f, core->mlx->height / 2.0f);
+	mlx_image_to_window(core->mlx, core->utils.door_text[TO_CLOSE], core->mlx->width / 2.0f, core->mlx->height / 2.0f);
+	core->utils.door_text[TO_OPEN]->enabled = false;
+	core->utils.door_text[TO_CLOSE]->enabled = false;
 	core->imgs.minimap = mlx_new_image(core->mlx,
 		core->minimap.size.x,
 		core->minimap.size.y);
@@ -89,7 +92,7 @@ inline void	init_mlx_env(t_core *core)
 	mlx_image_to_window(core->mlx, core->imgs.cast, 0, 0);
 	init_layer(core->imgs.minimap, &core->layer[MINIMAP_LAYER]);
 	init_layer(core->imgs.cast, &core->layer[CAST_LAYER]);
-	//printf("%i %i init\n", core->mlx->width, core->mlx->height);
+	//init_audiosys(core);
 }
 
 inline void	setup_mlx_hooks(t_core *core)
