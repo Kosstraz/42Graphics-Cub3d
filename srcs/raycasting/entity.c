@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:16:09 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/04 20:00:26 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/04 20:23:13 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,20 +82,21 @@ void	draw_joueur(t_core *core)
 	
 	float	deltay = core->player[DISTANT].position.y - core->player[LOCAL].position.y;
 	float	deltax = core->player[DISTANT].position.x - core->player[LOCAL].position.x;
-	printf("delta x %f delta y %f\n",deltax , deltay);
+	//printf("delta x %f delta y %f\n",deltax , deltay);
 	
 	angle_joueurs = get_angle(deltax, deltay);
-	printf("angle is %f\n", angle_joueurs);
+	//printf("angle is %f\n", angle_joueurs);
+	x = get_x(angle_joueurs, core->cast.angle, core->imgs.cast->width);
 	if (joueur_visible(core, angle_joueurs) == false)
 		return ;
 	players_distance = get_distance(core->player[LOCAL].position, core->player[DISTANT].position);
 	//printf("angle avec l'autre j %i et la distance %f\n", angle_joueurs, players_distance);
-	x = get_x(angle_joueurs, core->cast.angle, core->imgs.cast->width);
+	
 	if (x == -1)
-	{
-		//printf("cant find x\n");
 		return ;
-	}
+	printf("wall %f player %f\n", core->cast.casts[x], players_distance);
+	if (core->cast.casts[x] < players_distance * 8.f)
+		return ;
 	//set_point(&points, core->player[DISTANT].position);
 	draw_rectangle(players_distance, x, core);
 }
