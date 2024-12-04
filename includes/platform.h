@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/03 14:51:57 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/04 13:38:33 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,13 @@ typedef struct s_casting
 	t_vector	last_view;
 	int			last_width;
 }	t_casting;
+
+typedef struct s_entity
+{
+	t_pos	position;
+	
+	
+}	t_entity;
 
 
 	//* NETWORKING

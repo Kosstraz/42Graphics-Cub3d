@@ -6,7 +6,7 @@
 #    By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/12/03 16:31:02 by mkhoury          ###   ########.fr        #
+#    Updated: 2024/12/04 16:21:59 by mkhoury          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,8 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/raycasting/raycast.c				\
 		./srcs/raycasting/calcul_raycast.c 		\
 		./srcs/raycasting/draw_cast.c 			\
+		./srcs/raycasting/draw_rectangle.c		\
+		./srcs/raycasting/entity.c 				\
 		\
 		./srcs/network/init.c					\
 		./srcs/network/menu.c					\

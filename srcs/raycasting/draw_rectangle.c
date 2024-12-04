@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enums.h                                            :+:      :+:    :+:   */
+/*   draw_rectangle.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 21:05:01 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/04 13:26:28 by mkhoury          ###   ########.fr       */
+/*   Created: 2024/12/04 16:05:35 by mkhoury           #+#    #+#             */
+/*   Updated: 2024/12/04 20:07:35 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENUMS_H
-# define ENUMS_H
+#include "cub3d.h"
 
-typedef enum e_color_type
+void	draw_rectangle(float distance, int x, t_core *core)
 {
-	Transparent = 0x00000000,
-	White = 0xffffffff,
-	Black = 0xff000000,
-	Red = 0xff0000ff,
-	Green = 0xff00ff00,
-	Blue = 0xffff0000,
-	Player = 0xff0404B4,
-	Void = 0xff949494,
-	Wall = 0xff4A4A4A
-}	t_color_type;
+	int	i;
+	int	j;
+	int	nb_pixel;
 
-typedef t_color_type	t_col_t;
-
-typedef enum e_entity_type
-{
-	joueur = 0,
-	Enemy = 1,
-	Item = 1
-}	t_entity_type;
-
-#endif
+	i = 0;
+	nb_pixel = (int) ( + 10.f / distance);
+	while (i < 20)
+	{
+		j = 0;
+		while ( j < nb_pixel)
+		{
+			draw_pixel(x - 10 + i, j + core->imgs.cast->height / 2.f + nb_pixel, 0xff30000ff, &core->layer[CAST_LAYER]);
+			j++;
+		}
+		
+		i++;
+	}
+	
+}

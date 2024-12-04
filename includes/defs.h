@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/03 18:37:12 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/04 13:13:40 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@
 # define FOV			90.f
 # define DELTA			0
 # define PI				3.14159f
+
+# define HITBOX			20.f
 
 # define DEFFREQ_MAX_MULTIPLIER		0.3f
 # define DEFFREQ_MAX_PRETTY_OFFSET	3

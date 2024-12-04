@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:50 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/03 18:12:07 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/04 16:22:26 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	game(t_core *core)
 	calcul_casts(core);
 	clear_img(core);
 	draw_cast(core);
+	if (core->network.is_active == true)
+		draw_joueur(core);
 	draw_minimap(core);
 	show_fps(core);
 	recv_any_element(core);

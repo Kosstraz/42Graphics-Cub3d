@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:46:55 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/03 18:35:17 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/04 20:04:08 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ void	calcul_casts(t_core *core)
 	while (i < core->mlx->width)
 	{
 		core->cast.angle[i] = core->player[LOCAL].view.angle - (float) core->cast.hfov + core->cast.di * (float) i;
+		if (core->cast.angle[i] < 0)
+			core->cast.angle[i] = 360.f + core->cast.angle[i];
+		if (core->cast.angle[i] > 360.f)
+			core->cast.angle[i] = modulo_float(core->cast.angle[i], 360.f);
 		core->cast.casts[i] = ray_cast(core, core->cast.angle[i]);
 		if (min > core->cast.casts[i])
 			min = core->cast.casts[i];
