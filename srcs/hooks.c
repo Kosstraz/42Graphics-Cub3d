@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:44 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/04 20:43:51 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:53:54 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,10 @@ void	cub3d_cursor_hook(double xpos, double ypos, t_core *core)
 		if (tmp >= -300.0f && tmp <= 300.0f)
 			core->player[LOCAL].offset = tmp;
 		core->player[LOCAL].view.angle -= (core->half_width - xpos) * 2.0f * core->mlx->delta_time;//90 * core->mlx->delta_time;
-		if (core->player[LOCAL].view.angle >= 360)
-			core->player[LOCAL].view.angle = 0;
+		if (core->player[LOCAL].view.angle >= 360.f)
+			core->player[LOCAL].view.angle = 0.f;
+		if (core->player[LOCAL].view.angle < 0)
+			core->player[LOCAL].view.angle = 360.f + core->player[LOCAL].view.angle;
 	}
 }
 

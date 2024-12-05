@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cast.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:28:29 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/11/27 18:29:57 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:26:36 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ void	init_cast_2(t_casting *cast)
 	{
 		cast->angle[i] = 0.f;
 		cast->casts[i] = 0.f;
+		cast->wall[i].x = 0.f;
+		cast->wall[i].y = 0.f;
+		cast->wall[i].z = 0.f;
 		i++;
 	}
 }

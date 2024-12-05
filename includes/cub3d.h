@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/04 20:39:52 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:05:57 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ int	draw_pixel(
 			t_color_type color,
 			t_layer *layer);
 void	orientation_minimap(t_core *core);
-float	ray_cast(t_core *core, float angle);
+float	ray_cast(t_core *core, float angle, int i);
 void	init_cast(t_casting *cast, t_player player);
 void	calcul_casts(t_core *core);
 void	draw_cast(t_core *core);

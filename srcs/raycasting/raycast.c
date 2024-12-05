@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:19:35 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/04 20:23:21 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/05 16:01:01 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@
 	
 // }
 
-float	ray_cast(t_core *core, float angle)
+float	ray_cast(t_core *core, float angle, int i)
 {
 	t_fvector	unit;
 	t_fvector	vector_dir;
@@ -129,6 +129,7 @@ float	ray_cast(t_core *core, float angle)
 
 	int	max;
 	float	distance;
+	int		side_int;
 
 	max =  30;
 	while (max)
@@ -138,12 +139,14 @@ float	ray_cast(t_core *core, float angle)
 			map_check.x += step.x;
 			distance = side.x;
 			side.x += unit.x;
+			side_int = 0;
 		}	
 		else
 		{
 			map_check.y += step.y;
 			distance = side.y;
 			side.y += unit.y;
+			side_int = 1;
 		}
 		if (core->map.buf[map_check.y] != NULL && core->map.buflens[map_check.y] > (size_t)map_check.x)
 		{
@@ -151,6 +154,13 @@ float	ray_cast(t_core *core, float angle)
 				break ;
 		}
 	}
-	return (distance * 8.f);
+	core->cast.wall[i].x = map_check.x;
+	core->cast.wall[i].y = map_check.y;
+	core->cast.wall[i].z = 1.f;
+	if (side_int == 1)
+	 	core->cast.side[i] = 1;
+	else
+		core->cast.side[i] = 0;
+	return (distance);
 }
 

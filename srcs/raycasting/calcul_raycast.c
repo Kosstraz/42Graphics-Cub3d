@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:46:55 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/04 20:04:08 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/05 15:05:35 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	calcul_casts(t_core *core)
 			core->cast.angle[i] = 360.f + core->cast.angle[i];
 		if (core->cast.angle[i] > 360.f)
 			core->cast.angle[i] = modulo_float(core->cast.angle[i], 360.f);
-		core->cast.casts[i] = ray_cast(core, core->cast.angle[i]);
+		core->cast.casts[i] = ray_cast(core, core->cast.angle[i], i);
 		if (min > core->cast.casts[i])
 			min = core->cast.casts[i];
 		if (max < core->cast.casts[i])

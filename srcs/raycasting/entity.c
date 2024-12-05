@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:16:09 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/04 20:23:13 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/05 14:24:00 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ bool	joueur_visible(t_core *core, float angle_joueurs)
 		angle_1 = modulo_float(angle_1, 360.f);
 	if (angle_2 < 0)
 		angle_2 = 360 + angle_2;
-	printf("angle 1 %f angle 2 %f angle js %f angle j %f\n", angle_1, angle_2, angle_joueurs, perso_angle);
+	//printf("angle 1 %f angle 2 %f angle js %f angle j %f\n", angle_1, angle_2, angle_joueurs, perso_angle);
 	if (angle_1 < angle_2 && ((angle_joueurs <= angle_1 && angle_joueurs >= 0) || (angle_joueurs >= angle_2 && angle_joueurs <= 360)))
 		return (true);
 	if (angle_joueurs <= angle_1 && angle_joueurs >= angle_2)
 		return (true);
-	printf("error angle 1 %f angle 2 %f angle js %f angle j %f\n", angle_1, angle_2, angle_joueurs, perso_angle);
+	//printf("error angle 1 %f angle 2 %f angle js %f angle j %f\n", angle_1, angle_2, angle_joueurs, perso_angle);
 	return (false);
 }
 
@@ -86,16 +86,15 @@ void	draw_joueur(t_core *core)
 	
 	angle_joueurs = get_angle(deltax, deltay);
 	//printf("angle is %f\n", angle_joueurs);
-	x = get_x(angle_joueurs, core->cast.angle, core->imgs.cast->width);
 	if (joueur_visible(core, angle_joueurs) == false)
 		return ;
 	players_distance = get_distance(core->player[LOCAL].position, core->player[DISTANT].position);
 	//printf("angle avec l'autre j %i et la distance %f\n", angle_joueurs, players_distance);
-	
+	x = get_x(angle_joueurs, core->cast.angle, core->imgs.cast->width);
 	if (x == -1)
 		return ;
-	printf("wall %f player %f\n", core->cast.casts[x], players_distance);
-	if (core->cast.casts[x] < players_distance * 8.f)
+	//printf("wall %f player %f\n", core->cast.casts[x], players_distance);
+	if (core->cast.casts[x] < players_distance )
 		return ;
 	//set_point(&points, core->player[DISTANT].position);
 	draw_rectangle(players_distance, x, core);

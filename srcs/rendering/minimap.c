@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:43:52 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 18:27:23 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/04 20:56:10 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,9 @@ void	draw_minimap(t_core *core)
 			draw_ascii_branch(x++, y, core);
 		++y;
 	}
-	draw_player(&core->player[LOCAL], Blue, core);
+
+	orientation_minimap(core);	
 	if (core->network.is_active)
 		draw_player(&core->player[DISTANT], Green, core);
-	orientation_minimap(core);
+	draw_player(&core->player[LOCAL], Blue, core);
 }
