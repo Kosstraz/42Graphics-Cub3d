@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 14:46:15 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/06 18:25:14 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:57:14 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	handle_doors_key(mlx_key_data_t keyd, t_core *core)
 
 	if (keyd.key == MLX_KEY_E)
 	{
+		recv_any_element(core);
 		dinfo.which_door = core->utils.door_focus;
 		if (core->utils.door_text[TO_OPEN]->enabled)
 		{
@@ -38,7 +39,7 @@ void	handle_doors_key(mlx_key_data_t keyd, t_core *core)
 	}
 }
 
-static float	vector_norm(float x, float y)
+float	vector_norm(float x, float y)
 {
 	return (sqrtf(x * x + y * y));
 }
@@ -97,6 +98,7 @@ int	door_handling(t_ivector vec, t_core *core)
 	i = 0;
 	door = FALSE;
 	dist = fabsf(vector_norm(vec.x + 0.5f, vec.y + 0.5f) - vector_norm(core->player[LOCAL].position.x, core->player[LOCAL].position.y));
+	printf("dist : %f\n", dist);
 	if (core->map.buf[(int)(vec.y + 0.5f)][(int)(vec.x + 0.5f)] == 'P'
 		&& dist <= 1.6f)
 		door = TRUE;

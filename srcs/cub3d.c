@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:50 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/06 17:40:54 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:57:17 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	game(t_core *core)
 {
-	//door_handling(core);
 	player_check_movements(core);
 	recv_any_element(core);
 	player_check_orientationraycast(core);

@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/06 17:44:35 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:53:49 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	player_check_orientationraycast(t_core *core);
 int	door_handling(t_ivector vec, t_core *core);
 void	handle_doors_key(mlx_key_data_t keyd, t_core *core);
 BOOL	doors_check_state(int x, int y, t_core *core);
+float	vector_norm(float x, float y);
 
 	//* main files (cub3d.c)
 void	cub3d(t_core *core);

@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:19:35 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/06 17:47:37 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/06 19:27:08 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@
 // 	if (core->player.view.dy > 0)
 // 		x = (int) core->player.position.x;
 // 	else if (core->player.view.dy == 0)
-		
-
 // }
 
 // void	cast_ray(t_core *core, int i)

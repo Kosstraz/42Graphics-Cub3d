@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:43:52 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/04 20:56:10 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/06 18:49:28 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,21 @@ inline static void	draw_ascii_on_minimap(
 	}
 }
 
+inline static BOOL	check_door(int x, int y, t_core *core)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < core->map.nbOfDoors)
+	{
+		if (core->map.doors[i].pos.x == x && core->map.doors[i].pos.y
+			&& !core->map.doors[i].is_open)
+			return (TRUE);
+		++i;
+	}
+	return (FALSE);
+}
+
 inline static void	draw_ascii_branch(size_t x, size_t y, t_core *core)
 {
 	if (x < core->map.buflens[y])
@@ -44,6 +59,8 @@ inline static void	draw_ascii_branch(size_t x, size_t y, t_core *core)
 			draw_ascii_on_minimap(Wall, x * DEFUNIT, y * DEFUNIT, core);
 		else if (core->map.buf[y][x] == ' ')
 			draw_ascii_on_minimap(Transparent, x * DEFUNIT, y * DEFUNIT, core);
+		else if (core->map.buf[y][x] == 'P' && check_door(x, y, core))
+			draw_ascii_on_minimap(Door, x * DEFUNIT, y * DEFUNIT, core);
 		else
 			draw_ascii_on_minimap(Void, x * DEFUNIT, y * DEFUNIT, core);
 	}

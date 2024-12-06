@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:50:18 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/06 18:32:09 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:34:07 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,15 +74,15 @@ inline static void	handle_poll_door(t_core *core)
 	t_door_info	dinfo;
 	recv(core->network.tcp.com, &dinfo, sizeof(t_door_info), 0);
 	core->map.doors[dinfo.which_door].is_open = dinfo.is_open;
-	//if (core->utils.door_focus == dinfo.which_door)
-	//{
-	//	core->utils.door_text[TO_OPEN]->enabled = FALSE;
-	//	core->utils.door_text[TO_CLOSE]->enabled = FALSE;
-	//	if (core->map.doors[dinfo.which_door].is_open)
-	//		core->utils.door_text[TO_OPEN]->enabled = TRUE;
-	//	else
-	//		core->utils.door_text[TO_CLOSE]->enabled = TRUE;
-	//}
+	if (core->utils.door_focus == dinfo.which_door)
+	{
+		core->utils.door_text[TO_OPEN]->enabled = FALSE;
+		core->utils.door_text[TO_CLOSE]->enabled = FALSE;
+		if (core->map.doors[dinfo.which_door].is_open)
+			core->utils.door_text[TO_OPEN]->enabled = TRUE;
+		else
+			core->utils.door_text[TO_CLOSE]->enabled = TRUE;
+	}
 }
 
 void	recv_any_element(t_core *core)
