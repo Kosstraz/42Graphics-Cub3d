@@ -7,7 +7,7 @@ inline static void	save_asciimap_handle_memory(int y_pos, t_core *core)
 		core->map.bufmax = y_pos + 5;
 		core->map.buf = (char **)ft_realloc(core->map.buf,
 				y_pos * sizeof(char *),
-				((y_pos + 5) * sizeof(char *)));
+				((y_pos + 5 + 1) * sizeof(char *)));
 	}
 	core->map.buflens = (size_t *)ft_realloc((size_t *)core->map.buflens,
 			sizeof(size_t) * core->map.buflens_size,
@@ -77,7 +77,14 @@ static void	parse_asciilines(
 			exit_strerror(MAP_PLACE_WITH_NO_WALL_T, core);
 		else if (line[i] == CUB3D_VOID)
 			parse_asciilines_check_zero(i, cur, core);
-		if (!*player_spawn && ft_isanychr(line[i], CUB3D_PLAYER))
+		if (line[i] == CUB3D_DOOR)
+		{
+			core->map.doors = (t_door *)ft_realloc(core->map.doors, core->map.nbOfDoors, core->map.nbOfDoors + 1U);
+			core->map.doors[core->map.nbOfDoors].pos.x = i;
+			core->map.doors[core->map.nbOfDoors].pos.y = cur;
+			core->map.doors[core->map.nbOfDoors++].is_open = FALSE;
+		}
+		else if (!*player_spawn && ft_isanychr(line[i], CUB3D_PLAYER))
 		{
 			core->player[LOCAL].position.x = i;
 			core->player[LOCAL].position.y = cur;

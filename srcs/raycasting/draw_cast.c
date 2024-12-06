@@ -56,8 +56,9 @@ long	get_pixel(int x, int y, t_core *core, float length)
 	long	base;
 	t_pos	wall;
 	float	angle;
-	int		side;
+	//int		side;
 
+	(void)y;
 	wall.x = core->cast.wall[x].x;
 	wall.y = core->cast.wall[x].y;
 	wall.z = core->cast.wall[x].z;
@@ -93,7 +94,7 @@ void	draw_col(int x, float length, t_core *core)
 	float	y;
 	float	nb_pixels;
 	long	col;
-	long	degrade;
+	//long	degrade;
 
 	nb_pixels = core->half_height * 2.f / (length);
 	if (length > 10.f)

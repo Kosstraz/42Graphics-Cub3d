@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/04 20:39:14 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/06 17:15:52 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define PORT	4243
 
 # define POLL_PLAYER	(char)0
+# define POLL_DOOR		(char)1
 
 # define LOCAL		0
 # define DISTANT	1

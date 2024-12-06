@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:50:18 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/26 20:58:43 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/06 17:21:10 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,13 @@ inline void	send_element(void *what, size_t size, char poll_id, t_core *core)
 	}
 }
 
+inline static void	handle_poll_door(t_core *core)
+{
+	t_door_info	dinfo;
+	recv(core->network.tcp.com, &dinfo, sizeof(t_door_info), 0);
+	core->map.doors[dinfo.which_door].is_open = dinfo.is_open;
+}
+
 void	recv_any_element(t_core *core)
 {
 	char			poll_id;
@@ -78,6 +85,8 @@ void	recv_any_element(t_core *core)
 			recv(core->network.tcp.com, &poll_id, 1, 0);
 			if (poll_id == POLL_PLAYER)
 				recv(core->network.tcp.com, &core->player[1], sizeof(t_player), 0);
+			else if (poll_id == POLL_DOOR)
+				handle_poll_door(core);
 		}
 	}
 }

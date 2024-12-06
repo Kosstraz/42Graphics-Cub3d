@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   platform.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/05 15:36:21 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/06 17:17:35 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,18 @@ typedef struct s_minimap
 	t_posi	size;
 }	t_minimap;
 
+typedef struct s_door
+{
+	t_posi	pos;
+	BOOL	is_open;
+}	t_door;
+
+typedef struct s_door_info
+{
+	int		which_door;
+	BOOL	is_open;
+}	t_door_info;
+
 typedef struct s_map
 {
 	t_filepath	filepath;
@@ -133,6 +145,8 @@ typedef struct s_map
 	size_t		buflens_max;
 	size_t		*buflens;
 	size_t		buflens_size;
+	t_door		*doors;
+	size_t		nbOfDoors;
 	BOOL		generated;
 	char		*file;
 	char		**buf;
@@ -155,6 +169,7 @@ typedef struct s_layer
 typedef struct s_utils
 {
 	mlx_image_t	*door_text[2];
+	int			door_focus;
 }	t_utils;
 
 typedef struct s_input_action
