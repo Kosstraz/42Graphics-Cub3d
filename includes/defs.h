@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/06 17:15:52 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/06 17:56:34 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@
 # define CUB3D_DOOR		'P'
 # define CUB3D_PLAYER	"NSEW"
 # define CUB3D_BLOCKS	"01P "
+# define CUB3D_ALL		"01PNSEW "
 
 # define MINIMAP_LAYER	0
 # define CAST_LAYER		1

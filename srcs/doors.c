@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 14:46:15 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/06 17:47:03 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/06 18:25:14 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,8 @@ int	door_handling(t_ivector vec, t_core *core)
 	wallp.y = vec.y;
 	wallp.z = 0;
 	which_text_show(door, wallp, core);
+	if (core->map.nbOfDoors == 0)
+		return (FALSE);
 	return (core->map.doors[core->utils.door_focus].is_open);
 }
 
