@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/05 15:05:57 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/06 14:46:59 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 void	init_audiosys(t_core *core);
 void	player_check_movements(t_core *core);
 void	player_check_orientationraycast(t_core *core);
+void	door_handling(t_core *core);
 
 	//* main files (cub3d.c)
 void	cub3d(t_core *core);

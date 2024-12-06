@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:19:35 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/05 16:01:01 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/06 14:52:08 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,8 @@ float	ray_cast(t_core *core, float angle, int i)
 		if (core->map.buf[map_check.y] != NULL && core->map.buflens[map_check.y] > (size_t)map_check.x)
 		{
 			if (core->map.buf[map_check.y][map_check.x] == '1')
+				break ;
+			else if (core->map.buf[map_check.y][map_check.x] == 'P')
 				break ;
 		}
 	}
