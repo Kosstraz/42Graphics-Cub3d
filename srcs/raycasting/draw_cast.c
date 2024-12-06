@@ -62,26 +62,26 @@ long	get_pixel(int x, int y, t_core *core, float length)
 	wall.y = core->cast.wall[x].y;
 	wall.z = core->cast.wall[x].z;
 	angle = core->cast.angle[x];
-	if (core->cast.side[x] == 0 && ((angle <= 90 && angle >= 0) || (angle <=360 && angle >= 270)))
-	{
-		return (core->xpms[EA])
-	}
-		side = EA;
-	else if (core->cast.side[x] == 0 && (angle < 270 && angle > 90))
-		side = WE;
-	else if (core->cast.side[x] == 1 && (angle <= 180 && angle >= 0))
-		side = NO;
-	else
-		side = SO;
-	
 	// if (core->cast.side[x] == 0 && ((angle <= 90 && angle >= 0) || (angle <=360 && angle >= 270)))
-	// 	base = 0xffff0000 - 0x00010000 * (long)(length / 10.f * 256.f);
+	// {
+	// 	return (core->xpms[EA])
+	// }
+	// 	side = EA;
 	// else if (core->cast.side[x] == 0 && (angle < 270 && angle > 90))
-	// 	base = 0xff00ff00 - 0x00000100 * (long)(length / 10.f * 256.f);
+	// 	side = WE;
 	// else if (core->cast.side[x] == 1 && (angle <= 180 && angle >= 0))
-	// 	base = 0xff0000ff - 0x00010001 * (long)(length / 10.f * 256.f);
+	// 	side = NO;
 	// else
-	// 	base = 0xffffffff - 0x00010101 * (long)(length / 10.f * 256.f);
+	// 	side = SO;
+	
+	if (core->cast.side[x] == 0 && ((angle <= 90 && angle >= 0) || (angle <=360 && angle >= 270)))
+		base = 0xffff0000 - 0x00010000 * (long)(length / 10.f * 256.f);
+	else if (core->cast.side[x] == 0 && (angle < 270 && angle > 90))
+		base = 0xff00ff00 - 0x00000100 * (long)(length / 10.f * 256.f);
+	else if (core->cast.side[x] == 1 && (angle <= 180 && angle >= 0))
+		base = 0xff0000ff - 0x00010001 * (long)(length / 10.f * 256.f);
+	else
+		base = 0xffffffff - 0x00010101 * (long)(length / 10.f * 256.f);
 	//base = (long) core->xpms[side].
 	//printf("angle is : %f side is : %i color is %ld\n",angle, core->cast.side[x], base);
 	return (base);
