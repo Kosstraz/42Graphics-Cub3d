@@ -1,0 +1,39 @@
+	if (core->cast.side[x] == 0 && ((angle <= 90 && angle >= 0) || (angle <=360 && angle >= 270)))
+	{
+		//(sinf(deg2rad(core->cast.angle[x])) + core->player[LOCAL].position.y - (int)(core->player[LOCAL].position.y)) * core->xpms[EA]->texture.width;
+		x_texture = 10;// (int) (core->cast.wallx[x] * 64.f);
+		y_texture = (int) (y * 64.f);
+		side = EA;
+		//printf("x %f y %f\n",x_texture, y);
+		return (core->xpms[EA]->texture.pixels[y_texture + x_texture]);
+	}
+	else if (core->cast.side[x] == 0 && (angle < 270 && angle > 90))
+	{
+	//	x_texture = (sinf(deg2rad(core->cast.angle[x])) + core->player[LOCAL].position.y - (int)(core->player[LOCAL].position.y)) * core->xpms[WE]->texture.width;
+		//y = y * core->xpms[WE]->texture.height;
+		side = WE;
+		x_texture = 10;//(int) (core->cast.wallx[x] * 64.f);
+		y_texture = (int) (y * 64.f);
+		//printf("x %f y %f\n",x_texture, y);
+		return (core->xpms[WE]->texture.pixels[y_texture + x_texture]);
+	}
+	else if (core->cast.side[x] == 1 && (angle <= 180 && angle >= 0))
+	{
+	//	x_texture = (cos(deg2rad(core->cast.angle[x])) + core->player[LOCAL].position.x - (int)(core->player[LOCAL].position.x)) * core->xpms[NO]->texture.width;
+		//y = y * core->xpms[NO]->texture.height;
+		x_texture = 10;// (int) (core->cast.wallx[x] * 64.f);
+		y_texture = (int) (y * 64.f);
+		side = NO;
+		//printf("x %f y %f\n",x_texture, y);
+		return (core->xpms[NO]->texture.pixels[y_texture + x_texture]);
+	}
+	else
+	{
+	//	x_texture = (cos(deg2rad(core->cast.angle[x])) + core->player[LOCAL].position.x - (int)(core->player[LOCAL].position.x)) * core->xpms[SO]->texture.width;
+		// y = y * core->xpms[SO]->texture.height;
+		// side = SO;
+		x_texture = 10;//(int) (core->cast.wallx[x] * 64.f);
+		y_texture = (int) (y * 64.f);
+		//printf("x %f y %f\n",x_texture, y);
+		return (core->xpms[SO]->texture.pixels[y_texture + x_texture]);
+	}

@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:19:35 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/05 16:01:01 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/07 17:45:12 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,21 @@ float	ray_cast(t_core *core, float angle, int i)
 				break ;
 		}
 	}
+	double WallDist;
+	
+	if (side_int == 0)
+		WallDist = side.x - side.y;
+	else
+		WallDist = side.y - side.x;
+	core->cast.height[i] = core->mlx->height / WallDist;
+	core->cast.wallDist[i] = cosf(deg2rad(angle - core->player->view.angle)) * (distance);
+	double WallX;
+	if (side_int == 0)
+		WallX = ray_start.y + WallDist * vector_dir.y;
+	else
+		WallX = ray_start.x + WallDist * vector_dir.x;
+	WallX -= (int) WallX;
+	core->cast.wallx[i] = WallX;
 	core->cast.wall[i].x = map_check.x;
 	core->cast.wall[i].y = map_check.y;
 	core->cast.wall[i].z = 1.f;

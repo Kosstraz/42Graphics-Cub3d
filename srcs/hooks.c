@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:44 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/05 16:53:54 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/07 14:44:58 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	cub3d_cursor_hook(double xpos, double ypos, t_core *core)
 		tmp = core->player[LOCAL].offset - (core->half_height - ypos) * 15.0f * core->mlx->delta_time;
 		if (tmp >= -300.0f && tmp <= 300.0f)
 			core->player[LOCAL].offset = tmp;
+		core->player[LOCAL].view.dz = core->half_height - tmp;
 		core->player[LOCAL].view.angle -= (core->half_width - xpos) * 2.0f * core->mlx->delta_time;//90 * core->mlx->delta_time;
 		if (core->player[LOCAL].view.angle >= 360.f)
 			core->player[LOCAL].view.angle = 0.f;

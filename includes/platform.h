@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/05 15:36:21 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/07 17:14:23 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,9 @@ typedef struct s_casting
 //	float		line_height[1920];
 	t_pos		wall[1920];
 	int			side[1920];
+	int			height[1920];
+	float		wallx[1920];
+	float		wallDist[1920];
 	float		max;
 	float		min;
 	float		di;
@@ -197,7 +200,7 @@ typedef struct s_core
 	t_network		network;
 	t_casting		cast;
 	t_utils			utils;
-	xpm_t			*xpms[4];
+	xpm_t			**xpms;
 	float			half_width;
 	float			half_height;
 	BOOL			mouse_visible;

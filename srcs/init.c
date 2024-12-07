@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/04 20:50:05 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/07 17:46:05 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ inline void	init_core(t_core *core)
 	core->layer[MINIMAP_LAYER].pixels = NULL;
 	core->layer[CAST_LAYER].pixels = NULL;
 	core->fps_cooldown = 0;
-	core->xpms[NO] = NULL;
-	core->xpms[SO] = NULL;
-	core->xpms[WE] = NULL;
-	core->xpms[EA] = NULL;
+	// core->xpms[NO] = NULL;
+	// core->xpms[SO] = NULL;
+	// core->xpms[WE] = NULL;
+	// core->xpms[EA] = NULL;
 	init_player(&core->player[LOCAL]);
 	init_player(&core->player[DISTANT]);
 	init_core_map(core);
