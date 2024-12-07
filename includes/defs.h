@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/07 16:25:51 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/07 18:16:47 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@
 # define GAME_TITLE		"Alien Isolation"
 # define GAME_TITLE_S	"Alien Isolation - Host"
 # define MAX_LIFE		100
+# define MAX_STAM		100.f
 
 # define CUB3D_WALL		'1'
 # define CUB3D_VOID		'0'

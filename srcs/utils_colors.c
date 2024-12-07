@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:49 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/03 18:09:59 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/07 17:52:08 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@ t_color_type	increase_lighting(t_color_type col, int by)
 		| ((ret & 0x0000ff00) + (by << 8))
 		| ((ret & 0x000000ff) + (by));//(by << 24) | (ret & 0x00ffffff);
 	return (ret);
+}
+
+int	invbits(int col)
+{
+	return (((col & 0xff000000) >> 24)
+			| ((col & 0x00ff0000) >> 8)
+			| ((col & 0x0000ff00) << 8)
+			| ((col & 0x000000ff) << 24));
 }
 
 	// char[3] to color

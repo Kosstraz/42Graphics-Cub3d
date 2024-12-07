@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/07 16:25:26 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/07 18:28:08 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,14 @@ typedef struct s_network
 typedef struct s_player
 {
 	int			life;
+	float		speed;
 	float		offset;
 	t_pos		position;
 	BOOL		crouched;
 	t_vector	movement;
 	t_vector	view;
 	float		bubbles;
+	float		bubbles_speed;
 	BOOL		maxed;
 	BOOL		mined;
 }	t_player;
@@ -174,6 +176,9 @@ typedef struct s_utils
 {
 	mlx_image_t	*door_text[2];
 	int			door_focus;
+	int			door_offset;
+	int			door_init_offset;
+	BOOL		door_begin;
 }	t_utils;
 
 typedef struct s_input_action
@@ -186,6 +191,7 @@ typedef struct s_input_action
 	BOOL	key_left;
 	BOOL	key_up;
 	BOOL	key_down;
+	BOOL	key_shift;
 }	t_input_action;
 
 typedef struct s_audio

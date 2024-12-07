@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/07 17:08:58 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/07 18:28:13 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 inline static void	init_player(t_player *player)
 {
 	ft_memset(player, 0, sizeof(t_player));
+	player->bubbles_speed = BUBBLES_SPEED;
+	player->speed = DEFPLAYERSPEED;
 	player->life = MAX_LIFE;
 }
 

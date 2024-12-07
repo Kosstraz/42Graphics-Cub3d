@@ -51,6 +51,16 @@ void	clear_img(t_core *core)
 // 	}
 // }
 
+float	float_normalize(float min, float max, float x)
+{
+	return ((x - min) / (max - min));
+}
+
+float	float_denormalize(float min, float max, float x)
+{
+	return (x * max - x * min + min);
+}
+
 long	get_pixel(int x, int y, t_core *core, float length)
 {
 	long	base;
@@ -85,6 +95,11 @@ long	get_pixel(int x, int y, t_core *core, float length)
 		base = 0xffffffff - 0x00010101 * (long)(length / 10.f * 256.f);
 	//base = (long) core->xpms[side].
 	//printf("angle is : %f side is : %i color is %ld\n",angle, core->cast.side[x], base);
+
+	x -= core->half_width;
+	y -= core->half_height + core->player[LOCAL].offset + core->player[LOCAL].bubbles;
+	if (sqrtf(x * x + y * y) <= 100.0f)
+		return (increase_lighting(base, 255));
 	return (base);
 }
 
@@ -96,13 +111,13 @@ void	draw_col(int x, float length, t_core *core)
 	long	col;
 	//long	degrade;
 
-	nb_pixels = core->half_height * 2.f / (length);
+	nb_pixels = core->mlx->height / (length);
 	if (length > 10.f)
 		return ;
 	i = 0;
 	while (i < (int) nb_pixels)
 	{
-		col = get_pixel(x, i, core, length);// - 0x00010101 * (long)(length / 10.f * 256.f);
+		col = get_pixel(x, i, core, length);;
 		y = (float) (core->imgs.cast->height / 2.f) - core->player[LOCAL].offset - core->player[LOCAL].bubbles + ((float) i - nb_pixels / 2.f);
 		draw_pixel(x, (int)y, col, &core->layer[CAST_LAYER]);
 		++i;
