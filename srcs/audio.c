@@ -6,67 +6,103 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 19:54:09 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/04 20:49:17 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:26:34 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void my_audio_callback(void* userdata, Uint8* stream, int len)
+void	audio_player(void *userdata, uint8_t *stream, int len)
 {
-	t_audio_data*	audio;
-	
-	audio = (t_audio_data*)userdata;
-	if (audio->audio_len == 0)
-		return;
+    t_core	*core;
+	t_audio	*audio;
+	size_t		i;
+	int			to_copy;
 
-	len = ((Uint32)len > audio->audio_len) ? audio->audio_len : len;
-	SDL_memcpy(stream, audio->audio_pos, len);
-	audio->audio_pos += len;
-	audio->audio_len -= len;
+	i = 0U;
+	core = (t_core *)userdata;
+    SDL_memset(stream, 0, len);
+    while (i < NB_SOUNDS)
+	{
+        audio = &core->audio[i];
+        if (audio->is_active && audio->len > 0)
+		{
+			if (len > (int)audio->len)
+				to_copy = audio->len;
+			else
+				to_copy = len;
+            SDL_MixAudioFormat(
+                stream,             // Flux de sortie
+                audio->pos,         // Source des données audio
+                core->spec->format, // Format audio
+                to_copy,            // Nombre d'octets à copier
+                SDL_MIX_MAXVOLUME   // Volume maximal
+            );
+            audio->pos += to_copy;
+            audio->len -= to_copy;
+            if (audio->len == 0)
+                audio->is_active = FALSE;
+        }
+		++i;
+    }
 }
 
-void	init_audiosys(t_core *core)
+static void	load_wavfile(const char *filename, t_audio *audio, SDL_AudioSpec *spec)
 {
-	(void)core;
-	SDL_AudioSpec	*wav_spec;
-	Uint8*			wav_buffer;
-	Uint32			wav_length;
+	if (SDL_LoadWAV(filename, spec, &audio->buffer, &audio->len) < 0)
+		ft_printf("Failed to load %s (%s)\n", filename, SDL_GetError());
+	audio->pos = audio->buffer;
+	audio->start_len = audio->len;
+	audio->is_active = FALSE;
+}
 
-	wav_spec = malloc(sizeof(SDL_AudioSpec));
-	SDL_Init(SDL_INIT_AUDIO);
-	if (SDL_LoadWAV("Assets/audio/MainTheme.wav", wav_spec, &wav_buffer, &wav_length) == NULL)
-	{
-		fprintf(stderr, "Erreur lors du chargement du fichier WAV: %s\n", SDL_GetError());
-		SDL_Quit();
-	}
+void	init_audio_spec(t_core *core, SDL_AudioSpec *spec)
+{
+	spec->freq = 44100;
+    spec->format = AUDIO_S16LSB;
+    spec->channels = 2;
+    spec->samples = 4096;
+	spec->callback = audio_player;
+	spec->userdata = core;
+}
 
-	t_audio_data	audio_data;
-	audio_data.audio_pos = wav_buffer;
-	audio_data.audio_len = wav_length;
-	wav_spec->callback = my_audio_callback;
-	wav_spec->userdata = &audio_data;
+void	init_audio_system(t_core *core)
+{
+	if (SDL_Init(SDL_INIT_AUDIO) < 0)
+		ft_printf("Failed to init SDL AUDIO\n");
+	core->spec = (SDL_AudioSpec *)malloc(sizeof(SDL_AudioSpec));
+	load_wavfile("./Assets/sounds/Ambient.wav", &core->audio[AMBIENT], core->spec);
+	load_wavfile("./Assets/sounds/GoofyRunningSoundEffect.wav", &core->audio[PRANK], core->spec);
+	load_wavfile("./Assets/sounds/FreakySoundEffects.wav", &core->audio[FREAKY], core->spec);
+	load_wavfile("./Assets/sounds/step1.wav", &core->audio[STEP1], core->spec);
+	load_wavfile("./Assets/sounds/step2.wav", &core->audio[STEP2], core->spec);
+	load_wavfile("./Assets/sounds/step3.wav", &core->audio[STEP3], core->spec);
+	load_wavfile("./Assets/sounds/step4.wav", &core->audio[STEP4], core->spec);
+	load_wavfile("./Assets/sounds/step5.wav", &core->audio[STEP5], core->spec);
+	load_wavfile("./Assets/sounds/door1.wav", &core->audio[DOOR1], core->spec);
+	load_wavfile("./Assets/sounds/door2.wav", &core->audio[DOOR2], core->spec);
+	load_wavfile("./Assets/sounds/door3.wav", &core->audio[DOOR3], core->spec);
+	init_audio_spec(core, core->spec);
+	if (SDL_OpenAudio(core->spec, NULL))
+		ft_printf("Failed to open SDL audio\n");
+	SDL_PauseAudio(0);
+}
 
-    // Ouvrir le périphérique audio
-    SDL_AudioDeviceID device_id = SDL_OpenAudioDevice(NULL, 0, wav_spec, NULL, 0);
-    if (device_id == 0)
-	{
-        fprintf(stderr, "Erreur lors de l'ouverture du périphérique audio: %s\n", SDL_GetError());
-        SDL_FreeWAV(wav_buffer);
-        SDL_Quit();
-    }
+void	play_sound(t_audio *audio)
+{
+	if (audio->buffer == NULL)
+		return ;
+	audio->pos = audio->buffer;
+	audio->len = audio->start_len;
+	audio->is_active = TRUE;
+}
 
-    // Démarrer la lecture audio
-    SDL_PauseAudioDevice(device_id, 0);
-
-    // Attendre que l'audio soit terminé
-    //while (audio_data.audio_len > 0)
-	//{
-    //    SDL_Delay(100); // Attendre 100 ms
-    //}
-//
-    //// Nettoyer et quitter
-    //SDL_CloseAudioDevice(device_id);
-    //SDL_FreeWAV(wav_buffer);
-    //SDL_Quit();
+void	destroy_audio_system(t_core *core)
+{
+	SDL_CloseAudio();
+	if (core->audio[AMBIENT].buffer)
+		SDL_FreeWAV(core->audio[AMBIENT].buffer);
+	if (core->audio[PRANK].buffer)
+		SDL_FreeWAV(core->audio[PRANK].buffer);
+	SDL_Quit();
 }

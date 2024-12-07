@@ -82,6 +82,7 @@ long	get_pixel(int x, float y, t_core *core, float length)
 	int	x_texture;
 	int		y_texture;
 
+	(void)y;
 	wall.x = core->cast.wall[x].x;
 	wall.y = core->cast.wall[x].y;
 	wall.z = core->cast.wall[x].z;
@@ -205,7 +206,7 @@ void	draw_col(int x, float length, t_core *core)
 	float	y;
 	float	nb_pixels;
 	long	col;
-	long	degrade;
+	//long	degrade;
 
 	//nb_pixels = core->half_height * 2.f / (length) ;//+ core->cast.wallDist[x];
 	nb_pixels = core->half_height / (core->cast.wallDist[x] / 3.f);
@@ -214,8 +215,13 @@ void	draw_col(int x, float length, t_core *core)
 	i = 0;
 	while (i < (int) nb_pixels)
 	{
+<<<<<<< HEAD
 		col = 0xff000000 + get_pixel(x, (float) i / nb_pixels, core, length);// - 0x00010101 * (long)(length / 10.f * 256.f);
 		y = (float) (core->imgs.cast->height / 2.f) - core->player[LOCAL].offset + ((float) i - nb_pixels / 2.f);
+=======
+		col = get_pixel(x, i, core, length);// - 0x00010101 * (long)(length / 10.f * 256.f);
+		y = (float) (core->imgs.cast->height / 2.f) - core->player[LOCAL].offset - core->player[LOCAL].bubbles + ((float) i - nb_pixels / 2.f);
+>>>>>>> 30ee3555b359368125126130f986f4d4d16c2ac3
 		draw_pixel(x, (int)y, col, &core->layer[CAST_LAYER]);
 		++i;
 	}

@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:50:18 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/26 20:58:43 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/07 17:25:52 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,11 @@ void	send_map(t_core *core)
 		y++;
 	}
 	send(core->network.tcp.com, &core->map.buflens_max, sizeof(size_t), 0);
-	send(core->network.tcp.com, &core->player[0], sizeof(t_player), 0);
-	send(core->network.tcp.com, &core->player[1], sizeof(t_player), 0);
+	send(core->network.tcp.com, &core->player[LOCAL], sizeof(t_player), 0);
+	send(core->network.tcp.com, &core->player[DISTANT], sizeof(t_player), 0);
+	send(core->network.tcp.com, &core->map.nbOfDoors, sizeof(size_t), 0);
+	for (uint32_t i = 0U ; i < core->map.nbOfDoors ; i++)
+		send(core->network.tcp.com, &core->map.doors[i], sizeof(t_door), 0);
 }
 
 void	recv_map(t_core *core)
@@ -49,8 +52,12 @@ void	recv_map(t_core *core)
 	}
 	core->map.buf[y] = NULL;
 	recv(core->network.tcp.com, &core->map.buflens_max, sizeof(size_t), 0);
-	recv(core->network.tcp.com, &core->player[1], sizeof(t_player), 0);
-	recv(core->network.tcp.com, &core->player[0], sizeof(t_player), 0);
+	recv(core->network.tcp.com, &core->player[DISTANT], sizeof(t_player), 0);
+	recv(core->network.tcp.com, &core->player[LOCAL], sizeof(t_player), 0);
+	recv(core->network.tcp.com, &core->map.nbOfDoors, sizeof(size_t), 0);
+	core->map.doors = (t_door *)malloc(sizeof(t_door) * core->map.nbOfDoors);
+	for (uint32_t i = 0U ; i < core->map.nbOfDoors ; i++)
+		recv(core->network.tcp.com, &core->map.doors[i], sizeof(t_door), 0);
 }
 
 inline void	send_element(void *what, size_t size, char poll_id, t_core *core)
@@ -59,6 +66,22 @@ inline void	send_element(void *what, size_t size, char poll_id, t_core *core)
 	{
 		send(core->network.tcp.com, &poll_id, 1, 0);
 		send(core->network.tcp.com, what, size, 0);
+	}
+}
+
+inline static void	handle_poll_door(t_core *core)
+{
+	t_door_info	dinfo;
+	recv(core->network.tcp.com, &dinfo, sizeof(t_door_info), 0);
+	core->map.doors[dinfo.which_door].is_open = !dinfo.is_open;
+	if (core->utils.door_focus == dinfo.which_door)
+	{
+		core->utils.door_text[TO_OPEN]->enabled = FALSE;
+		core->utils.door_text[TO_CLOSE]->enabled = FALSE;
+		if (core->map.doors[dinfo.which_door].is_open)
+			core->utils.door_text[TO_OPEN]->enabled = TRUE;
+		else
+			core->utils.door_text[TO_CLOSE]->enabled = TRUE;
 	}
 }
 
@@ -78,6 +101,8 @@ void	recv_any_element(t_core *core)
 			recv(core->network.tcp.com, &poll_id, 1, 0);
 			if (poll_id == POLL_PLAYER)
 				recv(core->network.tcp.com, &core->player[1], sizeof(t_player), 0);
+			else if (poll_id == POLL_DOOR)
+				handle_poll_door(core);
 		}
 	}
 }

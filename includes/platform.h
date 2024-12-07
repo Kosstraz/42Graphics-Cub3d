@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   platform.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/12/07 17:14:23 by mkhoury          ###   ########.fr       */
+=======
+/*   Updated: 2024/12/07 16:25:26 by ymanchon         ###   ########.fr       */
+>>>>>>> 30ee3555b359368125126130f986f4d4d16c2ac3
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +71,13 @@ typedef struct s_casting
 //	float		line_height[1920];
 	t_pos		wall[1920];
 	int			side[1920];
+<<<<<<< HEAD
 	int			height[1920];
 	float		wallx[1920];
 	float		wallDist[1920];
+=======
+	BOOL		is_door;
+>>>>>>> 30ee3555b359368125126130f986f4d4d16c2ac3
 	float		max;
 	float		min;
 	float		di;
@@ -112,6 +120,9 @@ typedef struct s_player
 	BOOL		crouched;
 	t_vector	movement;
 	t_vector	view;
+	float		bubbles;
+	BOOL		maxed;
+	BOOL		mined;
 }	t_player;
 
 typedef struct s_filepath
@@ -128,6 +139,18 @@ typedef struct s_minimap
 	t_posi	size;
 }	t_minimap;
 
+typedef struct s_door
+{
+	t_posi	pos;
+	BOOL	is_open;
+}	t_door;
+
+typedef struct s_door_info
+{
+	int		which_door;
+	BOOL	is_open;
+}	t_door_info;
+
 typedef struct s_map
 {
 	t_filepath	filepath;
@@ -136,6 +159,8 @@ typedef struct s_map
 	size_t		buflens_max;
 	size_t		*buflens;
 	size_t		buflens_size;
+	t_door		*doors;
+	size_t		nbOfDoors;
 	BOOL		generated;
 	char		*file;
 	char		**buf;
@@ -158,6 +183,7 @@ typedef struct s_layer
 typedef struct s_utils
 {
 	mlx_image_t	*door_text[2];
+	int			door_focus;
 }	t_utils;
 
 typedef struct s_input_action
@@ -172,24 +198,19 @@ typedef struct s_input_action
 	BOOL	key_down;
 }	t_input_action;
 
-typedef struct s_audio_data
-{
-	Uint8* audio_pos;
-	Uint32 audio_len;
-}	t_audio_data;
-
 typedef struct s_audio
 {
-	uint32_t			length;
-	uint8_t				*buffer;
-	SDL_AudioStream		*stream;
-	SDL_AudioSpec		specs;
-	SDL_AudioDeviceID	device_id;
+	uint8_t			*buffer;
+	uint8_t			*pos;
+	uint32_t		len;
+	uint32_t		start_len;
+	BOOL			is_active;
 }	t_audio;
 
 typedef struct s_core
 {
-	t_audio			audio;
+	t_audio			audio[NB_SOUNDS];
+	SDL_AudioSpec	*spec;
 	t_img_container	imgs;
 	mlx_t			*mlx;
 	t_player		player[2];

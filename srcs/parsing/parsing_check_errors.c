@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:45:45 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/07 21:32:51 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/07 21:34:31 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ inline void	parse_texturefile_path_error(t_core *core)
 		printf("color is i %i  %x\n", i, (unsigned int)core->xpms[NO]->texture.pixels[i]);
 		i++;
 	}
+	else
+		core->xpms[WE] = mlx_load_xpm42(core->map.filepath.west);
 }
 
 inline void	parse_cf_colors_error(BOOL cf[2], t_core *core)

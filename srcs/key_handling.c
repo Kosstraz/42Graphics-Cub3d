@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/04 20:42:06 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/07 15:20:32 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ inline void	handle_player_key_release(mlx_key_data_t keyd, t_core *core)
 	if (keyd.key == MLX_KEY_UP)
 		core->input_action.key_up = FALSE;
 	else if (keyd.key == MLX_KEY_DOWN)
-		core->input_action.key_down = FALSE;	
+		core->input_action.key_down = FALSE;
 }
 
 inline void	handle_crouchplayer_key(mlx_key_data_t keyd, t_core *core)

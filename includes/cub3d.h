@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/05 15:05:57 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/07 17:11:48 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,16 @@
 		CORE
 	*/
 
-void	init_audiosys(t_core *core);
+void	bubbles_sin(float bubbles_min, float bubbles_max, t_core *core);
+void	door_raycast(t_core *core);
+void	init_audio_system(t_core *core);
+void	play_sound(t_audio *audio);
+void	destroy_audio_system(t_core *core);
 void	player_check_movements(t_core *core);
 void	player_check_orientationraycast(t_core *core);
+void	handle_doors_key(mlx_key_data_t keyd, t_core *core);
+int		doors_check_state(int x, int y, t_core *core);
+float	vector_norm(float x, float y);
 
 	//* main files (cub3d.c)
 void	cub3d(t_core *core);

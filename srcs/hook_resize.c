@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:43 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/04 20:44:11 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/07 17:08:52 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ static void	reload_images(t_core *core)
 	mlx_delete_image(core->mlx, core->utils.door_text[TO_OPEN]);
 	core->utils.door_text[TO_OPEN] = mlx_put_string(core->mlx, OPEN_DOOR_T, 0, 0);
 	mlx_image_to_window(core->mlx, core->utils.door_text[TO_OPEN], core->mlx->width / 2.0f, core->mlx->height / 2.0f);
-	core->utils.door_text[TO_OPEN]->enabled = false;
+	core->utils.door_text[TO_OPEN]->enabled = FALSE;
 	mlx_delete_image(core->mlx, core->utils.door_text[TO_CLOSE]);
 	core->utils.door_text[TO_CLOSE] = mlx_put_string(core->mlx, CLOSE_DOOR_T, 0, 0);
 	mlx_image_to_window(core->mlx, core->utils.door_text[TO_CLOSE], core->mlx->width / 2.0f, core->mlx->height / 2.0f);
-	core->utils.door_text[TO_CLOSE]->enabled = false;
+	core->utils.door_text[TO_CLOSE]->enabled = FALSE;
 }
 
 void	cub3d_resize_hook(int width, int height, t_core *core)

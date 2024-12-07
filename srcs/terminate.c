@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:47 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/04 20:40:44 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/07 13:13:14 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	free_core(t_core *core)
 {
 	if (core->network.is_active)
 		close_connection(core);
+	destroy_audio_system(core);
 	free_core_map(core);
 	mlx_delete_image(core->mlx, core->imgs.minimap);
 	mlx_delete_image(core->mlx, core->imgs.fps);

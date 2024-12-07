@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enums.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 21:05:01 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/05 16:18:55 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/06 18:50:20 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef enum e_color_type
 	Blue = 0xffff0000,
 	Player = 0xff0404B4,
 	Void = 0xff949494,
+	Door = 0xff909065,
 	Wall = 0xff4A4A4A
 }	t_color_type;
 
