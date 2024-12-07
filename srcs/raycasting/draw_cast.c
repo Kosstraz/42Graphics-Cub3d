@@ -103,7 +103,7 @@ void	draw_col(int x, float length, t_core *core)
 	while (i < (int) nb_pixels)
 	{
 		col = get_pixel(x, i, core, length);// - 0x00010101 * (long)(length / 10.f * 256.f);
-		y = (float) (core->imgs.cast->height / 2.f) - core->player[LOCAL].offset + ((float) i - nb_pixels / 2.f);
+		y = (float) (core->imgs.cast->height / 2.f) - core->player[LOCAL].offset - core->player[LOCAL].bubbles + ((float) i - nb_pixels / 2.f);
 		draw_pixel(x, (int)y, col, &core->layer[CAST_LAYER]);
 		++i;
 	}

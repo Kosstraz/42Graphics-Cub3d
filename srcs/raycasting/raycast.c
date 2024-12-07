@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:19:35 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/06 17:47:37 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/07 17:11:58 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@
 // 	if (core->player.view.dy > 0)
 // 		x = (int) core->player.position.x;
 // 	else if (core->player.view.dy == 0)
-		
-
 // }
 
 // void	cast_ray(t_core *core, int i)
@@ -103,7 +101,7 @@ float	ray_cast(t_core *core, float angle, int i)
 	vector_dir.x = cosf(deg2rad(angle));
 	vector_dir.y = sinf(deg2rad(angle));
 	unit.x = sqrtf(1.f + (vector_dir.y / vector_dir.x) * (vector_dir.y / vector_dir.x));
-	unit.y = sqrtf(1.f+ (vector_dir.x / vector_dir.y) * (vector_dir.x / vector_dir.y));
+	unit.y = sqrtf(1.f + (vector_dir.x / vector_dir.y) * (vector_dir.x / vector_dir.y));
 
 	if (vector_dir.x < 0)
 	{
@@ -153,7 +151,7 @@ float	ray_cast(t_core *core, float angle, int i)
 			if (core->map.buf[map_check.y][map_check.x] == '1')
 				break ;
 			else if (core->map.buf[map_check.y][map_check.x] == 'P')
-				if (!door_handling(map_check, core))
+				if (doors_check_state(map_check.x, map_check.y, core) < 0)
 					break ;
 		}
 	}

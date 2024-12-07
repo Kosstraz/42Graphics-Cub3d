@@ -79,7 +79,7 @@ static void	parse_asciilines(
 			parse_asciilines_check_zero(i, cur, core);
 		if (line[i] == CUB3D_DOOR)
 		{
-			core->map.doors = (t_door *)ft_realloc(core->map.doors, core->map.nbOfDoors, core->map.nbOfDoors + 1U);
+			core->map.doors = (t_door *)ft_realloc(core->map.doors, core->map.nbOfDoors * sizeof(t_door), (core->map.nbOfDoors + 1U) * sizeof(t_door));
 			core->map.doors[core->map.nbOfDoors].pos.x = i;
 			core->map.doors[core->map.nbOfDoors].pos.y = cur;
 			core->map.doors[core->map.nbOfDoors++].is_open = FALSE;

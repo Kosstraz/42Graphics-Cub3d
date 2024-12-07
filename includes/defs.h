@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/06 17:56:34 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:25:51 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,11 @@
 # define MINIMAP_LAYER	0
 # define CAST_LAYER		1
 
+# define BUBBLES_MIN	-18.0f
+# define BUBBLES_MID	0.0f
+# define BUBBLES_SPEED	60.f
+# define BUBBLES_MAX	18.0f
+
 # define C	0
 # define F	1
 
@@ -71,6 +76,19 @@
 # define SO	1
 # define WE	2
 # define EA	3
+
+# define NB_SOUNDS	11
+# define AMBIENT	0
+# define PRANK		1
+# define FREAKY		2
+# define STEP1		3
+# define STEP2		4
+# define STEP3		5
+# define STEP4		6
+# define STEP5		7
+# define DOOR1		8
+# define DOOR2		9
+# define DOOR3		10
 
 # define TO_OPEN	0
 # define TO_CLOSE	1

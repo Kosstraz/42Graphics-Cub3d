@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/06 17:17:35 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:25:26 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_casting
 //	float		line_height[1920];
 	t_pos		wall[1920];
 	int			side[1920];
+	BOOL		is_door;
 	float		max;
 	float		min;
 	float		di;
@@ -109,6 +110,9 @@ typedef struct s_player
 	BOOL		crouched;
 	t_vector	movement;
 	t_vector	view;
+	float		bubbles;
+	BOOL		maxed;
+	BOOL		mined;
 }	t_player;
 
 typedef struct s_filepath
@@ -184,24 +188,19 @@ typedef struct s_input_action
 	BOOL	key_down;
 }	t_input_action;
 
-typedef struct s_audio_data
-{
-	Uint8* audio_pos;
-	Uint32 audio_len;
-}	t_audio_data;
-
 typedef struct s_audio
 {
-	uint32_t			length;
-	uint8_t				*buffer;
-	SDL_AudioStream		*stream;
-	SDL_AudioSpec		specs;
-	SDL_AudioDeviceID	device_id;
+	uint8_t			*buffer;
+	uint8_t			*pos;
+	uint32_t		len;
+	uint32_t		start_len;
+	BOOL			is_active;
 }	t_audio;
 
 typedef struct s_core
 {
-	t_audio			audio;
+	t_audio			audio[NB_SOUNDS];
+	SDL_AudioSpec	*spec;
 	t_img_container	imgs;
 	mlx_t			*mlx;
 	t_player		player[2];

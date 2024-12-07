@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 18:42:44 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/04 20:46:58 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/07 15:27:39 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,23 +68,30 @@ inline void	player_check_movements(t_core *core)
 	if (core->input_action.key_a == TRUE)
 	{
 		move_player(core->player, core->player->view.angle - 90.f, core);
+		bubbles_sin(BUBBLES_MIN, BUBBLES_MAX, core);
 		send_element(&core->player[LOCAL], sizeof(t_player), POLL_PLAYER, core);
 	}
 	else if (core->input_action.key_d == TRUE)
 	{
 		move_player(core->player, core->player->view.angle + 90.f, core);
+		bubbles_sin(BUBBLES_MIN, BUBBLES_MAX, core);
 		send_element(&core->player[LOCAL], sizeof(t_player), POLL_PLAYER, core);
 	}
 	if (core->input_action.key_w == TRUE)
 	{
 		move_player(core->player, core->player->view.angle, core);
+		bubbles_sin(BUBBLES_MIN, BUBBLES_MAX, core);
 		send_element(&core->player[LOCAL], sizeof(t_player), POLL_PLAYER, core);
 	}
 	else if (core->input_action.key_s == TRUE)
 	{
 		move_player(core->player, 180.f + core->player->view.angle, core);
+		bubbles_sin(BUBBLES_MIN, BUBBLES_MAX, core);
 		send_element(&core->player[LOCAL], sizeof(t_player), POLL_PLAYER, core);
 	}
+	if (!core->input_action.key_a && !core->input_action.key_d
+		&& !core->input_action.key_s && !core->input_action.key_w)
+		bubbles_sin(BUBBLES_MID, BUBBLES_MID, core);
 }
 
 inline void	player_check_orientationraycast(t_core *core)

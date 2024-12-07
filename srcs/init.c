@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/06 18:22:03 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/07 17:08:58 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ inline static void	init_core_map(t_core *core)
 	core->map.cf_colors[C]._overflow = FALSE;
 	core->map.cf_colors[F]._overflow = FALSE;
 	core->map.doors = NULL;
-	core->map.nbOfDoors = 0;
+	core->map.nbOfDoors = 0U;
 }
 
 inline void	init_core(t_core *core)
@@ -50,6 +50,7 @@ inline void	init_core(t_core *core)
 	core->minimap.size.y = 0;
 	ft_memset(&core->input_action, 0, sizeof(t_input_action));
 	ft_memset(&core->utils, 0, sizeof(t_utils));
+	core->utils.door_focus = -1;
 	core->layer[MINIMAP_LAYER].pixels = NULL;
 	core->layer[CAST_LAYER].pixels = NULL;
 	core->fps_cooldown = 0;
@@ -84,8 +85,8 @@ inline void	init_mlx_env(t_core *core)
 	core->utils.door_text[TO_CLOSE] = mlx_put_string(core->mlx, CLOSE_DOOR_T, 0, 0);
 	mlx_image_to_window(core->mlx, core->utils.door_text[TO_OPEN], core->mlx->width / 2.0f, core->mlx->height / 2.0f);
 	mlx_image_to_window(core->mlx, core->utils.door_text[TO_CLOSE], core->mlx->width / 2.0f, core->mlx->height / 2.0f);
-	core->utils.door_text[TO_OPEN]->enabled = false;
-	core->utils.door_text[TO_CLOSE]->enabled = false;
+	core->utils.door_text[TO_OPEN]->enabled = FALSE;
+	core->utils.door_text[TO_CLOSE]->enabled = FALSE;
 	core->imgs.minimap = mlx_new_image(core->mlx,
 		core->minimap.size.x,
 		core->minimap.size.y);
@@ -94,7 +95,8 @@ inline void	init_mlx_env(t_core *core)
 	mlx_image_to_window(core->mlx, core->imgs.cast, 0, 0);
 	init_layer(core->imgs.minimap, &core->layer[MINIMAP_LAYER]);
 	init_layer(core->imgs.cast, &core->layer[CAST_LAYER]);
-	//init_audiosys(core);
+	init_audio_system(core);
+	play_sound(&core->audio[AMBIENT]);
 }
 
 inline void	setup_mlx_hooks(t_core *core)

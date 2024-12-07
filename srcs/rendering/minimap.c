@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:43:52 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/04 20:56:10 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/07 17:12:25 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ inline static void	draw_ascii_branch(size_t x, size_t y, t_core *core)
 			draw_ascii_on_minimap(Wall, x * DEFUNIT, y * DEFUNIT, core);
 		else if (core->map.buf[y][x] == ' ')
 			draw_ascii_on_minimap(Transparent, x * DEFUNIT, y * DEFUNIT, core);
+		else if (core->map.buf[y][x] == 'P' && doors_check_state(x, y, core) < 0)
+			draw_ascii_on_minimap(Door, x * DEFUNIT, y * DEFUNIT, core);
 		else
 			draw_ascii_on_minimap(Void, x * DEFUNIT, y * DEFUNIT, core);
 	}
