@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:19:35 by mkhoury           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/12/07 17:45:12 by mkhoury          ###   ########.fr       */
-=======
-/*   Updated: 2024/12/07 17:11:58 by ymanchon         ###   ########.fr       */
->>>>>>> 30ee3555b359368125126130f986f4d4d16c2ac3
+/*   Updated: 2024/12/08 16:21:30 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,11 +163,11 @@ float	ray_cast(t_core *core, float angle, int i)
 		WallDist = side.y - side.x;
 	core->cast.height[i] = core->mlx->height / WallDist;
 	core->cast.wallDist[i] = cosf(deg2rad(angle - core->player->view.angle)) * (distance);
-	double WallX;
+	float WallX;
 	if (side_int == 0)
-		WallX = ray_start.y + WallDist * vector_dir.y;
+		WallX = sin(deg2rad(angle)) * distance + ray_start.y;//ray_start.y + WallDist * vector_dir.y;
 	else
-		WallX = ray_start.x + WallDist * vector_dir.x;
+		WallX = cos(deg2rad(angle)) * distance + ray_start.x;//ray_start.x + WallDist * vector_dir.x;
 	WallX -= (int) WallX;
 	core->cast.wallx[i] = WallX;
 	core->cast.wall[i].x = map_check.x;

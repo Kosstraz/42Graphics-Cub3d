@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   platform.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/12/07 17:14:23 by mkhoury          ###   ########.fr       */
-=======
-/*   Updated: 2024/12/07 16:25:26 by ymanchon         ###   ########.fr       */
->>>>>>> 30ee3555b359368125126130f986f4d4d16c2ac3
+/*   Updated: 2024/12/08 17:25:01 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +67,10 @@ typedef struct s_casting
 //	float		line_height[1920];
 	t_pos		wall[1920];
 	int			side[1920];
-<<<<<<< HEAD
 	int			height[1920];
 	float		wallx[1920];
 	float		wallDist[1920];
-=======
 	BOOL		is_door;
->>>>>>> 30ee3555b359368125126130f986f4d4d16c2ac3
 	float		max;
 	float		min;
 	float		di;
@@ -227,6 +220,7 @@ typedef struct s_core
 	BOOL			mouse_visible;
 	int				fps_cooldown;
 	char			*_strerror;
+	int	tex_debug;
 }	t_core;
 
 

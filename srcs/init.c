@@ -6,11 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/12/07 17:46:05 by mkhoury          ###   ########.fr       */
-=======
-/*   Updated: 2024/12/07 17:08:58 by ymanchon         ###   ########.fr       */
->>>>>>> 30ee3555b359368125126130f986f4d4d16c2ac3
+/*   Updated: 2024/12/08 17:25:15 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +96,7 @@ inline void	init_mlx_env(t_core *core)
 	init_layer(core->imgs.minimap, &core->layer[MINIMAP_LAYER]);
 	init_layer(core->imgs.cast, &core->layer[CAST_LAYER]);
 	init_audio_system(core);
+	core->tex_debug = 1000;
 	play_sound(&core->audio[AMBIENT]);
 }
 

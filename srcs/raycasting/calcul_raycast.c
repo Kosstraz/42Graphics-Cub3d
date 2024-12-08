@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calcul_raycast.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:46:55 by mkhoury           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/12/06 16:06:16 by mkhoury          ###   ########.fr       */
-=======
-/*   Updated: 2024/12/07 17:12:08 by ymanchon         ###   ########.fr       */
->>>>>>> 30ee3555b359368125126130f986f4d4d16c2ac3
+/*   Updated: 2024/12/08 13:43:25 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +58,9 @@ void	calcul_casts(t_core *core)
 	{
 		core->cast.angle[i] = core->player[LOCAL].view.angle - (float) core->cast.hfov + core->cast.di * (float) i;
 		if (core->cast.angle[i] < 0)
-<<<<<<< HEAD
-			core->cast.angle[i] = 360.f + core->cast.angle[i];
-		if (core->cast.angle[i] > 360.f)
-			core->cast.angle[i] = core->cast.angle[i] - 360;
-=======
 			core->cast.angle[i] = 360.0f + core->cast.angle[i];
 		if (core->cast.angle[i] > 360.0f)
 			core->cast.angle[i] -= 360.0f;
->>>>>>> 30ee3555b359368125126130f986f4d4d16c2ac3
 		core->cast.casts[i] = ray_cast(core, core->cast.angle[i], i);
 		if (min > core->cast.casts[i])
 			min = core->cast.casts[i];

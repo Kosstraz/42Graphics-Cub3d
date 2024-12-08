@@ -119,84 +119,97 @@ long	get_pixel(int x, float y, t_core *core, float length)
 	// 	return (core->xpms[SO]->texture.pixels[(int) (y) + (int) x_texture]);
 	// }
 	//core->xpms[EA]->texture.
+	// if ((int)(core->cast.wallx[x] * 256.f) == 0)
+	// 	return (0xffffffff);
 	// if (core->cast.side[x] == 0 && ((angle <= 90 && angle >= 0) || (angle <=360 && angle >= 270)))
-	// 	base = 0xffff0000 - 0x00010000 * (long)(length / 10.f * 256.f);
+	// 	base = 0xffff0000 - 0x00010000 * (long) (core->cast.wallx[x] * 256.f);//(long)(length / 10.f * 256.f);
 	// else if (core->cast.side[x] == 0 && (angle < 270 && angle > 90))
-	// 	base = 0xff00ff00 - 0x00000100 * (long)(length / 10.f * 256.f);
+	// 	base = 0xff00ff00 - 0x00000100 * (core->cast.wallx[x] * 256.f);//(long)(length / 10.f * 256.f);
 	// else if (core->cast.side[x] == 1 && (angle <= 180 && angle >= 0))
-	// 	base = 0xff0000ff - 0x00000001 * (long)(length / 10.f * 256.f);
+	// 	base = 0xff0000ff - 0x00000001 * (long) (core->cast.wallx[x] * 256.f);//(long)(length / 10.f * 256.f);
 	// else
-	// 	base = 0xffffffff - 0x00010101 * (long)(length / 10.f * 256.f);
+	// 	base = 0xffffffff - 0x00010101 * (long) (core->cast.wallx[x] * 256.f);//(long)(length / 10.f * 256.f);
 	// //base = (long) core->xpms[side].
 	// //printf("angle is : %f side is : %i color is %ld\n",angle, core->cast.side[x], base);
 
 	if (core->cast.side[x] == 0 && ((angle <= 90 && angle >= 0) || (angle <=360 && angle >= 270)))
 	{
 		//(sinf(deg2rad(core->cast.angle[x])) + core->player[LOCAL].position.y - (int)(core->player[LOCAL].position.y)) * core->xpms[EA]->texture.width;
-		x_texture = (int) (core->cast.wallx[x] * 64.f);
+		x_texture = (int) (core->cast.wallx[x] * 63.f);
+		y_texture = (int) (y * 63.f);
 		if (x_texture >= 64)
 			x_texture = 63;
 		if (x_texture < 0)
 			x_texture = 0;
-		if (y_texture >= 64)
-			y_texture = 63;
+		//if (y_texture >= 64)
+		//	y_texture = 63;
+		if (y < 0)
+			y = 0;
 		side = EA;
 		//printf("x %f y %f\n",x_texture, y);
 		//return (core->xpms[EA]->texture.pixels[y_texture + x_texture]);
+		//return (((unsigned int*)&core->xpms[side]->texture.pixels)[y_texture * 64 + x_texture]);
 	}
 	else if (core->cast.side[x] == 0 && (angle < 270 && angle > 90))
 	{
 	//	x_texture = (sinf(deg2rad(core->cast.angle[x])) + core->player[LOCAL].position.y - (int)(core->player[LOCAL].position.y)) * core->xpms[WE]->texture.width;
 		//y = y * core->xpms[WE]->texture.height;
 		side = WE;
-		x_texture = (int) (core->cast.wallx[x] * 64.f);
-		y_texture = (int) (y * 64.f);
+		x_texture = (int) (core->cast.wallx[x] * 63.f);
+		y_texture = (int) (y * 63.f);
 		if (x_texture >= 64)
 			x_texture = 63;
 		if (x_texture < 0)
 			x_texture = 0;
-		if (y_texture >= 64)
-			y_texture = 63;
+		//if (y_texture >= 64)
+		//	y_texture = 63;
 		//printf("x %f y %f\n",x_texture, y);
 		//return (core->xpms[WE]->texture.pixels[y_texture + x_texture]);
+		//return (((unsigned int*)&core->xpms[side]->texture.pixels)[y_texture * 64 + x_texture]);
 	}
 	else if (core->cast.side[x] == 1 && (angle <= 180 && angle >= 0))
 	{
 	//	x_texture = (cos(deg2rad(core->cast.angle[x])) + core->player[LOCAL].position.x - (int)(core->player[LOCAL].position.x)) * core->xpms[NO]->texture.width;
 		//y = y * core->xpms[NO]->texture.height;
-		x_texture = (int) (core->cast.wallx[x] * 64.f);
-		y_texture = (int) (y * 64.f);
+		x_texture = (int) (core->cast.wallx[x] * 63.f);
+		y_texture = (int) (y * 63.f);
 		side = NO;
 		if (x_texture >= 64)
 			x_texture = 63;
 		if (x_texture < 0)
 			x_texture = 0;
-		if (y_texture >= 64)
-			y_texture = 63;
+
+		//if (y_texture >= 64)
+		//	y_texture = 63;
 		//printf("x %f y %f\n",x_texture, y);
 		//return (core->xpms[NO]->texture.pixels[y_texture + x_texture]);
+		//return (((unsigned int*)&core->xpms[side]->texture.pixels)[y_texture * 64 + x_texture]);
 	}
 	else
 	{
 	//	x_texture = (cos(deg2rad(core->cast.angle[x])) + core->player[LOCAL].position.x - (int)(core->player[LOCAL].position.x)) * core->xpms[SO]->texture.width;
 		// y = y * core->xpms[SO]->texture.height;
 		side = SO;
-		x_texture = (int) (core->cast.wallx[x] * 64.f);
-		y_texture = (int) (y * 64.f);
+		x_texture = (int) (core->cast.wallx[x] * 63.f);
+		y_texture = (int) (y * 63.f);
 		if (x_texture >= 64)
 			x_texture = 63;
 		if (x_texture < 0)
 			x_texture = 0;
-		if (y_texture >= 64)
-			y_texture = 63;
+		//if (y_texture >= 64)
+		//	y_texture = 63;
 		//printf("x %f y %f\n",x_texture, y);
 		
 	}
-	//printf("x : %i y: %i side %i\n", core->cast.wallx[x], x_texture, y_texture, side);
-	//if (x == 1 && y >= 0.9f)
-	//	printf("%x\n", core->xpms[side]->texture.pixels[y_texture * 64 + x_texture]);
-	return (core->xpms[side]->texture.pixels[y_texture * 64 + x_texture]);
-
+	// //printf("x : %i y: %i side %i\n", core->cast.wallx[x], x_texture, y_texture, side);
+	// //if (x == 1 && y >= 0.9f)
+	// //	printf("%x\n", core->xpms[side]->texture.pixels[y_texture * 64 + x_texture]);
+	// return (((unsigned int*)&core->xpms[side]->texture.pixels)[y_texture * 64 + x_texture]);
+	//if (y_texture == 63)
+	//	return (0xff000000);
+	// if (x_texture > 40)
+	// 	y_texture++; 
+	return (((unsigned int *)(core->xpms[side]->texture.pixels))[(y_texture * 64) + x_texture]);//(((unsigned int*)core->xpms)[side]->texture.pixels)[(y_texture * 64) + x_texture]);
 	return (base );//+ degrade(base, length));
 }
 
@@ -210,18 +223,13 @@ void	draw_col(int x, float length, t_core *core)
 
 	//nb_pixels = core->half_height * 2.f / (length) ;//+ core->cast.wallDist[x];
 	nb_pixels = core->half_height / (core->cast.wallDist[x] / 3.f);
-	if (length > 10.f)
-		return ;
+	//if (length > 10.f)
+	//	return ;
 	i = 0;
 	while (i < (int) nb_pixels)
 	{
-<<<<<<< HEAD
 		col = 0xff000000 + get_pixel(x, (float) i / nb_pixels, core, length);// - 0x00010101 * (long)(length / 10.f * 256.f);
 		y = (float) (core->imgs.cast->height / 2.f) - core->player[LOCAL].offset + ((float) i - nb_pixels / 2.f);
-=======
-		col = get_pixel(x, i, core, length);// - 0x00010101 * (long)(length / 10.f * 256.f);
-		y = (float) (core->imgs.cast->height / 2.f) - core->player[LOCAL].offset - core->player[LOCAL].bubbles + ((float) i - nb_pixels / 2.f);
->>>>>>> 30ee3555b359368125126130f986f4d4d16c2ac3
 		draw_pixel(x, (int)y, col, &core->layer[CAST_LAYER]);
 		++i;
 	}

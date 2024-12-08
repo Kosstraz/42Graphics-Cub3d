@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:44 by ymanchon          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/12/07 14:44:58 by mkhoury          ###   ########.fr       */
-=======
-/*   Updated: 2024/12/07 15:26:25 by ymanchon         ###   ########.fr       */
->>>>>>> 30ee3555b359368125126130f986f4d4d16c2ac3
+/*   Updated: 2024/12/08 13:42:10 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +57,8 @@ void	cub3d_cursor_hook(double xpos, double ypos, t_core *core)
 		tmp = core->player[LOCAL].offset - (core->half_height - ypos) * 15.0f * core->mlx->delta_time;
 		if (tmp >= -300.0f && tmp <= 300.0f)
 			core->player[LOCAL].offset = tmp;
-<<<<<<< HEAD
 		core->player[LOCAL].view.dz = core->half_height - tmp;
 		core->player[LOCAL].view.angle -= (core->half_width - xpos) * 2.0f * core->mlx->delta_time;//90 * core->mlx->delta_time;
-=======
-		core->player[LOCAL].view.angle -= (core->half_width - xpos) * 2.0f * core->mlx->delta_time;
->>>>>>> 30ee3555b359368125126130f986f4d4d16c2ac3
 		if (core->player[LOCAL].view.angle >= 360.f)
 			core->player[LOCAL].view.angle = 0.f;
 		if (core->player[LOCAL].view.angle < 0)

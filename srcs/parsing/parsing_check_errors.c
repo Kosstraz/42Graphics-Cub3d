@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:45:45 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/07 21:34:31 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/08 17:48:50 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,32 @@ inline void	parse_texturefile_path_error(t_core *core)
 	core->xpms = malloc (sizeof(xpm_t*) * 4);
 	if (!core->xpms)
 		exit(1);
-	core->xpms[WE] = mlx_load_xpm42(core->map.filepath.west);
-	if (!(core->xpms[WE]))
-		printf("error west\n");
+	
 	core->xpms[EA] = mlx_load_xpm42(core->map.filepath.east);
 	if (!core->xpms[EA])
 		printf("error east\n");
+	core->xpms[WE] = mlx_load_xpm42(core->map.filepath.west);
+	if (!(core->xpms[WE]))
+		printf("error west\n");
+
 	core->xpms[SO] = mlx_load_xpm42(core->map.filepath.south);
 	if (!core->xpms[SO])
 		printf("error south\n");
 	core->xpms[NO] = mlx_load_xpm42(core->map.filepath.north);
 	if (!core->xpms[NO])
 		printf("error north\n");
-	
-	int i = 0;
-	while (1)
-	{
-		printf("color is i %i  %x\n", i, (unsigned int)core->xpms[NO]->texture.pixels[i]);
-		i++;
-	}
-	else
-		core->xpms[WE] = mlx_load_xpm42(core->map.filepath.west);
+	// printf("path west %p\n", core->xpms[NO]);
+	// printf("path east %p\n", core->xpms[SO]);
+	// printf("path sud %p\n", core->xpms[EA]);
+	// printf("path nord %p\n", core->xpms[WE]);
+	// int i = 0;
+	// while (1)
+	// {
+	// 	printf("color is i %i  %x\n", i, (unsigned int)core->xpms[NO]->texture.pixels[i]);
+	// 	i++;
+	// }
+	// else
+	// 	core->xpms[WE] = mlx_load_xpm42(core->map.filepath.west);
 }
 
 inline void	parse_cf_colors_error(BOOL cf[2], t_core *core)
