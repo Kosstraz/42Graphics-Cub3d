@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/07 18:28:13 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/08 13:59:50 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ inline void	init_mlx_env(t_core *core)
 	init_layer(core->imgs.cast, &core->layer[CAST_LAYER]);
 	init_audio_system(core);
 	play_sound(&core->audio[AMBIENT]);
+	//play_sound(&core->audio[PRANK]);
+	//play_sound(&core->audio[FREAKY]);
 }
 
 inline void	setup_mlx_hooks(t_core *core)

@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:49 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/07 17:52:08 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/08 12:39:07 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,37 @@
 
 t_color_type	increase_lighting(t_color_type col, int by)
 {
-	t_color_type	ret;
+    t_color_type ret;
+    int r, g, b;
 
-	//ret = col + 0xff010101 * by;
-	ret = (ret & 0xff000000)
-		| ((ret & 0x00ff0000) + (by << 16))
-		| ((ret & 0x0000ff00) + (by << 8))
-		| ((ret & 0x000000ff) + (by));//(by << 24) | (ret & 0x00ffffff);
+    // Extraire les composantes ABGR
+    r = (col & 0x000000FF);
+    g = (col & 0x0000FF00) >> 8;
+    b = (col & 0x00FF0000) >> 16;
+
+    // Augmenter les composantes RGB avec clamping à 255
+    r = (r + by > 255) ? 255 : (r + by);
+    g = (g + by > 255) ? 255 : (g + by);
+    b = (b + by > 255) ? 255 : (b + by);
+
+    // Reconstruire la couleur avec le même canal Alpha
+    ret = (col & 0xFF000000) // Conserve Alpha
+        | (b << 16)          // Ajoute Blue
+        | (g << 8)           // Ajoute Green
+        | r;                 // Ajoute Red
+	//t_color_type	ret;
+//
+	//ret = col;
+	//if (((ret >> 16) & 0xff) + by > 255)
+	//	ret = (ret) | 0x00ff0000;
+	//else if (((ret >> 8) & 0xff) + by > 255)
+	//	ret = (ret) | 0x0000ff00;
+	//else if ((ret & 0xff) + by > 255)
+	//	ret = (ret) | 0x000000ff;
+	//ret = (ret & 0xff000000)
+	//	| ((ret & 0x00ff0000) + (by << 16))
+	//	| ((ret & 0x0000ff00) + (by << 8))
+	//	| ((ret & 0x000000ff) + (by));//(by << 24) | (ret & 0x00ffffff);
 	return (ret);
 }
 

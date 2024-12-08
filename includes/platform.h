@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/07 18:28:08 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/08 12:59:00 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ typedef struct s_player
 	float		bubbles_speed;
 	BOOL		maxed;
 	BOOL		mined;
+	BOOL		torch_activated;
 }	t_player;
 
 typedef struct s_filepath

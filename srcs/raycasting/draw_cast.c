@@ -51,17 +51,34 @@ void	clear_img(t_core *core)
 // 	}
 // }
 
-float	float_normalize(float min, float max, float x)
+inline long	torch(int x, int y, float length, long basecolor, t_core *core)
 {
-	return ((x - min) / (max - min));
+	float	val;
+	float	j;
+	size_t	i;
+	size_t	g;
+
+	g = 1;
+	i = 101.0f;
+	y -= core->half_height;
+	val = sqrtf(x * x + y * y);
+	if (val <= 100.0f + length)
+		return (increase_lighting(basecolor, 100));
+	else if (val <= 200.0f + length)
+	{
+		while (i <= 200)
+		{
+			j = (float)i + length;
+			if (val > j - 1.0f && val <= j)
+				return (increase_lighting(basecolor, 100 - g));
+			++g;
+			++i;
+		}
+	}
+	return (basecolor);
 }
 
-float	float_denormalize(float min, float max, float x)
-{
-	return (x * max - x * min + min);
-}
-
-long	get_pixel(int x, int y, t_core *core, float length)
+long	get_pixel(int x, int y, int xl, int yl, t_core *core, float torchlength, float length)
 {
 	long	base;
 	t_pos	wall;
@@ -96,11 +113,10 @@ long	get_pixel(int x, int y, t_core *core, float length)
 	//base = (long) core->xpms[side].
 	//printf("angle is : %f side is : %i color is %ld\n",angle, core->cast.side[x], base);
 
-	x -= core->half_width;
-	y -= core->half_height + core->player[LOCAL].offset + core->player[LOCAL].bubbles;
-	if (sqrtf(x * x + y * y) <= 100.0f)
-		return (increase_lighting(base, 255));
-	return (base);
+	if (core->player[LOCAL].torch_activated)
+		return (torch(xl, yl, torchlength, base, core));
+	else
+		return (base);
 }
 
 void	draw_col(int x, float length, t_core *core)
@@ -108,17 +124,20 @@ void	draw_col(int x, float length, t_core *core)
 	int		i;
 	float	y;
 	float	nb_pixels;
+	int		torchx;
+	float	torchlength;
 	long	col;
-	//long	degrade;
 
 	nb_pixels = core->mlx->height / (length);
 	if (length > 10.f)
 		return ;
+	torchlength = length * 50;
+	torchx = x - core->half_width;
 	i = 0;
 	while (i < (int) nb_pixels)
 	{
-		col = get_pixel(x, i, core, length);;
 		y = (float) (core->imgs.cast->height / 2.f) - core->player[LOCAL].offset - core->player[LOCAL].bubbles + ((float) i - nb_pixels / 2.f);
+		col = get_pixel(x, i, torchx, y, core, torchlength, length);;
 		draw_pixel(x, (int)y, col, &core->layer[CAST_LAYER]);
 		++i;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   show_fps.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:44:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/03 16:24:01 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/08 13:01:19 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	show_fps(t_core *core)
 		mlx_delete_image(core->mlx, core->imgs.fps);
 		fps = ft_itoa((int)(1.0f / (float)core->mlx->delta_time));
 		core->imgs.fps = mlx_put_string(core->mlx, fps, 0, 0);
+		mlx_image_to_window(core->mlx, core->imgs.fps, 0, 0);
 		core->fps_cooldown = (int)(float)round(1000 * core->mlx->delta_time);
 		free(fps);
 		core->fps_cooldown = 1000 * core->mlx->delta_time;

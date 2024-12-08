@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/07 18:16:47 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/08 13:19:57 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@
 # define WE	2
 # define EA	3
 
-# define NB_SOUNDS	11
+# define NB_SOUNDS	13
 # define AMBIENT	0
 # define PRANK		1
 # define FREAKY		2
@@ -90,6 +90,8 @@
 # define DOOR1		8
 # define DOOR2		9
 # define DOOR3		10
+# define TORCHON	11
+# define TORCHOFF	12
 
 # define TO_OPEN	0
 # define TO_CLOSE	1

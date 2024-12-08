@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 19:54:09 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/07 16:26:34 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/08 13:29:56 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	init_audio_system(t_core *core)
 	if (SDL_Init(SDL_INIT_AUDIO) < 0)
 		ft_printf("Failed to init SDL AUDIO\n");
 	core->spec = (SDL_AudioSpec *)malloc(sizeof(SDL_AudioSpec));
-	load_wavfile("./Assets/sounds/Ambient.wav", &core->audio[AMBIENT], core->spec);
+	load_wavfile("./Assets/sounds/Ambient2.wav", &core->audio[AMBIENT], core->spec);
 	load_wavfile("./Assets/sounds/GoofyRunningSoundEffect.wav", &core->audio[PRANK], core->spec);
 	load_wavfile("./Assets/sounds/FreakySoundEffects.wav", &core->audio[FREAKY], core->spec);
 	load_wavfile("./Assets/sounds/step1.wav", &core->audio[STEP1], core->spec);
@@ -82,6 +82,8 @@ void	init_audio_system(t_core *core)
 	load_wavfile("./Assets/sounds/door1.wav", &core->audio[DOOR1], core->spec);
 	load_wavfile("./Assets/sounds/door2.wav", &core->audio[DOOR2], core->spec);
 	load_wavfile("./Assets/sounds/door3.wav", &core->audio[DOOR3], core->spec);
+	load_wavfile("./Assets/sounds/TorchOn.wav", &core->audio[TORCHON], core->spec);
+	load_wavfile("./Assets/sounds/TorchOff.wav", &core->audio[TORCHOFF], core->spec);
 	init_audio_spec(core, core->spec);
 	if (SDL_OpenAudio(core->spec, NULL))
 		ft_printf("Failed to open SDL audio\n");
