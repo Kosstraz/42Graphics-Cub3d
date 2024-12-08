@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/08 17:51:42 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/08 18:19:29 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,6 @@ inline void	init_core(t_core *core)
 	core->layer[MINIMAP_LAYER].pixels = NULL;
 	core->layer[CAST_LAYER].pixels = NULL;
 	core->fps_cooldown = 0;
-	// core->xpms[NO] = NULL;
-	// core->xpms[SO] = NULL;
-	// core->xpms[WE] = NULL;
-	// core->xpms[EA] = NULL;
 	init_player(&core->player[LOCAL]);
 	init_player(&core->player[DISTANT]);
 	init_core_map(core);
@@ -98,7 +94,6 @@ inline void	init_mlx_env(t_core *core)
 	init_layer(core->imgs.minimap, &core->layer[MINIMAP_LAYER]);
 	init_layer(core->imgs.cast, &core->layer[CAST_LAYER]);
 	init_audio_system(core);
-	core->tex_debug = 1000;
 	play_sound(&core->audio[AMBIENT]);
 	//play_sound(&core->audio[PRANK]);
 	//play_sound(&core->audio[FREAKY]);
