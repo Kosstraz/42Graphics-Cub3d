@@ -141,6 +141,7 @@ long	get_pixel(int x, float y, t_core *core, float length)
 			x_texture = 63;
 		if (x_texture < 0)
 			x_texture = 0;
+
 		//if (y_texture >= 64)
 		//	y_texture = 63;
 		if (y < 0)

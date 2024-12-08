@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:50 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/07 16:48:09 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/08 13:21:22 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,7 @@ void	cub3d(t_core *core)
 	else if (core->network.is_active)
 		recv_map(core);
 	init_mlx_env(core);
-	//printf("%i %i apres init \n", core->mlx->width, core->mlx->height);
 	setup_mlx_hooks(core);
-	//printf("%i %i hooks \n", core->mlx->width, core->mlx->height);
 	mlx_loop(core->mlx);
 	free_core(core);
 }

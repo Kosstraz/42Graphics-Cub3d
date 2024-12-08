@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 18:42:44 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/07 15:27:39 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/07 18:28:17 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static void	move_player(t_player *player, float angle, t_core *core)
 	
 	cosx = cosf(deg2rad(angle));
 	siny = sinf(deg2rad(angle));
-	next.x = player->position.x + cosx * DEFPLAYERSPEED / 50.f;
-	next.y = player->position.y + siny * DEFPLAYERSPEED / 50.f;
+	next.x = player->position.x + cosx * player->speed / 50.f;
+	next.y = player->position.y + siny * player->speed / 50.f;
 	tmp = next;
 	move_player_utils(player, &tmp);
 	tmp.x = (int)tmp.x;
@@ -79,6 +79,17 @@ inline void	player_check_movements(t_core *core)
 	}
 	if (core->input_action.key_w == TRUE)
 	{
+		if (core->input_action.key_shift == TRUE)
+		{
+			core->player[LOCAL].bubbles_speed = BUBBLES_SPEED * 2.5f;
+			core->player[LOCAL].speed = DEFPLAYERSPEED * 2.0f;
+		}
+		else
+		{
+			core->player[LOCAL].bubbles_speed = BUBBLES_SPEED;
+			core->player[LOCAL].speed = DEFPLAYERSPEED;
+		}
+		//printf("stamina : %f\n", core->player[LOCAL].stamina);
 		move_player(core->player, core->player->view.angle, core);
 		bubbles_sin(BUBBLES_MIN, BUBBLES_MAX, core);
 		send_element(&core->player[LOCAL], sizeof(t_player), POLL_PLAYER, core);

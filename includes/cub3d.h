@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/07 17:11:48 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/08 13:23:27 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 		CORE
 	*/
 
+long	torch(int x, int y, float length, long basecolor, t_core *core);
 void	bubbles_sin(float bubbles_min, float bubbles_max, t_core *core);
 void	door_raycast(t_core *core);
 void	init_audio_system(t_core *core);

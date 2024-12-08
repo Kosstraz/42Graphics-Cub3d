@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/08 17:25:15 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/08 17:51:42 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 inline static void	init_player(t_player *player)
 {
 	ft_memset(player, 0, sizeof(t_player));
+	player->bubbles_speed = BUBBLES_SPEED;
+	player->speed = DEFPLAYERSPEED;
 	player->life = MAX_LIFE;
 }
 
@@ -98,6 +100,8 @@ inline void	init_mlx_env(t_core *core)
 	init_audio_system(core);
 	core->tex_debug = 1000;
 	play_sound(&core->audio[AMBIENT]);
+	//play_sound(&core->audio[PRANK]);
+	//play_sound(&core->audio[FREAKY]);
 }
 
 inline void	setup_mlx_hooks(t_core *core)

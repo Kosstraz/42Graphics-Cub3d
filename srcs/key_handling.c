@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/07 15:20:32 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/08 13:20:52 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ inline void	handle_player_key_press(mlx_key_data_t keyd, t_core *core)
 	if (keyd.key == MLX_KEY_UP)
 		core->input_action.key_up = TRUE;
 	else if (keyd.key == MLX_KEY_DOWN)
-		core->input_action.key_down = TRUE;	
+		core->input_action.key_down = TRUE;
+	if (keyd.key == MLX_KEY_LEFT_SHIFT)
+		core->input_action.key_shift = TRUE;
 }
 
 inline void	handle_player_key_release(mlx_key_data_t keyd, t_core *core)
@@ -75,6 +77,19 @@ inline void	handle_player_key_release(mlx_key_data_t keyd, t_core *core)
 		core->input_action.key_up = FALSE;
 	else if (keyd.key == MLX_KEY_DOWN)
 		core->input_action.key_down = FALSE;
+	if (keyd.key == MLX_KEY_LEFT_SHIFT)
+		core->input_action.key_shift = FALSE;
+	if (keyd.key == MLX_KEY_F && core->player[LOCAL].torch_activated)
+	{
+		play_sound(&core->audio[TORCHOFF]);
+		core->player[LOCAL].torch_activated = FALSE;
+	}
+	else if (keyd.key == MLX_KEY_F && !core->player[LOCAL].torch_activated)
+	{
+		play_sound(&core->audio[TORCHON]);
+		core->player[LOCAL].torch_activated = TRUE;
+	}
+		
 }
 
 inline void	handle_crouchplayer_key(mlx_key_data_t keyd, t_core *core)

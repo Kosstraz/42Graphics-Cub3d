@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/08 13:41:27 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/08 17:49:47 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@
 # define GAME_TITLE		"Alien Isolation"
 # define GAME_TITLE_S	"Alien Isolation - Host"
 # define MAX_LIFE		100
+# define MAX_STAM		100.f
 
 # define CUB3D_WALL		'1'
 # define CUB3D_VOID		'0'
@@ -77,7 +78,7 @@
 # define WE	2
 # define EA	3
 
-# define NB_SOUNDS	11
+# define NB_SOUNDS	13
 # define AMBIENT	0
 # define PRANK		1
 # define FREAKY		2
@@ -89,6 +90,8 @@
 # define DOOR1		8
 # define DOOR2		9
 # define DOOR3		10
+# define TORCHON	11
+# define TORCHOFF	12
 
 # define TO_OPEN	0
 # define TO_CLOSE	1
