@@ -157,7 +157,7 @@ long	get_pixel(int x, float y, int torchx, int torchy, float torchlength, t_core
 		
 	}
 	if (core->player[LOCAL].torch_activated)
-		return (increase_lighting(torch(torchx, torchy, torchlength, ((unsigned int *)(core->xpms[side]->texture.pixels))[(y_texture * 64) + x_texture], core), -length * 15));
+		return (increase_lighting(torch(torchx, torchy, torchlength, ((unsigned int *)(core->xpms[side]->texture.pixels))[(y_texture * 64) + x_texture], core), -length * 13));
 	else
 		return (increase_lighting(((unsigned int *)(core->xpms[side]->texture.pixels))[(y_texture * 64) + x_texture], -length * 15));
 }
@@ -166,24 +166,30 @@ void	draw_col(int x, float length, t_core *core)
 {
 	int		i;
 	float	y;
+	float	y_ceiling;
+	float	y_floor;
 	float	nb_pixels;
 	int		torchx;
 	float	torchlength;
 	long	col;
-	//long	degrade;
 
-	//nb_pixels = core->half_height * 2.f / (length) ;//+ core->cast.wallDist[x];
 	nb_pixels = core->half_height / (core->cast.wallDist[x] / 3.f);
-	//if (length > 10.f)
-	//	return ;
 	torchlength = length * 50.0f;
 	torchx = x - core->half_width;
+	y_floor = (float)(core->imgs.cast->height / 2.f) + core->player[LOCAL].offset + core->player[LOCAL].bubbles + ((float) i - nb_pixels / 2.f);
 	i = 0;
 	while (i < (int) nb_pixels)
 	{
-		y = (float) (core->imgs.cast->height / 2.f) - core->player[LOCAL].offset - core->player[LOCAL].bubbles + ((float) i - nb_pixels / 2.f);
+		y = (float)(core->imgs.cast->height / 2.f) - core->player[LOCAL].offset - core->player[LOCAL].bubbles + ((float) i - nb_pixels / 2.f);
+		y_ceiling = (float)(core->imgs.cast->height / 2.f) + core->player[LOCAL].offset + core->player[LOCAL].bubbles + ((float) i - nb_pixels / 2.f);
+		y_floor = (float)(core->imgs.cast->height / 2.f) - core->player[LOCAL].offset - core->player[LOCAL].bubbles - ((float) i - nb_pixels / 2.f);
 		col = get_pixel(x, (float) i / nb_pixels, torchx, y, torchlength, core, length);// - 0x00010101 * (long)(length / 10.f * 256.f);
 		draw_pixel(x, (int)y, col, &core->layer[CAST_LAYER]);
+		//else
+		//{
+		//draw_pixel(x, i - y_ceiling, coltoui(core->map.cf_colors[C]), &core->layer[CAST_LAYER]);
+		//draw_pixel(x, i + y_floor, coltoui(core->map.cf_colors[F]), &core->layer[CAST_LAYER]);
+		//}
 		++i;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:50 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/08 18:31:04 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/09 13:18:08 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	game(t_core *core)
 	player_check_orientationraycast(core);
 	if (!core->mouse_visible)
 		mlx_set_mouse_pos(core->mlx, core->half_width, core->half_height);
-	// draw ray casting
-	// draw entity
 	calcul_casts(core);
 	clear_img(core);
 	draw_cast(core);

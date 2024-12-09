@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/08 13:23:27 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/09 14:05:59 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	player_check_orientationraycast(t_core *core);
 void	handle_doors_key(mlx_key_data_t keyd, t_core *core);
 int		doors_check_state(int x, int y, t_core *core);
 float	vector_norm(float x, float y);
+t_uint	coltoui(t_color c);
 
 	//* main files (cub3d.c)
 void	cub3d(t_core *core);
@@ -146,7 +147,7 @@ int	draw_pixel(
 			uint32_t x,
 			uint32_t y,
 			t_color_type color,
-			t_layer *layer);
+			t_layer *layer)	__attribute__((hot));
 void	orientation_minimap(t_core *core);
 float	ray_cast(t_core *core, float angle, int i);
 void	init_cast(t_casting *cast, t_player player);

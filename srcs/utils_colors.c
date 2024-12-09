@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:49 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/09 13:07:43 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/09 13:30:31 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,16 @@ t_color	ctocol(t_uchar r, t_uchar g, t_uchar b)
 	ret.g = g;
 	ret.b = b;
 	ret._overflow = FALSE;
+	return (ret);
+}
+
+uint32_t	coltoui(t_color c)
+{
+	uint32_t	ret;
+	ret = (0xff000000)
+		| (c.b << 16)
+		| (c.g << 8)
+		| (c.r);
 	return (ret);
 }
 
