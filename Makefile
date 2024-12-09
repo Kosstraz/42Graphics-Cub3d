@@ -6,7 +6,7 @@
 #    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/12/09 15:41:27 by ymanchon         ###   ########.fr        #
+#    Updated: 2024/12/09 18:37:26 by ymanchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,9 +78,10 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/network/send_textures.c			\
 		\
 		./srcs/movements/movement.c				\
+		./srcs/movements/movement2.c			\
 		./srcs/movements/bubbles.c				\
 		\
-		./main.c\
+		./main.c								\
 		./srcs/deg2rad.c
 
 LMAKE = @make --no-print-directory -C
@@ -93,7 +94,9 @@ DEPS = $(OBJS:%.obj=%.d)
 
 INCLUDES = -I ./includes/ -I $(LIBFT_P)/ -I .
 
-CFLAGS = -Wall -Wextra -MMD -Ofast -g3 -fPIE #-Werror
+OPTIFLAGS =	-Ofast -march=native -mtune=x86-64 -funroll-loops -fomit-frame-pointer -ffast-math
+
+CFLAGS = -Wall -Wextra -Wshadow -Wuninitialized -Winit-self -MMD $(OPTIFLAGS) -fPIE -g3 #-Werror
 
 LIBFT_P = ./libft
 

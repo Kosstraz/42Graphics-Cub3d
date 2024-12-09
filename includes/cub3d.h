@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/09 15:41:12 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:15:32 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	handle_doors_key(mlx_key_data_t keyd, t_core *core);
 int		doors_check_state(int x, int y, t_core *core);
 float	vector_norm(float x, float y);
 t_uint	coltoui(t_color c);
+void	sprint(t_core *core);
 
 	//* main files (cub3d.c)
 void	cub3d(t_core *core);
@@ -174,7 +175,7 @@ void	recv_any_element(t_core *core);
 
 long int	get_time2(void);
 void		clear_img(t_core *core);
-void	draw_col(int x, float length, t_core *core);
+void	draw_col(int x, const float y1, float length, t_core *core);
 void	draw_rectangle(float distance, int x, t_core *core);
 void	draw_joueur(t_core *core);
 float	rad2deg(float rad);

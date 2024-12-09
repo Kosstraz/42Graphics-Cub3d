@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:50 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/09 13:18:08 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:05:06 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	game(t_core *core)
 	if (!core->mouse_visible)
 		mlx_set_mouse_pos(core->mlx, core->half_width, core->half_height);
 	calcul_casts(core);
-	clear_img(core);
 	draw_cast(core);
 	if (core->network.is_active == true)
 		draw_joueur(core);

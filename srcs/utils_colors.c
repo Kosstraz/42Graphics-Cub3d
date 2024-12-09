@@ -6,13 +6,13 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:49 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/09 15:19:42 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:18:21 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	clamp_color(int *r, int *g, int *b, int by)
+static inline void	clamp_color(int *r, int *g, int *b, int by)
 {
 	if (*r + by > 255)
 		*r = 255;
@@ -32,11 +32,11 @@ void	clamp_color(int *r, int *g, int *b, int by)
 		*b = 0;
 	else
 		*b += by;
+
 }
 
-t_color_type	increase_lighting(t_color_type col, int by)
+inline t_color_type	increase_lighting(t_color_type col, int by)
 {
-	t_color_type	ret;
 	int 			r;
 	int				g;
 	int				b;
@@ -45,11 +45,10 @@ t_color_type	increase_lighting(t_color_type col, int by)
 	g = (col & 0x0000FF00) >> 8;
 	b = (col & 0x00FF0000) >> 16;
 	clamp_color(&r, &g, &b, by);
-	ret = (col & 0xFF000000)
+	return ((col & 0xFF000000)
 		| (b << 16)
 		| (g << 8)
-		| (r);
-	return (ret);
+		| (r));
 }
 
 int	invbits(int col)
