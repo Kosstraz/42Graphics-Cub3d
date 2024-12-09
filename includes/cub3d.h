@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/09 14:05:59 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/09 15:41:12 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,9 @@ void	try_spawn_player(
 void	init_layer(mlx_image_t *img, t_layer *layer);
 void	fill_layer(t_layer *layer, t_col_t color);
 void	free_layer(t_layer *layer);
+void	send_textures(t_core *core);
+void	recv_textures(t_core *core);
+void	ft_SDL_MixAudioFormat(Uint8 *dst, const Uint8 *src, SDL_AudioFormat format, t_posi len_and_index);
 
 	/*
 		RENDERING

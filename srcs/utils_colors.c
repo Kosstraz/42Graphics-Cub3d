@@ -6,11 +6,33 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:49 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/09 13:30:31 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/09 15:19:42 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	clamp_color(int *r, int *g, int *b, int by)
+{
+	if (*r + by > 255)
+		*r = 255;
+	else if (*r + by < 0)
+		*r = 0;
+	else
+		*r += by;
+	if (*g + by > 255)
+		*g = 255;
+	else if (*g + by < 0)
+		*g = 0;
+	else
+		*g += by;
+	if (*b + by > 255)
+		*b = 255;
+	else if (*b + by < 0)
+		*b = 0;
+	else
+		*b += by;
+}
 
 t_color_type	increase_lighting(t_color_type col, int by)
 {
@@ -22,24 +44,7 @@ t_color_type	increase_lighting(t_color_type col, int by)
 	r = (col & 0x000000FF);
 	g = (col & 0x0000FF00) >> 8;
 	b = (col & 0x00FF0000) >> 16;
-	if (r + by > 255)
-		r = 255;
-	else if (r + by < 0)
-		r = 0;
-	else
-		r += by;
-	if (g + by > 255)
-		g = 255;
-	else if (g + by < 0)
-		g = 0;
-	else
-		g += by;
-	if (b + by > 255)
-		b = 255;
-	else if (b + by < 0)
-		b = 0;
-	else
-		b += by;
+	clamp_color(&r, &g, &b, by);
 	ret = (col & 0xFF000000)
 		| (b << 16)
 		| (g << 8)

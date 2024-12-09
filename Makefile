@@ -6,7 +6,7 @@
 #    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/12/09 13:15:40 by ymanchon         ###   ########.fr        #
+#    Updated: 2024/12/09 15:41:27 by ymanchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,6 +75,7 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/network/menu.c					\
 		./srcs/network/mutual_addr.c			\
 		./srcs/network/send.c					\
+		./srcs/network/send_textures.c			\
 		\
 		./srcs/movements/movement.c				\
 		./srcs/movements/bubbles.c				\
