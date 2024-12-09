@@ -6,7 +6,7 @@
 #    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/12/07 15:27:58 by ymanchon         ###   ########.fr        #
+#    Updated: 2024/12/09 13:15:40 by ymanchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,9 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/init_cast.c 						\
 		./srcs/layer.c							\
 		./srcs/time.c							\
-		./srcs/audio.c							\
+		\
+		./srcs/audio/audio.c					\
+		./srcs/audio/audio_utils.c				\
 		\
 		./srcs/parsing/parsing.c				\
 		./srcs/parsing/parsing_check_errors.c	\
