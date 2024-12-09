@@ -68,7 +68,7 @@ long	degrade(long color, float len)
 		r = 0;
 	if (b < 0)
 		b = 0;
-	if (g = 0)
+	if (g == 0)
 		g = 0;
 	return ((0xff000000 + r * 0x00010000 + g * 0x00000100 + b * 0x00000001));//ase % 0xff000000 / 256) * (long)(length / 10.f * 256.f)
 }
@@ -102,7 +102,6 @@ inline long	torch(int x, int y, float length, long basecolor, t_core *core)
 
 long	get_pixel(int x, float y, int torchx, int torchy, float torchlength, t_core *core, float length)
 {
-	long	base;
 	t_pos	wall;
 	float	angle;
 	int		side;
@@ -158,9 +157,9 @@ long	get_pixel(int x, float y, int torchx, int torchy, float torchlength, t_core
 		
 	}
 	if (core->player[LOCAL].torch_activated)
-		return (torch(torchx, torchy, torchlength, ((unsigned int *)(core->xpms[side]->texture.pixels))[(y_texture * 64) + x_texture], core));
+		return (increase_lighting(torch(torchx, torchy, torchlength, ((unsigned int *)(core->xpms[side]->texture.pixels))[(y_texture * 64) + x_texture], core), -length * 15));
 	else
-		return (((unsigned int *)(core->xpms[side]->texture.pixels))[(y_texture * 64) + x_texture]);
+		return (increase_lighting(((unsigned int *)(core->xpms[side]->texture.pixels))[(y_texture * 64) + x_texture], -length * 15));
 }
 
 void	draw_col(int x, float length, t_core *core)
@@ -183,7 +182,7 @@ void	draw_col(int x, float length, t_core *core)
 	while (i < (int) nb_pixels)
 	{
 		y = (float) (core->imgs.cast->height / 2.f) - core->player[LOCAL].offset - core->player[LOCAL].bubbles + ((float) i - nb_pixels / 2.f);
-		col = 0xff000000 + get_pixel(x, (float) i / nb_pixels, torchx, y, torchlength, core, length);// - 0x00010101 * (long)(length / 10.f * 256.f);
+		col = get_pixel(x, (float) i / nb_pixels, torchx, y, torchlength, core, length);// - 0x00010101 * (long)(length / 10.f * 256.f);
 		draw_pixel(x, (int)y, col, &core->layer[CAST_LAYER]);
 		++i;
 	}
