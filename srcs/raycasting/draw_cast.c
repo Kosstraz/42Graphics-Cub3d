@@ -157,10 +157,12 @@ long	get_pixel(int x, float y, int torchx, int torchy, float torchlength, t_core
 			x_texture = 0;
 		
 	}
+	long	color = ((unsigned int *)(core->xpms[side]->texture.pixels))[(y_texture * 64) + x_texture];
+	color = decrease_lighting(color, (int)(length / 10.f * 255.f));
 	if (core->player[LOCAL].torch_activated)
-		return (torch(torchx, torchy, torchlength, ((unsigned int *)(core->xpms[side]->texture.pixels))[(y_texture * 64) + x_texture], core));
+		return (torch(torchx, torchy, torchlength, color, core));
 	else
-		return (((unsigned int *)(core->xpms[side]->texture.pixels))[(y_texture * 64) + x_texture]);
+		return (color);
 }
 
 void	draw_col(int x, float length, t_core *core)

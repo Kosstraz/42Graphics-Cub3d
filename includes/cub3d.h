@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/08 13:23:27 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/08 19:34:59 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,8 @@ void	draw_joueur(t_core *core);
 float	rad2deg(float rad);
 float	modulo_float(float nb, float mod);
 float	get_angle(float dx, float dy);
+
+t_color_type	decrease_lighting(t_color_type col, int by);
 
 
 #endif

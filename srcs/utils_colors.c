@@ -3,14 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   utils_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:49 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/08 12:39:07 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/08 19:34:33 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+t_color_type	decrease_lighting(t_color_type col, int by)
+{
+	t_color_type ret;
+    int r, g, b;
+
+    // Extraire les composantes ABGR
+    r = (col & 0x000000FF);
+    g = (col & 0x0000FF00) >> 8;
+    b = (col & 0x00FF0000) >> 16;
+
+	r = (r - by < 0) ? 0 : (r - by);
+    g = (g - by < 0) ? 0 : (g - by);
+    b = (b - by < 0) ? 0 : (b - by);
+
+	 ret = (col & 0xFF000000) // Conserve Alpha
+        | (b << 16)          // Ajoute Blue
+        | (g << 8)           // Ajoute Green
+        | r;                 // Ajoute Red
+	return (ret);
+}
 
 t_color_type	increase_lighting(t_color_type col, int by)
 {
