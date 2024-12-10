@@ -134,32 +134,53 @@ long	get_pixel(int x, float y, t_core *core)
 	return (((unsigned int *)(core->xpms[side]->texture.pixels))[(y_texture * TEXSIZE) + x_texture]);
 }
 
+void	draw_cf(int x, const int torchx, float length, const float torchlength, t_core *core)
+{
+	t_uint			y;
+	t_uint			col;
+	const t_uint	chalfh = (core->imgs.cast->height / 2.0f);
+
+	y = 0;
+	while (y < core->imgs.cast->height)
+	{
+		if (y <= chalfh - core->player[LOCAL].offset)
+			col = coltoui(core->map.cf_colors[C]);
+		else if (y > chalfh - core->player[LOCAL].offset)
+			col = coltoui(core->map.cf_colors[F]);
+		if (core->player[LOCAL].torch_activated)
+			col = increase_lighting(torch(torchx, y, torchlength, col, core), -length * 15 / -y);
+		else
+			col = increase_lighting(col, -length * 17 / -y);
+		draw_pixel(x, y, col, &core->layer[CAST_LAYER]);
+		++y;
+	}
+}
+
 void	draw_col(int x, const float y1, float length, t_core *core)
 {
 	int				i;
 	float			y;
-	float			nb_pixels;
 	long			col;
+	const float		nb_pixels = core->half_height / (core->cast.wallDist[x] / 3.0f);
 	const int		torchx = x - core->half_width;
 	const float		torchlength = length * 50.0;
-	float			half_nb_pixels;
+	const float		half_nb_pixels = nb_pixels / 2.0f;
 
-	nb_pixels = core->half_height / (core->cast.wallDist[x] / 3.0f);
-	half_nb_pixels = nb_pixels / 2.0f;
 	i = 0;
-	while (i < (int) nb_pixels)
+	//draw_cf(x, torchx, length, torchlength, core);
+	while (i < (int)nb_pixels)
 	{
 		y = y1 + ((float)i - half_nb_pixels);
-		if (y < 0 || y > core->imgs.cast->height)
+		if (y < 0 || y >= core->imgs.cast->height)
 		{
 			++i;
 			continue ;
 		}
 		col = get_pixel(x, (float) i / nb_pixels, core);
 		if (core->player[LOCAL].torch_activated)
-			col = increase_lighting(torch(torchx, y, torchlength, col, core), -length * 13);
+			col = increase_lighting(torch(torchx, y, torchlength, col, core), -length * 15);
 		else
-			col = increase_lighting(col, -length * 15);
+			col = increase_lighting(col, -length * 17);
 		draw_pixel(x, (int)y, col, &core->layer[CAST_LAYER]);
 		++i;
 	}

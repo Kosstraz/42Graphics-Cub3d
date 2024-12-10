@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:49 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/09 18:18:21 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/10 13:55:14 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ t_color	stocol(const char *str)
 	int		tmp;
 	t_color	ret;
 
+	//retuint = 0U;
 	ret._overflow = FALSE;
 	split = ft_split(str, ',');
 	i = 0;
@@ -95,9 +96,13 @@ t_color	stocol(const char *str)
 		tmp = ft_atoi(split[i]);
 		if (tmp > 255)
 			ret._overflow = TRUE;
+		//retuint |= (tmp << (i * 8));
+		if (i == 0)
+			ret.r = tmp;
+		else if (i == 1)
+			ret.g = tmp;
 		i++;
 	}
-
 	ft_dfree((void **)split);
 	ret.bytes_wrote = i;
 	ret.b = tmp;
