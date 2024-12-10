@@ -6,7 +6,7 @@
 #    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/12/09 18:31:29 by ymanchon         ###   ########.fr        #
+#    Updated: 2024/12/10 11:09:10 by ymanchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -152,7 +152,7 @@ OBJS =			$(SRCS:%.c=$(OBJS_DIR)/%.o)
 
 INCLUDES = -I .
 
-OPTIFLAGS =	-O3 -march=native -mtune=x86-64 -funroll-loops -fomit-frame-pointer -ffast-math -fopenmp
+OPTIFLAGS =	-O3 -march=native -mtune=generic -funroll-loops -fomit-frame-pointer -ffast-math -fopenmp
 
 CFLAGS =	-Wall -Wextra -Werror $(OPTIFLAGS) -fPIE
 

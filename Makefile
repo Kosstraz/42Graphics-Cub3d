@@ -6,7 +6,7 @@
 #    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/12/09 18:37:26 by ymanchon         ###   ########.fr        #
+#    Updated: 2024/12/10 11:09:18 by ymanchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,7 +94,7 @@ DEPS = $(OBJS:%.obj=%.d)
 
 INCLUDES = -I ./includes/ -I $(LIBFT_P)/ -I .
 
-OPTIFLAGS =	-Ofast -march=native -mtune=x86-64 -funroll-loops -fomit-frame-pointer -ffast-math
+OPTIFLAGS =	-Ofast -march=native -mtune=generic -funroll-loops -fomit-frame-pointer -ffast-math
 
 CFLAGS = -Wall -Wextra -Wshadow -Wuninitialized -Winit-self -MMD $(OPTIFLAGS) -fPIE -g3 #-Werror
 

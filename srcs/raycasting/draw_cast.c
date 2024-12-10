@@ -91,10 +91,10 @@ long	get_pixel(int x, float y, t_core *core)
 	angle = core->cast.angle[x];
 	if (core->cast.side[x] == 0 && ((angle <= 90 && angle >= 0) || (angle <= 360 && angle >= 270)))
 	{
-		x_texture = (int) (core->cast.wallx[x] * 63.f);
-		y_texture = (int) (y * 63.f);
-		if (x_texture >= 64)
-			x_texture = 63;
+		x_texture = (int) (core->cast.wallx[x] * TEXSIZE_ONE);
+		y_texture = (int) (y * TEXSIZE_ONE);
+		if (x_texture >= TEXSIZE)
+			x_texture = TEXSIZE_ONE;
 		if (x_texture < 0)
 			x_texture = 0;
 		if (y < 0)
@@ -104,34 +104,34 @@ long	get_pixel(int x, float y, t_core *core)
 	else if (core->cast.side[x] == 0 && (angle < 270 && angle > 90))
 	{
 		side = WE;
-		x_texture = (int) (core->cast.wallx[x] * 63.f);
-		y_texture = (int) (y * 63.f);
-		if (x_texture >= 64)
-			x_texture = 63;
+		x_texture = (int) (core->cast.wallx[x] * TEXSIZE_ONE);
+		y_texture = (int) (y * TEXSIZE_ONE);
+		if (x_texture >= TEXSIZE)
+			x_texture = TEXSIZE_ONE;
 		if (x_texture < 0)
 			x_texture = 0;
 	}
 	else if (core->cast.side[x] == 1 && (angle <= 180 && angle >= 0))
 	{
-		x_texture = (int) (core->cast.wallx[x] * 63.f);
-		y_texture = (int) (y * 63.f);
+		x_texture = (int) (core->cast.wallx[x] * TEXSIZE_ONE);
+		y_texture = (int) (y * TEXSIZE_ONE);
 		side = NO;
-		if (x_texture >= 64)
-			x_texture = 63;
+		if (x_texture >= TEXSIZE)
+			x_texture = TEXSIZE_ONE;
 		if (x_texture < 0)
 			x_texture = 0;
 	}
 	else
 	{
 		side = SO;
-		x_texture = (int) (core->cast.wallx[x] * 63.f);
-		y_texture = (int) (y * 63.f);
-		if (x_texture >= 64)
-			x_texture = 63;
+		x_texture = (int) (core->cast.wallx[x] * TEXSIZE_ONE);
+		y_texture = (int) (y * TEXSIZE_ONE);
+		if (x_texture >= TEXSIZE)
+			x_texture = TEXSIZE_ONE;
 		if (x_texture < 0)
 			x_texture = 0;
 	}
-	return (((unsigned int *)(core->xpms[side]->texture.pixels))[(y_texture * 64) + x_texture]);
+	return (((unsigned int *)(core->xpms[side]->texture.pixels))[(y_texture * TEXSIZE) + x_texture]);
 }
 
 void	draw_col(int x, const float y1, float length, t_core *core)
@@ -150,6 +150,11 @@ void	draw_col(int x, const float y1, float length, t_core *core)
 	while (i < (int) nb_pixels)
 	{
 		y = y1 + ((float)i - half_nb_pixels);
+		if (y < 0 || y > core->imgs.cast->height)
+		{
+			++i;
+			continue ;
+		}
 		col = get_pixel(x, (float) i / nb_pixels, core);
 		if (core->player[LOCAL].torch_activated)
 			col = increase_lighting(torch(torchx, y, torchlength, col, core), -length * 13);

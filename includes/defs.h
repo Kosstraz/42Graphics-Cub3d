@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/09 13:58:17 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/10 11:46:41 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@
 # define PI				3.14159f
 
 # define HITBOX			20.f
+
+# define TEXSIZE		64
+# define TEXSIZE_ONE	63
 
 # define DEFFREQ_MAX_MULTIPLIER		0.3f
 # define DEFFREQ_MAX_PRETTY_OFFSET	3
