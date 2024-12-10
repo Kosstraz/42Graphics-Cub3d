@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:24:27 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/04 20:49:37 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/10 14:58:58 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	setup_client(char *address, t_core *core)
 		exit(1);
 	}
 	ft_printf("Connexion a autrui reussie.\n");
-	core->network.tcp.com = dup(core->network.tcp.fd); //! enlever dup() si pb
+	core->network.tcp.com = dup(core->network.tcp.fd);
 }
 
 void	setup_server(t_core *core)

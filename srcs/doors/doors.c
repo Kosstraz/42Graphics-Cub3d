@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 14:46:15 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/09 14:01:35 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/10 14:14:03 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	handle_doors_key(mlx_key_data_t keyd, t_core *core)
 			dinfo.is_open = FALSE;
 			send_element(&dinfo, sizeof(t_door_info), POLL_DOOR, core);
 		}
-		//ft_printf("state :\nx %d\ny %d\n %d\n", core->map.doors[core->utils.door_focus].pos.x, core->map.doors[core->utils.door_focus].pos.y, core->map.doors[core->utils.door_focus].is_open);
 	}
 }
 
@@ -119,7 +118,6 @@ void	door_raycast(t_core *core)
 		step.x = 1;
 		side.x = ((float) (map_check.x + 1) - ray_start.x) * unit.x;
 	}
-
 	if (vector_dir.y < 0)
 	{
 		step.y = -1;

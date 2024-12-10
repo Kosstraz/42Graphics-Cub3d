@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_check_errors.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:45:45 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/08 17:48:50 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/10 16:19:20 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ inline void	parse_texturefile_path_error(t_core *core)
 	core->xpms = malloc (sizeof(xpm_t*) * 4);
 	if (!core->xpms)
 		exit(1);
-	
 	core->xpms[EA] = mlx_load_xpm42(core->map.filepath.east);
 	if (!core->xpms[EA])
 		printf("error east\n");

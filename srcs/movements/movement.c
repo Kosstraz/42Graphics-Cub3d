@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 18:42:44 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/09 17:22:12 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/10 14:14:38 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	move_player(t_player *player, float angle, t_core *core)
 		player->position.x = next.x;
 }
 
-static void	crouch_player(t_core *core)//t_player *player, float delta_time)
+static void	crouch_player(t_core *core)
 {
 	if (core->input_action.key_up)
 	{
@@ -65,7 +65,7 @@ static void	crouch_player(t_core *core)//t_player *player, float delta_time)
 
 inline void	player_check_movements(t_core *core)
 {
-	crouch_player(core);//&core->player[LOCAL], (float)core->mlx->delta_time);
+	crouch_player(core);
 	if (core->input_action.key_a == TRUE)
 	{
 		move_player(core->player, core->player->view.angle - 90.f, core);

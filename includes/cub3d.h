@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/09 18:15:32 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:34:13 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,18 +141,20 @@ t_col_t	increase_lighting(t_color_type col, int by);
 void	show_fps(t_core *core);
 void	mlx_put_line(t_layer *layer, t_pos a, t_pos b, t_color_type color);
 void	draw_minimap(t_core *core);
-void	draw_square(t_layer *layer, t_pos a, t_color_type color);
+void	draw_square(t_layer *layer, t_player *player, t_color_type color, t_core *core);
 char	cmppixel(
 			uint32_t x,
 			uint32_t y,
 			t_color_type color,
 			t_layer *layer);
-int	draw_pixel(
+int		draw_pixel(
 			uint32_t x,
 			uint32_t y,
 			t_color_type color,
 			t_layer *layer)	__attribute__((hot));
-void	orientation_minimap(t_core *core);
+void	draw_player(
+	t_player *player, t_color_type color, t_core *core);
+void	orientation_minimap(int i, t_pos startpos, t_core *core);
 float	ray_cast(t_core *core, float angle, int i);
 void	init_cast(t_casting *cast, t_player player);
 void	calcul_casts(t_core *core);

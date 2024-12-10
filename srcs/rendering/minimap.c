@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:43:52 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/07 17:12:25 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:41:13 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,23 +53,14 @@ inline static void	draw_ascii_branch(size_t x, size_t y, t_core *core)
 		draw_ascii_on_minimap(Transparent, x * DEFUNIT, y * DEFUNIT, core);
 }
 
-inline static void	draw_player(
+inline void	draw_player(
 	t_player *player, t_color_type color, t_core *core)
 {
 	t_pos	mult;
-	t_pos	top;
-	t_pos	left;
-	t_pos	right;
 
 	mult.x = player->position.x * DEFUNIT;
 	mult.y = player->position.y * DEFUNIT;
-	top.x = mult.x + DEFHALFUNIT;
-	top.y = mult.y;
-	left.x = mult.x;
-	left.y = mult.y + DEFUNIT - 1;
-	right.x = mult.x + DEFUNIT;
-	right.y = mult.y + DEFUNIT - 1;
-	draw_square(&core->layer[MINIMAP_LAYER], mult, color);
+	draw_square(&core->layer[MINIMAP_LAYER], player, color, core);
 }
 
 void	draw_minimap(t_core *core)
@@ -85,9 +76,4 @@ void	draw_minimap(t_core *core)
 			draw_ascii_branch(x++, y, core);
 		++y;
 	}
-
-	orientation_minimap(core);	
-	if (core->network.is_active)
-		draw_player(&core->player[DISTANT], Green, core);
-	draw_player(&core->player[LOCAL], Blue, core);
 }

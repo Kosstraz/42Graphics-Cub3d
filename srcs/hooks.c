@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:44 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/09 18:08:00 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:37:53 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	cub3d_cursor_hook(double xpos, double ypos, t_core *core)
 			core->player[LOCAL].view.angle = 0.f;
 		if (core->player[LOCAL].view.angle < 0)
 			core->player[LOCAL].view.angle = 360.f + core->player[LOCAL].view.angle;
+		if (core->network.is_active)
+			send_element(&core->player[LOCAL], sizeof(t_player), POLL_PLAYER, core);
 	}
 }
 

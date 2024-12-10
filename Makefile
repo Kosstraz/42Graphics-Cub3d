@@ -6,7 +6,7 @@
 #    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/12/10 13:21:26 by ymanchon         ###   ########.fr        #
+#    Updated: 2024/12/10 14:13:27 by ymanchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,6 @@ NAME = cub3D
 CC = @cc
 
 SRCS =	./srcs/cub3d.c							\
-		./srcs/doors.c							\
 		./srcs/hooks.c							\
 		./srcs/hook_resize.c					\
 		./srcs/key_handling.c					\
@@ -46,6 +45,9 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/init_cast.c 						\
 		./srcs/layer.c							\
 		./srcs/time.c							\
+		\
+		./srcs/doors/doors.c					\
+		./srcs/doors/doors_utils.c				\
 		\
 		./srcs/audio/audio.c					\
 		./srcs/audio/audio_utils.c				\

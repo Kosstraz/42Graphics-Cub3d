@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:46:55 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/10 11:40:45 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:37:27 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,24 @@ void	save_cast(t_casting *cast, t_player player, int width)
 
 void	calcul_casts(t_core *core)
 {
-	int		i;
+	t_uint	i;
+	t_pos	start;
 	float	max;
 	float	min;
 
-	// if (same_cast(core->cast, core->player) == true && core->cast.last_width == core->mlx->width)
-	// 	return ;
 	if (core->cast.last_width != core->mlx->width || core->cast.di == -1)
 	{
 		core->cast.last_width = core->mlx->width;
 		core->cast.di = (float) FOV / (float) core->cast.last_width;
-		// core->cast.di = 5;
 	}
-	i = 0;
-	min = 43;
-	max = 0;
-	while (i < core->mlx->width)
+	i = 0U;
+	min = 43.0f;
+	max = 0.0f;
+	clear_img(core);
+	start.x = core->player[LOCAL].position.x * DEFUNIT;
+	start.y = core->player[LOCAL].position.y * DEFUNIT;
+	const float	y1 = (float)(core->imgs.cast->height / 2.0f) - core->player[LOCAL].offset - core->player[LOCAL].bubbles;
+	while (i < core->imgs.cast->width)
 	{
 		core->cast.angle[i] = core->player[LOCAL].view.angle - (float) core->cast.hfov + core->cast.di * (float) i;
 		if (core->cast.angle[i] < 0)
@@ -66,11 +68,12 @@ void	calcul_casts(t_core *core)
 			min = core->cast.casts[i];
 		if (max < core->cast.casts[i])
 			max = core->cast.casts[i];
-		i++;
+		orientation_minimap(i, start, core);
+		draw_col(i, y1, core->cast.casts[i], core);
+		++i;
 		
 	}
 	core->cast.max = max;
 	core->cast.min = min;
-//	printf("min : %f max: %f\n", min, max);
 	save_cast(&core->cast, core->player[LOCAL], core->mlx->width);
 }

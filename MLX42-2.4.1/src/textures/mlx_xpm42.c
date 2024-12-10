@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_xpm42.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 03:42:29 by W2Wizard          #+#    #+#             */
-/*   Updated: 2024/12/07 17:44:54 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/10 18:30:22 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,6 +190,9 @@ xpm_t* mlx_load_xpm42(const char* path)
 		return ((void*)mlx_error(MLX_INVFILE));
 	if (!(xpm = calloc(1, sizeof(xpm_t))))
 		return ((void*)mlx_error(MLX_MEMFAIL));
+	xpm->color_count = 0;
+	xpm->cpp = 0;
+	xpm->mode = 0;
 	if (!mlx_read_xpm_header(xpm, file))
 	{
 		mlx_freen(2, xpm->texture.pixels, xpm);
