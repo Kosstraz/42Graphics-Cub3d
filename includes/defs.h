@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defs.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/08 17:49:47 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/10 11:46:41 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,14 @@
 # define DEFLUCK		20
 
 # define NB_RAYS		10
-# define FOV			60.f
+# define FOV			70.f
 # define DELTA			0
 # define PI				3.14159f
 
 # define HITBOX			20.f
+
+# define TEXSIZE		64
+# define TEXSIZE_ONE	63
 
 # define DEFFREQ_MAX_MULTIPLIER		0.3f
 # define DEFFREQ_MAX_PRETTY_OFFSET	3

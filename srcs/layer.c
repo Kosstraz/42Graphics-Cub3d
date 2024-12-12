@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   layer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:58:34 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/03 17:16:20 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/09 18:05:43 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ inline int	draw_pixel(uint32_t x,
 {
 	if ((y >= 0 && y < layer->height) && (x >= 0 && x < layer->width))
 	{
-		*(layer->pixels[y][x]) = (uint32_t)color;
+		*(layer->pixels[y][x]) = color;
 		return (true);
 	}
 	return (false);

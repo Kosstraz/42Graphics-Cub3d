@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   deg2rad.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:12:53 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/04 20:49:52 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/11 15:33:42 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 float	deg2rad(float deg)
 {
+	if (deg > 360.f)
+		deg -= 360.f;
 	return (deg / 180.f * PI);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calcul_raycast.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:46:55 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/08 13:43:25 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/10 11:40:45 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	calcul_casts(t_core *core)
 		if (max < core->cast.casts[i])
 			max = core->cast.casts[i];
 		i++;
+		
 	}
 	core->cast.max = max;
 	core->cast.min = min;

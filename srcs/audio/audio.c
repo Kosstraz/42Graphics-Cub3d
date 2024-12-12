@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 19:54:09 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/08 13:29:56 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/09 13:14:49 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,34 @@
 
 void	audio_player(void *userdata, uint8_t *stream, int len)
 {
-    t_core	*core;
+	t_core	*core;
 	t_audio	*audio;
 	size_t		i;
 	int			to_copy;
+	t_posi		len_index;
 
 	i = 0U;
 	core = (t_core *)userdata;
-    SDL_memset(stream, 0, len);
-    while (i < NB_SOUNDS)
+	SDL_memset(stream, 0, len);
+	while (i < NB_SOUNDS)
 	{
-        audio = &core->audio[i];
-        if (audio->is_active && audio->len > 0)
+		audio = &core->audio[i];
+		if (audio->is_active && audio->len > 0)
 		{
 			if (len > (int)audio->len)
 				to_copy = audio->len;
 			else
 				to_copy = len;
-            SDL_MixAudioFormat(
-                stream,             // Flux de sortie
-                audio->pos,         // Source des données audio
-                core->spec->format, // Format audio
-                to_copy,            // Nombre d'octets à copier
-                SDL_MIX_MAXVOLUME   // Volume maximal
-            );
-            audio->pos += to_copy;
-            audio->len -= to_copy;
-            if (audio->len == 0)
-                audio->is_active = FALSE;
-        }
+			len_index.x = to_copy;
+			len_index.y = i;
+			ft_SDL_MixAudioFormat(stream, audio->pos, core->spec->format, len_index);
+			audio->pos += to_copy;
+			audio->len -= to_copy;
+			if (audio->len == 0)
+				audio->is_active = FALSE;
+		}
 		++i;
-    }
+	}
 }
 
 static void	load_wavfile(const char *filename, t_audio *audio, SDL_AudioSpec *spec)

@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:50:18 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/07 17:25:52 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/09 15:39:52 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	send_map(t_core *core)
 	send(core->network.tcp.com, &core->map.nbOfDoors, sizeof(size_t), 0);
 	for (uint32_t i = 0U ; i < core->map.nbOfDoors ; i++)
 		send(core->network.tcp.com, &core->map.doors[i], sizeof(t_door), 0);
+	send_textures(core);
 }
 
 void	recv_map(t_core *core)
@@ -58,6 +59,7 @@ void	recv_map(t_core *core)
 	core->map.doors = (t_door *)malloc(sizeof(t_door) * core->map.nbOfDoors);
 	for (uint32_t i = 0U ; i < core->map.nbOfDoors ; i++)
 		recv(core->network.tcp.com, &core->map.doors[i], sizeof(t_door), 0);
+	recv_textures(core);
 }
 
 inline void	send_element(void *what, size_t size, char poll_id, t_core *core)

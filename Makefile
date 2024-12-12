@@ -6,7 +6,7 @@
 #    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/12/07 15:27:58 by ymanchon         ###   ########.fr        #
+#    Updated: 2024/12/10 11:09:18 by ymanchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,9 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/init_cast.c 						\
 		./srcs/layer.c							\
 		./srcs/time.c							\
-		./srcs/audio.c							\
+		\
+		./srcs/audio/audio.c					\
+		./srcs/audio/audio_utils.c				\
 		\
 		./srcs/parsing/parsing.c				\
 		./srcs/parsing/parsing_check_errors.c	\
@@ -73,11 +75,13 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/network/menu.c					\
 		./srcs/network/mutual_addr.c			\
 		./srcs/network/send.c					\
+		./srcs/network/send_textures.c			\
 		\
 		./srcs/movements/movement.c				\
+		./srcs/movements/movement2.c			\
 		./srcs/movements/bubbles.c				\
 		\
-		./main.c\
+		./main.c								\
 		./srcs/deg2rad.c
 
 LMAKE = @make --no-print-directory -C
@@ -90,7 +94,9 @@ DEPS = $(OBJS:%.obj=%.d)
 
 INCLUDES = -I ./includes/ -I $(LIBFT_P)/ -I .
 
-CFLAGS = -Wall -Wextra -MMD -Ofast -g3 -fPIE #-Werror
+OPTIFLAGS =	-Ofast -march=native -mtune=generic -funroll-loops -fomit-frame-pointer -ffast-math
+
+CFLAGS = -Wall -Wextra -Wshadow -Wuninitialized -Winit-self -MMD $(OPTIFLAGS) -fPIE -g3 #-Werror
 
 LIBFT_P = ./libft
 

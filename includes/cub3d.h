@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/08 13:23:27 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/11 15:51:39 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	player_check_orientationraycast(t_core *core);
 void	handle_doors_key(mlx_key_data_t keyd, t_core *core);
 int		doors_check_state(int x, int y, t_core *core);
 float	vector_norm(float x, float y);
+t_uint	coltoui(t_color c);
+void	sprint(t_core *core);
 
 	//* main files (cub3d.c)
 void	cub3d(t_core *core);
@@ -127,6 +129,9 @@ void	try_spawn_player(
 void	init_layer(mlx_image_t *img, t_layer *layer);
 void	fill_layer(t_layer *layer, t_col_t color);
 void	free_layer(t_layer *layer);
+void	send_textures(t_core *core);
+void	recv_textures(t_core *core);
+void	ft_SDL_MixAudioFormat(Uint8 *dst, const Uint8 *src, SDL_AudioFormat format, t_posi len_and_index);
 
 	/*
 		RENDERING
@@ -146,7 +151,7 @@ int	draw_pixel(
 			uint32_t x,
 			uint32_t y,
 			t_color_type color,
-			t_layer *layer);
+			t_layer *layer)	__attribute__((hot));
 void	orientation_minimap(t_core *core);
 float	ray_cast(t_core *core, float angle, int i);
 void	init_cast(t_casting *cast, t_player player);
@@ -170,12 +175,13 @@ void	recv_any_element(t_core *core);
 
 long int	get_time2(void);
 void		clear_img(t_core *core);
-void	draw_col(int x, float length, t_core *core);
-void	draw_rectangle(float distance, int x, t_core *core);
+void	draw_col(int x, const float y1, float length, t_core *core);
+void	draw_rectangle(long distance, int x, t_core *core);
 void	draw_joueur(t_core *core);
 float	rad2deg(float rad);
 float	modulo_float(float nb, float mod);
 float	get_angle(float dx, float dy);
+void	draw_rectangle2(int x, int y, long color, t_core *core);
 
 
 #endif

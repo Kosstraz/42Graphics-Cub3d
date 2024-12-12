@@ -54,6 +54,7 @@ if(UNIX AND NOT EMSCRIPTEN)
 		message(STATUS "Building in RELEASE mode")
 		add_definitions(-D NDEBUG)
 		add_compile_options(-Ofast)
+		add_compile_options(-march=native)
 	endif(DEBUG)
 else()
 	# TODO: Figure out what we need for windows.

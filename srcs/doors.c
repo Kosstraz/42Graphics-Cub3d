@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 14:46:15 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/07 17:23:20 by ymanchon         ###   ########.fr       */
+/*   Updated: 2024/12/09 14:01:35 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	handle_doors_key(mlx_key_data_t keyd, t_core *core)
 	{
 		recv_any_element(core);
 		dinfo.which_door = core->utils.door_focus;
-		if (core->utils.door_text[TO_OPEN]->enabled)
+		if (core->utils.door_text[TO_CLOSE]->enabled)
 		{
 			play_sound(&core->audio[rand_btw(DOOR1, DOOR3)]);
 			core->utils.door_text[TO_OPEN]->enabled = FALSE;
@@ -29,7 +29,7 @@ void	handle_doors_key(mlx_key_data_t keyd, t_core *core)
 			dinfo.is_open = TRUE;
 			send_element(&dinfo, sizeof(t_door_info), POLL_DOOR, core);
 		}
-		else if (core->utils.door_text[TO_CLOSE]->enabled)
+		else if (core->utils.door_text[TO_OPEN]->enabled)
 		{
 			play_sound(&core->audio[rand_btw(DOOR1, DOOR3)]);
 			core->utils.door_text[TO_OPEN]->enabled = TRUE;
@@ -77,14 +77,14 @@ static void	door_handling(t_ivector pos, t_core *core)
 	is_opened = doors_check_state(pos.x, pos.y, core);
 	if (is_opened > 0)
 	{
-		core->utils.door_text[TO_OPEN]->enabled = TRUE;
-		core->utils.door_text[TO_CLOSE]->enabled = FALSE;
+		core->utils.door_text[TO_OPEN]->enabled = FALSE;
+		core->utils.door_text[TO_CLOSE]->enabled = TRUE;
 		core->utils.door_focus = is_opened - 1;
 	}
 	else if (is_opened < 0)
 	{
-		core->utils.door_text[TO_OPEN]->enabled = FALSE;
-		core->utils.door_text[TO_CLOSE]->enabled = TRUE;
+		core->utils.door_text[TO_OPEN]->enabled = TRUE;
+		core->utils.door_text[TO_CLOSE]->enabled = FALSE;
 		core->utils.door_focus = -is_opened - 1;
 	}
 	else

@@ -23,33 +23,12 @@ void	clear_img(t_core *core)
 		j = 0;
 		while (j < core->imgs.cast->width)
 		{
-			draw_pixel(j, i, 0x00111111, &core->layer[CAST_LAYER]);
+			draw_pixel(j, i, 0x00000000, &core->layer[CAST_LAYER]);
 			j++;
 		}
 		i++;
 	}
 }
-
-// void	draw_col(int x, float length, t_core *core)
-// {
-// 	int		i;
-// 	float	y;
-// 	float	nb_pixels;
-// 	long	col;
-
-// 	nb_pixels = core->half_height * 2.f / (length);
-// 	if (length > 10.f)
-// 		return ;
-// 	else
-// 		col = 0xff000000 - 0x00010101 * (long)(length / 10.f * 256.f);
-// 	i = 0;
-// 	while (i < (int) nb_pixels)
-// 	{
-// 		y = (float) (core->imgs.cast->height / 2.f) - core->player[LOCAL].offset + ((float) i - nb_pixels / 2.f);
-// 		draw_pixel(x, (int)y, col, &core->layer[CAST_LAYER]);
-// 		++i;
-// 	}
-// }
 
 long	degrade(long color, float len)
 {
@@ -68,7 +47,7 @@ long	degrade(long color, float len)
 		r = 0;
 	if (b < 0)
 		b = 0;
-	if (g = 0)
+	if (g == 0)
 		g = 0;
 	return ((0xff000000 + r * 0x00010000 + g * 0x00000100 + b * 0x00000001));//ase % 0xff000000 / 256) * (long)(length / 10.f * 256.f)
 }
@@ -100,26 +79,22 @@ inline long	torch(int x, int y, float length, long basecolor, t_core *core)
 	return (basecolor);
 }
 
-long	get_pixel(int x, float y, int torchx, int torchy, float torchlength, t_core *core, float length)
+long	get_pixel(int x, float y, t_core *core)
 {
-	long	base;
 	t_pos	wall;
 	float	angle;
 	int		side;
-	int	x_texture;
+	int		x_texture;
 	int		y_texture;
 
-	(void)y;
-	wall.x = core->cast.wall[x].x;
-	wall.y = core->cast.wall[x].y;
-	wall.z = core->cast.wall[x].z;
+	wall = core->cast.wall[x];
 	angle = core->cast.angle[x];
-	if (core->cast.side[x] == 0 && ((angle <= 90 && angle >= 0) || (angle <=360 && angle >= 270)))
+	if (core->cast.side[x] == 0 && ((angle <= 90 && angle >= 0) || (angle <= 360 && angle >= 270)))
 	{
-		x_texture = (int) (core->cast.wallx[x] * 63.f);
-		y_texture = (int) (y * 63.f);
-		if (x_texture >= 64)
-			x_texture = 63;
+		x_texture = (int) (core->cast.wallx[x] * TEXSIZE_ONE);
+		y_texture = (int) (y * TEXSIZE_ONE);
+		if (x_texture >= TEXSIZE)
+			x_texture = TEXSIZE_ONE;
 		if (x_texture < 0)
 			x_texture = 0;
 		if (y < 0)
@@ -129,61 +104,62 @@ long	get_pixel(int x, float y, int torchx, int torchy, float torchlength, t_core
 	else if (core->cast.side[x] == 0 && (angle < 270 && angle > 90))
 	{
 		side = WE;
-		x_texture = (int) (core->cast.wallx[x] * 63.f);
-		y_texture = (int) (y * 63.f);
-		if (x_texture >= 64)
-			x_texture = 63;
+		x_texture = (int) (core->cast.wallx[x] * TEXSIZE_ONE);
+		y_texture = (int) (y * TEXSIZE_ONE);
+		if (x_texture >= TEXSIZE)
+			x_texture = TEXSIZE_ONE;
 		if (x_texture < 0)
 			x_texture = 0;
 	}
 	else if (core->cast.side[x] == 1 && (angle <= 180 && angle >= 0))
 	{
-		x_texture = (int) (core->cast.wallx[x] * 63.f);
-		y_texture = (int) (y * 63.f);
+		x_texture = (int) (core->cast.wallx[x] * TEXSIZE_ONE);
+		y_texture = (int) (y * TEXSIZE_ONE);
 		side = NO;
-		if (x_texture >= 64)
-			x_texture = 63;
+		if (x_texture >= TEXSIZE)
+			x_texture = TEXSIZE_ONE;
 		if (x_texture < 0)
 			x_texture = 0;
 	}
 	else
 	{
 		side = SO;
-		x_texture = (int) (core->cast.wallx[x] * 63.f);
-		y_texture = (int) (y * 63.f);
-		if (x_texture >= 64)
-			x_texture = 63;
+		x_texture = (int) (core->cast.wallx[x] * TEXSIZE_ONE);
+		y_texture = (int) (y * TEXSIZE_ONE);
+		if (x_texture >= TEXSIZE)
+			x_texture = TEXSIZE_ONE;
 		if (x_texture < 0)
 			x_texture = 0;
-		
 	}
-	if (core->player[LOCAL].torch_activated)
-		return (torch(torchx, torchy, torchlength, ((unsigned int *)(core->xpms[side]->texture.pixels))[(y_texture * 64) + x_texture], core));
-	else
-		return (((unsigned int *)(core->xpms[side]->texture.pixels))[(y_texture * 64) + x_texture]);
+	return (((unsigned int *)(core->xpms[side]->texture.pixels))[(y_texture * TEXSIZE) + x_texture]);
 }
 
-void	draw_col(int x, float length, t_core *core)
+void	draw_col(int x, const float y1, float length, t_core *core)
 {
-	int		i;
-	float	y;
-	float	nb_pixels;
-	int		torchx;
-	float	torchlength;
-	long	col;
-	//long	degrade;
+	int				i;
+	float			y;
+	float			nb_pixels;
+	long			col;
+	const int		torchx = x - core->half_width;
+	const float		torchlength = length * 50.0;
+	float			half_nb_pixels;
 
-	//nb_pixels = core->half_height * 2.f / (length) ;//+ core->cast.wallDist[x];
-	nb_pixels = core->half_height / (core->cast.wallDist[x] / 3.f);
-	//if (length > 10.f)
-	//	return ;
-	torchlength = length * 50.0f;
-	torchx = x - core->half_width;
+	nb_pixels = core->half_height / (core->cast.wallDist[x] / 3.0f);
+	half_nb_pixels = nb_pixels / 2.0f;
 	i = 0;
 	while (i < (int) nb_pixels)
 	{
-		y = (float) (core->imgs.cast->height / 2.f) - core->player[LOCAL].offset - core->player[LOCAL].bubbles + ((float) i - nb_pixels / 2.f);
-		col = 0xff000000 + get_pixel(x, (float) i / nb_pixels, torchx, y, torchlength, core, length);// - 0x00010101 * (long)(length / 10.f * 256.f);
+		y = y1 + ((float)i - half_nb_pixels);
+		if (y < 0 || y > core->imgs.cast->height)
+		{
+			++i;
+			continue ;
+		}
+		col = get_pixel(x, (float) i / nb_pixels, core);
+		if (core->player[LOCAL].torch_activated)
+			col = increase_lighting(torch(torchx, y, torchlength, col, core), -length * 13);
+		else
+			col = increase_lighting(col, -length * 15);
 		draw_pixel(x, (int)y, col, &core->layer[CAST_LAYER]);
 		++i;
 	}
@@ -192,11 +168,13 @@ void	draw_col(int x, float length, t_core *core)
 void	draw_cast(t_core *core)
 {
 	uint32_t	i;
+	const float	y1 = (float)(core->imgs.cast->height / 2.0f) - core->player[LOCAL].offset - core->player[LOCAL].bubbles;
 
 	i = 0;
+	clear_img(core);
 	while (i < core->imgs.cast->width)
 	{
-		draw_col(i, core->cast.casts[i], core);
-		i++;
+		draw_col(i, y1, core->cast.casts[i], core);
+		++i;
 	}
 }
