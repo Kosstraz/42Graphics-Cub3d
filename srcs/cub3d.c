@@ -21,6 +21,7 @@ void	game(t_core *core)
 	if (!core->mouse_visible)
 		mlx_set_mouse_pos(core->mlx, core->half_width, core->half_height);
 	calcul_casts(core);
+	recv_any_element(core);
 	draw_cast(core);
 	if (core->network.is_active == true)
 		draw_joueur(core);

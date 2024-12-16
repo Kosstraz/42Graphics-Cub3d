@@ -22,7 +22,7 @@ inline void	parse_texturefile_path_error(t_core *core)
 		exit_strerror(EAST_TEXTURE_FILE_INVALID_T, core);
 	else if (!core->map.filepath.west)
 		exit_strerror(WEST_TEXTURE_FILE_INVALID_T, core);
-	core->xpms = malloc (sizeof(xpm_t*) * 4);
+	core->xpms = malloc (sizeof(xpm_t*) * 6);
 	if (!core->xpms)
 		exit(1);
 	
@@ -39,6 +39,10 @@ inline void	parse_texturefile_path_error(t_core *core)
 	core->xpms[NO] = mlx_load_xpm42(core->map.filepath.north);
 	if (!core->xpms[NO])
 		printf("error north\n");
+	core->entity[0] = mlx_load_png("textures/entities/player.png");
+	if (!core->entity[0])
+		exit(1);
+
 	// printf("path west %p\n", core->xpms[NO]);
 	// printf("path east %p\n", core->xpms[SO]);
 	// printf("path sud %p\n", core->xpms[EA]);

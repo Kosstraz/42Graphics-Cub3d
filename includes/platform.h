@@ -244,6 +244,7 @@ typedef struct s_core
 	t_casting		cast;
 	t_utils			utils;
 	xpm_t			**xpms;
+	mlx_texture_t	*entity[2];
 	float			half_width;
 	float			half_height;
 	BOOL			mouse_visible;

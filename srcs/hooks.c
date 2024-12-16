@@ -63,6 +63,7 @@ void	cub3d_cursor_hook(double xpos, double ypos, t_core *core)
 			core->player[LOCAL].view.angle = 0.f;
 		if (core->player[LOCAL].view.angle < 0)
 			core->player[LOCAL].view.angle = 360.f + core->player[LOCAL].view.angle;
+		send_element(&core->player[LOCAL], sizeof(t_player), POLL_PLAYER, core);
 	}
 }
 

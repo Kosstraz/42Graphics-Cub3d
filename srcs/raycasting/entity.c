@@ -118,20 +118,6 @@ int	get_x(float angle_j, float *angles, int lim)
 	return (index);
 }
 
-bool	is_2points(t_entity *entity)
-{
-	//printf("distance %f %f %f %f", entity->corps.distance[0], entity->corps.distance[1], entity->corps.distance[2] ,entity->corps.distance[3]);
-	if (entity->corps.distance[0] == entity->corps.distance[3])
-		return (true);
-	if (entity->corps.distance[0] == entity->corps.distance[1])
-		return (true);
-	if (entity->corps.distance[1] == entity->corps.distance[2])
-		return (true);
-	if (entity->corps.distance[2] == entity->corps.distance[3])
-		return (true);
-	return (false);
-}
-
 int	get_indexmin(t_entity *entity)
 {
 	int	i;
@@ -176,60 +162,19 @@ void	draw_texture_col(t_core *core, float y, int x, int side, int nb_pixels)
 	}
 }
 
-void	draw_left_right(t_core *core, t_face face, int index1, int index2)
-{
-	int	delta;
-	float	dl;
-	int		i;
-	int	nb_pixels;
-
-	delta = index1 - index2;
-	dl = face.length2 - face.length1;
-	i = 0;
-	while (i < delta)
-	{
-		//printf("left l1 %f l2 %f\n",face.length1 + dl * (float) i, core->cast.casts[i]);
-		//if (face.length1 + dl * (float) i < core->cast.casts[i])
-		//{
-			nb_pixels = (int) (face.length1 + (float) i * dl) * 10;
-			draw_texture_col(core, (float)(i / delta), index1 + i, face.side, nb_pixels);
-		//}
-		i++;
-	}
-}
-
-void	draw_right_left(t_core *core, t_face face, int index1, int index2)
-{
-	int	delta;
-	float	dl;
-	int		i;
-	int	nb_pixels;
-
-	dl = face.length2 - face.length1;
-	i = 0;
-	while (i < index2)
-	{
-		//printf("right l1 %f l2 %f\n",face.length2 + dl * (float) i, core->cast.casts[i]);
-		//if (face.length2 + dl * (float) i < core->cast.casts[i])
-		//{
-			nb_pixels = (int) (face.length1 + (float) i * dl) * 10;
-			draw_texture_col(core, (float)(i / index2), index2 - i, face.side, nb_pixels);
-		//}
-		i++;
-	}
-}
-
 void	draw_face(t_core *core, t_face face)
 {
 	int		delta;
 	int		index1;
 	int		index2;
-	int		i;
+	//int		i;
 	float	dlength;
 	int		nb_pixels;
 	
 	index1 = get_x(face.angle1, core->cast.angle, core->imgs.cast->width);
 	index2 = get_x(face.angle2, core->cast.angle, core->imgs.cast->width);
+	if (index1 == -1 || index2 == -1)
+		return ;
 	t_pos a;
 	t_pos b;
 	long pixel;
@@ -237,15 +182,27 @@ void	draw_face(t_core *core, t_face face)
 		pixel = 0xff00ff00;
 	else if (face.side == SO)
 		pixel = 0xffff0000;
-	else if (face.side = EA)
+	else if (face.side == EA)
 		pixel = 0xffffffff;
-	else
+	else if (face.side == WE)
 		pixel = 0xff0000ff;
+	else
+		pixel = 0xff000000;
 	a.x = (float) index1;
 	a.y = (float)((int)(core->imgs.cast->height / 2.0f) - (int) core->player[LOCAL].offset - (int) core->player[LOCAL].bubbles);
 	b.x = (float) index2;
-	b.y = (float)((int)(core->imgs.cast->height / 2.0f) - (int) core->player[LOCAL].offset - (int) core->player[LOCAL].bubbles); 
-	mlx_put_line(&core->layer[CAST_LAYER], a, b , pixel);
+	b.y = (float)((int)(core->imgs.cast->height / 2.0f) - (int) core->player[LOCAL].offset - (int) core->player[LOCAL].bubbles);
+	int i = 0;
+	int	hei = 100 - (int)(face.length1 / 2.f);
+	int	delL = (int) (face.length2 - face.length1);
+	while (i < hei)
+	{
+		a.y++;
+		b.y++;
+		hei += delL * 10;
+		mlx_put_line(&core->layer[CAST_LAYER], a, b , pixel);
+		i++;
+	}
 	return ;
 	//printf("index 1 = %i inde 2 = %i, delta %i\n", index1, index2, index2 - index1);
 	if (index1 == -1 && index2 == -1)
@@ -254,11 +211,6 @@ void	draw_face(t_core *core, t_face face)
 		//printf("indexs out of bounds\n");
 	 	return ;
 	}
-	if (index1 == -1)
-		draw_right_left(core, face, index1, index2);
-	else
-		draw_left_right(core, face, index1, index2);
-	
 	// delta = index2 - index1;
 	// dlength = face.length1 - face.length2 / (float) delta;
 	// while (i < delta)
@@ -316,48 +268,6 @@ void	draw_3points(t_core *core, t_entity *entity, int index)
 		set_face(&face, entity, 2, 3);
 		face.side = SO;
 		draw_face(core, face);
-		set_face(&face, entity, 0, 3);
-		face.side = EA;
-		draw_face(core, face);
-	}
-}
-
-void	draw_2points(t_core *core, t_entity *entity, int index)
-{
-	t_face	face;
-	
-	if (index == 0)
-	{
-		set_face(&face, entity, 3, 0);
-		face.side = EA;
-		draw_face(core, face);
-		set_face(&face, entity, 0, 1);
-		face.side = NO;
-		draw_face(core, face);
-	}
-	else if (index == 1)
-	{
-		set_face(&face, entity, 0, 1);
-		face.side = NO;
-		draw_face(core, face);
-		set_face(&face, entity, 1, 2);
-		face.side = WE;
-		draw_face(core, face);
-	}
-	else if (index == 2)
-	{
-		set_face(&face, entity, 1, 2);
-		face.side = WE;
-		draw_face(core, face);
-		set_face(&face, entity, 2, 3);
-		face.side = SO;
-		draw_face(core, face);
-	}
-	else if (index == 3)
-	{
-		set_face(&face, entity, 2, 3);
-		face.side = SO;
-		draw_face(core, face);
 		set_face(&face, entity, 3, 0);
 		face.side = EA;
 		draw_face(core, face);
@@ -369,16 +279,7 @@ void	draw_corps(t_core *core, t_entity *entity)
 	int	index;
 
 	index = get_indexmin(entity);
-	if (is_2points(entity) == true)
-	{
-		draw_2points(core, entity, index);
-		printf("2 point index %i\n", index);
-	}
-	else
-	{
-		draw_3points(core, entity, index);
-		printf("3 point index %i\n", index);
-	}
+	draw_3points(core, entity, index);
 }
 
 void	test(t_core *core)

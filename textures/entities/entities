@@ -1,0 +1,8 @@
+player
+    corps   path to corps xpm
+    arm     path to arm
+    head    path to head
+    leg     path to leg
+
+enemy
+

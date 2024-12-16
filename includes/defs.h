@@ -81,6 +81,9 @@
 # define WE	2
 # define EA	3
 
+# define PLAYER 0
+# define ENEMY 1
+
 # define NB_SOUNDS	13
 # define AMBIENT	0
 # define PRANK		1
