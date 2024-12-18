@@ -18,6 +18,9 @@ inline static void	init_player(t_player *player)
 	player->bubbles_speed = BUBBLES_SPEED;
 	player->speed = DEFPLAYERSPEED;
 	player->life = MAX_LIFE;
+	player->entity.texture = mlx_load_png("textures/entities/player.png");
+	if (!player->entity.texture)
+		exit(1);
 }
 
 inline static void	init_core_map(t_core *core)

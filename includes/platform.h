@@ -82,28 +82,33 @@ typedef struct s_casting
 
 typedef struct	s_face
 {
-	int		side;
-	long	texture[12][8];
-	float	angle1;
-	float	angle2;
-	float	length1;
-	float	length2;		
+	t_pos			*p1;
+	t_pos			*p2;
+	t_pos			*p3;
+	t_pos			*p4;
+	int				index[4];
+	mlx_texture_t	*texture;
+	t_ipos			offset;	
 } t_face;
+
 typedef	struct s_component
 {
-	t_pos	points[4];
+	t_pos	points[8];
 	float	angle[4];
 	float	distance[4];
-	int		texture[4][8][12];
+	t_face	face[6];
 }	t_component;
 
-typedef struct s_entity
+typedef struct s_player_entity
 {
-	t_pos	position;
-	t_component	corps;
-	//t_entity_type	type;
-	t_vector		view;
-}	t_entity;
+	t_component		corps;
+	t_component		head;
+	t_component		left_arm;
+	t_component		right_arm;
+	t_component		left_leg;
+	t_component		right_leg;
+	mlx_texture_t	*texture;
+}	t_player_entity;
 
 // typedef struct s_3points
 // {
@@ -129,18 +134,19 @@ typedef struct s_network
 	//* CORE
 typedef struct s_player
 {
-	int			life;
-	float		speed;
-	float		offset;
-	t_pos		position;
-	BOOL		crouched;
-	t_vector	movement;
-	t_vector	view;
-	float		bubbles;
-	float		bubbles_speed;
-	BOOL		maxed;
-	BOOL		mined;
-	BOOL		torch_activated;
+	int				life;
+	float			speed;
+	float			offset;
+	t_pos			position;
+	BOOL			crouched;
+	t_vector		movement;
+	t_vector		view;
+	t_player_entity	entity;
+	float			bubbles;
+	float			bubbles_speed;
+	BOOL			maxed;
+	BOOL			mined;
+	BOOL			torch_activated;
 }	t_player;
 
 typedef struct s_filepath
@@ -294,5 +300,11 @@ typedef struct s_fvector
 	float	y;
 	float	z;
 }	t_fvector;
+
+typedef struct s_ipos
+{
+	int	x;
+	int	y;
+}	t_ipos;
 
 #endif

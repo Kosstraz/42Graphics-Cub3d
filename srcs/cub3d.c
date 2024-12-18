@@ -47,6 +47,7 @@ void	cub3d(t_core *core)
 	}
 	else if (core->network.is_active)
 		recv_map(core);
+	init_player_entity(core);
 	init_mlx_env(core);
 	setup_mlx_hooks(core);
 	mlx_loop(core->mlx);
