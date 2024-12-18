@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/11 15:51:39 by mkhoury          ###   ########.fr       */
+/*   Updated: 2024/12/08 19:34:59 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,8 @@ float	rad2deg(float rad);
 float	modulo_float(float nb, float mod);
 float	get_angle(float dx, float dy);
 void	draw_rectangle2(int x, int y, long color, t_core *core);
+
+t_color_type	decrease_lighting(t_color_type col, int by);
 
 
 #endif
