@@ -183,6 +183,10 @@ float	modulo_float(float nb, float mod);
 float	get_angle(float dx, float dy);
 void	draw_rectangle2(int x, int y, long color, t_core *core);
 
+void    init_face(t_face *face, t_pos *points[4], int pos[2], mlx_texture *texture);
+void    set_point(t_pos *point, float att[3], t_pos pos);
+
+
 t_color_type	decrease_lighting(t_color_type col, int by);
 
 

@@ -12,24 +12,6 @@
 
 #include "cub3d.h"
 
-void    init_face(t_face *face, t_pos *points[4], int pos[2], mlx_texture *texture)
-{
-    face->p1 = points[0];
-    face->p2 = points[1];
-    face->p3 = points[2];
-    face->p4 = points[3];
-    face->offset.x = pos[0];
-    face->offset.y = pos[1];
-    face->texture = texture; 
-}
-
-void    set_point(t_pos *point, float att[3], t_pos pos)
-{
-    point->x = cos(deg2rad(att[0])) * att[1] + pos.x;
-    point->y = sin(deg2rad(att[0])) * att[1] + pos.y;
-    point->z = att[3];
-}
-
 void    set_corps(t_player *player)
 {
     set_point(&player->entity.corps.points[0],(float []) {25.f + player->view.angle, 0.2f, 24.f}, player->position);
@@ -42,11 +24,21 @@ void    set_corps(t_player *player)
     set_point(&player->entity.corps.points[7],(float []) {335.f + player->view.angle, 0.2f, 12.f}, player->position);
     init_face(&player->entity.corps.face[0], (t_pos *[]){&player->entity.corps.points[3], &player->entity.corps.points[4],\
     &player->entity.corps.points[6],&player->entity.corps.points[7]}, (int []){20, 21}, player->entity.texture);
+    init_face(&player->entity.corps.face[1], (t_pos *[]){&player->entity.corps.points[3], &player->entity.corps.points[0],\
+    &player->entity.corps.points[7],&player->entity.corps.points[4]}, (int []){28, 20}, player->entity.texture);
+    init_face(&player->entity.corps.face[2], (t_pos *[]){&player->entity.corps.points[0], &player->entity.corps.points[1],\
+    &player->entity.corps.points[4],&player->entity.corps.points[5]}, (int []){32, 21}, player->entity.texture);
+    init_face(&player->entity.corps.face[3], (t_pos *[]){&player->entity.corps.points[1], &player->entity.corps.points[2],\
+    &player->entity.corps.points[5],&player->entity.corps.points[6]}, (int []){16, 20}, player->entity.texture);
+    init_face(&player->entity.corps.face[4], (t_pos *[]){&player->entity.corps.points[1], &player->entity.corps.points[0],\
+    &player->entity.corps.points[2],&player->entity.corps.points[3]}, (int []){20, 16}, player->entity.texture);
+    init_face(&player->entity.corps.face[5], (t_pos *[]){&player->entity.corps.points[5], &player->entity.corps.points[4],\
+    &player->entity.corps.points[6],&player->entity.corps.points[7]}, (int []){28, 16}, player->entity.texture);
 }
 
 void    init_player_entity(t_player *player)
 {
     player->view.angle = 0.f;
-
+	set_corps(player);
     
 }
