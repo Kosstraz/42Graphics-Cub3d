@@ -94,8 +94,8 @@ typedef struct	s_face
 typedef	struct s_component
 {
 	t_pos	points[8];
-	float	angle[4];
-	float	distance[4];
+	float	angle[8];
+	float	distance[8];
 	t_face	face[6];
 }	t_component;
 
