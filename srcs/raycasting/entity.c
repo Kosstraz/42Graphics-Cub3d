@@ -111,6 +111,8 @@ int	get_x(float angle_j, float *angles, int lim)
 			index = i;
 			dist = delta;
 		}
+		if (dist <= 0.5)
+			return (index);
 		i++;
 	}
 	if (dist == 3)
