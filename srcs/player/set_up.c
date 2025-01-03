@@ -6,13 +6,13 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 18:42:44 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/02 20:10:20 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/03 15:10:10 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void    init_face(t_face *face, t_pos *points[4], int pos[2], mlx_texture *texture)
+void    init_face(t_face *face, t_pos *points[4], int pos[2], mlx_texture_t *texture)
 {
     face->p1 = points[0];
     face->p2 = points[1];

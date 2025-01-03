@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/10 18:29:17 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/03 14:55:30 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ inline static void	init_player(t_player *player)
 	player->entity.texture = mlx_load_png("textures/entities/player.png");
 	if (!player->entity.texture)
 		exit(1);
+	init_player_entity(player);
 }
 
 inline static void	init_core_map(t_core *core)

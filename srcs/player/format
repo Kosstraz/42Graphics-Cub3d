@@ -1,0 +1,25 @@
+1 0
+2 3
+---
+5 4
+6 7
+
+/////////
+
+F1 : front | 0
+F2 : left  | 1
+F3 : rear  | 2
+F4 : right | 3
+F5 : top   | 4
+F6 : bottom| 5
+
+/////////
+
+0 -> TOP / REAR / LEFT 		| 4 / 2 / 1 
+1 -> TOP / REAR / RIGHT		| 4 / 2 / 3
+2 -> TOP / FRONT / RIGHT	| 4 / 0 / 3
+3 -> TOP / FRONT / LEFT		| 4 / 0 / 1
+4 -> BOTTOM / REAR / LEFT	| 5 / 2 / 1
+5 -> BOTTOM / REAR / RIGHT	| 5 / 2 / 3
+6 -> BOTTOM / FRONT / RIGHT	| 5 / 0 / 3
+7 -> BOTTOM / FRONT / LEFT	| 5 / 0 / 1

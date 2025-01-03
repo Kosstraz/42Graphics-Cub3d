@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/08 19:34:59 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/03 19:03:25 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,8 +183,12 @@ float	modulo_float(float nb, float mod);
 float	get_angle(float dx, float dy);
 void	draw_rectangle2(int x, int y, long color, t_core *core);
 
-void    init_face(t_face *face, t_pos *points[4], int pos[2], mlx_texture *texture);
+void    init_face(t_face *face, t_pos *points[4], int pos[2], mlx_texture_t *texture);
 void    set_point(t_pos *point, float att[3], t_pos pos);
+void    set_corps(t_player *player);
+void    init_player_entity(t_player *player);
+void	sort_distance(int *tbl[6][3]);
+void	draw_face(t_face face, t_core *core);
 
 
 t_color_type	decrease_lighting(t_color_type col, int by);
