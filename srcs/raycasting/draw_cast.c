@@ -138,8 +138,11 @@ void	draw_cf(int x, const int torchx, float length, const float torchlength, t_c
 {
 	t_uint			y;
 	t_uint			col;
-	const t_uint	chalfh = (core->imgs.cast->height / 2.0f);
+	const uint32_t	chalfh = (core->imgs.cast->height / 2.0f);
+	const uint32_t	cchalfh = chalfh - core->player->offset - core->player->bubbles;
 
+	(void)torchlength;
+	(void)length;
 	y = 0;
 	while (y < core->imgs.cast->height)
 	{
@@ -148,9 +151,19 @@ void	draw_cf(int x, const int torchx, float length, const float torchlength, t_c
 		else if (y > chalfh - core->player[LOCAL].offset)
 			col = coltoui(core->map.cf_colors[F]);
 		if (core->player[LOCAL].torch_activated)
-			col = increase_lighting(torch(torchx, y, torchlength, col, core), -length * 15 / -y);
+		{
+			if (y >= cchalfh)
+				col = increase_lighting(torch(torchx, y, (y - cchalfh) / 2.5f, col, core), -y);
+			else
+				col = increase_lighting(torch(torchx, y, (-y + cchalfh) / 2.5f, col, core), -y - core->player->offset - core->player->bubbles);
+		}
 		else
-			col = increase_lighting(col, -length * 17 / -y);
+		{
+			if (y >= cchalfh)
+				col = increase_lighting(col, -y - chalfh - core->player->offset - core->player->bubbles);
+			else
+				col = increase_lighting(col, -y - chalfh - core->player->offset - core->player->bubbles);
+		}
 		draw_pixel(x, y, col, &core->layer[CAST_LAYER]);
 		++y;
 	}
@@ -167,7 +180,7 @@ void	draw_col(int x, const float y1, float length, t_core *core)
 	const float		half_nb_pixels = nb_pixels / 2.0f;
 
 	i = 0;
-	//draw_cf(x, torchx, length, torchlength, core);
+	draw_cf(x, torchx, length, torchlength, core);
 	while (i < (int)nb_pixels)
 	{
 		y = y1 + ((float)i - half_nb_pixels);

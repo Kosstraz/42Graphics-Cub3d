@@ -4,5 +4,6 @@
 		"draw_recatngle.C": "cpp",
 		"string_view": "c",
 		"ranges": "c"
-	}
+	},
+	"cmake.ignoreCMakeListsMissing": true
 }

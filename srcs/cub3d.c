@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:50 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/10 18:43:19 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/01/03 14:30:41 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	game(t_core *core)
 	player_check_orientationraycast(core);
 	if (!core->mouse_visible)
 		mlx_set_mouse_pos(core->mlx, core->half_width, core->half_height);
+	recv_any_element(core);
 	render(core);
 	show_fps(core);
 	if (core->audio[AMBIENT].len == 0)
