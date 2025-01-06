@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:32:22 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/03 18:29:32 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/06 17:43:17 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,33 @@ int	set_distance(t_component *component, t_pos local)
 	return (min_index);
 }
 
+bool	check_visible(t_player *distant, t_player *local)
+{
+	float	angle;
+	float	delta;
+	float	distance;
+
+	angle = get_angle(distant->position.x - local->position.x, distant->position.y - local->position.y);
+	if (angle - local->view.angle > 180.f)
+		delta = 360.f - (angle - local->view.angle);
+	else if (angle - local->view.angle < -180.f)
+		delta = -360.f - (angle - local->view.angle);
+	else
+		delta = angle - local->view.angle;
+	distance = sqrtf((distant->position.x - local->position.x) * (distant->position.x - local->position.x)\
+	+ (distant->position.y - local->position.y) * (distant->position.y - local->position.y));
+	if (delta > 70.f || distance <= 1.f)
+		return (false);
+	return (true);
+}
+
 void    draw_player(t_core *core, t_player *distant, t_player *local)
 {
 	int	i;
 	int	distances[6][3];
 
+	if (check_visible(distant, local) == false)
+		return ;
 	i = 0;
 	while (i < 6)
 	{

@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/03 16:09:43 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/06 17:16:31 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,5 +307,13 @@ typedef struct s_ipos
 	int	x;
 	int	y;
 }	t_ipos;
+
+typedef struct s_screenp
+{
+	int			x;
+	int			y;
+	float		angle;
+	float		distance;
+}	t_screenp;
 
 #endif
