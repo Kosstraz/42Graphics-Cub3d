@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:27:41 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/06 17:43:26 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/07 15:51:56 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,5 @@ void	draw_face(t_face face, t_core *core)
 	t_screenp	points[4];
 
 	transform_points((t_pos *[]){face.p1, face.p2, face.p3, face.p4}, &points, core->player[LOCAL].position, core);
-	if (points[0].x)
 	draw_face_extra(points, face, core);
 }
