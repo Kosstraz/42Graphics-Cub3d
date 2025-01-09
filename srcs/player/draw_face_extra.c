@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:16:47 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/07 16:24:06 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/09 18:33:02 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	draw_col(t_ipos points[2], int index, t_core *core, t_face face)
 	nb_pixel = points[1].y - points[0].y;
 	while (i < nb_pixel)
 	{
-		color = (unsigned int *) (face.texture->pixels[i * 12 + index]);
+		color = (unsigned int *) (face.texture->pixels[(i + face.offset.y) * 12 + index + face.offset.x]);
 		draw_pixel(points[0].x, points[0].y, color, &core->layer[CAST_LAYER]);
 		points[0].y++;
 		i++;
@@ -59,4 +59,35 @@ void	draw_face_extra(t_screenp points[4], t_face face, t_core *core)
 		draw_col(p, i, core, face);
 		i++;
 	}
+}
+
+long	get_color(float	x, float y, mlx_texture_t *texture, t_ipos offset)
+{
+	return (10);
+}
+
+void	draw_t1(t_screenp points[3], t_core *core, t_face face)
+{
+	t_ipos	point;
+	int	i;
+	int	i_step;
+	int	j;
+	int	j_step;
+
+	i = points[2].y - points[1].y;
+	if (i < 0)
+		i_step = -1;
+	else
+		i_step = 1;
+	point.y = points[1].y;
+	while (point.y != points[2].y)
+	{
+		point.x = points[0].x;
+		while (point.)
+		{
+			/* code */
+		}
+		point.y += i_step;
+	}
+	
 }

@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:32:22 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/06 17:43:17 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/09 15:45:34 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ bool	check_visible(t_player *distant, t_player *local)
 		delta = angle - local->view.angle;
 	distance = sqrtf((distant->position.x - local->position.x) * (distant->position.x - local->position.x)\
 	+ (distant->position.y - local->position.y) * (distant->position.y - local->position.y));
-	if (delta > 70.f || distance <= 1.f)
+	if (absf(delta) > 70.f || distance <= 1.f)
 		return (false);
 	return (true);
 }

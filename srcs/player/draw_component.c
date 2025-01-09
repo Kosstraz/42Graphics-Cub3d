@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:59:06 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/03 19:02:54 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/09 15:39:57 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	draw_component_face(t_face face1, t_face face2, t_face face3, t_core *core)
 {
-	draw_face(face1, core);
+	//draw_face(face1, core);
 	draw_face(face2, core);
 	draw_face(face3, core);
 }

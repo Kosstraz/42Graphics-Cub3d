@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/06 17:17:49 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/09 15:39:21 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,6 +190,7 @@ void    init_player_entity(t_player *player);
 void	sort_distance(int *tbl[6][3]);
 void	draw_face(t_face face, t_core *core);
 void	draw_face_extra(t_screenp points[4], t_face face, t_core *core);
+void	draw_component(t_component component, int index, t_core *core);
 
 
 t_color_type	decrease_lighting(t_color_type col, int by);

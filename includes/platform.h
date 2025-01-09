@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/07 15:44:36 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/09 17:17:47 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ typedef struct	s_face
 	t_pos			*p4;
 	int				index[4];
 	mlx_texture_t	*texture;
-	t_pos			offset;	
+	t_ipos			offset;	
 } t_face;
 
 typedef	struct s_component
