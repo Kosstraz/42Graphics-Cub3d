@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 17:16:47 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/09 18:33:02 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/10 18:40:16 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,28 +66,34 @@ long	get_color(float	x, float y, mlx_texture_t *texture, t_ipos offset)
 	return (10);
 }
 
-void	draw_t1(t_screenp points[3], t_core *core, t_face face)
+void	triangle1_x(t_screenp points[3], t_core *core, t_face face)
 {
+	int		i;
+	int		step;
 	t_ipos	point;
-	int	i;
-	int	i_step;
-	int	j;
-	int	j_step;
-
-	i = points[2].y - points[1].y;
-	if (i < 0)
-		i_step = -1;
+	
+	i = 0;
+	if ((points[2].x - points[1].x) > 0)
+		step = 1;
 	else
-		i_step = 1;
-	point.y = points[1].y;
-	while (point.y != points[2].y)
+		step = 1;
+	point.x = points[1].x + i;
+	while (/* condition */)
 	{
-		point.x = points[0].x;
-		while (point.)
-		{
-			/* code */
-		}
-		point.y += i_step;
+		/* code */
 	}
 	
+}
+
+
+void	draw_t1(t_screenp points[3], t_core *core, t_face face)
+{
+	t_ipos	delta;
+
+	delta.x = abs(points[2].x - points[1].x);
+	delta.y = abs(points[2].y - points[1].y);
+	if (delta.x > delta.y)
+		triangle1_x();
+	else
+		triangle1_y();
 }
