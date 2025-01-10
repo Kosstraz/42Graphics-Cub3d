@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 15:45:45 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/09 16:39:07 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/10 17:29:47 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void    update_head_points(t_player *player)
 {
-    set_point(&player->entity.liste[1].points[0],(float []) {45.f + player->view.angle, 0.3f, 32.f}, player->position);
-    set_point(&player->entity.liste[1].points[1],(float []) {135.f + player->view.angle, 0.3f, 32.f}, player->position);
-    set_point(&player->entity.liste[1].points[2],(float []) {225.f + player->view.angle, 0.3f, 32.f}, player->position);
-    set_point(&player->entity.liste[1].points[3],(float []) {315.f + player->view.angle, 0.3f, 32.f}, player->position);
-    set_point(&player->entity.liste[1].points[4],(float []) {45.f + player->view.angle, 0.3f, 24.f}, player->position);
-    set_point(&player->entity.liste[1].points[5],(float []) {135.f + player->view.angle, 0.3f, 24.f}, player->position);
-    set_point(&player->entity.liste[1].points[6],(float []) {225.f + player->view.angle, 0.3f, 24.f}, player->position);
-    set_point(&player->entity.liste[1].points[7],(float []) {315.f + player->view.angle, 0.3f, 24.f}, player->position);
+    set_point(&player->entity.liste[1].points[0],(float []) {4.f, 4.f, player->view.angle, 32.f}, player->position);
+    set_point(&player->entity.liste[1].points[1],(float []) {-4.f, 4.f, player->view.angle, 32.f}, player->position);
+    set_point(&player->entity.liste[1].points[2],(float []) {-4.f, -4.f, player->view.angle, 32.f}, player->position);
+    set_point(&player->entity.liste[1].points[3],(float []) {4.f, -4.f, player->view.angle, 32.f}, player->position);
+    set_point(&player->entity.liste[1].points[4],(float []) {4.f, 4.f, player->view.angle, 24.f}, player->position);
+    set_point(&player->entity.liste[1].points[5],(float []) {-4.f, 4.f, player->view.angle, 24.f}, player->position);
+    set_point(&player->entity.liste[1].points[6],(float []) {-4.f, -4.f, player->view.angle, 24.f}, player->position);
+    set_point(&player->entity.liste[1].points[7],(float []) {4.f, -4.f, player->view.angle, 24.f}, player->position);
 }
 
 void    set_head_face(t_player *player)

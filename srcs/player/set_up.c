@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 18:42:44 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/03 15:10:10 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/10 17:26:54 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,14 @@ void    init_face(t_face *face, t_pos *points[4], int pos[2], mlx_texture_t *tex
     face->texture = texture; 
 }
 
-void    set_point(t_pos *point, float att[3], t_pos pos)
+void    set_point(t_pos *point, float att[4], t_pos pos)
 {
-    point->x = cos(deg2rad(att[0])) * att[1] + pos.x;
-    point->y = sin(deg2rad(att[0])) * att[1] + pos.y;
-    point->z = att[3];
+	float	angle;
+	float	distance;
+
+	angle = get_angle(att[0], att[1]) + att[3];
+	distance = sqrtf((att[0] * att[0]) + (att[1] * att[1])) * 0.1f;
+    point->x = cos(deg2rad(angle)) * distance + pos.x;
+    point->y = sin(deg2rad(angle)) * distance + pos.y;
+    point->z = att[2];
 }

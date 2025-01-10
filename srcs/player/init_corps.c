@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 20:09:50 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/03 18:47:02 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/10 17:26:25 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void    update_corps_points(t_player *player)
 {
-    set_point(&player->entity.liste[0].points[0],(float []) {25.f + player->view.angle, 0.2f, 24.f}, player->position);
-    set_point(&player->entity.liste[0].points[1],(float []) {165.f + player->view.angle, 0.2f, 24.f}, player->position);
-    set_point(&player->entity.liste[0].points[2],(float []) {205.f + player->view.angle, 0.2f, 24.f}, player->position);
-    set_point(&player->entity.liste[0].points[3],(float []) {335.f + player->view.angle, 0.2f, 24.f}, player->position);
-    set_point(&player->entity.liste[0].points[4],(float []) {25.f + player->view.angle, 0.2f, 12.f}, player->position);
-    set_point(&player->entity.liste[0].points[5],(float []) {165.f + player->view.angle, 0.2f, 12.f}, player->position);
-    set_point(&player->entity.liste[0].points[6],(float []) {205.f + player->view.angle, 0.2f, 12.f}, player->position);
-    set_point(&player->entity.liste[0].points[7],(float []) {335.f + player->view.angle, 0.2f, 12.f}, player->position);
+    set_point(&player->entity.liste[0].points[0],(float []) {4.f, 2.f, player->view.angle, 24.f}, player->position);
+    set_point(&player->entity.liste[0].points[1],(float []) {-4.f, 2.f, player->view.angle, 24.f}, player->position);
+    set_point(&player->entity.liste[0].points[2],(float []) {-4.f, -2.f, player->view.angle, 24.f}, player->position);
+    set_point(&player->entity.liste[0].points[3],(float []) {4.f, -2.f, player->view.angle, 24.f}, player->position);
+    set_point(&player->entity.liste[0].points[4],(float []) {4.f, 2.f, player->view.angle, 12.f}, player->position);
+    set_point(&player->entity.liste[0].points[5],(float []) {-4.f, 2.f, player->view.angle, 12.f}, player->position);
+    set_point(&player->entity.liste[0].points[6],(float []) {-4.f, -2.f, player->view.angle, 12.f}, player->position);
+    set_point(&player->entity.liste[0].points[7],(float []) {4.f, -2.f, player->view.angle, 12}, player->position);
 }
 
 void    set_corps_face(t_player *player)
