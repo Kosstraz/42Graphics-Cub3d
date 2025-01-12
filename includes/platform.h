@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/09 17:17:47 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/12 16:54:50 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ typedef struct s_pos
 	float	y;
 	float	z;
 }	t_pos;
+
+typedef struct s_ipos
+{
+	int	x;
+	int	y;
+}	t_ipos;
 
 typedef struct s_posi
 {
@@ -301,12 +307,6 @@ typedef struct s_fvector
 	float	y;
 	float	z;
 }	t_fvector;
-
-typedef struct s_ipos
-{
-	int	x;
-	int	y;
-}	t_ipos;
 
 typedef struct s_screenp
 {

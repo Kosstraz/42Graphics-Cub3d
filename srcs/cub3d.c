@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:50 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/09 18:05:06 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/01/12 17:09:04 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	game(t_core *core)
 	recv_any_element(core);
 	draw_cast(core);
 	if (core->network.is_active == true)
-		draw_joueur(core);
+		draw_player_2(core, &core->player[DISTANT], &core->player[LOCAL]);
 	draw_minimap(core);
 	show_fps(core);
 	if (core->audio[AMBIENT].len == 0)
@@ -47,7 +47,7 @@ void	cub3d(t_core *core)
 	}
 	else if (core->network.is_active)
 		recv_map(core);
-	init_player_entity(core);
+	//init_player_entity(core);
 	init_mlx_env(core);
 	setup_mlx_hooks(core);
 	mlx_loop(core->mlx);

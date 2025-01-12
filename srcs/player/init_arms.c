@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:58:09 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/10 17:40:38 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/12 17:00:31 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void    set_armr_face(t_player *player)
     &player->entity.liste[5].points[6],&player->entity.liste[5].points[7]}, (int []){28, 16}, player->entity.texture);
 }
 
-void    set_corps(t_player *player)
+void    set_arms(t_player *player)
 {
 	update_arml_points(player);
 	update_armr_points(player);

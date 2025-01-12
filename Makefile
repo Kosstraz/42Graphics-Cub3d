@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
+#    By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/12/10 11:09:18 by ymanchon         ###   ########.fr        #
+#    Updated: 2025/01/12 17:08:15 by mkhoury          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,6 +80,20 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/movements/movement.c				\
 		./srcs/movements/movement2.c			\
 		./srcs/movements/bubbles.c				\
+		\
+		./srcs/player/draw_player.c				\
+		./srcs/player/draw_component.c				\
+		./srcs/player/draw_face_extra.c				\
+		./srcs/player/draw_face.c				\
+		./srcs/player/draw_line_texture.c				\
+		./srcs/player/draw_utils.c				\
+		./srcs/player/init_arms.c				\
+		./srcs/player/init_legs.c				\
+		./srcs/player/init_corps.c				\
+		./srcs/player/init_head.c				\
+		./srcs/player/init_player.c				\
+		./srcs/player/set_up.c				\
+		./srcs/player/update_movement.c				\
 		\
 		./main.c								\
 		./srcs/deg2rad.c

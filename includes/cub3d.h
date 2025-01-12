@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/09 15:39:21 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/12 17:01:23 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,7 +177,7 @@ long int	get_time2(void);
 void		clear_img(t_core *core);
 void	draw_col(int x, const float y1, float length, t_core *core);
 void	draw_rectangle(long distance, int x, t_core *core);
-void	draw_joueur(t_core *core);
+//void	draw_joueur(t_core *core);
 float	rad2deg(float rad);
 float	modulo_float(float nb, float mod);
 float	get_angle(float dx, float dy);
@@ -191,6 +191,16 @@ void	sort_distance(int *tbl[6][3]);
 void	draw_face(t_face face, t_core *core);
 void	draw_face_extra(t_screenp points[4], t_face face, t_core *core);
 void	draw_component(t_component component, int index, t_core *core);
+void	draw_line_texture(t_screenp points[2], t_face face, t_core *core, float prc);
+void	draw_t1(t_screenp points[3], t_core *core, t_face face);
+void    draw_player_2(t_core *core, t_player *distant, t_player *local);
+void    set_arms(t_player *player);
+void    set_legs(t_player *player);
+void    set_head(t_player *player);
+void    set_corps(t_player *player);
+
+
+
 
 
 t_color_type	decrease_lighting(t_color_type col, int by);

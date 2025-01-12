@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:27:41 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/09 18:09:58 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/12 18:49:23 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	get_y(t_pos point, t_screenp *dest, t_pos local, t_core *core)
 	dest->distance = distance;
 }
 
-void	transform_points(t_pos *points[4], t_screenp *dest[4], t_pos local, t_core *core)
+void	transform_points(t_pos *points[4], t_screenp **dest, t_pos local, t_core *core)
 {
 	int	i;
 
@@ -56,10 +56,14 @@ void	transform_points(t_pos *points[4], t_screenp *dest[4], t_pos local, t_core 
 
 void	draw_face(t_face face, t_core *core)
 {
-	t_screenp	points[4];
+	t_screenp	*points;
 
+	points = malloc(sizeof(t_screenp) * 4);
+	if (!points)
+		return ;
 	transform_points((t_pos *[]){face.p1, face.p2, face.p3, face.p4}, &points, core->player[LOCAL].position, core);
 	//draw_face_extra(points, face, core);
-	draw_t1();
-	draw_t2();
+	//draw_t1(points, core, face);
+//	draw_t1();
+	free(points);
 }

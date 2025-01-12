@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 17:08:44 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/03 18:24:58 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/12 17:01:53 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,30 +45,4 @@ void	sort_distance(int *tbl[6][3])
 		}
 		i++;
 	}
-}
-int	get_x(float angle_j, float *angles, int lim)
-{
-	int	i;
-	float	delta;
-	int		index;
-	float	dist;
-
-	i = 0;
-	dist = 3;
-	while (i < lim)
-	{
-		if (angle_j > angles[i])
-			delta = angle_j  - angles[i];
-		else
-			delta = angles[i] - angle_j;
-		if (delta < dist)
-		{
-			index = i;
-			dist = delta;
-		}
-		i++;
-	}
-	if (dist == 3)
-		return (-1);
-	return (index);
 }
