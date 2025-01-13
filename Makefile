@@ -6,7 +6,7 @@
 #    By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2025/01/12 17:08:15 by mkhoury          ###   ########.fr        #
+#    Updated: 2025/01/13 17:27:01 by mkhoury          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,6 +76,8 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/network/mutual_addr.c			\
 		./srcs/network/send.c					\
 		./srcs/network/send_textures.c			\
+		./srcs/network/tcpcom_entity.c			\
+		./srcs/network/change_ptr.c			\
 		\
 		./srcs/movements/movement.c				\
 		./srcs/movements/movement2.c			\

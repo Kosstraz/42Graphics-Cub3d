@@ -6,22 +6,19 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/03 14:55:30 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/13 17:18:21 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-inline static void	init_player(t_player *player)
+inline static void	init_player(t_player *player, t_core *core)
 {
 	ft_memset(player, 0, sizeof(t_player));
 	player->bubbles_speed = BUBBLES_SPEED;
 	player->speed = DEFPLAYERSPEED;
 	player->life = MAX_LIFE;
-	player->entity.texture = mlx_load_png("textures/entities/player.png");
-	if (!player->entity.texture)
-		exit(1);
-	init_player_entity(player);
+	init_player_entity(player, core);
 }
 
 inline static void	init_core_map(t_core *core)
@@ -60,10 +57,13 @@ inline void	init_core(t_core *core)
 	core->layer[MINIMAP_LAYER].pixels = NULL;
 	core->layer[CAST_LAYER].pixels = NULL;
 	core->fps_cooldown = 0;
-	init_player(&core->player[LOCAL]);
-	init_player(&core->player[DISTANT]);
+	init_player(&core->player[LOCAL], core);
+	init_player(&core->player[DISTANT], core);
 	init_core_map(core);
 	init_cast(&core->cast, core->player[LOCAL]);
+	core->player_texture = mlx_load_png("textures/entities/player.png");
+	if (!core->player_texture)
+		exit(1);
 }
 
 inline void	init_mlx_env(t_core *core)

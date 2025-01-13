@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/12 16:54:50 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/13 17:02:30 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,14 +92,13 @@ typedef struct	s_face
 	t_pos			*p2;
 	t_pos			*p3;
 	t_pos			*p4;
-	int				index[4];
 	mlx_texture_t	*texture;
 	t_ipos			offset;	
 } t_face;
 
 typedef	struct s_component
 {
-	t_pos	points[8];
+	t_pos	**points;
 	float	angle[8];
 	float	distance[8];
 	t_face	face[6];
@@ -107,14 +106,13 @@ typedef	struct s_component
 
 typedef struct s_player_entity
 {
-	t_component		liste[6];
+	t_pos		liste[6][8];
 	// t_component		corps;
 	// t_component		head;
 	// t_component		left_arm;
 	// t_component		right_arm;
 	// t_component		left_leg;
 	// t_component		right_leg;
-	mlx_texture_t	*texture;
 }	t_player_entity;
 
 // typedef struct s_3points
@@ -263,7 +261,9 @@ typedef struct s_core
 	BOOL			mouse_visible;
 	int				fps_cooldown;
 	char			*_strerror;
-	int	tex_debug;
+	int				tex_debug;
+	t_component		liste[6];
+	mlx_texture_t	*player_texture;
 }	t_core;
 
 

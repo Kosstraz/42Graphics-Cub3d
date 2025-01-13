@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/12 17:01:23 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/13 17:25:56 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,8 +185,7 @@ void	draw_rectangle2(int x, int y, long color, t_core *core);
 
 void    init_face(t_face *face, t_pos *points[4], int pos[2], mlx_texture_t *texture);
 void    set_point(t_pos *point, float att[3], t_pos pos);
-void    set_corps(t_player *player);
-void    init_player_entity(t_player *player);
+void    init_player_entity(t_player *player, t_core *core);
 void	sort_distance(int *tbl[6][3]);
 void	draw_face(t_face face, t_core *core);
 void	draw_face_extra(t_screenp points[4], t_face face, t_core *core);
@@ -194,11 +193,13 @@ void	draw_component(t_component component, int index, t_core *core);
 void	draw_line_texture(t_screenp points[2], t_face face, t_core *core, float prc);
 void	draw_t1(t_screenp points[3], t_core *core, t_face face);
 void    draw_player_2(t_core *core, t_player *distant, t_player *local);
-void    set_arms(t_player *player);
-void    set_legs(t_player *player);
-void    set_head(t_player *player);
-void    set_corps(t_player *player);
-
+void    set_arms(t_player *player, t_core *core);
+void    set_legs(t_player *player, t_core *core);
+void    set_head(t_player *player, t_core *core);
+void    set_corps(t_player *player, t_core *core);
+void	send_entity_points(t_core *core);
+void	recv_entity_points(t_core *core);
+void	change_ptr(t_core *core, t_player *player);
 
 
 

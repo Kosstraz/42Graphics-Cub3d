@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   send.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:50:18 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/09 15:39:52 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/01/13 17:30:02 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,11 @@ void	recv_any_element(t_core *core)
 		{
 			recv(core->network.tcp.com, &poll_id, 1, 0);
 			if (poll_id == POLL_PLAYER)
-				recv(core->network.tcp.com, &core->player[1], sizeof(t_player), 0);
+				recv(core->network.tcp.com, &core->player[DISTANT], sizeof(t_player), 0);
 			else if (poll_id == POLL_DOOR)
 				handle_poll_door(core);
+			else if (poll_id == POLL_ENTITY_POINTS)
+				recv_entity_points(core);
 		}
 	}
 }

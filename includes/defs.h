@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defs.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/10 11:46:41 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/01/13 14:53:32 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 	//* multi
 # define PORT	4243
 
-# define POLL_PLAYER	(char)0
-# define POLL_DOOR		(char)1
+# define POLL_PLAYER		(char)0
+# define POLL_DOOR			(char)1
+# define POLL_ENTITY_POINTS	(char)2
 
 # define LOCAL		0
 # define DISTANT	1
