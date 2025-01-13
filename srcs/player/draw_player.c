@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:32:22 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/13 17:30:26 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/13 19:01:55 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,10 @@ int	set_distance(t_component *component, t_pos local)
 
 	i = 0;
 	min_index = 0;
-	printf("%f\n", component->points[i]->x);
-	while (i < 6)
+	while (i < 8)
 	{
-		component->distance[i] = sqrtf((component->points[i]->x - local.x) * (component->points[i]->x  - local.x)\
-		+ (component->points[i]->y - local.y) * (component->points[i]->y - local.y));
+		component->distance[i] = sqrtf((component->points[i].x - local.x) * (component->points[i].x  - local.x)\
+		+ (component->points[i].y - local.y) * (component->points[i].y - local.y));
 		if (component->distance[i] < component->distance[min_index])
 			min_index = i;
 		i++;
@@ -69,7 +68,9 @@ void    draw_player_2(t_core *core, t_player *distant, t_player *local)
 	int	i;
 	int	distances[6][3];
 
-	change_ptr(core, &core->player[DISTANT]);
+	cpy_ptbl(core, *distant);
+	// core->liste[0].points[2].x = 1.f;
+	// printf("test :%f\n", core->liste[0].face[0].p1->x);
 	if (check_visible(distant, local) == false)
 		return ;
 	i = 0;

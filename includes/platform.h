@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/13 17:02:30 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/13 18:31:00 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ typedef struct	s_face
 
 typedef	struct s_component
 {
-	t_pos	**points;
+	t_pos	points[8];
 	float	angle[8];
 	float	distance[8];
 	t_face	face[6];

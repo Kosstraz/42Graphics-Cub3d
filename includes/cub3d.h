@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/13 17:25:56 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/13 18:34:07 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,7 @@ void    set_corps(t_player *player, t_core *core);
 void	send_entity_points(t_core *core);
 void	recv_entity_points(t_core *core);
 void	change_ptr(t_core *core, t_player *player);
+void	cpy_ptbl(t_core *core, t_player player);
 
 
 

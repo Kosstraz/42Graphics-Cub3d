@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:20:41 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/13 16:56:59 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/13 19:01:33 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,17 @@ void    set_legl_face(t_player *player, t_core *core)
 
 void    set_legr_face(t_player *player, t_core *core)
 {
-    init_face(&core->liste[2].face[0], (t_pos *[]){&core->liste[3].points[2], &core->liste[3].points[3],\
+    init_face(&core->liste[3].face[0], (t_pos *[]){&core->liste[3].points[2], &core->liste[3].points[3],\
     &core->liste[3].points[6],&core->liste[3].points[7]}, (int []){20, 21}, core->player_texture);
-    init_face(&core->liste[2].face[1], (t_pos *[]){&core->liste[3].points[3], &core->liste[3].points[0],\
+    init_face(&core->liste[3].face[1], (t_pos *[]){&core->liste[3].points[3], &core->liste[3].points[0],\
     &core->liste[3].points[7],&core->liste[3].points[4]}, (int []){28, 20}, core->player_texture);
-    init_face(&core->liste[2].face[2], (t_pos *[]){&core->liste[3].points[0], &core->liste[3].points[1],\
+    init_face(&core->liste[3].face[2], (t_pos *[]){&core->liste[3].points[0], &core->liste[3].points[1],\
     &core->liste[3].points[4],&core->liste[3].points[5]}, (int []){32, 21}, core->player_texture);
-    init_face(&core->liste[2].face[3], (t_pos *[]){&core->liste[3].points[1], &core->liste[3].points[2],\
+    init_face(&core->liste[3].face[3], (t_pos *[]){&core->liste[3].points[1], &core->liste[3].points[2],\
     &core->liste[3].points[5],&core->liste[3].points[6]}, (int []){16, 20}, core->player_texture);
-    init_face(&core->liste[2].face[4], (t_pos *[]){&core->liste[3].points[1], &core->liste[3].points[0],\
+    init_face(&core->liste[3].face[4], (t_pos *[]){&core->liste[3].points[1], &core->liste[3].points[0],\
     &core->liste[3].points[2],&core->liste[3].points[3]}, (int []){20, 16}, core->player_texture);
-    init_face(&core->liste[2].face[5], (t_pos *[]){&core->liste[3].points[5], &core->liste[3].points[4],\
+    init_face(&core->liste[3].face[5], (t_pos *[]){&core->liste[3].points[5], &core->liste[3].points[4],\
     &core->liste[3].points[6],&core->liste[3].points[7]}, (int []){28, 16}, core->player_texture);
 }
 

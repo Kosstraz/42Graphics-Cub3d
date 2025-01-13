@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 20:09:50 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/13 16:26:25 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/13 18:35:55 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void    update_corps_points(t_player *player)
 
 void    set_corps_face(t_player *player, t_core *core)
 {
-	core->liste[0].points = &player->entity.liste[0];
     init_face(&core->liste[0].face[0], (t_pos *[]){&core->liste[0].points[2], &core->liste[0].points[3],\
     &core->liste[0].points[6],&core->liste[0].points[7]}, (int []){20, 21}, core->player_texture);
     init_face(&core->liste[0].face[1], (t_pos *[]){&core->liste[0].points[3], &core->liste[0].points[0],\
