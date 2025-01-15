@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/11 15:51:39 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/15 18:19:35 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,11 +177,41 @@ long int	get_time2(void);
 void		clear_img(t_core *core);
 void	draw_col(int x, const float y1, float length, t_core *core);
 void	draw_rectangle(long distance, int x, t_core *core);
-void	draw_joueur(t_core *core);
+//void	draw_joueur(t_core *core);
 float	rad2deg(float rad);
 float	modulo_float(float nb, float mod);
 float	get_angle(float dx, float dy);
 void	draw_rectangle2(int x, int y, long color, t_core *core);
+void	mlx_put_line2(t_layer *layer, t_posi a, t_posi b, t_color_type color);
+
+// void    init_face(t_face *face, t_pos *points[4], int pos[2], mlx_texture_t *texture);
+// void    set_point(t_pos *point, float att[3], t_pos pos);
+// void    init_player_entity(t_player *player, t_core *core);
+// void	sort_distance(int *tbl[6][3]);
+// void	draw_face(t_face face, t_core *core);
+// // void	draw_face_extra(t_screenp points[4], t_face face, t_core *core);
+// void	draw_component(t_component component, int index, t_core *core);
+// // void	draw_line_texture(t_screenp points[2], t_face face, t_core *core, float prc);
+// // void	draw_t1(t_screenp points[3], t_core *core, t_face face);
+// void    draw_player_2(t_core *core, t_player *distant, t_player *local);
+// void    set_arms(t_player *player, t_core *core);
+// void    set_legs(t_player *player, t_core *core);
+// void    set_head(t_player *player, t_core *core);
+// void    set_corps(t_player *player, t_core *core);
+// void	send_entity_points(t_core *core);
+// void	recv_entity_points(t_core *core);
+// void	change_ptr(t_core *core, t_player *player);
+// void	cpy_ptbl(t_core *core, t_player player);
+// void	update_movement(t_player *player);
+// void    update_legr_points(t_player *player);
+// void    update_legl_points(t_player *player);
+// void    update_head_points(t_player *player);
+// void    update_corps_points(t_player *player);
+// void    update_armr_points(t_player *player);
+// void    update_arml_points(t_player *player);
+
+
+t_color_type	decrease_lighting(t_color_type col, int by);
 
 
 #endif
