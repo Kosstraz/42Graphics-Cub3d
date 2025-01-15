@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 18:42:44 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/13 15:03:30 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/15 13:44:45 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static void	move_player(t_player *player, float angle, t_core *core)
 		&& ((core->map.buf[(int)player->position.y][(int)tmp.x] != CUB3D_WALL && core->map.buf[(int)player->position.y][(int)tmp.x] != CUB3D_DOOR)
 			|| doors_check_state((int)tmp.x, (int)player->position.y, core) > 0))
 		player->position.x = next.x;
+	update_movement(player);
 }
 
 static void	crouch_player(t_core *core)//t_player *player, float delta_time)

@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 15:32:22 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/13 19:01:55 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/15 16:22:14 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ bool	check_visible(t_player *distant, t_player *local)
 		delta = angle - local->view.angle;
 	distance = sqrtf((distant->position.x - local->position.x) * (distant->position.x - local->position.x)\
 	+ (distant->position.y - local->position.y) * (distant->position.y - local->position.y));
-	if (ft_absf(delta) > 70.f || distance <= 1.f)
-		return (false);
+	//if (ft_absf(delta) > 70.f || distance <= 1.f)
+	//	return (false);
 	return (true);
 }
 
@@ -83,7 +83,7 @@ void    draw_player_2(t_core *core, t_player *distant, t_player *local)
 	}
 	//sort_distance(&distances);
 	i = 0;
-	while (i < 6)
+	while (i < 1)
 	{
 		draw_component(core->liste[distances[i][0]], distances[i][1], core);
 		i++;

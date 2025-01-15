@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/13 18:34:07 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/15 13:43:43 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,8 +201,13 @@ void	send_entity_points(t_core *core);
 void	recv_entity_points(t_core *core);
 void	change_ptr(t_core *core, t_player *player);
 void	cpy_ptbl(t_core *core, t_player player);
-
-
+void	update_movement(t_player *player);
+void    update_legr_points(t_player *player);
+void    update_legl_points(t_player *player);
+void    update_head_points(t_player *player);
+void    update_corps_points(t_player *player);
+void    update_armr_points(t_player *player);
+void    update_arml_points(t_player *player);
 
 
 t_color_type	decrease_lighting(t_color_type col, int by);

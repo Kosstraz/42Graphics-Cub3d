@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 14:26:41 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/13 19:04:27 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/15 15:43:29 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	draw_line_x(t_screenp points[2], t_face face, t_core *core, float prc)
 	{
 		point.x = points[0].x + i * step;
 		point.y = points[0].y + (int) (delta.y * ((float)i));
-		//place_texture(point, face, core, (float []){prc, (float) i / delta.x});
+		place_texture(point, face, core, (float []){prc, (float) i / delta.x});
 		//draw_pixel(point.x, point.y, Red, &core->layer[CAST_LAYER]);
 		i++;
 	}
