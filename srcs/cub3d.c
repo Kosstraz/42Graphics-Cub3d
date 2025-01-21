@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:50 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/03 14:30:41 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/01/13 15:27:44 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,7 @@ void	cub3d(t_core *core)
 {
 	if (!core->network.is_active || core->network.is_host)
 	{
-		if (ft_strncmp_rev(core->map.file, ".cub", 3)
-			|| (!ft_strncmp_rev(core->map.file, ".cub", 3)
-				&& ft_strlen(core->map.file) == 4))
-			exit_strerror(BAD_EXTENSION_FILE_T, core);
-		else if (!core->map.generated)
+		if (!core->map.generated)
 			parse_map(core);
 		if (core->network.is_host)
 			send_map(core);
