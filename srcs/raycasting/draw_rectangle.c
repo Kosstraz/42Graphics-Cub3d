@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:05:35 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/11 16:18:05 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/22 15:59:48 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,43 @@ void	draw_rectangle2(int x, int y, long color, t_core *core)
 		i++;
 	}
 	
+}
+
+void	draw_col2(int x, long color, float len, t_core *core)
+{
+	int	i;
+	int	nb;
+	int	y;
+	
+	i = 0;
+	nb = (int)(core->imgs.cast->height / len);
+	y = (int) ((core->imgs.cast->height / 2.f) - core->player[LOCAL].offset - core->player[LOCAL].bubbles) - nb / 2 + (int) (core->imgs.cast->height / 6.f / len);
+	while (i < nb)
+	{
+		if (core->cast.casts[x] >= len)
+		{
+			draw_pixel(x, y, color, &core->layer[CAST_LAYER]);
+			core->cast.casts[x] = len;
+		}
+		y++;
+		i++;
+	}
+}
+
+void	draw_rectangle3(int pos[2], float length[2], long color, t_core *core)
+{
+	float	dl;
+	int		i;
+	int		nb;
+	
+	nb = abs(pos[0] - pos[1]);
+	dl = (length[0] - length[1]) / (float) nb;
+	i = 0;
+	while (i < nb)
+	{
+		draw_col2(pos[1], color, length[1], core);
+		length[1] = length[1] + dl;
+		pos[1]++;
+		i++;
+	}
 }

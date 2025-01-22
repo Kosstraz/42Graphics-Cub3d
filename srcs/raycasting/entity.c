@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:16:09 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/15 18:31:25 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/22 15:55:22 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	set_point(t_entity *entity, t_player player)
 {
 	float	hit;
 
-	hit = 0.1f;
+	hit = 0.2f;
 	entity->position.x = player.position.x;
 	entity->position.y = player.position.y;
 	entity->position.z = player.position.z;
@@ -80,7 +80,7 @@ void	set_point(t_entity *entity, t_player player)
 
 float	get_distance(t_pos player1, t_pos player2)
 {
-	return ( sqrtf((player1.x - player2.x) * (player1.x - player2.x) + (player1.y - player2.y) * (player1.y - player2.y)));
+	return (sqrtf((player1.x - player2.x) * (player1.x - player2.x) + (player1.y - player2.y) * (player1.y - player2.y)));
 }
 
 void	set_distance(t_entity *entity, t_player player)
@@ -190,16 +190,17 @@ void	draw_face(t_core *core, t_face face)
 		pixel = 0xff0000ff;
 	else
 		pixel = 0xff000000;
+	draw_rectangle3((int []){index1, index2}, (float []){face.length1, face.length2}, pixel, core);
+	return;
 	a.x = index1;
-	a.y = ((int)(core->imgs.cast->height / 2.0f) - (int) core->player[LOCAL].offset - (int) core->player[LOCAL].bubbles);
+	a.y = ((int)(core->imgs.cast->height / 3.0f) - (int) core->player[LOCAL].offset);
 	b.x = index2;
-	b.y = ((int)(core->imgs.cast->height / 2.0f) - (int) core->player[LOCAL].offset - (int) core->player[LOCAL].bubbles);
+	b.y = ((int)(core->imgs.cast->height / 3.0f) - (int) core->player[LOCAL].offset);
 	int i;
 	int	hei = 200 - (int)((face.length1 - 10.f) * 10.f);
 	int	delL = (int) (face.length2 - face.length1);
 	i = 0;
-	printf("y : %i\n", a.y);
-	while (i < 200)
+	while (i < (int) (core->imgs.cast->height - face.length1 * 50.f))
 	{
 		a.y++;
 		b.y++;
@@ -207,9 +208,6 @@ void	draw_face(t_core *core, t_face face)
 		mlx_put_line2(&core->layer[CAST_LAYER], a, b , pixel);
 		i++;
 	}
-	printf("y : %i\n", a.y);
-	printf("i %i\n", i);
-	
 	return ;
 	//printf("index 1 = %i inde 2 = %i, delta %i\n", index1, index2, index2 - index1);
 	if (index1 == -1 && index2 == -1)
@@ -332,7 +330,7 @@ void	draw_joueur(t_core *core)
 	// return ;
 	set_point(&joueur_distant, core->player[DISTANT]);
 	set_angle(&joueur_distant, core->player[LOCAL].position);
-	if (get_distance(core->player[LOCAL].position, core->player[DISTANT].position) < 1)
+	if (get_distance(core->player[LOCAL].position, core->player[DISTANT].position) < 0.2f)
 		return ;
 	if (joueur_visible(core, &joueur_distant) == false)
 		return ;

@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/15 18:19:35 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/22 15:10:12 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,7 @@ float	modulo_float(float nb, float mod);
 float	get_angle(float dx, float dy);
 void	draw_rectangle2(int x, int y, long color, t_core *core);
 void	mlx_put_line2(t_layer *layer, t_posi a, t_posi b, t_color_type color);
+void	draw_rectangle3(int pos[2], float length[2], long color, t_core *core);
 
 // void    init_face(t_face *face, t_pos *points[4], int pos[2], mlx_texture_t *texture);
 // void    set_point(t_pos *point, float att[3], t_pos pos);
