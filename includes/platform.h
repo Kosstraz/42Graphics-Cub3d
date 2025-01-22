@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/08 17:49:30 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/22 17:23:41 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,29 @@ typedef struct s_casting
 	int			last_width;
 }	t_casting;
 
+typedef struct	s_face
+{
+	int		side;
+	long	texture[12][8];
+	float	angle1;
+	float	angle2;
+	float	length1;
+	float	length2;		
+} t_face;
+
+typedef	struct s_component
+{
+	t_pos	points[4];
+	float	angle[4];
+	float	distance[4];
+	int		texture[4][8][12];
+}	t_component;
+
 typedef struct s_entity
 {
 	t_pos	position;
-	
-	
+	t_component	corps;
+	t_vector		view;
 }	t_entity;
 
 

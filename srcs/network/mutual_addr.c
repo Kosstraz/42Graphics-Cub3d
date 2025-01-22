@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mutual_addr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 17:24:27 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/10 14:58:58 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:14:25 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	setup_client(char *address, t_core *core)
 {
+	if (!address)
+		exit(1);
 	core->network.tcp.fd = socket(AF_INET, SOCK_STREAM, 0);
 	inet_pton(AF_INET, address, (in_addr_t *)&core->network.tcp.sock.sin_addr.s_addr);
 	core->network.tcp.sock.sin_family = AF_INET;
@@ -25,7 +27,7 @@ void	setup_client(char *address, t_core *core)
 		exit(1);
 	}
 	ft_printf("Connexion a autrui reussie.\n");
-	core->network.tcp.com = dup(core->network.tcp.fd);
+	core->network.tcp.com = dup(core->network.tcp.fd); //! enlever dup() si pb
 }
 
 void	setup_server(t_core *core)

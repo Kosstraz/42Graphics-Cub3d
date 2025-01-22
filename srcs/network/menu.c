@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:50:43 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/26 20:58:21 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:14:18 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static void	demande_addresspoint(t_core *core)
 	char	address[INET_ADDRSTRLEN];
 
 	ft_printf("Adresse : ");
-	scanf("%s", address);
+	if (scanf("%s", address) == -1)
+		exit(1);
 	setup_client(address, core);
 }
 
@@ -49,11 +50,13 @@ static void	create_or_join(t_core *core)
 
 	ft_printf("1. CREATE SERVER\n");
 	ft_printf("2. JOIN\n");
-	scanf("\n%c", &choice);
+	if (scanf("%c", &choice) == -1)
+		exit(1);
 	while (choice != '1' && choice != '2')
 	{
 		ft_printf("Veuillez faire un choix valide.\n");
-		scanf("%c", &choice);
+		if (scanf("%c", &choice) == -1)
+			exit(1);
 	}
 	clear_terminal();
 	if (choice == '1')
@@ -69,11 +72,13 @@ void	multiplayer_menu(t_core *core)
 	init_network(core);
 	ft_printf("1. SOLO\n");
 	ft_printf("2. MULTI\n");
-	scanf("%c", &choice);
+	if (scanf("%c", &choice) == -1)
+		exit(1);
 	while (choice != '1' && choice != '2')
 	{
 		ft_printf("Veuillez faire un choix valide.\n");
-		scanf("%c", &choice);
+		if (scanf("%c", &choice) == -1)
+			exit(1);
 	}
 	clear_terminal();
 	if (choice == '1')

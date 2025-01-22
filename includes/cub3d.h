@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/10 18:34:13 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:23:07 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,7 @@ void	recv_any_element(t_core *core);
 long int	get_time2(void);
 void		clear_img(t_core *core);
 void	draw_col(int x, const float y1, float length, t_core *core);
-void	draw_rectangle(float distance, int x, t_core *core);
+void	draw_rectangle(long distance, int x, t_core *core);
 void	draw_joueur(t_core *core);
 float	rad2deg(float rad);
 float	modulo_float(float nb, float mod);
