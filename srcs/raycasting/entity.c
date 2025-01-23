@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:16:09 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/22 17:16:11 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/23 15:24:59 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,7 @@ void	draw_face(t_core *core, t_face face)
 		pixel = 0xff0000ff;
 	else
 		pixel = 0xff000000;
-	draw_rectangle3((int []){index1, index2}, (float []){face.length1, face.length2}, pixel, core);
+	draw_rectangle3((int []){index1, index2}, (float []){face.length1, face.length2}, face.side, core);
 	return;
 	a.x = index1;
 	a.y = ((int)(core->imgs.cast->height / 3.0f) - (int) core->player[LOCAL].offset);

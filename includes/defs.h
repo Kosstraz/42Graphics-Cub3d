@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defs.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/10 11:46:41 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/01/23 17:32:28 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@
 # define F	1
 
 # define NO	0
-# define SO	1
-# define WE	2
-# define EA	3
+# define SO	2
+# define WE	3
+# define EA	1
 
 # define NB_SOUNDS	13
 # define AMBIENT	0

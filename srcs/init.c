@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/10 18:29:08 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/01/23 15:22:15 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ inline void	init_core(t_core *core)
 	init_player(&core->player[DISTANT]);
 	init_core_map(core);
 	init_cast(&core->cast, core->player[LOCAL]);
+	core->texturej = mlx_load_png("textures/player.png");
+	if (!core->texturej)
+		exit(1);
 }
 
 inline void	init_mlx_env(t_core *core)

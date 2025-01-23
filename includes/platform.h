@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/22 17:23:41 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/23 14:52:16 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,7 +245,8 @@ typedef struct s_core
 	BOOL			mouse_visible;
 	int				fps_cooldown;
 	char			*_strerror;
-	int	tex_debug;
+	int				tex_debug;
+	mlx_texture_t	*texturej;
 }	t_core;
 
 

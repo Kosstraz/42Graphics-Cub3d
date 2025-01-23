@@ -179,7 +179,8 @@ void	draw_cf(int x, const int torchx, float length, const float torchlength, t_c
 					col = colTmp;
 			}
 		}
-		draw_pixel(x, y, col, &core->layer[CAST_LAYER]);
+		*(core->layer[CAST_LAYER].pixels[y][x]) = col;
+		//draw_pixel(x, y, col, &core->layer[CAST_LAYER]);
 		++y;
 	}
 }
@@ -192,7 +193,7 @@ void	draw_cf(int x, const int torchx, float length, const float torchlength, t_c
 void	draw_col(int x, const float y1, float length, t_core *core)
 {
 	int				i;
-	float			y;
+	int				y;
 	long			col;
 	const float		nb_pixels = core->half_height / (core->cast.wallDist[x] / 3.0f);
 	const int		torchx = x - core->half_width;
@@ -200,22 +201,21 @@ void	draw_col(int x, const float y1, float length, t_core *core)
 	const float		half_nb_pixels = nb_pixels / 2.0f;
 
 	i = 0;
+	if (y1 - half_nb_pixels < 0)
+		i = (int) (half_nb_pixels - y1);
+	y = (int) (y1 - half_nb_pixels) + i;
 	draw_cf(x, torchx, length, torchlength, core);
-	while (i < (int)nb_pixels)
+	while (i < (int)nb_pixels && y < core->layer[CAST_LAYER].height)
 	{
-		y = y1 + ((float)i - half_nb_pixels);
-		if (y < 0 || y >= core->imgs.cast->height)
-		{
-			++i;
-			continue ;
-		}
 		col = get_pixel(x, (float) i / nb_pixels, core);
 		if (core->player[LOCAL].torch_activated)
 			col = increase_lighting(torch(torchx, y, torchlength, col, core), -length * 15);
 		else
 			col = increase_lighting(col, -length * 17);
-		draw_pixel(x, (int)y, col, &core->layer[CAST_LAYER]);
+		// draw_pixel(x, y, col, &core->layer[CAST_LAYER]);
+		*(core->layer[CAST_LAYER].pixels[y][x]) = col;
 		++i;
+		y++;
 	}
 }
 
