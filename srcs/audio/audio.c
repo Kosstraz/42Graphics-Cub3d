@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   audio.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 19:54:09 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/09 13:14:49 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:37:36 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,15 @@ void	play_sound(t_audio *audio)
 
 void	destroy_audio_system(t_core *core)
 {
+	int	i = 0;
+
 	SDL_CloseAudio();
-	if (core->audio[AMBIENT].buffer)
-		SDL_FreeWAV(core->audio[AMBIENT].buffer);
-	if (core->audio[PRANK].buffer)
-		SDL_FreeWAV(core->audio[PRANK].buffer);
+	while (i < NB_SOUNDS)
+	{
+		if (core->audio[i].buffer)
+			SDL_FreeWAV(core->audio[i].buffer);
+		++i;
+	}	
 	SDL_Quit();
+	free(core->spec);
 }

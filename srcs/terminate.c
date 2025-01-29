@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:47 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/08 16:21:09 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/29 14:34:20 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,16 @@ void	free_core_map(t_core *core)
 	}
 }
 
+void	free_png(t_core *core)
+{
+	if (core->texturej)
+	{
+		if (core->texturej->pixels)
+			free(core->texturej->pixels);
+		free(core->texturej);
+	}
+}
+
 void	free_core(t_core *core)
 {
 	if (core->network.is_active)
@@ -56,4 +66,5 @@ void	free_core(t_core *core)
 	mlx_delete_image(core->mlx, core->imgs.minimap);
 	mlx_delete_image(core->mlx, core->imgs.fps);
 	mlx_terminate(core->mlx);
+	free_png(core);	
 }
