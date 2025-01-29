@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:05:35 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/23 17:28:37 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/29 13:46:36 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ void	draw_rectangle2(int x, int y, long color, t_core *core)
 	int	i;
 	int	j;
 	
-	//draw_pixel(x , y, color, &core->layer[CAST_LAYER]);
-	//return ;
 	i = 0;
 	while (i < 5)
 	{
@@ -61,9 +59,8 @@ unsigned int	get_color(float x, float y, mlx_texture_t *texture, int side)
 	int	yt;
 	int	xt;
 
-	yt = (int) (y * 24.f) * 32;//+ side * 8;
+	yt = (int) (y * 24.f) * 32;
 	xt = (int) (x * 8.f);
-	//printf("xp %f yp %f xt %i yt %i side %i total%i\n", x, y, xt, yt, side, xt + yt);
 	return ((((unsigned int *)(texture->pixels)))[yt + xt + side * 8]);
 }
 
