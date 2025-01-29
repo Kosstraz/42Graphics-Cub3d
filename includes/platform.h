@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/23 14:52:16 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/29 19:13:15 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ typedef struct s_casting
 	float		wallx[1920];
 	float		wallDist[1920];
 	BOOL		is_door;
-	float		max;
-	float		min;
 	float		di;
 	int			hfov;
 	t_pos		last_pose;
@@ -290,5 +288,31 @@ typedef struct s_fvector
 	float	y;
 	float	z;
 }	t_fvector;
+
+typedef	struct s_raycast
+{
+	t_fvector	unit;
+	t_fvector	vector_dir;
+	t_ivector	step;
+	t_fvector	side;
+	t_fvector	ray_start;
+	t_ivector	map_check;
+	float		distance;
+	int			side_int;
+	double		walldist;
+	float 		WallX;
+}	t_raycast;
+
+typedef struct s_col
+{
+	int		i;
+	int		y;
+	long	col;
+	float	nb_pixels;
+	int		torchx;
+	float	torchlength;
+	float	half_nb_pixels;
+}	t_col;
+
 
 #endif

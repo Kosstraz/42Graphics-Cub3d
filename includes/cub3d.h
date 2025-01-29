@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/29 14:08:45 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/29 19:17:29 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 		CORE
 	*/
 
-long	torch(int x, int y, float length, long basecolor, t_core *core);
+long	torch(int xy[], float length, long basecolor, t_core *core);
 void	bubbles_sin(float bubbles_min, float bubbles_max, t_core *core);
 void	door_raycast(t_core *core);
 void	init_audio_system(t_core *core);
@@ -192,5 +192,9 @@ void	set_angle(t_entity *entity, t_pos local);
 float	get_distance(t_pos player1, t_pos player2);
 void	set_distance(t_entity *entity, t_player player);
 bool	joueur_visible(t_core *core, t_entity *entity);
+bool	checker_end_while(t_core *core, t_raycast *cast);
+bool	checker_end_while(t_core *core, t_raycast *cast);
+long	get_pixel(int x, float y, t_core *core);
+void	draw_col_init(t_col *init, t_core *core, int x, float floaa[2]);
 
 #endif
