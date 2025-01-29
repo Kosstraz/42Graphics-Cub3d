@@ -6,7 +6,7 @@
 /*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/29 13:44:33 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/29 14:08:45 by mkhoury          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,5 +184,13 @@ float	rad2deg(float rad);
 float	modulo_float(float nb, float mod);
 float	get_angle(float dx, float dy);
 void	draw_rectangle3(int pos[3], float length[2], int side, t_core *core);
+void	draw_face(t_core *core, t_face face);
+void	draw_3points(t_core *core, t_entity *entity, int index);
+void	set_face(t_face *face, t_entity *entity, int index1, int index2);
+void	set_point(t_entity *entity, t_player player);
+void	set_angle(t_entity *entity, t_pos local);
+float	get_distance(t_pos player1, t_pos player2);
+void	set_distance(t_entity *entity, t_player player);
+bool	joueur_visible(t_core *core, t_entity *entity);
 
 #endif

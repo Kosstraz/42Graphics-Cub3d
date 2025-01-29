@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
+#    By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/12/10 14:13:27 by ymanchon         ###   ########.fr        #
+#    Updated: 2025/01/29 14:05:37 by mkhoury          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,8 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/raycasting/draw_cast.c 			\
 		./srcs/raycasting/draw_rectangle.c		\
 		./srcs/raycasting/entity.c 				\
+		./srcs/raycasting/entity_extra.c 				\
+		./srcs/raycasting/entity_extra2.c 				\
 		\
 		./srcs/network/init.c					\
 		./srcs/network/menu.c					\
