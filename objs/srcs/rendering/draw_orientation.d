@@ -1,4 +1,4 @@
 objs/./srcs/rendering/draw_orientation.obj: \
-  srcs/rendering/draw_orientation.c includes/cub3d.h \
-  MLX42-2.4.1/include/MLX42/MLX42.h libft/libft.h includes/platform.h \
-  includes/defs.h includes/enums.h
+ srcs/rendering/draw_orientation.c includes/cub3d.h \
+ MLX42-2.4.1/include/MLX42/MLX42.h libft/libft.h includes/platform.h \
+ includes/defs.h includes/enums.h

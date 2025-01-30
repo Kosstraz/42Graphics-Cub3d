@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:23:25 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/27 17:55:48 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/01/27 19:03:16 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,22 @@
 
 void	mlx_put_line(t_layer *layer, t_pos a, t_pos b, t_color_type color)
 {
-	float	deltaX = b.x - a.x;
-	float	deltaY = b.y - a.y;
+	t_fvector	delta;
+	t_fvector	pixel;
+	int			pixels;
 
-	int		pixels = (int)sqrtf((deltaX * deltaX) + (deltaY * deltaY));
-	deltaX /= pixels;
-	deltaY /= pixels;
-	float	pixelX = a.x;
-	float	pixelY = a.y;
+	delta.x = b.x - a.x;
+	delta.y = b.y - a.y;
+	pixels = (int)sqrtf((delta.x * delta.x) + (delta.y * delta.y));
+	delta.x /= pixels;
+	delta.y /= pixels;
+	pixel.x = a.x;
+	pixel.y = a.y;
 	while (pixels)
 	{
-		draw_pixel(pixelX, pixelY, color, layer);
-		pixelX += deltaX;
-		pixelY += deltaY;
+		draw_pixel(pixel.x, pixel.y, color, layer);
+		pixel.x += delta.x;
+		pixel.y += delta.y;
 		--pixels;
 	}
 }

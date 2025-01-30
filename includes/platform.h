@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   platform.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/23 14:52:16 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/27 19:12:45 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ typedef unsigned int	t_uint;
 
 
 	//* some utilities
+typedef struct s_cmpt
+{
+	int	i;
+	int	j;
+}	t_cmpt;
+
 typedef struct s_pos
 {
 	float	x;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   terminate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:47 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/08 16:21:09 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/27 18:51:06 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	exit_strerror(char	*error_desc, t_core *core)
 {
-	free_core_map(core);
+	if (core)
+		free_core_map(core);
 	ft_printf("%s%s", PARSING_ERROR_T, error_desc);
 	exit(1);
 }

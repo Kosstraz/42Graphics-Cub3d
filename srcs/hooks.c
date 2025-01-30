@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:44 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/10 18:37:53 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:42:07 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,21 @@ void	cub3d_cursor_hook(double xpos, double ypos, t_core *core)
 
 	if (!core->mouse_visible)
 	{
-		tmp = core->player[LOCAL].offset - (core->half_height - ypos) * 15.0f * core->mlx->delta_time;
+		tmp = core->player[LOCAL].offset
+			- (core->half_height - ypos) * 15.0f * core->mlx->delta_time;
 		if (tmp >= -300.0f && tmp <= 300.0f)
 			core->player[LOCAL].offset = tmp;
 		core->player[LOCAL].view.dz = core->half_height - tmp;
-		core->player[LOCAL].view.angle -= (core->half_width - xpos) * 2.0f * core->mlx->delta_time;
+		core->player[LOCAL].view.angle
+			-= (core->half_width - xpos) * 2.0f * core->mlx->delta_time;
 		if (core->player[LOCAL].view.angle >= 360.f)
 			core->player[LOCAL].view.angle = 0.f;
 		if (core->player[LOCAL].view.angle < 0)
-			core->player[LOCAL].view.angle = 360.f + core->player[LOCAL].view.angle;
+			core->player[LOCAL].view.angle
+				= 360.f + core->player[LOCAL].view.angle;
 		if (core->network.is_active)
-			send_element(&core->player[LOCAL], sizeof(t_player), POLL_PLAYER, core);
+			send_element(&core->player[LOCAL],
+				sizeof(t_player), POLL_PLAYER, core);
 	}
 }
 

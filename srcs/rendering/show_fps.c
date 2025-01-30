@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   show_fps.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:44:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/10 18:40:35 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/01/27 19:14:45 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	show_fps(t_core *core)
 		mlx_image_to_window(core->mlx, core->imgs.fps, 0, 0);
 		core->fps_cooldown = (int)(float)round(1000 * core->mlx->delta_time);
 		free(fps);
-		//ft_printf("fps : %d\n", (int)(1.0f / (float)core->mlx->delta_time));
 	}
 	else
 		--core->fps_cooldown;

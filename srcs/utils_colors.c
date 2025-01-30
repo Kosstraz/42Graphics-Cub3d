@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:49 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/06 13:42:18 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:58:52 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,13 @@ static inline void	clamp_color(int *r, int *g, int *b, int by)
 		*b = 0;
 	else
 		*b += by;
-
 }
 
 inline t_color_type	increase_lighting(t_color_type col, int by)
 {
-	int 			r;
-	int				g;
-	int				b;
+	int	r;
+	int	g;
+	int	b;
 
 	r = (col & 0x000000FF);
 	g = (col & 0x0000FF00) >> 8;
@@ -51,18 +50,19 @@ inline t_color_type	increase_lighting(t_color_type col, int by)
 		| (r));
 }
 
-int	invbits(int col)
+/*int	invbits(int col)
 {
 	return (((col & 0xff000000) >> 24)
-			| ((col & 0x00ff0000) >> 8)
-			| ((col & 0x0000ff00) << 8)
-			| ((col & 0x000000ff) << 24));
-}
+		| ((col & 0x00ff0000) >> 8)
+		| ((col & 0x0000ff00) << 8)
+		| ((col & 0x000000ff) << 24));
+}*/
 
 	// char[3] to color
 t_color	ctocol(t_uchar r, t_uchar g, t_uchar b)
 {
 	t_color	ret;
+
 	ret.r = r;
 	ret.g = g;
 	ret.b = b;
@@ -73,6 +73,7 @@ t_color	ctocol(t_uchar r, t_uchar g, t_uchar b)
 uint32_t	coltoui(t_color c)
 {
 	uint32_t	ret;
+
 	ret = (0xff000000)
 		| (c.b << 16)
 		| (c.g << 8)
@@ -87,7 +88,7 @@ t_color	stocol(const char *str)
 	int		tmp;
 	t_color	ret;
 
-	//retuint = 0U;
+	tmp = 0;
 	ret._overflow = FALSE;
 	split = ft_split(str, ',');
 	i = 0;
@@ -96,7 +97,6 @@ t_color	stocol(const char *str)
 		tmp = ft_atoi(split[i]);
 		if (tmp > 255)
 			ret._overflow = TRUE;
-		//retuint |= (tmp << (i * 8));
 		if (i == 0)
 			ret.r = tmp;
 		else if (i == 1)

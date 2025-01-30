@@ -52,6 +52,9 @@ static void	parse_cf_colors(int fd, t_core *core)
 	parse_cf_colors_error(cf, core);
 }
 
+	//if (core->xpms[EA] == NULL || core->xpms[WE] == NULL ||core->xpms[NO] == NULL ||core->xpms[SO] == NULL)
+	//	return(printf("error texture\n"), exit(1));
+
 void	parse_map(t_core *core)
 {
 	int	fd;
@@ -60,8 +63,6 @@ void	parse_map(t_core *core)
 	if (fd == -1)
 		exit_strerror(IMPOSSIBLE_TO_OPEN, core);
 	parse_texturefile_path(fd, core);
-	//if (core->xpms[EA] == NULL || core->xpms[WE] == NULL ||core->xpms[NO] == NULL ||core->xpms[SO] == NULL)
-	//	return(printf("error texture\n"), exit(1));
 	parse_cf_colors(fd, core);
 	parse_asciimap(fd, core);
 	close(fd);

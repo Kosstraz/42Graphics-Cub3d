@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:42 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/06 16:37:19 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:43:13 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ void	print_map(t_core core)
 	size_t	i;
 
 	i = 0;
-	//while (core.map.buf[i])
-	//	ft_printf(core.map.buf[i++].c);
+	(void)core;
+	(void)i;
 }
+
+//while (core.map.buf[i])
+	//	ft_printf(core.map.buf[i++].c);
 
 void	print_color(t_color col)
 {

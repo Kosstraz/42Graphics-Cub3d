@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
+#    By: bama <bama@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/12/10 14:13:27 by ymanchon         ###   ########.fr        #
+#    Updated: 2025/01/27 18:52:23 by bama             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,9 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/hooks.c							\
 		./srcs/hook_resize.c					\
 		./srcs/key_handling.c					\
+		./srcs/key_handling2.c					\
 		./srcs/init.c							\
+		./srcs/init2.c							\
 		./srcs/terminate.c						\
 		./srcs/utils_colors.c					\
 		./srcs/debug.c							\
@@ -56,11 +58,6 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/parsing/parsing_check_errors.c	\
 		./srcs/parsing/parse_asciimap.c			\
 		\
-		./srcs/pc/procedural_creation.c			\
-		./srcs/pc/utils.c						\
-		./srcs/pc/algo.c						\
-		./srcs/pc/algo_delegate.c				\
-		\
 		./srcs/rendering/draw_line.c			\
 		./srcs/rendering/show_fps.c				\
 		./srcs/rendering/minimap.c				\
@@ -77,6 +74,7 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/network/menu.c					\
 		./srcs/network/mutual_addr.c			\
 		./srcs/network/send.c					\
+		./srcs/network/send2.c					\
 		./srcs/network/send_textures.c			\
 		\
 		./srcs/movements/movement.c				\

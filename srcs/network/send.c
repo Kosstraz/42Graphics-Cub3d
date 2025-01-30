@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   send.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:50:18 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/09 15:39:52 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:47:19 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	send_map(t_core *core)
 {
-	size_t	y;
+	uint32_t	i;
+	size_t		y;
 
 	y = 0;
 	send(core->network.tcp.com, &core->map.bufmax, sizeof(size_t), 0);
@@ -22,58 +23,63 @@ void	send_map(t_core *core)
 	while (y < core->map.bufmax)
 	{
 		send(core->network.tcp.com, &core->map.buflens[y], sizeof(size_t), 0);
-		send(core->network.tcp.com, core->map.buf[y], core->map.buflens[y] + 1, 0);
+		send(core->network.tcp.com, core->map.buf[y],
+			core->map.buflens[y] + 1, 0);
 		y++;
 	}
 	send(core->network.tcp.com, &core->map.buflens_max, sizeof(size_t), 0);
 	send(core->network.tcp.com, &core->player[LOCAL], sizeof(t_player), 0);
 	send(core->network.tcp.com, &core->player[DISTANT], sizeof(t_player), 0);
 	send(core->network.tcp.com, &core->map.nbOfDoors, sizeof(size_t), 0);
-	for (uint32_t i = 0U ; i < core->map.nbOfDoors ; i++)
-		send(core->network.tcp.com, &core->map.doors[i], sizeof(t_door), 0);
+	i = 0U;
+	while (i < core->map.nbOfDoors)
+		send(core->network.tcp.com, &core->map.doors[i++], sizeof(t_door), 0);
 	send_textures(core);
 }
 
-void	recv_map(t_core *core)
+static void	recv_map_first_part(t_core *core)
 {
-	size_t	y;
+	size_t		y;
 
 	y = 0;
 	recv(core->network.tcp.com, &core->map.bufmax, sizeof(size_t), 0);
 	recv(core->network.tcp.com, &core->map.buflens_size, sizeof(size_t), 0);
 	core->map.buf = (char **)malloc(sizeof(char *) * (core->map.bufmax + 1));
-	core->map.buflens = (size_t *)malloc(sizeof(size_t) * core->map.buflens_size);
+	core->map.buflens = (size_t *)malloc(sizeof(size_t)
+			* core->map.buflens_size);
 	while (y < core->map.bufmax)
 	{
 		recv(core->network.tcp.com, &core->map.buflens[y], sizeof(size_t), 0);
-		core->map.buf[y] = (char *)malloc(sizeof(char) * (core->map.buflens[y] + 2));
-		recv(core->network.tcp.com, core->map.buf[y], core->map.buflens[y] + 1, 0);
+		core->map.buf[y] = (char *)malloc(sizeof(char)
+				* (core->map.buflens[y] + 2));
+		recv(core->network.tcp.com, core->map.buf[y],
+			core->map.buflens[y] + 1, 0);
 		core->map.buf[y][core->map.buflens[y] + 1] = '\0';
 		y++;
 	}
 	core->map.buf[y] = NULL;
+}
+
+void	recv_map(t_core *core)
+{
+	uint32_t	i;
+
+	recv_map_first_part(core);
 	recv(core->network.tcp.com, &core->map.buflens_max, sizeof(size_t), 0);
 	recv(core->network.tcp.com, &core->player[DISTANT], sizeof(t_player), 0);
 	recv(core->network.tcp.com, &core->player[LOCAL], sizeof(t_player), 0);
 	recv(core->network.tcp.com, &core->map.nbOfDoors, sizeof(size_t), 0);
 	core->map.doors = (t_door *)malloc(sizeof(t_door) * core->map.nbOfDoors);
-	for (uint32_t i = 0U ; i < core->map.nbOfDoors ; i++)
-		recv(core->network.tcp.com, &core->map.doors[i], sizeof(t_door), 0);
+	i = 0U;
+	while (i < core->map.nbOfDoors)
+		recv(core->network.tcp.com, &core->map.doors[i++], sizeof(t_door), 0);
 	recv_textures(core);
-}
-
-inline void	send_element(void *what, size_t size, char poll_id, t_core *core)
-{
-	if (core->network.is_active)
-	{
-		send(core->network.tcp.com, &poll_id, 1, 0);
-		send(core->network.tcp.com, what, size, 0);
-	}
 }
 
 inline static void	handle_poll_door(t_core *core)
 {
 	t_door_info	dinfo;
+
 	recv(core->network.tcp.com, &dinfo, sizeof(t_door_info), 0);
 	core->map.doors[dinfo.which_door].is_open = !dinfo.is_open;
 	if (core->utils.door_focus == dinfo.which_door)
@@ -102,7 +108,8 @@ void	recv_any_element(t_core *core)
 		{
 			recv(core->network.tcp.com, &poll_id, 1, 0);
 			if (poll_id == POLL_PLAYER)
-				recv(core->network.tcp.com, &core->player[1], sizeof(t_player), 0);
+				recv(core->network.tcp.com, &core->player[1],
+					sizeof(t_player), 0);
 			else if (poll_id == POLL_DOOR)
 				handle_poll_door(core);
 		}

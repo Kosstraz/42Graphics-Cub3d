@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_orientation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:17:39 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/10 17:36:44 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/01/27 19:03:26 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ void	orientation_minimap(int i, t_pos startpos, t_core *core)
 	dy = sinf(deg2rad(core->cast.angle[i])) * core->cast.casts[i];
 	end.x = startpos.x + dx * DEFUNIT;
 	end.y = startpos.y + dy * DEFUNIT;
-	mlx_put_line(&core->layer[MINIMAP_LAYER], startpos, end, increase_lighting(Void, 40));
+	mlx_put_line(&core->layer[MINIMAP_LAYER],
+		startpos, end, increase_lighting(Void, 40));
 }

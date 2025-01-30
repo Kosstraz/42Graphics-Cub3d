@@ -3,39 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   draw_square.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:32:18 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/10 18:42:01 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/01/27 19:13:57 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	draw_square(t_layer *layer, t_player *player, t_color_type color, t_core *core)
+// sc_angle.x --> sin
+// sc_angle.y --> cos
+void	draw_square(
+	t_layer *layer,
+	t_player *player,
+	t_color_type color,
+	t_core *core)
 {
-	int			i;
-	int			j;
-	float		x;
-	float		y;	
+	t_cmpt		cmpt;
+	t_fvector	pos;
 	const float	diam = DEFHALFUNIT - 1;
-	const float angle = player->view.angle;
-	const float	sinAngle = sinf(deg2rad(angle));
-	const float	cosAngle = cosf(deg2rad(angle));
+	const float	angle = player->view.angle;
+	t_fvector	sc_angle;
 
-	i = -diam;
-	x = player->position.x * DEFUNIT;
-	y = player->position.y * DEFUNIT;
-	while (i < diam)
+	sc_angle.x = sinf(deg2rad(angle));
+	sc_angle.y = cosf(deg2rad(angle));
+	cmpt.i = -diam;
+	pos.x = player->position.x * DEFUNIT;
+	pos.y = player->position.y * DEFUNIT;
+	while (cmpt.i < diam)
 	{
-		j = -diam;
-		while (j < diam)
+		cmpt.j = -diam;
+		while (cmpt.j < diam)
 		{
-			x = i * cosAngle - j * sinAngle + (player->position.x * DEFUNIT);
-			y = i * sinAngle + j * cosAngle + (player->position.y * DEFUNIT);
-			draw_pixel(x, y, color, layer);
-			++j;
+			pos.x = cmpt.i * sc_angle.y - cmpt.j * sc_angle.x
+				+ (player->position.x * DEFUNIT);
+			pos.y = cmpt.i * sc_angle.x + cmpt.j * sc_angle.y
+				+ (player->position.y * DEFUNIT);
+			draw_pixel(pos.x, pos.y, color, layer);
+			++cmpt.j;
 		}
-		++i;
+		++cmpt.i;
 	}
 }

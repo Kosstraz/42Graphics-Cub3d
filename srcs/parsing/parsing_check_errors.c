@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_check_errors.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:45:45 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/10 16:19:20 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:53:27 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ inline void	parse_texturefile_path_error(t_core *core)
 	core->xpms[NO] = mlx_load_xpm42(core->map.filepath.north);
 	if (!core->xpms[NO])
 		printf("error north\n");
+}
+
 	// printf("path west %p\n", core->xpms[NO]);
 	// printf("path east %p\n", core->xpms[SO]);
 	// printf("path sud %p\n", core->xpms[EA]);
@@ -50,7 +52,6 @@ inline void	parse_texturefile_path_error(t_core *core)
 	// }
 	// else
 	// 	core->xpms[WE] = mlx_load_xpm42(core->map.filepath.west);
-}
 
 inline void	parse_cf_colors_error(BOOL cf[2], t_core *core)
 {

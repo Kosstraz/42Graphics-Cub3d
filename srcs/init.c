@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/23 15:22:15 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/27 18:39:55 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,27 +80,18 @@ inline void	init_mlx_env(t_core *core)
 	mlx_set_mouse_pos(core->mlx, core->half_width, core->half_height);
 	core->minimap.size.x = core->map.buflens_max * DEFUNIT;
 	core->minimap.size.y = core->map.bufmax * DEFUNIT;
-	core->minimap.position.x = core->mlx->width - core->map.buflens_max * DEFUNIT - 10;
+	core->minimap.position.x
+		= core->mlx->width - core->map.buflens_max * DEFUNIT - 10;
 	core->minimap.position.y = 10;
-	core->utils.door_text[TO_OPEN] = mlx_put_string(core->mlx, OPEN_DOOR_T, 0, 0);
-	core->utils.door_text[TO_CLOSE] = mlx_put_string(core->mlx, CLOSE_DOOR_T, 0, 0);
-	mlx_image_to_window(core->mlx, core->utils.door_text[TO_OPEN], core->mlx->width / 2.0f, core->mlx->height / 2.0f);
-	mlx_image_to_window(core->mlx, core->utils.door_text[TO_CLOSE], core->mlx->width / 2.0f, core->mlx->height / 2.0f);
-	core->utils.door_text[TO_OPEN]->enabled = FALSE;
-	core->utils.door_text[TO_CLOSE]->enabled = FALSE;
-	core->imgs.minimap = mlx_new_image(core->mlx,
-		core->minimap.size.x,
-		core->minimap.size.y);
-	core->imgs.cast = mlx_new_image(core->mlx, core->mlx->width, core->mlx->height);
-	mlx_image_to_window(core->mlx, core->imgs.minimap, core->minimap.position.x, core->minimap.position.y);
-	mlx_image_to_window(core->mlx, core->imgs.cast, 0, 0);
-	init_layer(core->imgs.minimap, &core->layer[MINIMAP_LAYER]);
-	init_layer(core->imgs.cast, &core->layer[CAST_LAYER]);
-	init_audio_system(core);
-	play_sound(&core->audio[AMBIENT]);
-	core->tex_debug = 1000;
-	//play_sound(&core->audio[PRANK]);
-	//play_sound(&core->audio[FREAKY]);
+	core->utils.door_text[TO_OPEN]
+		= mlx_put_string(core->mlx, OPEN_DOOR_T, 0, 0);
+	core->utils.door_text[TO_CLOSE]
+		= mlx_put_string(core->mlx, CLOSE_DOOR_T, 0, 0);
+	mlx_image_to_window(core->mlx, core->utils.door_text[TO_OPEN],
+		core->mlx->width / 2.0f, core->mlx->height / 2.0f);
+	mlx_image_to_window(core->mlx, core->utils.door_text[TO_CLOSE],
+		core->mlx->width / 2.0f, core->mlx->height / 2.0f);
+	init_mlx_env2(core);
 }
 
 inline void	setup_mlx_hooks(t_core *core)

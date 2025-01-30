@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:50:43 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/22 17:14:18 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/27 18:43:43 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static void	show_addresspoint(t_core *core)
 	char			*ipv4;
 	char			buffer[256];
 	struct hostent	*hostaddr;
+
 	gethostname(buffer, sizeof(buffer));
 	hostaddr = gethostbyname(buffer);
 	ipv4 = inet_ntoa(*(struct in_addr *)hostaddr->h_addr_list[0]);

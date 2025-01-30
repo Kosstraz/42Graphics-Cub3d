@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:43:52 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/10 18:41:13 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/01/27 23:55:15 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ inline static void	draw_ascii_branch(size_t x, size_t y, t_core *core)
 			draw_ascii_on_minimap(Wall, x * DEFUNIT, y * DEFUNIT, core);
 		else if (core->map.buf[y][x] == ' ')
 			draw_ascii_on_minimap(Transparent, x * DEFUNIT, y * DEFUNIT, core);
-		else if (core->map.buf[y][x] == 'P' && doors_check_state(x, y, core) < 0)
+		else if (core->map.buf[y][x] == 'P' && doors_check_state(x, y, core)
+			< 0)
 			draw_ascii_on_minimap(Door, x * DEFUNIT, y * DEFUNIT, core);
 		else
 			draw_ascii_on_minimap(Void, x * DEFUNIT, y * DEFUNIT, core);
@@ -60,6 +61,7 @@ inline void	draw_player(
 
 	mult.x = player->position.x * DEFUNIT;
 	mult.y = player->position.y * DEFUNIT;
+	(void)mult;
 	draw_square(&core->layer[MINIMAP_LAYER], player, color, core);
 }
 

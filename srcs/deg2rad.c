@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   deg2rad.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:12:53 by mkhoury           #+#    #+#             */
-/*   Updated: 2024/12/04 20:49:52 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:43:31 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,11 @@ float	rad2deg(float rad)
 
 float	modulo_float(float nb, float mod)
 {
-	nb -= mod * fabsf(nb /  mod);
+	nb -= mod * fabsf(nb / mod);
 	if (nb >= 0.f)
 		return (nb);
 	return (nb + mod);
 }
-
 
 float	get_angle(float dx, float dy)
 {

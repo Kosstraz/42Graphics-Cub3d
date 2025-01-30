@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/23 15:10:50 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/27 18:58:30 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@
 		CORE
 	*/
 
+void	move_player(t_player *player, float angle, t_core *core);
+void	init_mlx_env2(t_core *core);
 long	torch(int x, int y, float length, long basecolor, t_core *core);
 void	bubbles_sin(float bubbles_min, float bubbles_max, t_core *core);
 void	door_raycast(t_core *core);

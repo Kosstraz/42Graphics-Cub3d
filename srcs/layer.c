@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   layer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:58:34 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/23 14:21:34 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/27 19:00:24 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ inline void	init_layer(mlx_image_t *img, t_layer *layer)
 		precalcul = y * img->width;
 		while (x < img->width)
 		{
-			layer->pixels[y][x] = (uint32_t *)&img->pixels[(precalcul + x) * BPP];
+			layer->pixels[y][x]
+				= (uint32_t *)&img->pixels[(precalcul + x) * BPP];
 			++x;
 		}
 		++y;
@@ -62,16 +63,17 @@ inline char	cmppixel(
 	t_color_type color,
 	t_layer *layer)
 {
-	//if ((y >= 0 && y < layer->height) && (x >= 0 && x < layer->width))
 	return (*(layer->pixels[y][x]) == color);
 }
 
+// y >= 0U && 
+// x >= 0U && 
 inline int	draw_pixel(uint32_t x,
 	uint32_t y,
 	t_color_type color,
 	t_layer *layer)
 {
-	if ((y >= 0 && y < layer->height) && (x >= 0 && x < layer->width))
+	if (y < layer->height && x < layer->width)
 	{
 		*(layer->pixels[y][x]) = color;
 		return (true);

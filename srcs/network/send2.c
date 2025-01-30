@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   send2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 16:00:40 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/20 16:00:41 by ymanchon         ###   ########.fr       */
+/*   Created: 2025/01/27 18:46:11 by bama              #+#    #+#             */
+/*   Updated: 2025/01/27 18:46:31 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// min et max inclus
-// meme quand min=0
-t_uint	rand_btw(t_uint min, t_uint max)
+inline void	send_element(void *what, size_t size, char poll_id, t_core *core)
 {
-	struct timeval	tv;
-
-	gettimeofday(&tv, NULL);
-	srand(tv.tv_usec);
-	return ((rand() % (max - min + 1)) + min);
+	if (core->network.is_active)
+	{
+		send(core->network.tcp.com, &poll_id, 1, 0);
+		send(core->network.tcp.com, what, size, 0);
+	}
 }
