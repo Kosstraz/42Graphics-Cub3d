@@ -6,7 +6,7 @@
 /*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/27 19:12:45 by bama             ###   ########.fr       */
+/*   Updated: 2025/01/30 14:24:26 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,6 @@ typedef struct s_casting
 	float		wallx[1920];
 	float		wallDist[1920];
 	BOOL		is_door;
-	float		max;
-	float		min;
 	float		di;
 	int			hfov;
 	t_pos		last_pose;
@@ -86,7 +84,7 @@ typedef struct s_casting
 	int			last_width;
 }	t_casting;
 
-typedef struct	s_face
+typedef struct s_face
 {
 	int		side;
 	long	texture[12][8];
@@ -94,9 +92,9 @@ typedef struct	s_face
 	float	angle2;
 	float	length1;
 	float	length2;		
-} t_face;
+}	t_face;
 
-typedef	struct s_component
+typedef struct s_component
 {
 	t_pos	points[4];
 	float	angle[4];
@@ -106,9 +104,9 @@ typedef	struct s_component
 
 typedef struct s_entity
 {
-	t_pos	position;
+	t_pos		position;
 	t_component	corps;
-	t_vector		view;
+	t_vector	view;
 }	t_entity;
 
 
@@ -255,6 +253,14 @@ typedef struct s_core
 	mlx_texture_t	*texturej;
 }	t_core;
 
+typedef struct s_core_audio
+{
+	t_core		*core;
+	t_audio		*audio;
+	ssize_t		i;
+	int			to_copy;
+	t_posi		len_index;
+}	t_core_audio;
 
 	//*	for MAP GENERATION
 typedef struct s_gen_config
@@ -296,5 +302,31 @@ typedef struct s_fvector
 	float	y;
 	float	z;
 }	t_fvector;
+
+typedef struct s_raycast
+{
+	t_fvector	unit;
+	t_fvector	vector_dir;
+	t_ivector	step;
+	t_fvector	side;
+	t_fvector	ray_start;
+	t_ivector	map_check;
+	float		distance;
+	int			side_int;
+	double		walldist;
+	float 		WallX;
+}	t_raycast;
+
+typedef struct s_col
+{
+	int		i;
+	int		y;
+	long	col;
+	float	nb_pixels;
+	int		torchx;
+	float	torchlength;
+	float	half_nb_pixels;
+}	t_col;
+
 
 #endif

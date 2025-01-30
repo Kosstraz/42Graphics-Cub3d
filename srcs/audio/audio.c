@@ -3,48 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   audio.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 19:54:09 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/09 13:14:49 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:26:55 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	audio_player(void *userdata, uint8_t *stream, int len)
+static t_posi	set_posi(int x, int y)
 {
-	t_core	*core;
-	t_audio	*audio;
-	size_t		i;
-	int			to_copy;
-	t_posi		len_index;
+	t_posi	pos;
 
-	i = 0U;
-	core = (t_core *)userdata;
+	pos.x = x;
+	pos.y = y;
+	return (pos);
+}
+
+void	audio_player(
+	void *userdata,
+	uint8_t *stream,
+	int len)
+{
+	t_core_audio	ca;
+
+	ca.i = -1;
+	ca.core = (t_core *)userdata;
 	SDL_memset(stream, 0, len);
-	while (i < NB_SOUNDS)
+	while (++ca.i < NB_SOUNDS)
 	{
-		audio = &core->audio[i];
-		if (audio->is_active && audio->len > 0)
+		ca.audio = &ca.core->audio[ca.i];
+		if (ca.audio->is_active && ca.audio->len > 0)
 		{
-			if (len > (int)audio->len)
-				to_copy = audio->len;
-			else
-				to_copy = len;
-			len_index.x = to_copy;
-			len_index.y = i;
-			ft_SDL_MixAudioFormat(stream, audio->pos, core->spec->format, len_index);
-			audio->pos += to_copy;
-			audio->len -= to_copy;
-			if (audio->len == 0)
-				audio->is_active = FALSE;
+			ca.to_copy = len;
+			if (len > (int)ca.audio->len)
+				ca.to_copy = ca.audio->len;
+			ca.len_index = set_posi(ca.to_copy, ca.i);
+			ft_sdl_mixaudioformat(
+				stream,
+				ca.audio->pos,
+				ca.core->spec->format,
+				ca.len_index);
+			ca.audio->pos += ca.to_copy;
+			ca.audio->len -= ca.to_copy;
+			if (ca.audio->len == 0)
+				ca.audio->is_active = FALSE;
 		}
-		++i;
 	}
 }
 
-static void	load_wavfile(const char *filename, t_audio *audio, SDL_AudioSpec *spec)
+static void	load_wavfile(
+	const char *filename,
+	t_audio *audio,
+	SDL_AudioSpec *spec)
 {
 	if (SDL_LoadWAV(filename, spec, &audio->buffer, &audio->len) < 0)
 		ft_printf("Failed to load %s (%s)\n", filename, SDL_GetError());
@@ -56,9 +68,9 @@ static void	load_wavfile(const char *filename, t_audio *audio, SDL_AudioSpec *sp
 void	init_audio_spec(t_core *core, SDL_AudioSpec *spec)
 {
 	spec->freq = 44100;
-    spec->format = AUDIO_S16LSB;
-    spec->channels = 2;
-    spec->samples = 4096;
+	spec->format = AUDIO_S16LSB;
+	spec->channels = 2;
+	spec->samples = 4096;
 	spec->callback = audio_player;
 	spec->userdata = core;
 }
@@ -68,9 +80,12 @@ void	init_audio_system(t_core *core)
 	if (SDL_Init(SDL_INIT_AUDIO) < 0)
 		ft_printf("Failed to init SDL AUDIO\n");
 	core->spec = (SDL_AudioSpec *)malloc(sizeof(SDL_AudioSpec));
-	load_wavfile("./Assets/sounds/Ambient2.wav", &core->audio[AMBIENT], core->spec);
-	load_wavfile("./Assets/sounds/GoofyRunningSoundEffect.wav", &core->audio[PRANK], core->spec);
-	load_wavfile("./Assets/sounds/FreakySoundEffects.wav", &core->audio[FREAKY], core->spec);
+	load_wavfile("./Assets/sounds/Ambient2.wav", &core->audio[AMBIENT],
+		core->spec);
+	load_wavfile("./Assets/sounds/GoofyRunningSoundEffect.wav",
+		&core->audio[PRANK], core->spec);
+	load_wavfile("./Assets/sounds/FreakySoundEffects.wav", &core->audio[FREAKY],
+		core->spec);
 	load_wavfile("./Assets/sounds/step1.wav", &core->audio[STEP1], core->spec);
 	load_wavfile("./Assets/sounds/step2.wav", &core->audio[STEP2], core->spec);
 	load_wavfile("./Assets/sounds/step3.wav", &core->audio[STEP3], core->spec);
@@ -79,29 +94,12 @@ void	init_audio_system(t_core *core)
 	load_wavfile("./Assets/sounds/door1.wav", &core->audio[DOOR1], core->spec);
 	load_wavfile("./Assets/sounds/door2.wav", &core->audio[DOOR2], core->spec);
 	load_wavfile("./Assets/sounds/door3.wav", &core->audio[DOOR3], core->spec);
-	load_wavfile("./Assets/sounds/TorchOn.wav", &core->audio[TORCHON], core->spec);
-	load_wavfile("./Assets/sounds/TorchOff.wav", &core->audio[TORCHOFF], core->spec);
+	load_wavfile("./Assets/sounds/TorchOn.wav", &core->audio[TORCHON],
+		core->spec);
+	load_wavfile("./Assets/sounds/TorchOff.wav", &core->audio[TORCHOFF],
+		core->spec);
 	init_audio_spec(core, core->spec);
 	if (SDL_OpenAudio(core->spec, NULL))
 		ft_printf("Failed to open SDL audio\n");
 	SDL_PauseAudio(0);
-}
-
-void	play_sound(t_audio *audio)
-{
-	if (audio->buffer == NULL)
-		return ;
-	audio->pos = audio->buffer;
-	audio->len = audio->start_len;
-	audio->is_active = TRUE;
-}
-
-void	destroy_audio_system(t_core *core)
-{
-	SDL_CloseAudio();
-	if (core->audio[AMBIENT].buffer)
-		SDL_FreeWAV(core->audio[AMBIENT].buffer);
-	if (core->audio[PRANK].buffer)
-		SDL_FreeWAV(core->audio[PRANK].buffer);
-	SDL_Quit();
 }

@@ -6,7 +6,7 @@
 /*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/27 18:58:30 by bama             ###   ########.fr       */
+/*   Updated: 2025/01/30 14:15:52 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,14 @@
 		CORE
 	*/
 
-void	move_player(t_player *player, float angle, t_core *core);
+void	draw_3points(t_core *core, t_entity *entity, int index);
+void	draw_3points_extra(t_core *core, t_entity *entity, int index);
+void	set_face(t_face *face, t_entity *entity, int index1, int index2);
+void	set_face(t_face *face, t_entity *entity, int index1, int index2);
+void	set_distance(t_entity *entity, t_player player);
+bool	checker_end_while(t_core *core, t_raycast *cast);
 void	init_mlx_env2(t_core *core);
-long	torch(int x, int y, float length, long basecolor, t_core *core);
+long	torch(int xy[], float length, long basecolor, t_core *core);
 void	bubbles_sin(float bubbles_min, float bubbles_max, t_core *core);
 void	door_raycast(t_core *core);
 void	init_audio_system(t_core *core);
@@ -133,7 +138,7 @@ void	fill_layer(t_layer *layer, t_col_t color);
 void	free_layer(t_layer *layer);
 void	send_textures(t_core *core);
 void	recv_textures(t_core *core);
-void	ft_SDL_MixAudioFormat(Uint8 *dst, const Uint8 *src, SDL_AudioFormat format, t_posi len_and_index);
+void	ft_sdl_mixaudioformat(Uint8 *dst, const Uint8 *src, SDL_AudioFormat format, t_posi len_and_index);
 
 	/*
 		RENDERING
@@ -186,6 +191,17 @@ float	rad2deg(float rad);
 float	modulo_float(float nb, float mod);
 float	get_angle(float dx, float dy);
 void	draw_rectangle3(int pos[3], float length[2], int side, t_core *core);
-
+void	draw_face(t_core *core, t_face face);
+void	draw_3points(t_core *core, t_entity *entity, int index);
+void	set_face(t_face *face, t_entity *entity, int index1, int index2);
+void	set_point(t_entity *entity, t_player player);
+void	set_angle(t_entity *entity, t_pos local);
+float	get_distance(t_pos player1, t_pos player2);
+void	set_distance(t_entity *entity, t_player player);
+bool	joueur_visible(t_core *core, t_entity *entity);
+bool	checker_end_while(t_core *core, t_raycast *cast);
+bool	checker_end_while(t_core *core, t_raycast *cast);
+long	get_pixel(int x, float y, t_core *core);
+void	draw_col_init(t_col *init, t_core *core, int x, float floaa[2]);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:19:35 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/29 17:00:01 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/30 14:28:53 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	while_boucle(t_raycast *cast, t_core *core)
 			cast->distance = cast->side.x;
 			cast->side.x += cast->unit.x;
 			cast->side_int = 0;
-		}	
+		}
 		else
 		{
 			cast->map_check.y += cast->step.y;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_cast.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 10:52:09 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/29 19:24:22 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/30 14:31:59 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,14 @@ inline long	torch(int xy[], float length, long basecolor, t_core *core)
 	return (basecolor);
 }
 
-void	draw_cf(int x, const int torchx, float length, const float torchlength, t_core *core)
+void	draw_cf(
+	int x,
+	t_core *core)
 {
 	t_uint			y;
 	t_uint			col;
-	t_uint			colTmp;
 	const uint32_t	chalfh = (core->imgs.cast->height / 2.0f);
-	const uint32_t	fulloffset = core->player->offset - core->player->bubbles;
-	const uint32_t	cchalfh = chalfh - core->player->offset - core->player->bubbles;
 
-	(void)torchlength;
-	(void)length;
 	y = 0;
 	while (y < core->imgs.cast->height)
 	{
@@ -57,31 +54,6 @@ void	draw_cf(int x, const int torchx, float length, const float torchlength, t_c
 			col = coltoui(core->map.cf_colors[C]);
 		else if (y > chalfh - core->player[LOCAL].offset)
 			col = coltoui(core->map.cf_colors[F]);
-		colTmp = col;
-		if (core->player[LOCAL].torch_activated)
-		{
-			if (y >= cchalfh)
-				col = increase_lighting(torch((int []){torchx, y}, (y - cchalfh) / 2.5f, col, core),
-										1 / (torchlength + cchalfh) - y - core->player->offset - core->player->bubbles);
-			else
-			{
-				col = increase_lighting(torch((int []){torchx, y}, (-y + cchalfh) / 2.5f, col, core),
-										1 / (torchlength + cchalfh) - y - core->player->offset - core->player->bubbles);
-			}
-		}
-		else
-		{
-			if (y >= cchalfh)
-				col = increase_lighting(col,
-										1 / (torchlength + cchalfh) - y - core->player->offset - core->player->bubbles);
-			else
-			{
-				col = increase_lighting(col,
-										(1 / (torchlength + cchalfh) / 2) - y - core->player->offset - core->player->bubbles);
-				if (col > coltoui(core->map.cf_colors[C]))
-					col = colTmp;
-			}
-		}
 		*(core->layer[CAST_LAYER].pixels[y][x]) = col;
 		++y;
 	}
@@ -92,7 +64,7 @@ void	draw_col(int x, const float y1, float length, t_core *core)
 	t_col	col;
 
 	draw_col_init(&col, core, x, (float []){length, y1});
-	draw_cf(x, col.torchx, length, col.torchlength, core);
+	draw_cf(x, core);
 	while (col.i < (int)col.nb_pixels && col.y < core->layer[CAST_LAYER].height)
 	{
 		col.col = get_pixel(x, (float) col.i / col.nb_pixels, core);

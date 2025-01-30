@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_cast_extra.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 18:04:13 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/29 19:23:06 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/01/30 14:10:03 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	draw_col_init(t_col *init, t_core *core, int x, float floaa[2])
 
 int	get_side(int x, float y, t_core *core)
 {
+	(void)y;
 	if (core->cast.side[x] == 0 && ((core->cast.angle[x] <= \
 	90 && core->cast.angle[x] >= 0) || (core->cast.angle[x] \
 	<= 360 && core->cast.angle[x] >= 270)))

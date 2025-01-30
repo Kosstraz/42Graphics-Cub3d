@@ -6,7 +6,7 @@
 #    By: bama <bama@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2025/01/27 18:52:23 by bama             ###   ########.fr        #
+#    Updated: 2025/01/30 14:34:06 by bama             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,6 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/time.c							\
 		\
 		./srcs/doors/doors.c					\
-		./srcs/doors/doors_utils.c				\
 		\
 		./srcs/audio/audio.c					\
 		./srcs/audio/audio_utils.c				\
@@ -65,10 +64,14 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/rendering/draw_orientation.c 	\
 		\
 		./srcs/raycasting/raycast.c				\
+		./srcs/raycasting/raycast_extra.c		\
 		./srcs/raycasting/calcul_raycast.c 		\
 		./srcs/raycasting/draw_cast.c 			\
+		./srcs/raycasting/draw_cast_extra.c 	\
 		./srcs/raycasting/draw_rectangle.c		\
 		./srcs/raycasting/entity.c 				\
+		./srcs/raycasting/entity_extra.c		\
+		./srcs/raycasting/entity_extra2.c		\
 		\
 		./srcs/network/init.c					\
 		./srcs/network/menu.c					\
