@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   send.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:50:18 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/05 21:54:52 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/06 16:47:37 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	recv_map(t_core *core)
 {
 	uint32_t	i;
 
+	recv(core->network.tcp.com, core->map.cf_colors, sizeof(t_color) * 2, 0);
 	recv_map_first_part(core);
 	recv(core->network.tcp.com, &core->map.buflens_max, sizeof(size_t), 0);
 	recv(core->network.tcp.com, &core->player[DISTANT], sizeof(t_player), 0);
@@ -87,12 +88,14 @@ inline static void	handle_poll_door(t_core *core)
 	{
 		core->utils.door_text[TO_OPEN]->enabled = FALSE;
 		core->utils.door_text[TO_CLOSE]->enabled = FALSE;
-		if (core->map.doors[dinfo.which_door].is_open)
+		if (core->map.doors[dinfo.which_door].is_open)			// !a enlever et tester sur le multi
 			core->utils.door_text[TO_OPEN]->enabled = TRUE;
 		else
 			core->utils.door_text[TO_CLOSE]->enabled = TRUE;
 	}
 }
+
+void	handle_poll_cf_col(t_core *core);
 
 void	recv_any_element(t_core *core)
 {

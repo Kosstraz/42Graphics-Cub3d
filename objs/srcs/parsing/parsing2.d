@@ -1,3 +1,3 @@
-objs/./srcs/raycasting/raycast_extra.obj: srcs/raycasting/raycast_extra.c \
+objs/./srcs/parsing/parsing2.obj: srcs/parsing/parsing2.c \
   includes/cub3d.h MLX42-2.4.1/include/MLX42/MLX42.h libft/libft.h \
   includes/platform.h includes/defs.h includes/enums.h

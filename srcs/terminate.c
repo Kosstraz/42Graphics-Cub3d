@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   terminate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:47 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/05 21:54:26 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/06 16:56:19 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	free_core_map(t_core *core)
 		mlx_delete_xpm42(core->xpms[NO]);
 		mlx_delete_xpm42(core->xpms[EA]);
 		mlx_delete_xpm42(core->xpms[WE]);
+		mlx_delete_texture(core->texturej);
 		free_layer(&core->layer[MINIMAP_LAYER]);
 		free_layer(&core->layer[CAST_LAYER]);
 		if (core->network.is_active)
@@ -44,12 +45,14 @@ void	free_core_map(t_core *core)
 		while (i < core->map.bufsize)
 			free(core->map.buf[i++]);
 		free(core->map.buf);
-		ft_va_free(5,
+		ft_va_free(7,
 			core->map.filepath.north,
 			core->map.filepath.south,
 			core->map.filepath.east,
 			core->map.filepath.west,
-			core->map.buflens);
+			core->map.buflens,
+			core->xpms,
+			core->map.doors);
 	}
 }
 

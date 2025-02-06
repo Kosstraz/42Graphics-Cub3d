@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   platform.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/05 21:54:16 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/06 15:15:06 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,7 +240,7 @@ typedef struct s_core
 	t_network		network;
 	t_casting		cast;
 	t_utils			utils;
-	xpm_t			*xpms[4];
+	xpm_t			**xpms;
 	float			half_width;
 	float			half_height;
 	bool			mouse_visible;

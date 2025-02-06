@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:44 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/27 18:42:07 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/06 16:06:00 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	cub3d_key_hook(mlx_key_data_t keyd, t_core *core)
 	}
 	else if (keyd.action == MLX_RELEASE)
 	{
+		//ft_printf("RELEASE\n");
 		handle_player_key_release(keyd, core);
 		handle_releasing_alt_key(keyd, core);
 		handle_crouchplayer_key(keyd, core);

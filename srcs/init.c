@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/05 21:46:43 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/06 16:57:06 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ inline static void	init_player(t_player *player)
 
 inline static void	init_core_map(t_core *core)
 {
+	core->texturej = NULL;
 	core->map.generated = FALSE;
 	core->map.bufmax = DEFMAPBUF;
 	core->map.buf = (char **)malloc(sizeof(char *) * DEFMAPBUF);
@@ -37,6 +38,7 @@ inline static void	init_core_map(t_core *core)
 	core->map.cf_colors[F]._overflow = FALSE;
 	core->map.doors = NULL;
 	core->map.nb_of_doors = 0U;
+	core->xpms = (xpm_t **)malloc(sizeof(xpm_t *) * 4);
 	core->xpms[EA] = NULL;
 	core->xpms[WE] = NULL;
 	core->xpms[NO] = NULL;
@@ -66,7 +68,7 @@ inline void	init_core(t_core *core)
 	init_cast(&core->cast, core->player[LOCAL]);
 	core->texturej = mlx_load_png("textures/player.png");
 	if (!core->texturej)
-		exit(1);
+		exit_strerror("bad player textures.", core);
 }
 
 inline void	init_mlx_env(t_core *core)

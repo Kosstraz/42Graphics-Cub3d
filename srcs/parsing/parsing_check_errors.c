@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_check_errors.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:45:45 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/02/05 22:04:09 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/06 15:21:51 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 inline void	parse_texturefile_path_error(t_core *core)
 {
-	if (!core->map.filepath.north)
-		exit_strerror(NORTH_TEXTURE_FILE_INVALID_T, core);
-	else if (!core->map.filepath.south)
-		exit_strerror(SOUTH_TEXTURE_FILE_INVALID_T, core);
-	else if (!core->map.filepath.east)
-		exit_strerror(EAST_TEXTURE_FILE_INVALID_T, core);
-	else if (!core->map.filepath.west)
-		exit_strerror(WEST_TEXTURE_FILE_INVALID_T, core);
+	//if (!core->map.filepath.north)
+	//	exit_strerror(NORTH_TEXTURE_FILE_INVALID_T, core);
+	//else if (!core->map.filepath.south)
+	//	exit_strerror(SOUTH_TEXTURE_FILE_INVALID_T, core);
+	//else if (!core->map.filepath.east)
+	//	exit_strerror(EAST_TEXTURE_FILE_INVALID_T, core);
+	//else if (!core->map.filepath.west)
+	//	exit_strerror(WEST_TEXTURE_FILE_INVALID_T, core);
 	core->xpms[EA] = mlx_load_xpm42(core->map.filepath.east);
 	if (!core->xpms[EA])
 		printf("error east\n");

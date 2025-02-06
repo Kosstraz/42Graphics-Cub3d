@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   doors.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 14:46:15 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/05 14:49:24 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/06 16:35:14 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	handle_doors_key(mlx_key_data_t keyd, t_core *core)
 
 	if (keyd.key == MLX_KEY_E && core->utils.door_focus != -1)
 	{
+		//ft_printf("E\n");
 		recv_any_element(core);
 		dinfo.which_door = core->utils.door_focus;
 		if (core->utils.door_text[TO_CLOSE]->enabled)
@@ -71,7 +72,7 @@ int	doors_check_state(int x, int y, t_core *core)
 
 static void	door_handling(t_ivector pos, t_core *core)
 {
-	bool	is_opened;
+	int	is_opened;
 
 	is_opened = doors_check_state(pos.x, pos.y, core);
 	if (is_opened > 0)

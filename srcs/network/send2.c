@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   send2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 18:46:11 by bama              #+#    #+#             */
-/*   Updated: 2025/01/27 18:46:31 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/06 16:43:40 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	handle_poll_cf_col(t_core *core)
+{
+	t_color	col;
+	recv(core->network.tcp.com, &col, sizeof(t_color), 0);
+	core->map.cf_colors[C] = col;
+	recv(core->network.tcp.com, &col, sizeof(t_color), 0);
+	core->map.cf_colors[F] = col;
+}
 
 inline void	send_element(void *what, size_t size, char poll_id, t_core *core)
 {
