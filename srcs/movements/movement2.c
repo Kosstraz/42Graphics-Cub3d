@@ -6,11 +6,13 @@
 /*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 17:16:27 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/27 18:56:50 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/05 14:39:08 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	move_player(t_player *player, float angle, t_core *core);
 
 void	sprint(t_core *core)
 {

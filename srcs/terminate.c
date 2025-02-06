@@ -6,7 +6,7 @@
 /*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:47 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/27 18:51:06 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/05 21:54:26 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ void	exit_cub3d(int errcode, t_core *core)
 
 void	free_core_map(t_core *core)
 {
+	unsigned long	i;
+
+	i = 0;
 	if (core)
 	{
 		mlx_delete_xpm42(core->xpms[SO]);
@@ -38,7 +41,9 @@ void	free_core_map(t_core *core)
 		free_layer(&core->layer[CAST_LAYER]);
 		if (core->network.is_active)
 			close_connection(core);
-		ft_dfree((void **)core->map.buf);
+		while (i < core->map.bufsize)
+			free(core->map.buf[i++]);
+		free(core->map.buf);
 		ft_va_free(5,
 			core->map.filepath.north,
 			core->map.filepath.south,

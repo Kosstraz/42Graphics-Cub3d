@@ -6,14 +6,14 @@
 /*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 20:36:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/06/18 11:36:41 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/05 14:31:51 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	btree_insert_data(t_btree **root, T_BTREE item,
-			int (*cmpf)(T_BTREE, T_BTREE))
+void	btree_insert_data(t_btree **root, int item,
+			int (*cmpf)(int, int))
 {
 	int	cmp;
 

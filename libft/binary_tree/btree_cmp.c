@@ -6,13 +6,13 @@
 /*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:19:55 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/06/18 11:36:44 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/05 14:30:20 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	btree_cmp(T_BTREE a, T_BTREE b)
+int	btree_cmp(int a, int b)
 {
 	return (a - b);
 }

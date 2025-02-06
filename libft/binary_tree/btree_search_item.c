@@ -6,7 +6,7 @@
 /*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 20:58:29 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/06/18 11:36:36 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/05 14:32:26 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ t_btree	*btree_infix_node(t_btree *root)
 	return (root);
 }
 
-T_BTREE	btree_search_item_recu(t_btree *root, const T_BTREE data_ref,
-		T_BTREE *nullable, int (*cmpf)(T_BTREE, T_BTREE))
+int	btree_search_item_recu(t_btree *root, const int data_ref,
+		int *nullable, int (*cmpf)(int, int))
 {
 	if (!root)
 		return (*nullable);
@@ -36,10 +36,10 @@ T_BTREE	btree_search_item_recu(t_btree *root, const T_BTREE data_ref,
 	return (*nullable);
 }
 
-T_BTREE	btree_search_item(t_btree *root, const T_BTREE data_ref,
-		int (*cmpf)(T_BTREE, T_BTREE))
+int	btree_search_item(t_btree *root, const int data_ref,
+		int (*cmpf)(int, int))
 {
-	T_BTREE	ret;
+	int	ret;
 
 	ret = 0;
 	return (btree_search_item_recu(root, data_ref, &ret, cmpf));

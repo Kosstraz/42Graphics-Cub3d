@@ -6,13 +6,13 @@
 /*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 20:33:25 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/06/18 11:36:52 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/05 14:31:11 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	btree_apply_infix(t_btree *root, void (*applyf)(T_BTREE))
+void	btree_apply_infix(t_btree *root, void (*applyf)(int))
 {
 	if (root)
 	{

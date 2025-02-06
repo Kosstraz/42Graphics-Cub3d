@@ -945,10 +945,10 @@ typedef void (APIENTRY *GLVULKANPROCNV)(void);
 #define GL_INT_VEC2 0x8B53
 #define GL_INT_VEC3 0x8B54
 #define GL_INT_VEC4 0x8B55
-#define GL_BOOL 0x8B56
-#define GL_BOOL_VEC2 0x8B57
-#define GL_BOOL_VEC3 0x8B58
-#define GL_BOOL_VEC4 0x8B59
+#define GL_bool 0x8B56
+#define GL_bool_VEC2 0x8B57
+#define GL_bool_VEC3 0x8B58
+#define GL_bool_VEC4 0x8B59
 #define GL_FLOAT_MAT2 0x8B5A
 #define GL_FLOAT_MAT3 0x8B5B
 #define GL_FLOAT_MAT4 0x8B5C
@@ -2046,8 +2046,8 @@ GLAPI PFNGLREADBUFFERPROC glad_glReadBuffer;
 typedef void (APIENTRYP PFNGLREADPIXELSPROC)(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, void *pixels);
 GLAPI PFNGLREADPIXELSPROC glad_glReadPixels;
 #define glReadPixels glad_glReadPixels
-typedef void (APIENTRYP PFNGLGETBOOLEANVPROC)(GLenum pname, GLboolean *data);
-GLAPI PFNGLGETBOOLEANVPROC glad_glGetBooleanv;
+typedef void (APIENTRYP PFNGLGETboolEANVPROC)(GLenum pname, GLboolean *data);
+GLAPI PFNGLGETboolEANVPROC glad_glGetBooleanv;
 #define glGetBooleanv glad_glGetBooleanv
 typedef void (APIENTRYP PFNGLGETDOUBLEVPROC)(GLenum pname, GLdouble *data);
 GLAPI PFNGLGETDOUBLEVPROC glad_glGetDoublev;
@@ -3632,8 +3632,8 @@ GLAPI int GLAD_GL_VERSION_3_0;
 typedef void (APIENTRYP PFNGLCOLORMASKIPROC)(GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
 GLAPI PFNGLCOLORMASKIPROC glad_glColorMaski;
 #define glColorMaski glad_glColorMaski
-typedef void (APIENTRYP PFNGLGETBOOLEANI_VPROC)(GLenum target, GLuint index, GLboolean *data);
-GLAPI PFNGLGETBOOLEANI_VPROC glad_glGetBooleani_v;
+typedef void (APIENTRYP PFNGLGETboolEANI_VPROC)(GLenum target, GLuint index, GLboolean *data);
+GLAPI PFNGLGETboolEANI_VPROC glad_glGetBooleani_v;
 #define glGetBooleani_v glad_glGetBooleani_v
 typedef void (APIENTRYP PFNGLGETINTEGERI_VPROC)(GLenum target, GLuint index, GLint *data);
 GLAPI PFNGLGETINTEGERI_VPROC glad_glGetIntegeri_v;

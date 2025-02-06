@@ -6,7 +6,7 @@
 /*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:38:33 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/27 18:49:46 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/05 21:47:54 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	recv_textures(t_core *core)
 	uint32_t	j;
 
 	i = 0U;
-	core->xpms = (xpm_t **)malloc(sizeof(xpm_t *) * 4);
+	//core->xpms = (xpm_t **)malloc(sizeof(xpm_t *) * 4);
 	while (i < 4U)
 	{
 		recv_textures2(i, core);

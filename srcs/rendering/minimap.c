@@ -6,7 +6,7 @@
 /*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:43:52 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/27 23:55:15 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/05 14:40:26 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ inline void	draw_player(
 	mult.x = player->position.x * DEFUNIT;
 	mult.y = player->position.y * DEFUNIT;
 	(void)mult;
-	draw_square(&core->layer[MINIMAP_LAYER], player, color, core);
+	draw_square(&core->layer[MINIMAP_LAYER], player, color);
 }
 
 void	draw_minimap(t_core *core)

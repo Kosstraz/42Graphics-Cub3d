@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   mlx_png.c                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: W2Wizard <main@w2wizard.dev>                 +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/02/16 23:11:29 by W2Wizard      #+#    #+#                 */
-/*   Updated: 2022/06/27 19:55:06 by lde-la-h      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   mlx_png.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/16 23:11:29 by W2Wizard          #+#    #+#             */
+/*   Updated: 2025/02/05 14:49:47 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ mlx_texture_t* mlx_load_png(const char* path)
 		return ((void*)mlx_error(MLX_MEMFAIL));
 
 	uint32_t error;
-	image->bytes_per_pixel = BPP;
+	image->bytes_per_pixel = sizeof(int32_t);
 	if ((error = lodepng_decode32_file(&image->pixels, &image->width, &image->height, path)))
 	{
 		free(image);

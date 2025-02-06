@@ -6,7 +6,7 @@
 /*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 15:19:35 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/30 14:28:53 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/05 14:48:07 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,14 @@ float	ray_cast(t_core *core, float angle, int i)
 	else
 		cast.walldist = cast.side.y - cast.side.x;
 	core->cast.height[i] = core->mlx->height / cast.walldist;
-	core->cast.wallDist[i] = cosf(deg2rad(angle - \
+	core->cast.wall_dist[i] = cosf(deg2rad(angle - \
 	core->player->view.angle)) * (cast.distance);
 	if (cast.side_int == 0)
-		cast.WallX = sin(deg2rad(angle)) * cast.distance + cast.ray_start.y;
+		cast.wall_x = sin(deg2rad(angle)) * cast.distance + cast.ray_start.y;
 	else
-		cast.WallX = cos(deg2rad(angle)) * cast.distance + cast.ray_start.x;
-	cast.WallX -= (int) cast.WallX;
-	core->cast.wallx[i] = cast.WallX;
+		cast.wall_x = cos(deg2rad(angle)) * cast.distance + cast.ray_start.x;
+	cast.wall_x -= (int) cast.wall_x;
+	core->cast.wallx[i] = cast.wall_x;
 	core->cast.wall[i].x = cast.map_check.x;
 	core->cast.wall[i].y = cast.map_check.y;
 	core->cast.wall[i].z = 1.f;

@@ -6,7 +6,7 @@
 /*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:50:18 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/27 18:47:19 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/05 21:54:52 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	send_map(t_core *core)
 	send(core->network.tcp.com, &core->map.buflens_max, sizeof(size_t), 0);
 	send(core->network.tcp.com, &core->player[LOCAL], sizeof(t_player), 0);
 	send(core->network.tcp.com, &core->player[DISTANT], sizeof(t_player), 0);
-	send(core->network.tcp.com, &core->map.nbOfDoors, sizeof(size_t), 0);
+	send(core->network.tcp.com, &core->map.nb_of_doors, sizeof(size_t), 0);
 	i = 0U;
-	while (i < core->map.nbOfDoors)
+	while (i < core->map.nb_of_doors)
 		send(core->network.tcp.com, &core->map.doors[i++], sizeof(t_door), 0);
 	send_textures(core);
 }
@@ -57,6 +57,7 @@ static void	recv_map_first_part(t_core *core)
 		core->map.buf[y][core->map.buflens[y] + 1] = '\0';
 		y++;
 	}
+	core->map.bufsize = y;
 	core->map.buf[y] = NULL;
 }
 
@@ -68,10 +69,10 @@ void	recv_map(t_core *core)
 	recv(core->network.tcp.com, &core->map.buflens_max, sizeof(size_t), 0);
 	recv(core->network.tcp.com, &core->player[DISTANT], sizeof(t_player), 0);
 	recv(core->network.tcp.com, &core->player[LOCAL], sizeof(t_player), 0);
-	recv(core->network.tcp.com, &core->map.nbOfDoors, sizeof(size_t), 0);
-	core->map.doors = (t_door *)malloc(sizeof(t_door) * core->map.nbOfDoors);
+	recv(core->network.tcp.com, &core->map.nb_of_doors, sizeof(size_t), 0);
+	core->map.doors = (t_door *)malloc(sizeof(t_door) * core->map.nb_of_doors);
 	i = 0U;
-	while (i < core->map.nbOfDoors)
+	while (i < core->map.nb_of_doors)
 		recv(core->network.tcp.com, &core->map.doors[i++], sizeof(t_door), 0);
 	recv_textures(core);
 }

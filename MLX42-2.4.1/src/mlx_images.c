@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_images.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 02:29:06 by W2Wizard          #+#    #+#             */
-/*   Updated: 2024/12/03 18:01:44 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:49:47 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,7 +233,7 @@ bool mlx_resize_image(mlx_image_t* img, uint32_t nwidth, uint32_t nheight)
 		float wstep = (float)img->width / nwidth;
 		float hstep = (float)img->height / nheight;
 
-		uint8_t* tempbuff = calloc(nwidth * nheight, BPP);
+		uint8_t* tempbuff = calloc(nwidth * nheight, sizeof(int32_t));
 		if (!tempbuff)
 			return (mlx_error(MLX_MEMFAIL));
 		img->pixels = tempbuff;

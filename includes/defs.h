@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defs.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/23 17:32:28 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/02/05 23:18:28 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 	//* multi
 # define PORT	4243
 
-# define POLL_PLAYER	(char)0
-# define POLL_DOOR		(char)1
+# define POLL_PLAYER	0
+# define POLL_DOOR		1
 
 # define LOCAL		0
 # define DISTANT	1
@@ -73,6 +73,13 @@
 # define BUBBLES_SPEED	60.f
 # define BUBBLES_MAX	18.0f
 
+# define H_C	0
+# define H_F	1
+# define H_NO	2
+# define H_SO	3
+# define H_EA	4
+# define H_WE	5
+
 # define C	0
 # define F	1
 
@@ -108,8 +115,6 @@
 	//* generic constants
 # define TRUE	1
 # define FALSE	0
-# define BOOL	char
-# define BPP	sizeof(int32_t)
 
 	//* error constants
 # define CONCEDE_MAP	"Please concede map .cub in program argument\n"
@@ -124,7 +129,8 @@
 # define EAST_TEXTURE_FILE_INVALID_T	"East texture file is invalid\n"
 # define WEST_TEXTURE_FILE_INVALID_T	"West texture file is invalid\n"
 
-# define CEILING_COLOR_FORMAT_INCORRECT_T	"Ceiling color format is incorrect\n"
+# define CEILING_COLOR_FORMAT_INCORRECT_T	"Ceiling color\
+ format is incorrect\n"
 # define FLOOR_COLOR_FORMAT_INCORRECT_T		"Floor color format is incorrect\n"
 
 # define MAP_NO_PLAYER_SPAWN_T		"There is no player spawn\n"

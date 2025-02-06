@@ -6,7 +6,7 @@
 /*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/30 14:24:26 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/05 21:54:16 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 typedef void			(*t_mlx_loopfunc)(void *);
 typedef unsigned char	t_uchar;
 typedef unsigned int	t_uint;
-
-
 
 	//* some utilities
 typedef struct s_cmpt
@@ -63,7 +61,7 @@ typedef struct s_color
 	t_uchar	g;
 	t_uchar	b;
 	t_uchar	bytes_wrote;
-	BOOL	_overflow;
+	bool	_overflow;
 }	t_color;
 
 typedef struct s_casting
@@ -75,8 +73,8 @@ typedef struct s_casting
 	int			side[1920];
 	int			height[1920];
 	float		wallx[1920];
-	float		wallDist[1920];
-	BOOL		is_door;
+	float		wall_dist[1920];
+	bool		is_door;
 	float		di;
 	int			hfov;
 	t_pos		last_pose;
@@ -109,7 +107,6 @@ typedef struct s_entity
 	t_vector	view;
 }	t_entity;
 
-
 	//* NETWORKING
 typedef struct s_tcp
 {
@@ -120,11 +117,10 @@ typedef struct s_tcp
 
 typedef struct s_network
 {
-	BOOL	is_active;
-	BOOL	is_host;
+	bool	is_active;
+	bool	is_host;
 	t_tcp	tcp;
 }	t_network;
-
 
 	//* CORE
 typedef struct s_player
@@ -133,14 +129,14 @@ typedef struct s_player
 	float		speed;
 	float		offset;
 	t_pos		position;
-	BOOL		crouched;
+	bool		crouched;
 	t_vector	movement;
 	t_vector	view;
 	float		bubbles;
 	float		bubbles_speed;
-	BOOL		maxed;
-	BOOL		mined;
-	BOOL		torch_activated;
+	bool		maxed;
+	bool		mined;
+	bool		torch_activated;
 }	t_player;
 
 typedef struct s_filepath
@@ -160,13 +156,13 @@ typedef struct s_minimap
 typedef struct s_door
 {
 	t_posi	pos;
-	BOOL	is_open;
+	bool	is_open;
 }	t_door;
 
 typedef struct s_door_info
 {
 	int		which_door;
-	BOOL	is_open;
+	bool	is_open;
 }	t_door_info;
 
 typedef struct s_map
@@ -177,9 +173,10 @@ typedef struct s_map
 	size_t		buflens_max;
 	size_t		*buflens;
 	size_t		buflens_size;
+	size_t		bufsize;
 	t_door		*doors;
-	size_t		nbOfDoors;
-	BOOL		generated;
+	size_t		nb_of_doors;
+	bool		generated;
 	char		*file;
 	char		**buf;
 }	t_map;
@@ -204,20 +201,20 @@ typedef struct s_utils
 	int			door_focus;
 	int			door_offset;
 	int			door_init_offset;
-	BOOL		door_begin;
+	bool		door_begin;
 }	t_utils;
 
 typedef struct s_input_action
 {
-	BOOL	key_w;
-	BOOL	key_a;
-	BOOL	key_s;
-	BOOL	key_d;
-	BOOL	key_right;
-	BOOL	key_left;
-	BOOL	key_up;
-	BOOL	key_down;
-	BOOL	key_shift;
+	bool	key_w;
+	bool	key_a;
+	bool	key_s;
+	bool	key_d;
+	bool	key_right;
+	bool	key_left;
+	bool	key_up;
+	bool	key_down;
+	bool	key_shift;
 }	t_input_action;
 
 typedef struct s_audio
@@ -226,7 +223,7 @@ typedef struct s_audio
 	uint8_t			*pos;
 	uint32_t		len;
 	uint32_t		start_len;
-	BOOL			is_active;
+	bool			is_active;
 }	t_audio;
 
 typedef struct s_core
@@ -243,10 +240,10 @@ typedef struct s_core
 	t_network		network;
 	t_casting		cast;
 	t_utils			utils;
-	xpm_t			**xpms;
+	xpm_t			*xpms[4];
 	float			half_width;
 	float			half_height;
-	BOOL			mouse_visible;
+	bool			mouse_visible;
 	int				fps_cooldown;
 	char			*_strerror;
 	int				tex_debug;
@@ -279,8 +276,8 @@ typedef struct s_gen_utils
 	size_t	freq_val;
 	int		average_line_len;
 	int		luck_player_spawn_now;
-	BOOL	player1_has_spawned;
-	BOOL	player2_has_spawned;
+	bool	player1_has_spawned;
+	bool	player2_has_spawned;
 }	t_gen_utils;
 
 typedef struct s_gen_context
@@ -314,7 +311,7 @@ typedef struct s_raycast
 	float		distance;
 	int			side_int;
 	double		walldist;
-	float 		WallX;
+	float		wall_x;
 }	t_raycast;
 
 typedef struct s_col
@@ -327,6 +324,5 @@ typedef struct s_col
 	float	torchlength;
 	float	half_nb_pixels;
 }	t_col;
-
 
 #endif

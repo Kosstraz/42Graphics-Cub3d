@@ -23,9 +23,9 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 
 # Options
-set(DEBUG		OFF CACHE BOOL "Build MLX42 in debug mode, enabling assertions")
-set(GLFW_FETCH	ON CACHE BOOL "Clone and install GLFW")
-set(BUILD_TESTS	OFF CACHE BOOL "Build the tests to verify the integrity of the lib")
+set(DEBUG		OFF CACHE bool "Build MLX42 in debug mode, enabling assertions")
+set(GLFW_FETCH	ON CACHE bool "Clone and install GLFW")
+set(BUILD_TESTS	OFF CACHE bool "Build the tests to verify the integrity of the lib")
 
 # Compile Options
 # -----------------------------------------------------------------------------

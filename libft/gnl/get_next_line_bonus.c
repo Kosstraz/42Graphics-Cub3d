@@ -6,7 +6,7 @@
 /*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 12:57:35 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/08/04 15:00:16 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/05 14:23:52 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ char	gnl_read(int fd, char **ret, char **buffer)
 	free_n(ret);
 	return (0);
 }
-
 
 char	*get_next_line(int fd)
 {

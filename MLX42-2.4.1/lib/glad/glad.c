@@ -552,8 +552,8 @@ PFNGLGETACTIVEUNIFORMNAMEPROC glad_glGetActiveUniformName = NULL;
 PFNGLGETACTIVEUNIFORMSIVPROC glad_glGetActiveUniformsiv = NULL;
 PFNGLGETATTACHEDSHADERSPROC glad_glGetAttachedShaders = NULL;
 PFNGLGETATTRIBLOCATIONPROC glad_glGetAttribLocation = NULL;
-PFNGLGETBOOLEANI_VPROC glad_glGetBooleani_v = NULL;
-PFNGLGETBOOLEANVPROC glad_glGetBooleanv = NULL;
+PFNGLGETboolEANI_VPROC glad_glGetBooleani_v = NULL;
+PFNGLGETboolEANVPROC glad_glGetBooleanv = NULL;
 PFNGLGETBUFFERPARAMETERI64VPROC glad_glGetBufferParameteri64v = NULL;
 PFNGLGETBUFFERPARAMETERIVPROC glad_glGetBufferParameteriv = NULL;
 PFNGLGETBUFFERPOINTERVPROC glad_glGetBufferPointerv = NULL;
@@ -1358,7 +1358,7 @@ static void load_GL_VERSION_1_0(GLADloadproc load) {
 	glad_glPixelStorei = (PFNGLPIXELSTOREIPROC)load("glPixelStorei");
 	glad_glReadBuffer = (PFNGLREADBUFFERPROC)load("glReadBuffer");
 	glad_glReadPixels = (PFNGLREADPIXELSPROC)load("glReadPixels");
-	glad_glGetBooleanv = (PFNGLGETBOOLEANVPROC)load("glGetBooleanv");
+	glad_glGetBooleanv = (PFNGLGETboolEANVPROC)load("glGetBooleanv");
 	glad_glGetDoublev = (PFNGLGETDOUBLEVPROC)load("glGetDoublev");
 	glad_glGetError = (PFNGLGETERRORPROC)load("glGetError");
 	glad_glGetFloatv = (PFNGLGETFLOATVPROC)load("glGetFloatv");
@@ -1900,7 +1900,7 @@ static void load_GL_VERSION_2_1(GLADloadproc load) {
 static void load_GL_VERSION_3_0(GLADloadproc load) {
 	if(!GLAD_GL_VERSION_3_0) return;
 	glad_glColorMaski = (PFNGLCOLORMASKIPROC)load("glColorMaski");
-	glad_glGetBooleani_v = (PFNGLGETBOOLEANI_VPROC)load("glGetBooleani_v");
+	glad_glGetBooleani_v = (PFNGLGETboolEANI_VPROC)load("glGetBooleani_v");
 	glad_glGetIntegeri_v = (PFNGLGETINTEGERI_VPROC)load("glGetIntegeri_v");
 	glad_glEnablei = (PFNGLENABLEIPROC)load("glEnablei");
 	glad_glDisablei = (PFNGLDISABLEIPROC)load("glDisablei");

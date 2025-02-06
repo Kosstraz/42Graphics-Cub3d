@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrunc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 02:00:39 by bama              #+#    #+#             */
-/*   Updated: 2024/11/17 17:29:17 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:37:16 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	check_quotes(char c, char *quote_type)
+/*static int	check_quotes(char c, char *quote_type)
 {
 	if (c == '\'')
 		*quote_type = 1;
@@ -44,14 +44,14 @@ static size_t	strtruncquotes_countword(char *str, char t)
 		i++;
 	}
 	return (len);
-}
+}*/
 
 // Va trunc chaque caractère 't' trouvé
 // Si t=' ' et que str="  Bonjour   allo  a " alors -->
 // strtrunc(str)=" Bonjour allo a "
 // Tout en respectant les caractères 't' dans les squotes ou dquotes
 // Contrairement à strtrunc
-char	*ft_strtrunc_quotes(char *str, char t)
+/*char	*ft_strtrunc_quotes(char *str, char t)
 {
 	char	*trunc;
 	size_t	i;
@@ -79,4 +79,4 @@ char	*ft_strtrunc_quotes(char *str, char t)
 	}
 	trunc[j] = 0;
 	return (trunc);
-}
+}*/

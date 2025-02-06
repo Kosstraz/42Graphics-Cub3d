@@ -6,7 +6,7 @@
 /*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 16:21:43 by bama              #+#    #+#             */
-/*   Updated: 2024/07/21 20:14:01 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/05 14:26:43 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,8 @@ char	**ft_strs_add_at(char **strs1, char **strs2, size_t at, char erase)
 		ret[i++] = strs2[j++];
 	size = ft_strlen2(strs1);
 	if (erase)
-	{
-		free(strs1[at]);
-		at++;
-	}
+		free(strs1[at++]);
 	while (at < size)
 		ret[i++] = strs1[at++];
-	ret[i] = NULL;
-	free(strs1);
-	free(strs2);
-	return (ret);
+	return (ret[i] = NULL, free(strs1), free(strs2), ret);
 }

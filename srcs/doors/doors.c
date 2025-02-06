@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   doors.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 14:46:15 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/12/10 14:14:03 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:49:24 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	doors_check_state(int x, int y, t_core *core)
 	size_t	i;
 
 	i = 0U;
-	while (i < core->map.nbOfDoors)
+	while (i < core->map.nb_of_doors)
 	{
 		if (core->map.doors[i].pos.x == x
 			&& core->map.doors[i].pos.y == y)
@@ -71,7 +71,7 @@ int	doors_check_state(int x, int y, t_core *core)
 
 static void	door_handling(t_ivector pos, t_core *core)
 {
-	BOOL	is_opened;
+	bool	is_opened;
 
 	is_opened = doors_check_state(pos.x, pos.y, core);
 	if (is_opened > 0)

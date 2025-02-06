@@ -6,7 +6,7 @@
 /*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 18:04:13 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/30 14:10:03 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/05 14:46:55 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	draw_col_init(t_col *init, t_core *core, int x, float floaa[2])
 {
-	init->nb_pixels = core->half_height / (core->cast.wallDist[x] / 3.0f);
+	init->nb_pixels = core->half_height / (core->cast.wall_dist[x] / 3.0f);
 	init->torchx = x - core->half_width;
 	init->i = 0;
 	init->torchlength = floaa[0] * 50.0;

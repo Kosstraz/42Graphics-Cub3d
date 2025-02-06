@@ -6,7 +6,7 @@
 /*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/27 18:39:55 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/05 21:46:43 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,11 @@ inline static void	init_core_map(t_core *core)
 	core->map.cf_colors[C]._overflow = FALSE;
 	core->map.cf_colors[F]._overflow = FALSE;
 	core->map.doors = NULL;
-	core->map.nbOfDoors = 0U;
+	core->map.nb_of_doors = 0U;
+	core->xpms[EA] = NULL;
+	core->xpms[WE] = NULL;
+	core->xpms[NO] = NULL;
+	core->xpms[SO] = NULL;
 }
 
 inline void	init_core(t_core *core)

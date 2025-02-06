@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strs_add_str.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 19:01:28 by bama              #+#    #+#             */
-/*   Updated: 2024/11/17 17:28:29 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:24:54 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ void	ft_strs_add_str(char ***strs, char *str)
 	}
 	new[i++] = ft_strdup(str);
 	new[i] = NULL;
-	//free(*strs);
 	*strs = new;
 }
+	//free(*strs);

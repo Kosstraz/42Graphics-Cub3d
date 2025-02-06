@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_asciimap.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/30 14:39:09 by bama              #+#    #+#             */
+/*   Updated: 2025/02/05 21:53:57 by bama             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 inline static void	save_asciimap_handle_memory(int y_pos, t_core *core)
@@ -34,6 +46,7 @@ static void	save_asciimap(int fd, t_core *core)
 			free(gnl);
 		gnl = get_next_line(fd);
 	}
+	core->map.bufsize = y;
 	core->map.buf[y] = NULL;
 }
 
@@ -56,7 +69,7 @@ inline static void	parse_asciilines_check_zero(int x, int y, t_core *core)
 
 static void	parse_asciilines(
 	const char *line,
-	BOOL players_spawn[2],
+	bool players_spawn[2],
 	int cur,
 	t_core *core)
 {
@@ -77,37 +90,14 @@ static void	parse_asciilines(
 			exit_strerror(MAP_PLACE_WITH_NO_WALL_T, core);
 		else if (line[i] == CUB3D_VOID)
 			parse_asciilines_check_zero(i, cur, core);
-		if (line[i] == CUB3D_DOOR)
-		{
-			core->map.doors = (t_door *)ft_realloc(core->map.doors, core->map.nbOfDoors * sizeof(t_door), (core->map.nbOfDoors + 1U) * sizeof(t_door));
-			ft_memset(&core->map.doors[core->map.nbOfDoors], 0, sizeof(t_door));
-			core->map.doors[core->map.nbOfDoors].pos.x = i;
-			core->map.doors[core->map.nbOfDoors].pos.y = cur;
-			core->map.doors[core->map.nbOfDoors++].is_open = FALSE;
-		}
-		else if (!players_spawn[LOCAL] && ft_isanychr(line[i], CUB3D_PLAYER))
-		{
-			core->player[LOCAL].position.x = i;
-			core->player[LOCAL].position.y = cur;
-			players_spawn[LOCAL] = TRUE;
-		}
-		else if (core->network.is_active && !players_spawn[DISTANT] && players_spawn[LOCAL] && ft_isanychr(line[i], CUB3D_PLAYER))
-		{
-			core->player[DISTANT].position.x = i;
-			core->player[DISTANT].position.y = cur;
-			players_spawn[DISTANT] = TRUE;
-		}
-		else if ((!core->network.is_active || players_spawn[DISTANT]) && players_spawn[LOCAL] && ft_isanychr(line[i], CUB3D_PLAYER))
-			exit_strerror(MAP_PLAYER_REDIFINED_T, core);
-		else if (!ft_isanychr(line[i], CUB3D_ALL)) // CUB3D_BLOCKS
-			exit_strerror(MAP_INVALID_CHARACTER_T, core);
+		parse_asciilines2(line, players_spawn, (int []){i, cur}, core);
 		i++;
 	}
 }
 
 void	parse_asciimap(int fd, t_core *core)
 {
-	BOOL	players_spawn[2];
+	bool	players_spawn[2];
 	int		i;
 
 	i = 0;

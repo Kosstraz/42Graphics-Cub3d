@@ -6,7 +6,7 @@
 /*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:58:34 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/27 19:00:24 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/05 14:49:47 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ inline void	init_layer(mlx_image_t *img, t_layer *layer)
 		while (x < img->width)
 		{
 			layer->pixels[y][x]
-				= (uint32_t *)&img->pixels[(precalcul + x) * BPP];
+				= (uint32_t *)&img->pixels[(precalcul + x) * sizeof(int32_t)];
 			++x;
 		}
 		++y;

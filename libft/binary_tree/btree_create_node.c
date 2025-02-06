@@ -6,13 +6,13 @@
 /*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 20:24:37 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/06/18 11:36:42 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/05 14:33:04 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_btree	*btree_create_node(T_BTREE item)
+t_btree	*btree_create_node(int item)
 {
 	t_btree	*ret;
 

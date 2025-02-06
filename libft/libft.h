@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 20:09:36 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/21 13:39:19 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:36:11 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 #  define GNL_BUFFER_SIZE 64
 # endif
 
-# ifndef T_BTREE
-#  define T_BTREE int
-# endif
+//# ifndef T_BTREE
+//#  define T_BTREE int
+//# endif
 
 # ifndef CMP_BTREE
 #  define CMP_BTREE
@@ -65,7 +65,7 @@ char	*get_next_line(int fd);
 */
 typedef struct s_btree
 {
-	T_BTREE			item;
+	int				item;
 	struct s_btree	*left;
 	struct s_btree	*right;
 }	t_btree;
@@ -74,21 +74,21 @@ typedef struct s_btree
 	@attention UTILISATION TRES RESTREINTE |
 	Il faut savoir ce que l'on fait !
 */
-int		btree_cmp(T_BTREE a, T_BTREE b);
-t_btree	*btree_create_node(T_BTREE item);
-void	btree_apply_prefix(t_btree *root, void (*applyf)(T_BTREE));
-void	btree_apply_infix(t_btree *root, void (*applyf)(T_BTREE));
-void	btree_apply_suffix(t_btree *root, void (*applyf)(T_BTREE));
-void	btree_applyptr_prefix(t_btree **root, void (*applyf)(T_BTREE));
-void	btree_applyptr_infix(t_btree **root, void (*applyf)(T_BTREE));
-void	btree_applyptr_suffix(t_btree **root, void (*applyf)(T_BTREE));
-void	btree_insert_data(t_btree **root, T_BTREE item,
-			int (*cmpf)(T_BTREE, T_BTREE));
+int		btree_cmp(int a, int b);
+t_btree	*btree_create_node(int item);
+void	btree_apply_prefix(t_btree *root, void (*applyf)(int));
+void	btree_apply_infix(t_btree *root, void (*applyf)(int));
+void	btree_apply_suffix(t_btree *root, void (*applyf)(int));
+void	btree_applyptr_prefix(t_btree **root, void (*applyf)(int));
+void	btree_applyptr_infix(t_btree **root, void (*applyf)(int));
+void	btree_applyptr_suffix(t_btree **root, void (*applyf)(int));
+void	btree_insert_data(t_btree **root, int item,
+			int (*cmpf)(int, int));
 /*
 	Recherche l'élément de manière infixe.
 */
-T_BTREE	btree_search_item(t_btree *root, const T_BTREE data_ref,
-			int (*cmpf)(T_BTREE, T_BTREE));
+int		btree_search_item(t_btree *root, const int data_ref,
+			int (*cmpf)(int, int));
 /*
 	Seulement le nombre de noeuds à gauche de la racine.
 	@attention RECTILIGNE
@@ -219,7 +219,8 @@ ssize_t	ft_rev_isspaceptr(const char *s, ssize_t start);
 			/* **************************** */
 			/* **************************** */
 
-// Savoir à quelle position se trouve le premier caractère de 'set' trouvé dans 'str'
+// Savoir à quelle position se trouve le premier
+//caractère de 'set' trouvé dans 'str'
 // Sinon renvoie -1
 ssize_t	ft_containsanychr(const char *str, const char *set);
 // Savoir si c correspond a un des caractères de 'set'
@@ -232,7 +233,7 @@ void	ft_strsfjoinstr(char ***strs, char *str);
 void	ft_strsfjoinstr_at(char ***strs, char *str, size_t at);
 void	ft_strsjoinstr_at(char ***strs, char *str, size_t at);
 char	ft_strisdigits(const char *str);
-char    *ft_strtrunc_quotes(char *str, char t);
+char	*ft_strtrunc_quotes(char *str, char t);
 char	*ft_va_strjoin(size_t count, ...);
 char	*ft_va_strfjoin(size_t count, ...);
 char	*ft_strfdup(char *str);
@@ -305,7 +306,7 @@ size_t	ft_strlen(const char *str);
 size_t	ft_strslcpy(char **dst, const char **src, size_t siz1);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
-size_t  ft_chrocc(char *str, char chr);
+size_t	ft_chrocc(char *str, char chr);
 size_t	ft_strnchr(const char *str, const char c);
 size_t	ft_strlen2(char **strs);
 size_t	ft_strslen(char **strs);

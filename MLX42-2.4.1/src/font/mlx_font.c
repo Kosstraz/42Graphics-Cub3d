@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_font.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 12:01:37 by W2Wizard          #+#    #+#             */
-/*   Updated: 2024/12/04 20:48:42 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:49:47 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ static void mlx_draw_char(mlx_image_t* image, int32_t texoffset, int32_t imgoffs
 	uint8_t* pixeli;
 	for (uint32_t y = 0; y < FONT_HEIGHT; y++)
 	{
-		pixelx = &font_atlas.pixels[(y * font_atlas.width + texoffset) * BPP];
-		pixeli = image->pixels + ((y * image->width + imgoffset) * BPP);
-		memcpy(pixeli, pixelx, FONT_WIDTH * BPP);
+		pixelx = &font_atlas.pixels[(y * font_atlas.width + texoffset) * sizeof(int32_t)];
+		pixeli = image->pixels + ((y * image->width + imgoffset) * sizeof(int32_t));
+		memcpy(pixeli, pixelx, FONT_WIDTH * sizeof(int32_t));
 	}
 }
 

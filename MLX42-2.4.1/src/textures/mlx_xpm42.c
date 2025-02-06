@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_xpm42.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 03:42:29 by W2Wizard          #+#    #+#             */
-/*   Updated: 2024/12/10 18:30:22 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:49:47 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ static bool mlx_read_data(xpm_t* xpm, FILE* file, uint32_t* ctable, size_t s)
 		// NOTE: Copy pixel by pixel as we need to retrieve the hash table.
 		for (int64_t x_xpm = 0, x_line = 0; x_xpm < xpm->texture.width; x_xpm++, x_line += xpm->cpp)
 		{
-			uint8_t* pixelstart = &xpm->texture.pixels[(y_xpm * xpm->texture.width + x_xpm) * BPP];
+			uint8_t* pixelstart = &xpm->texture.pixels[(y_xpm * xpm->texture.width + x_xpm) * sizeof(int32_t)];
 			mlx_draw_pixel(pixelstart, ctable[mlx_fnv_hash(&line[x_line], xpm->cpp) % s]);
 		}
 	}
@@ -139,11 +139,11 @@ static bool mlx_read_table(xpm_t* xpm, FILE* file)
 	{
 		if (!mlx_getline(&line, &line_len, file))
 			return (free(line), false);
-		if (!mlx_insert_xpm_entry(xpm, line, ctable, (sizeof(ctable) / BPP)))
+		if (!mlx_insert_xpm_entry(xpm, line, ctable, (sizeof(ctable) / sizeof(int32_t))))
 			return (free(line), false);
 	}
 	free(line);
-	return (mlx_read_data(xpm, file, ctable, (sizeof(ctable) / BPP)));
+	return (mlx_read_data(xpm, file, ctable, (sizeof(ctable) / sizeof(int32_t))));
 }
 
 /**
@@ -171,7 +171,7 @@ static bool mlx_read_xpm_header(xpm_t* xpm, FILE *file)
 	if (flagc < 4 || xpm->texture.width > INT16_MAX || xpm->texture.height > INT16_MAX || \
 		!(xpm->mode == 'c' || xpm->mode == 'm') || xpm->cpp > 10)
 		return (false);
-	xpm->texture.bytes_per_pixel = BPP;
+	xpm->texture.bytes_per_pixel = sizeof(int32_t);
 	xpm->texture.pixels = calloc(xpm->texture.width * xpm->texture.height, sizeof(int32_t));
 	return (xpm->texture.pixels != NULL ? mlx_read_table(xpm, file) : false);
 }

@@ -6,7 +6,7 @@
 /*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 19:54:09 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/30 14:26:55 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/05 14:37:58 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	load_wavfile(
 	t_audio *audio,
 	SDL_AudioSpec *spec)
 {
-	if (SDL_LoadWAV(filename, spec, &audio->buffer, &audio->len) < 0)
+	if (SDL_LoadWAV(filename, spec, &audio->buffer, &audio->len) == 0)
 		ft_printf("Failed to load %s (%s)\n", filename, SDL_GetError());
 	audio->pos = audio->buffer;
 	audio->start_len = audio->len;

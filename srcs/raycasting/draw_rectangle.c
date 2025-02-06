@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_rectangle.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:05:35 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/29 15:25:56 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/02/05 14:42:40 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	draw_col2(int x, int side, float len[2], t_core *core)
 	}
 }
 
-void	draw_rectangle3(int pos[3], float length[2], int side, t_core *core)
+void	draw_rectangle3(int pos[2], float length[2], int side, t_core *core)
 {
 	float	dl;
 	int		i;

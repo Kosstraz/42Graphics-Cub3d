@@ -6,7 +6,7 @@
 /*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:32:18 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/27 19:13:57 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/05 14:39:50 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 void	draw_square(
 	t_layer *layer,
 	t_player *player,
-	t_color_type color,
-	t_core *core)
+	t_color_type color)
 {
 	t_cmpt		cmpt;
 	t_fvector	pos;

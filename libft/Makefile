@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
+#    By: bama <bama@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2024/12/10 11:09:10 by ymanchon         ###   ########.fr        #
+#    Updated: 2025/02/05 14:38:20 by bama             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -154,7 +154,7 @@ INCLUDES = -I .
 
 OPTIFLAGS =	-O3 -march=native -mtune=generic -funroll-loops -fomit-frame-pointer -ffast-math -fopenmp
 
-CFLAGS =	-Wall -Wextra -Werror $(OPTIFLAGS) -fPIE
+CFLAGS =	-Wall -Wextra -Werror -Wno-unused-result $(OPTIFLAGS) -fPIE
 
 PRINTF_P = ./ft_printf
 

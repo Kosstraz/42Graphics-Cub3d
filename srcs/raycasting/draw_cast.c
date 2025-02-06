@@ -6,7 +6,7 @@
 /*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 10:52:09 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/30 14:31:59 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/05 14:41:15 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ void	draw_col(int x, const float y1, float length, t_core *core)
 
 	draw_col_init(&col, core, x, (float []){length, y1});
 	draw_cf(x, core);
-	while (col.i < (int)col.nb_pixels && col.y < core->layer[CAST_LAYER].height)
+	while (col.i < (int)col.nb_pixels
+		&& col.y < (int)core->layer[CAST_LAYER].height)
 	{
 		col.col = get_pixel(x, (float) col.i / col.nb_pixels, core);
 		if (core->player[LOCAL].torch_activated)

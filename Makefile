@@ -6,7 +6,7 @@
 #    By: bama <bama@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2025/01/30 14:34:06 by bama             ###   ########.fr        #
+#    Updated: 2025/01/30 14:40:32 by bama             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/parsing/parsing.c				\
 		./srcs/parsing/parsing_check_errors.c	\
 		./srcs/parsing/parse_asciimap.c			\
+		./srcs/parsing/parse_asciimap2.c		\
 		\
 		./srcs/rendering/draw_line.c			\
 		./srcs/rendering/show_fps.c				\

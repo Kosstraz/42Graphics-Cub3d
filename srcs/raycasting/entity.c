@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   entity.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkhoury <mkhoury@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:16:09 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/01/29 14:00:41 by mkhoury          ###   ########.fr       */
+/*   Updated: 2025/02/05 14:44:22 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ int	get_x(float angle_j, float *angles, int lim)
 	int		index;
 	float	dist;
 
-	i = 0;
+	i = -1;
 	dist = 3;
-	while (i < lim)
+	index = 0;
+	while (++i < lim)
 	{
 		if (angle_j > angles[i])
 			delta = angle_j - angles[i];
@@ -34,7 +35,6 @@ int	get_x(float angle_j, float *angles, int lim)
 		}
 		if (dist <= 0.5)
 			return (index);
-		i++;
 	}
 	if (dist == 3)
 		return (-1);
