@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 14:38:36 by bama              #+#    #+#             */
-/*   Updated: 2025/02/06 16:46:36 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/07 13:36:25 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ static void	parse_settings_map(int fd, t_core *core)
 
 void	parse_map(t_core *core)
 {
-	t_color	col;
 	int		fd;
 
 	fd = open(core->map.file, O_RDONLY);

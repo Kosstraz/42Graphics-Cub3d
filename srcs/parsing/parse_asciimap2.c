@@ -6,7 +6,7 @@
 /*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 14:40:20 by bama              #+#    #+#             */
-/*   Updated: 2025/02/05 14:49:24 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/07 13:35:34 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void	parse_asciilines2(
 	{
 		core->map.doors = (t_door *)ft_realloc(core->map.doors,
 				core->map.nb_of_doors
-				* sizeof(t_door), (core->map.nb_of_doors + 1U) * sizeof(t_door));
+				* sizeof(t_door), (core->map.nb_of_doors + 1U)
+				* sizeof(t_door));
 		ft_memset(&core->map.doors[core->map.nb_of_doors], 0, sizeof(t_door));
 		core->map.doors[core->map.nb_of_doors].pos.x = i_cur[0];
 		core->map.doors[core->map.nb_of_doors].pos.y = i_cur[1];

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:13:37 by ymanchon          #+#    #+#             */
-/*   Updated: 2024/11/26 20:58:43 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/07 13:42:07 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,9 @@ void	init_network(t_core *core)
 		&core->network.tcp.sock,
 		0,
 		sizeof(struct sockaddr_in));
+}
+
+void	poll_hup(t_core *core)
+{
+	exit_strerror("\e[31mDéconnexion détectée!\e[0m\n", core);
 }

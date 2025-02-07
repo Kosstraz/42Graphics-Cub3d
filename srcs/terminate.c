@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   terminate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:47 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/06 16:56:19 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/07 13:35:09 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ void	free_core_map(t_core *core)
 			core->map.filepath.east,
 			core->map.filepath.west,
 			core->map.buflens,
-			core->xpms,
-			core->map.doors);
+			core->xpms, core->map.doors);
 	}
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   send.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:50:18 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/06 16:47:37 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/07 13:52:49 by bama             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	recv_map(t_core *core)
 	recv_textures(core);
 }
 
+// ! ligne 92 a enlever et tester sur le multi
 inline static void	handle_poll_door(t_core *core)
 {
 	t_door_info	dinfo;
@@ -88,13 +89,14 @@ inline static void	handle_poll_door(t_core *core)
 	{
 		core->utils.door_text[TO_OPEN]->enabled = FALSE;
 		core->utils.door_text[TO_CLOSE]->enabled = FALSE;
-		if (core->map.doors[dinfo.which_door].is_open)			// !a enlever et tester sur le multi
+		if (core->map.doors[dinfo.which_door].is_open)
 			core->utils.door_text[TO_OPEN]->enabled = TRUE;
 		else
 			core->utils.door_text[TO_CLOSE]->enabled = TRUE;
 	}
 }
 
+void	poll_hup(t_core *core);
 void	handle_poll_cf_col(t_core *core);
 
 void	recv_any_element(t_core *core)
@@ -117,5 +119,7 @@ void	recv_any_element(t_core *core)
 			else if (poll_id == POLL_DOOR)
 				handle_poll_door(core);
 		}
+		if (pollfd.revents & (POLLHUP | POLLERR | POLLNVAL))
+			poll_hup(core);
 	}
 }
