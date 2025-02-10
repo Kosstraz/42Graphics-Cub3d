@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:50:18 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/10 16:42:30 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:40:23 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ static void	recv_map_first_part(t_core *core)
 	y = 0;
 	ft_recv(&core->map.bufmax, sizeof(size_t), core);
 	ft_recv(&core->map.buflens_size, sizeof(size_t), core);
-	core->map.buf = (char **)malloc(sizeof(char *) * (core->map.bufmax + 1));
+	core->map.buf = (char **)ft_realloc(core->map.buf,
+			sizeof(char *) * DEFMAPBUF,
+			sizeof(char *) * (core->map.bufmax + 1));
 	core->map.buflens = (size_t *)malloc(sizeof(size_t)
 			* core->map.buflens_size);
 	while (y < core->map.bufmax)

@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:38:33 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/10 16:43:38 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:40:51 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ static void	recv_textures2(int i, t_core *core)
 		sizeof(uint32_t), core);
 }
 
+//core->xpms = (xpm_t **)malloc(sizeof(xpm_t *) * 4);
 void	recv_textures(t_core *core)
 {
 	uint32_t	i;
 	uint32_t	j;
 
 	i = 0U;
-	core->xpms = (xpm_t **)malloc(sizeof(xpm_t *) * 4);
 	while (i < 4U)
 	{
 		recv_textures2(i, core);
