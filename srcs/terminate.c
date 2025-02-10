@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:47 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/10 15:26:11 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/10 16:55:53 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,11 @@ void	free_core_map(t_core *core)
 			close_connection(core);
 		while (i < core->map.bufsize)
 			free(core->map.buf[i++]);
-		free(core->map.buf);
-		ft_va_free(7,
-			core->map.filepath.north,
-			core->map.filepath.south,
-			core->map.filepath.east,
-			core->map.filepath.west,
-			core->map.buflens,
-			core->xpms, core->map.doors);
+		ft_printf("FREE CORE\n");
+		ft_va_free(8,
+			core->map.filepath.north, core->map.buf, core->xpms,
+			core->map.filepath.south, core->map.filepath.east,
+			core->map.filepath.west, core->map.buflens, core->map.doors);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/10 15:27:01 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/10 16:41:33 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@
 		CORE
 	*/
 
+void	ft_send(const void *__buf, size_t __n, t_core *core);
+void	ft_recv(void *__buf, size_t __n, t_core *core);
 void	finish_gnl(int fd);
 bool	stocol_while_part(t_color *col, int tmp, int i, char *val);
 void	parse_asciilines2(

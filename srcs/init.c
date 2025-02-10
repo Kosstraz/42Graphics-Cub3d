@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/10 14:57:01 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/10 16:16:31 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ inline static void	init_player(t_player *player)
 
 inline static void	init_core_map(t_core *core)
 {
+	core->mapfile_fd = -1;
 	core->map.bufsize = 0;
 	core->texturej = NULL;
 	core->map.generated = FALSE;

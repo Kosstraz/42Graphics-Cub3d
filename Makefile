@@ -6,7 +6,7 @@
 #    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2025/02/10 15:27:24 by ymanchon         ###   ########.fr        #
+#    Updated: 2025/02/10 16:36:42 by ymanchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,6 +78,7 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/raycasting/entity_extra2.c		\
 		\
 		./srcs/network/init.c					\
+		./srcs/network/ft_net.c					\
 		./srcs/network/menu.c					\
 		./srcs/network/mutual_addr.c			\
 		./srcs/network/send.c					\

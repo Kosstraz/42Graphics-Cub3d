@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 03:42:29 by W2Wizard          #+#    #+#             */
-/*   Updated: 2025/02/10 14:14:18 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/10 16:51:57 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,7 +208,6 @@ xpm_t* mlx_load_xpm42(const char* path)
 
 void mlx_delete_xpm42(xpm_t* xpm)
 {
-	MLX_NONNULL(xpm);
 	if (xpm)
 	{
 		free(xpm->texture.pixels);

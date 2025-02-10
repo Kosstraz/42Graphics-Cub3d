@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:50:18 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/10 15:35:15 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/10 16:42:30 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,23 @@ void	send_map(t_core *core)
 	size_t		y;
 
 	y = 0;
-	send(core->network.tcp.com, core->map.cf_colors, sizeof(t_color) * 2, 0);
-	send(core->network.tcp.com, &core->map.bufmax, sizeof(size_t), 0);
-	send(core->network.tcp.com, &core->map.buflens_size, sizeof(size_t), 0);
+	ft_send(core->map.cf_colors, sizeof(t_color) * 2, core);
+	ft_send(&core->map.bufmax, sizeof(size_t), core);
+	ft_send(&core->map.buflens_size, sizeof(size_t), core);
 	while (y < core->map.bufmax)
 	{
-		send(core->network.tcp.com, &core->map.buflens[y], sizeof(size_t), 0);
-		send(core->network.tcp.com, core->map.buf[y],
-			core->map.buflens[y] + 1, 0);
+		ft_send(&core->map.buflens[y], sizeof(size_t), core);
+		ft_send(core->map.buf[y],
+			core->map.buflens[y] + 1, core);
 		y++;
 	}
-	send(core->network.tcp.com, &core->map.buflens_max, sizeof(size_t), 0);
-	send(core->network.tcp.com, &core->player[LOCAL], sizeof(t_player), 0);
-	send(core->network.tcp.com, &core->player[DISTANT], sizeof(t_player), 0);
-	send(core->network.tcp.com, &core->map.nb_of_doors, sizeof(size_t), 0);
+	ft_send(&core->map.buflens_max, sizeof(size_t), core);
+	ft_send(&core->player[LOCAL], sizeof(t_player), core);
+	ft_send(&core->player[DISTANT], sizeof(t_player), core);
+	ft_send(&core->map.nb_of_doors, sizeof(size_t), core);
 	i = 0U;
 	while (i < core->map.nb_of_doors)
-		send(core->network.tcp.com, &core->map.doors[i++], sizeof(t_door), 0);
+		ft_send(&core->map.doors[i++], sizeof(t_door), core);
 	send_textures(core);
 }
 
@@ -43,19 +43,17 @@ static void	recv_map_first_part(t_core *core)
 	size_t		y;
 
 	y = 0;
-	if (!recv(core->network.tcp.com, &core->map.bufmax, sizeof(size_t), 0))
-		exit_strerror("Connexion perdue.\n", core);
-	recv(core->network.tcp.com, &core->map.buflens_size, sizeof(size_t), 0);
+	ft_recv(&core->map.bufmax, sizeof(size_t), core);
+	ft_recv(&core->map.buflens_size, sizeof(size_t), core);
 	core->map.buf = (char **)malloc(sizeof(char *) * (core->map.bufmax + 1));
 	core->map.buflens = (size_t *)malloc(sizeof(size_t)
 			* core->map.buflens_size);
 	while (y < core->map.bufmax)
 	{
-		recv(core->network.tcp.com, &core->map.buflens[y], sizeof(size_t), 0);
+		ft_recv(&core->map.buflens[y], sizeof(size_t), core);
 		core->map.buf[y] = (char *)malloc(sizeof(char)
 				* (core->map.buflens[y] + 2));
-		recv(core->network.tcp.com, core->map.buf[y],
-			core->map.buflens[y] + 1, 0);
+		ft_recv(core->map.buf[y], core->map.buflens[y] + 1, core);
 		core->map.buf[y][core->map.buflens[y] + 1] = '\0';
 		y++;
 	}
@@ -67,16 +65,16 @@ void	recv_map(t_core *core)
 {
 	uint32_t	i;
 
-	recv(core->network.tcp.com, core->map.cf_colors, sizeof(t_color) * 2, 0);
+	ft_recv(core->map.cf_colors, sizeof(t_color) * 2, core);
 	recv_map_first_part(core);
-	recv(core->network.tcp.com, &core->map.buflens_max, sizeof(size_t), 0);
-	recv(core->network.tcp.com, &core->player[DISTANT], sizeof(t_player), 0);
-	recv(core->network.tcp.com, &core->player[LOCAL], sizeof(t_player), 0);
-	recv(core->network.tcp.com, &core->map.nb_of_doors, sizeof(size_t), 0);
+	ft_recv(&core->map.buflens_max, sizeof(size_t), core);
+	ft_recv(&core->player[DISTANT], sizeof(t_player), core);
+	ft_recv(&core->player[LOCAL], sizeof(t_player), core);
+	ft_recv(&core->map.nb_of_doors, sizeof(size_t), core);
 	core->map.doors = (t_door *)malloc(sizeof(t_door) * core->map.nb_of_doors);
 	i = 0U;
 	while (i < core->map.nb_of_doors)
-		recv(core->network.tcp.com, &core->map.doors[i++], sizeof(t_door), 0);
+		ft_recv(&core->map.doors[i++], sizeof(t_door), core);
 	recv_textures(core);
 }
 
@@ -85,7 +83,7 @@ inline static void	handle_poll_door(t_core *core)
 {
 	t_door_info	dinfo;
 
-	recv(core->network.tcp.com, &dinfo, sizeof(t_door_info), 0);
+	ft_recv(&dinfo, sizeof(t_door_info), core);
 	core->map.doors[dinfo.which_door].is_open = !dinfo.is_open;
 	if (core->utils.door_focus == dinfo.which_door)
 	{
@@ -114,14 +112,9 @@ void	recv_any_element(t_core *core)
 		poll(&pollfd, 1, 0);
 		if (pollfd.revents & POLLIN)
 		{
-			if (!recv(core->network.tcp.com, &poll_id, 1, 0))
-				exit_strerror("Connexion perdue.\n", core);
+			ft_recv(&poll_id, 1, core);
 			if (poll_id == POLL_PLAYER)
-			{
-				if (!recv(core->network.tcp.com, &core->player[1],
-						sizeof(t_player), 0))
-					exit_strerror("Connexion perdue.\n", core);
-			}
+				ft_recv(&core->player[1], sizeof(t_player), core);
 			else if (poll_id == POLL_DOOR)
 				handle_poll_door(core);
 		}
