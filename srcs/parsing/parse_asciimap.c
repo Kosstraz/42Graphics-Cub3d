@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   parse_asciimap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 14:39:09 by bama              #+#    #+#             */
-/*   Updated: 2025/02/05 21:53:57 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/10 15:34:46 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-inline static void	save_asciimap_handle_memory(int y_pos, t_core *core)
+inline static void	save_asciimap_handle_memory(
+	char *gnl,
+	int y_pos,
+	t_core *core)
 {
 	if (y_pos == (int)core->map.bufmax)
 	{
@@ -25,27 +28,36 @@ inline static void	save_asciimap_handle_memory(int y_pos, t_core *core)
 			sizeof(size_t) * core->map.buflens_size,
 			sizeof(size_t) * (core->map.buflens_size + 1));
 	core->map.buflens_size += 1;
+	core->map.bufsize = y_pos + 1;
+	core->map.buf[y_pos] = ft_strdup(gnl);
+	core->map.buflens[y_pos] = ft_strlen(gnl);
 }
+
+char	*skip_first_void_lines(int fd);
 
 static void	save_asciimap(int fd, t_core *core)
 {
 	char	*gnl;
 	int		y;
+	bool	void_line;
 
 	y = 0;
-	gnl = get_next_line(fd);
+	void_line = FALSE;
+	gnl = skip_first_void_lines(fd);
 	while (gnl)
 	{
 		if (gnl[0] != '\0')
 		{
-			save_asciimap_handle_memory(y, core);
-			core->map.buf[y] = gnl;
-			core->map.buflens[y++] = ft_strlen(gnl);
+			save_asciimap_handle_memory(gnl, y++, core);
+			if (void_line)
+				exit_strerror("Map separee en deux parties.\n", core);
 		}
 		else
-			free(gnl);
+			void_line = TRUE;
+		free(gnl);
 		gnl = get_next_line(fd);
 	}
+	free(gnl);
 	core->map.bufsize = y;
 	core->map.buf[y] = NULL;
 }
@@ -104,6 +116,8 @@ void	parse_asciimap(int fd, t_core *core)
 	players_spawn[LOCAL] = FALSE;
 	players_spawn[DISTANT] = FALSE;
 	save_asciimap(fd, core);
+	if (!core->map.buflens || core->map.buflens_size <= 0)
+		exit_strerror("No map in map file.\n", core);
 	core->map.buflens_max = ft_maxul(core->map.buflens, core->map.buflens_size);
 	core->map.bufmax = ft_strlen2(core->map.buf);
 	while (core->map.buf[i])

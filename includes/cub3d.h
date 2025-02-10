@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/05 14:51:17 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/10 15:27:01 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@
 		CORE
 	*/
 
+void	finish_gnl(int fd);
+bool	stocol_while_part(t_color *col, int tmp, int i, char *val);
 void	parse_asciilines2(
 			const char *line,
 			bool players_spawn[2],

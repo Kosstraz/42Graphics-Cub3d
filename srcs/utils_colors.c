@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:49 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/27 18:58:52 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/10 15:34:11 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,17 +90,16 @@ t_color	stocol(const char *str)
 
 	tmp = 0;
 	ret._overflow = FALSE;
+	if (ft_strstr(str, ",,") || ft_strnchr(str, ',') != 2)
+	{
+		ret._overflow = TRUE;
+		return (ret);
+	}
 	split = ft_split(str, ',');
 	i = 0;
 	while (split[i])
 	{
-		tmp = ft_atoi(split[i]);
-		if (tmp > 255)
-			ret._overflow = TRUE;
-		if (i == 0)
-			ret.r = tmp;
-		else if (i == 1)
-			ret.g = tmp;
+		stocol_while_part(&ret, tmp, i, split[i]);
 		i++;
 	}
 	ft_dfree((void **)split);

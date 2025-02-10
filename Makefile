@@ -6,7 +6,7 @@
 #    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2025/02/06 16:03:42 by ymanchon         ###   ########.fr        #
+#    Updated: 2025/02/10 15:27:24 by ymanchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/init2.c							\
 		./srcs/terminate.c						\
 		./srcs/utils_colors.c					\
+		./srcs/utils_colors2.c					\
 		./srcs/debug.c							\
 		./srcs/init_cast.c 						\
 		./srcs/layer.c							\
@@ -53,6 +54,7 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/audio/audio.c					\
 		./srcs/audio/audio_utils.c				\
 		\
+		./srcs/parsing/utils.c					\
 		./srcs/parsing/parsing.c				\
 		./srcs/parsing/parsing2.c				\
 		./srcs/parsing/parsing_check_errors.c	\
@@ -113,7 +115,7 @@ EXTERN_LIB = -L./MLX42-2.4.1/build -ldl -lm -lmlx42 -lglfw -lGL -lGLU -lX11 -lXx
 #*    REGLES    *#
 # ############## #
 
-all: libft_comp   $(NAME) mischief
+all: libft_comp   $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIB) $(EXTERN_LIB) -o $@

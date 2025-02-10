@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_cast.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 10:52:09 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/02/05 14:41:15 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/10 14:20:15 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ void	draw_col(int x, const float y1, float length, t_core *core)
 		col.col = get_pixel(x, (float) col.i / col.nb_pixels, core);
 		if (core->player[LOCAL].torch_activated)
 			col.col = increase_lighting(torch((int []) \
-			{col.torchx, col.y}, col.torchlength, col.col, core), -length * 15);
+			{col.torchx, col.y}, col.torchlength, col.col, core), -length * 20);
 		else
-			col.col = increase_lighting(col.col, -length * 17);
+			col.col = increase_lighting(col.col, -length * 25);
 		*(core->layer[CAST_LAYER].pixels[col.y][x]) = col.col;
 		++col.i;
 		col.y++;

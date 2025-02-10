@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/06 15:15:06 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:25:35 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,6 +248,7 @@ typedef struct s_core
 	char			*_strerror;
 	int				tex_debug;
 	mlx_texture_t	*texturej;
+	int				mapfile_fd;
 }	t_core;
 
 typedef struct s_core_audio

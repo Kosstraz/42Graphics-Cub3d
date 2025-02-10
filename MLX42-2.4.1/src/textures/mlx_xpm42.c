@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_xpm42.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 03:42:29 by W2Wizard          #+#    #+#             */
-/*   Updated: 2025/02/05 14:49:47 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/10 14:14:18 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,24 +177,27 @@ static bool mlx_read_xpm_header(xpm_t* xpm, FILE *file)
 }
 
 //= Public =//
-
+#include <unistd.h>
 xpm_t* mlx_load_xpm42(const char* path)
 {
 	FILE* file;
 	xpm_t* xpm = NULL;
 
+	//write(2, "NONNULL(path)\n", strlen("NONNULL(path)\n"));
 	MLX_NONNULL(path);
+	//write(2, "load xpm42\n", strlen("load xpm42\n"));
 	if (!strstr(path, ".xpm42"))
-		return ((void*)mlx_error(MLX_INVEXT));
-	if (!(file = fopen(path, "r")))
-		return ((void*)mlx_error(MLX_INVFILE));
+		return (write(2, "bad strstr\n", strlen("bad strstr\n")), (void*)mlx_error(MLX_INVEXT));
+	if (!(file = fopen(path, "r+")))
+		return (write(2, "bad fopen\n", strlen("bad fopen\n")), (void*)mlx_error(MLX_INVFILE));
 	if (!(xpm = calloc(1, sizeof(xpm_t))))
-		return ((void*)mlx_error(MLX_MEMFAIL));
+		return (write(2, "bad calloc\n", strlen("bad calloc\n")), (void*)mlx_error(MLX_MEMFAIL));
 	xpm->color_count = 0;
 	xpm->cpp = 0;
 	xpm->mode = 0;
 	if (!mlx_read_xpm_header(xpm, file))
 	{
+		write(2, "bad xpm header\n", strlen("bad xpm header\n"));
 		mlx_freen(2, xpm->texture.pixels, xpm);
 		mlx_error(MLX_INVXPM);
 		xpm = NULL;

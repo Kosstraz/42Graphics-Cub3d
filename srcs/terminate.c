@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   terminate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:47 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/07 13:35:09 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/10 15:26:11 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	exit_strerror(char	*error_desc, t_core *core)
 {
 	if (core)
 		free_core_map(core);
+	if (core->mapfile_fd > 2)
+		finish_gnl(core->mapfile_fd);
 	ft_printf("%s%s", PARSING_ERROR_T, error_desc);
 	exit(1);
 }

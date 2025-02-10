@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   send.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:50:18 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/07 13:52:49 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/10 15:35:15 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	send_map(t_core *core)
 	size_t		y;
 
 	y = 0;
+	send(core->network.tcp.com, core->map.cf_colors, sizeof(t_color) * 2, 0);
 	send(core->network.tcp.com, &core->map.bufmax, sizeof(size_t), 0);
 	send(core->network.tcp.com, &core->map.buflens_size, sizeof(size_t), 0);
 	while (y < core->map.bufmax)
@@ -42,7 +43,8 @@ static void	recv_map_first_part(t_core *core)
 	size_t		y;
 
 	y = 0;
-	recv(core->network.tcp.com, &core->map.bufmax, sizeof(size_t), 0);
+	if (!recv(core->network.tcp.com, &core->map.bufmax, sizeof(size_t), 0))
+		exit_strerror("Connexion perdue.\n", core);
 	recv(core->network.tcp.com, &core->map.buflens_size, sizeof(size_t), 0);
 	core->map.buf = (char **)malloc(sizeof(char *) * (core->map.bufmax + 1));
 	core->map.buflens = (size_t *)malloc(sizeof(size_t)
@@ -112,10 +114,14 @@ void	recv_any_element(t_core *core)
 		poll(&pollfd, 1, 0);
 		if (pollfd.revents & POLLIN)
 		{
-			recv(core->network.tcp.com, &poll_id, 1, 0);
+			if (!recv(core->network.tcp.com, &poll_id, 1, 0))
+				exit_strerror("Connexion perdue.\n", core);
 			if (poll_id == POLL_PLAYER)
-				recv(core->network.tcp.com, &core->player[1],
-					sizeof(t_player), 0);
+			{
+				if (!recv(core->network.tcp.com, &core->player[1],
+						sizeof(t_player), 0))
+					exit_strerror("Connexion perdue.\n", core);
+			}
 			else if (poll_id == POLL_DOOR)
 				handle_poll_door(core);
 		}

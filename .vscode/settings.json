@@ -4,7 +4,8 @@
 		"draw_recatngle.C": "cpp",
 		"string_view": "c",
 		"ranges": "c",
-		"cub3d": "c"
+		"cub3d": "c",
+		"libft.h": "c"
 	},
 	"cmake.ignoreCMakeListsMissing": true
 }

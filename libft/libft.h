@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 20:09:36 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/05 14:36:11 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/10 14:35:23 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,6 +219,10 @@ ssize_t	ft_rev_isspaceptr(const char *s, ssize_t start);
 			/* **************************** */
 			/* **************************** */
 
+char	ft_containonlychr_until(const char *str, const char *set, char c);
+// 1 true : contain only chr in set
+// 0 false
+char	ft_containonlychr(const char *str, const char *set);
 // Savoir à quelle position se trouve le premier
 //caractère de 'set' trouvé dans 'str'
 // Sinon renvoie -1

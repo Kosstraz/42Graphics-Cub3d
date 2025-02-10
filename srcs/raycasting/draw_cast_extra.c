@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_cast_extra.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 18:04:13 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/02/05 14:46:55 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/10 14:16:43 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	draw_col_init(t_col *init, t_core *core, int x, float floaa[2])
 	init->nb_pixels = core->half_height / (core->cast.wall_dist[x] / 3.0f);
 	init->torchx = x - core->half_width;
 	init->i = 0;
-	init->torchlength = floaa[0] * 50.0;
+	init->torchlength = floaa[0] * 75.0;
 	init->half_nb_pixels = init->nb_pixels / 2.0f;
 	if (floaa[1] - init->half_nb_pixels < 0)
 		init->i = (int)(init->half_nb_pixels - floaa[1]);

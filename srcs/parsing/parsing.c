@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 14:38:36 by bama              #+#    #+#             */
-/*   Updated: 2025/02/07 13:36:25 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/10 15:34:57 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,19 @@ static void	parse_settings_cf(bool is_here[6], char *line, t_core *core)
 {
 	if (!ft_strncmp(line, "C", 1))
 	{
-		if (no_full_file(is_here))
-			exit_strerror("Bad configuration order.", core);
 		core->map.cf_colors[C] = stocol(ft_strchr_inv(&line[1], ' '));
 		is_here[H_C] = TRUE;
 	}
 	else if (!ft_strncmp(line, "F", 1))
 	{
-		if (no_full_file(is_here))
-			exit_strerror("Bad configuration order.", core);
 		core->map.cf_colors[F] = stocol(ft_strchr_inv(&line[1], ' '));
 		is_here[H_F] = TRUE;
+	}
+	if (no_full_file(is_here) || (core->map.cf_colors[F]._overflow
+			|| core->map.cf_colors[C]._overflow))
+	{
+		free(line);
+		exit_strerror("Error or overflow in colors config.\n", core);
 	}
 }
 
@@ -74,12 +76,9 @@ static void	parse_settings_map(int fd, t_core *core)
 	{
 		parse_settings_file(is_here, line, core);
 		parse_settings_cf(is_here, line, core);
-		if (is_here_is_valid(is_here))
-		{
-			free(line);
-			return ;
-		}
 		free(line);
+		if (is_here_is_valid(is_here))
+			return ;
 		line = get_next_line(fd);
 	}
 	if (!is_here_is_valid(is_here))
@@ -93,9 +92,10 @@ void	parse_map(t_core *core)
 	fd = open(core->map.file, O_RDONLY);
 	if (fd == -1)
 		exit_strerror(IMPOSSIBLE_TO_OPEN, core);
+	core->mapfile_fd = fd;
 	parse_settings_map(fd, core);
-	send(core->network.tcp.com, core->map.cf_colors, sizeof(t_color) * 2, 0);
 	parse_asciimap(fd, core);
 	parse_texturefile_path_error(core);
 	close(fd);
+	core->mapfile_fd = -1;
 }
