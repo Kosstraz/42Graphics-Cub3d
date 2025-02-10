@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 14:38:36 by bama              #+#    #+#             */
-/*   Updated: 2025/02/10 15:34:57 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/10 16:09:42 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,22 @@ static void	parse_settings_cf(bool is_here[6], char *line, t_core *core)
 	if (!ft_strncmp(line, "C", 1))
 	{
 		core->map.cf_colors[C] = stocol(ft_strchr_inv(&line[1], ' '));
+		if (core->map.cf_colors[C]._overflow || no_full_file(is_here))
+		{
+			free(line);
+			exit_strerror("Error or overflow in colors config.\n", core);
+		}
 		is_here[H_C] = TRUE;
 	}
 	else if (!ft_strncmp(line, "F", 1))
 	{
 		core->map.cf_colors[F] = stocol(ft_strchr_inv(&line[1], ' '));
+		if (core->map.cf_colors[F]._overflow || no_full_file(is_here))
+		{
+			free(line);
+			exit_strerror("Error or overflow in colors config.\n", core);
+		}
 		is_here[H_F] = TRUE;
-	}
-	if (no_full_file(is_here) || (core->map.cf_colors[F]._overflow
-			|| core->map.cf_colors[C]._overflow))
-	{
-		free(line);
-		exit_strerror("Error or overflow in colors config.\n", core);
 	}
 }
 
