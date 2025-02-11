@@ -227,3 +227,58 @@
    obj:/usr/lib/x86_64-linux-gnu/dri/iris_dri.so
    ...
 }
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:dl_open_worker
+   fun:_dl_catch_error
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:dl_open_worker
+   fun:_dl_catch_exception
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:_dl_close_worker
+   fun:_dl_close
+   fun:_dl_catch_error
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:_dl_close_worker
+   fun:_dl_close
+   fun:_dl_catch_exception
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:_dl_catch_error
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:_dl_catch_exception
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:???
+   ...
+}
