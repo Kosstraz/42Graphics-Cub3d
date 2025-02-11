@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:52 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/11 15:36:47 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/11 17:06:59 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,16 @@ t_uint	rand_btw(t_uint min, t_uint max)
 	return ((rand() % (max - min + 1)) + min);
 }
 
+static void	sigpipe_handling(int signum)
+{
+	(void)signum;
+}
+
 int	main(int ac, char **av, char** env)
 {
 	t_core	core;
 
+	signal(SIGPIPE, sigpipe_handling);
 	if (!env || !env[0])
 		exit_strerror("No environment\n", NULL);
 	if (ac < 2)

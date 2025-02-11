@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/10 16:41:33 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/11 17:06:24 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <arpa/inet.h>
 # include <netdb.h>
 # include <poll.h>
+# include <signal.h>
 
 # include <SDL2/SDL.h>
 # include <SDL2/SDL_audio.h>
