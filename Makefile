@@ -6,7 +6,7 @@
 #    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2025/02/11 17:19:24 by ymanchon         ###   ########.fr        #
+#    Updated: 2025/02/11 17:23:17 by ymanchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,7 +105,7 @@ INCLUDES = -I ./includes/ -I $(LIBFT_P)/ -I .
 
 OPTIFLAGS =	-Ofast -march=native -mtune=generic -funroll-loops -fomit-frame-pointer -ffast-math
 
-CFLAGS = -Wall -Wextra -Wshadow -Wuninitialized -Winit-self -MMD $(OPTIFLAGS) -fPIE -g3 #-Werror
+CFLAGS = -Wall -Wextra -Wshadow -Wuninitialized -Winit-self -MMD $(OPTIFLAGS) -fPIE -g3 -Werror
 
 LIBFT_P = ./libft
 
