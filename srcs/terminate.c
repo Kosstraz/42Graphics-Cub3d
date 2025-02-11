@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:47 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/10 18:43:27 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/11 15:36:13 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 void	exit_strerror(char	*error_desc, t_core *core)
 {
 	if (core)
+	{
 		free_core_map(core);
-	if (core->mapfile_fd > 2)
-		finish_gnl(core->mapfile_fd);
+		if (core->mapfile_fd > 2)
+			finish_gnl(core->mapfile_fd);
+	}
 	ft_printf("%s%s", PARSING_ERROR_T, error_desc);
 	exit(1);
 }
@@ -46,7 +48,6 @@ void	free_core_map(t_core *core)
 			close_connection(core);
 		while (i < core->map.bufsize)
 			free(core->map.buf[i++]);
-		ft_printf("FREE CORE\n");
 		ft_va_free(8,
 			core->map.filepath.north, core->map.buf, core->xpms,
 			core->map.filepath.south, core->map.filepath.east,

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:52 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/27 18:52:46 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/11 15:36:47 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,18 @@ t_uint	rand_btw(t_uint min, t_uint max)
 	return ((rand() % (max - min + 1)) + min);
 }
 
-int	main(int ac, char **av)
+int	main(int ac, char **av, char** env)
 {
 	t_core	core;
 
+	if (!env || !env[0])
+		exit_strerror("No environment\n", NULL);
 	if (ac < 2)
 		exit_strerror("Please put a file!", NULL);
 	else if (ft_strncmp_rev(av[1], ".cub", 3)
 		|| (!ft_strncmp_rev(av[1], ".cub", 3)
 			&& ft_strlen(av[1]) == 4))
-		exit(1);
+		exit_strerror("Please put a valid .cub file\n", NULL);
 	multiplayer_menu(&core);
 	init_core(&core);
 	if (!core.network.is_active || core.network.is_host)
