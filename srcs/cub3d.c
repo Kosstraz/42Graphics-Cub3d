@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:50 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/06 16:47:34 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/11 16:39:22 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	game(t_core *core)
 	recv_any_element(core);
 	render(core);
 	show_fps(core);
-	if (core->audio[AMBIENT].len == 0)
+	if (ACTIVE_AUDIO && core->audio[AMBIENT].len == 0)
 		play_sound(&core->audio[AMBIENT]);
 	recv_any_element(core);
 }

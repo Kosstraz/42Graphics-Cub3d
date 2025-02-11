@@ -279,6 +279,20 @@
    <insert_a_suppression_name_here>
    Memcheck:Leak
    ...
+   fun:glfwInit
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
    fun:???
+   ...
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   ...
+   fun:__isoc99_scanf
    ...
 }

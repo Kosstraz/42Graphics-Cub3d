@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   audio.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 19:54:09 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/05 14:37:58 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/11 16:37:02 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,13 @@ void	audio_player(
 static void	load_wavfile(
 	const char *filename,
 	t_audio *audio,
-	SDL_AudioSpec *spec)
+	t_core *core)
 {
-	if (SDL_LoadWAV(filename, spec, &audio->buffer, &audio->len) == 0)
+	if (SDL_LoadWAV(filename, core->spec, &audio->buffer, &audio->len) == 0)
+	{
 		ft_printf("Failed to load %s (%s)\n", filename, SDL_GetError());
+		exit_strerror("", core);
+	}
 	audio->pos = audio->buffer;
 	audio->start_len = audio->len;
 	audio->is_active = FALSE;
@@ -78,28 +81,28 @@ void	init_audio_spec(t_core *core, SDL_AudioSpec *spec)
 void	init_audio_system(t_core *core)
 {
 	if (SDL_Init(SDL_INIT_AUDIO) < 0)
-		ft_printf("Failed to init SDL AUDIO\n");
+		exit_strerror("Failed to init SDL AUDIO\n", core);
 	core->spec = (SDL_AudioSpec *)malloc(sizeof(SDL_AudioSpec));
 	load_wavfile("./Assets/sounds/Ambient2.wav", &core->audio[AMBIENT],
-		core->spec);
+		core);
 	load_wavfile("./Assets/sounds/GoofyRunningSoundEffect.wav",
-		&core->audio[PRANK], core->spec);
+		&core->audio[PRANK], core);
 	load_wavfile("./Assets/sounds/FreakySoundEffects.wav", &core->audio[FREAKY],
-		core->spec);
-	load_wavfile("./Assets/sounds/step1.wav", &core->audio[STEP1], core->spec);
-	load_wavfile("./Assets/sounds/step2.wav", &core->audio[STEP2], core->spec);
-	load_wavfile("./Assets/sounds/step3.wav", &core->audio[STEP3], core->spec);
-	load_wavfile("./Assets/sounds/step4.wav", &core->audio[STEP4], core->spec);
-	load_wavfile("./Assets/sounds/step5.wav", &core->audio[STEP5], core->spec);
-	load_wavfile("./Assets/sounds/door1.wav", &core->audio[DOOR1], core->spec);
-	load_wavfile("./Assets/sounds/door2.wav", &core->audio[DOOR2], core->spec);
-	load_wavfile("./Assets/sounds/door3.wav", &core->audio[DOOR3], core->spec);
+		core);
+	load_wavfile("./Assets/sounds/step1.wav", &core->audio[STEP1], core);
+	load_wavfile("./Assets/sounds/step2.wav", &core->audio[STEP2], core);
+	load_wavfile("./Assets/sounds/step3.wav", &core->audio[STEP3], core);
+	load_wavfile("./Assets/sounds/step4.wav", &core->audio[STEP4], core);
+	load_wavfile("./Assets/sounds/step5.wav", &core->audio[STEP5], core);
+	load_wavfile("./Assets/sounds/door1.wav", &core->audio[DOOR1], core);
+	load_wavfile("./Assets/sounds/door2.wav", &core->audio[DOOR2], core);
+	load_wavfile("./Assets/sounds/door3.wav", &core->audio[DOOR3], core);
 	load_wavfile("./Assets/sounds/TorchOn.wav", &core->audio[TORCHON],
-		core->spec);
+		core);
 	load_wavfile("./Assets/sounds/TorchOff.wav", &core->audio[TORCHOFF],
-		core->spec);
+		core);
 	init_audio_spec(core, core->spec);
 	if (SDL_OpenAudio(core->spec, NULL))
-		ft_printf("Failed to open SDL audio\n");
+		exit_strerror("Failed to open SDL audio\n", core);
 	SDL_PauseAudio(0);
 }

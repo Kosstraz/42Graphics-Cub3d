@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/10 18:36:03 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/11 16:41:16 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ inline static void	init_core_map(t_core *core)
 	core->map.generated = FALSE;
 	core->map.bufmax = DEFMAPBUF;
 	core->map.buf = (char **)malloc(sizeof(char *) * DEFMAPBUF);
+	if (!core->map.buf)
+		exit(1);
 	core->map.buflens = NULL;
 	core->map.buflens_size = 0;
 	core->map.filepath.north = NULL;
@@ -40,11 +42,12 @@ inline static void	init_core_map(t_core *core)
 	core->map.cf_colors[F]._overflow = FALSE;
 	core->map.doors = NULL;
 	core->map.nb_of_doors = 0U;
-	core->xpms = (xpm_t **)malloc(sizeof(xpm_t *) * 4);
-	core->xpms[EA] = NULL;
-	core->xpms[WE] = NULL;
-	core->xpms[NO] = NULL;
-	core->xpms[SO] = NULL;
+	core->xpms = (xpm_t **)calloc(sizeof(xpm_t *), 4);
+	if (!core->xpms)
+	{
+		free(core->map.buf);
+		exit(1);
+	}
 }
 
 inline void	init_core(t_core *core)
@@ -76,9 +79,9 @@ inline void	init_core(t_core *core)
 	}
 }
 
+//mlx_set_setting(MLX_MAXIMIZED, true);
 inline void	init_mlx_env(t_core *core)
 {
-	mlx_set_setting(MLX_MAXIMIZED, true);
 	if (core->network.is_host)
 		core->mlx = mlx_init(DEFWIDTH, DEFHEIGHT, GAME_TITLE_S, true);
 	else

@@ -6,12 +6,14 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:43:54 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/06 16:31:46 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/11 16:37:58 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFS_H
 # define DEFS_H
+
+# define ACTIVE_AUDIO	0
 
 	//* multi
 # define PORT	4243

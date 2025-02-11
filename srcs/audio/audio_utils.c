@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   audio_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:11:33 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/30 14:17:43 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/11 16:38:58 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,12 @@ void	destroy_audio_system(t_core *core)
 
 void	play_sound(t_audio *audio)
 {
-	if (audio->buffer == NULL)
-		return ;
-	audio->pos = audio->buffer;
-	audio->len = audio->start_len;
-	audio->is_active = TRUE;
+	if (ACTIVE_AUDIO)
+	{
+		if (audio->buffer == NULL)
+			return ;
+		audio->pos = audio->buffer;
+		audio->len = audio->start_len;
+		audio->is_active = TRUE;
+	}
 }

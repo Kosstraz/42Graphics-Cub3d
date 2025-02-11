@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 18:38:00 by bama              #+#    #+#             */
-/*   Updated: 2025/01/27 18:40:20 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/11 16:39:10 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ inline void	init_mlx_env2(t_core *core)
 	mlx_image_to_window(core->mlx, core->imgs.cast, 0, 0);
 	init_layer(core->imgs.minimap, &core->layer[MINIMAP_LAYER]);
 	init_layer(core->imgs.cast, &core->layer[CAST_LAYER]);
-	init_audio_system(core);
+	if (ACTIVE_AUDIO)
+		init_audio_system(core);
 	play_sound(&core->audio[AMBIENT]);
 	core->tex_debug = 1000;
 }
