@@ -6,7 +6,7 @@
 #    By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/13 16:21:19 by ymanchon          #+#    #+#              #
-#    Updated: 2025/02/10 16:36:42 by ymanchon         ###   ########.fr        #
+#    Updated: 2025/02/11 17:19:24 by ymanchon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRCS =	./srcs/cub3d.c							\
 		./srcs/time.c							\
 		\
 		./srcs/doors/doors.c					\
+		./srcs/doors/doors_extra.c				\
 		\
 		./srcs/audio/audio.c					\
 		./srcs/audio/audio_utils.c				\

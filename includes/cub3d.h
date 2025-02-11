@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/11 17:06:24 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/11 17:19:53 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,10 @@ void	player_check_movements(t_core *core);
 void	player_check_orientationraycast(t_core *core);
 void	handle_doors_key(mlx_key_data_t keyd, t_core *core);
 int		doors_check_state(int x, int y, t_core *core);
-float	vector_norm(float x, float y);
 t_uint	coltoui(t_color c);
 void	sprint(t_core *core);
+void	door_raycast(t_core *core);
+void	door_handling(t_ivector pos, t_core *core);
 
 	//* main files (cub3d.c)
 void	cub3d(t_core *core);
