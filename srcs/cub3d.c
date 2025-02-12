@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:50 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/12 15:38:01 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:51:08 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ void	cub3d(t_core *core)
 {
 	if (!core->network.is_active || core->network.is_host)
 	{
-		if (!core->map.generated)
-			parse_map(core);
 		if (core->network.is_host)
 			send_map(core);
 	}

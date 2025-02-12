@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/12 15:34:13 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:06:37 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ inline void	init_core(t_core *core)
 	core->half_width = DEFWIDTH / 2.f;
 	core->imgs.fps = NULL;
 	core->imgs.minimap = NULL;
-	core->minimap.position.x = 0;
-	core->minimap.position.y = 0;
-	core->minimap.size.x = 0;
-	core->minimap.size.y = 0;
+	ft_memset(&core->minimap.position, sizeof(t_posi), 1);
+	ft_memset(&core->minimap.size, sizeof(t_posi), 1);
 	ft_memset(&core->input_action, 0, sizeof(t_input_action));
 	ft_memset(&core->utils, 0, sizeof(t_utils));
+	ft_memset(&core->audio, 0, sizeof(core->audio));
+	core->spec = NULL;
 	core->utils.door_focus = -1;
 	core->layer[MINIMAP_LAYER].pixels = NULL;
 	core->layer[CAST_LAYER].pixels = NULL;

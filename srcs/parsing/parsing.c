@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 14:38:36 by bama              #+#    #+#             */
-/*   Updated: 2025/02/10 16:09:42 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:54:40 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,9 @@ void	parse_map(t_core *core)
 	int		fd;
 
 	fd = open(core->map.file, O_RDONLY);
+	core->mapfile_fd = fd;
 	if (fd == -1)
 		exit_strerror(IMPOSSIBLE_TO_OPEN, core);
-	core->mapfile_fd = fd;
 	parse_settings_map(fd, core);
 	parse_asciimap(fd, core);
 	parse_texturefile_path_error(core);

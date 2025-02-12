@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:52 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/12 15:42:25 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:06:45 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,11 @@ int	main(int ac, char **av, char **env)
 		|| (!ft_strncmp_rev(av[1], ".cub", 3)
 			&& ft_strlen(av[1]) == 4))
 		exit_strerror("Please put a valid .cub file\n", NULL);
+	ft_memset(&core, 0, sizeof(t_core));
 	multiplayer_menu(&core);
 	init_core(&core);
-	if (!core.network.is_active || core.network.is_host)
-		core.map.file = av[1];
+	core.map.file = av[1];
+	parse_map(&core);
 	cub3d(&core);
 	return (0);
 }

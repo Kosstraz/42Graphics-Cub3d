@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:47 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/11 16:37:25 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:05:29 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ void	exit_strerror(char	*error_desc, t_core *core)
 	if (core)
 	{
 		free_core(core);
-		if (core->mapfile_fd > 2)
+		if (core->mapfile_fd != -1)
+		{
 			finish_gnl(core->mapfile_fd);
+			close(core->mapfile_fd);
+		}
 	}
 	ft_printf("%s%s", PARSING_ERROR_T, error_desc);
 	exit(1);
@@ -59,7 +62,7 @@ void	free_core(t_core *core)
 {
 	if (core->network.is_active)
 		close_connection(core);
-	if (ACTIVE_AUDIO)
+	if (ACTIVE_AUDIO && core->spec)
 		destroy_audio_system(core);
 	free_core_map(core);
 	if (core->mlx)
