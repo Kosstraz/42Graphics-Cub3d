@@ -6,11 +6,21 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:50 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/11 16:39:22 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:38:01 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+inline void	*ft_malloc(unsigned long size, t_core *core)
+{
+	void	*mem;
+
+	mem = malloc(size);
+	if (!mem)
+		exit_strerror("malloc failed.\n", core);
+	return (mem);
+}
 
 inline static void	render(t_core *core)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook_resize.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:43 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/27 18:42:26 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/12 15:38:44 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,6 @@ void	cub3d_resize_hook(int width, int height, t_core *core)
 	core->minimap.position.y = 10;
 	resize_images(core);
 	reload_images(core);
-	init_layer(core->imgs.minimap, &core->layer[MINIMAP_LAYER]);
-	init_layer(core->imgs.cast, &core->layer[CAST_LAYER]);
+	init_layer(core->imgs.minimap, &core->layer[MINIMAP_LAYER], core);
+	init_layer(core->imgs.cast, &core->layer[CAST_LAYER], core);
 }

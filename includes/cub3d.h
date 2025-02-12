@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:48 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/11 17:19:53 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:38:50 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ t_uint	coltoui(t_color c);
 void	sprint(t_core *core);
 void	door_raycast(t_core *core);
 void	door_handling(t_ivector pos, t_core *core);
+void	*ft_malloc(unsigned long size, t_core *core);
 
 	//* main files (cub3d.c)
 void	cub3d(t_core *core);
@@ -145,7 +146,7 @@ void	try_spawn_player(
 			size_t x,
 			t_core *core);
 
-void	init_layer(mlx_image_t *img, t_layer *layer);
+void	init_layer(mlx_image_t *img, t_layer *layer, t_core *core);
 void	fill_layer(t_layer *layer, t_col_t color);
 void	free_layer(t_layer *layer);
 void	send_textures(t_core *core);

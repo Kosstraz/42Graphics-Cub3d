@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 10:52:09 by mkhoury           #+#    #+#             */
-/*   Updated: 2025/02/10 14:20:15 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:31:36 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,40 @@ inline long	torch(int xy[], float length, long basecolor, t_core *core)
 	return (basecolor);
 }
 
+static double	normalization(double min, double max, double n)
+{
+	return ((n - min) / (max - min));
+}
+
 void	draw_cf(
+	int x,
+	t_core *core)
+{
+	t_uint			y;
+	t_uint			col;
+	const uint32_t	chalfh = (core->imgs.cast->height / 2.0f);
+	const uint32_t	chalfh_abs = chalfh
+		- core->player->bubbles - core->player->offset;
+	const uint32_t	chh_abs = core->imgs.cast->height
+		- core->player->bubbles - core->player->offset;
+
+	y = 0;
+	while (y < core->imgs.cast->height)
+	{
+		if (y <= chalfh_abs)
+			col = increase_lighting(coltoui(core->map.cf_colors[C]),
+					-normalization(0.0, (double)chalfh_abs,
+						(double)y + core->player->offset) * 150.0);
+		else if (y > chalfh_abs)
+			col = increase_lighting(coltoui(core->map.cf_colors[F]),
+					-normalization((double)chh_abs, (double)chalfh_abs + 1.0,
+						(double)y - core->player->offset) * 150.0);
+		*(core->layer[CAST_LAYER].pixels[y][x]) = col;
+		++y;
+	}
+}
+
+/*void	draw_cf(
 	int x,
 	t_core *core)
 {
@@ -57,7 +90,7 @@ void	draw_cf(
 		*(core->layer[CAST_LAYER].pixels[y][x]) = col;
 		++y;
 	}
-}
+}*/
 
 void	draw_col(int x, const float y1, float length, t_core *core)
 {

@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 19:54:09 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/11 16:37:02 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:39:26 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	init_audio_system(t_core *core)
 {
 	if (SDL_Init(SDL_INIT_AUDIO) < 0)
 		exit_strerror("Failed to init SDL AUDIO\n", core);
-	core->spec = (SDL_AudioSpec *)malloc(sizeof(SDL_AudioSpec));
+	core->spec = (SDL_AudioSpec *)ft_malloc(sizeof(SDL_AudioSpec), core);
 	load_wavfile("./Assets/sounds/Ambient2.wav", &core->audio[AMBIENT],
 		core);
 	load_wavfile("./Assets/sounds/GoofyRunningSoundEffect.wav",

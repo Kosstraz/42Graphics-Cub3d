@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:34:32 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/10 15:25:35 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:42:49 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ typedef struct s_color
 	bool	_overflow;
 }	t_color;
 
+//	float		line_height[1920];
 typedef struct s_casting
 {
 	float		casts[1920];
 	float		angle[1920];
-//	float		line_height[1920];
 	t_pos		wall[1920];
 	int			side[1920];
 	int			height[1920];
@@ -266,7 +266,6 @@ typedef struct s_gen_config
 	t_minmax	x;
 	t_minmax	y;
 	t_minmax	yfreq;
-	//t_minmax	xfreq; <-- same than yfreq, can change
 	char		spawn1_orientation;
 	char		spawn2_orientation;
 }	t_gen_config;

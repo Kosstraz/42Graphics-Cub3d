@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 17:44:52 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/11 17:22:48 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:42:25 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	sigpipe_handling(int signum)
 	(void)signum;
 }
 
-int	main(int ac, char **av, char** env)
+int	main(int ac, char **av, char **env)
 {
 	t_core	core;
 

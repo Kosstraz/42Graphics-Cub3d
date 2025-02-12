@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:50:43 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/01/27 18:43:43 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/12 15:33:38 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,18 @@ static void	create_or_join(t_core *core)
 		if (scanf("%c", &choice) == -1)
 			exit(1);
 	}
-	clear_terminal();
 	if (choice == '1')
 		show_addresspoint(core);
 	else if (choice == '2')
 		demande_addresspoint(core);
 }
 
+//clear_terminal();
 void	multiplayer_menu(t_core *core)
 {
 	char	choice;
 
+	(void)clear_terminal;
 	init_network(core);
 	ft_printf("1. SOLO\n");
 	ft_printf("2. MULTI\n");
@@ -81,7 +82,6 @@ void	multiplayer_menu(t_core *core)
 		if (scanf("%c", &choice) == -1)
 			exit(1);
 	}
-	clear_terminal();
 	if (choice == '1')
 		core->network.is_active = FALSE;
 	else

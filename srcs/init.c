@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 15:37:07 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/11 16:41:16 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:34:13 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,9 @@ inline static void	init_core_map(t_core *core)
 	core->map.cf_colors[F]._overflow = FALSE;
 	core->map.doors = NULL;
 	core->map.nb_of_doors = 0U;
-	core->xpms = (xpm_t **)calloc(sizeof(xpm_t *), 4);
+	core->xpms = (xpm_t **)ft_calloc(sizeof(xpm_t *), 4);
 	if (!core->xpms)
-	{
-		free(core->map.buf);
-		exit(1);
-	}
+		ft_va_free_exit(1, 1, core->map.buf);
 }
 
 inline void	init_core(t_core *core)

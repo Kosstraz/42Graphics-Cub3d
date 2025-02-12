@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:38:33 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/10 18:40:51 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:39:59 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	send_textures(t_core *core)
 
 static void	recv_textures2(int i, t_core *core)
 {
-	core->xpms[i] = (xpm_t *)malloc(sizeof(xpm_t));
+	core->xpms[i] = (xpm_t *)ft_malloc(sizeof(xpm_t), core);
 	ft_recv(&core->xpms[i]->color_count,
 		sizeof(int32_t), core);
 	ft_recv(&core->xpms[i]->cpp, sizeof(int32_t), core);
@@ -60,9 +60,9 @@ void	recv_textures(t_core *core)
 	while (i < 4U)
 	{
 		recv_textures2(i, core);
-		core->xpms[i]->texture.pixels = (uint8_t *)malloc(sizeof(uint8_t)
+		core->xpms[i]->texture.pixels = (uint8_t *)ft_malloc(sizeof(uint8_t)
 				* core->xpms[i]->texture.width * core->xpms[i]->texture.height
-				* core->xpms[i]->texture.bytes_per_pixel);
+				* core->xpms[i]->texture.bytes_per_pixel, core);
 		j = 0U;
 		while (j < core->xpms[i]->texture.width * core->xpms[i]->texture.height)
 			ft_recv(&((unsigned int *)core->xpms[i]

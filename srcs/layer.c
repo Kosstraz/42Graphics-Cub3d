@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   layer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bama <bama@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 13:58:34 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/05 14:49:47 by bama             ###   ########.fr       */
+/*   Updated: 2025/02/12 15:42:03 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ inline void	free_layer(t_layer *layer)
 	}
 }
 
-inline void	init_layer(mlx_image_t *img, t_layer *layer)
+inline void	init_layer(mlx_image_t *img, t_layer *layer, t_core *core)
 {
 	int			precalcul;
 	uint32_t	y;
@@ -33,12 +33,12 @@ inline void	init_layer(mlx_image_t *img, t_layer *layer)
 
 	y = 0;
 	free_layer(layer);
-	layer->pixels
-		= (uint32_t ***)malloc(sizeof(uint32_t **) * (img->height + 1));
+	layer->pixels = (uint32_t ***)ft_malloc(sizeof(uint32_t **)
+			* (img->height + 1), core);
 	while (y < img->height)
 	{
 		layer->pixels[y]
-			= (uint32_t **)malloc(sizeof(uint32_t *) * img->width);
+			= (uint32_t **)ft_malloc(sizeof(uint32_t *) * img->width, core);
 		x = 0;
 		precalcul = y * img->width;
 		while (x < img->width)

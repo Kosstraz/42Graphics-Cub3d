@@ -6,7 +6,7 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:50:18 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/10 18:40:23 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:41:51 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ static void	recv_map_first_part(t_core *core)
 	core->map.buf = (char **)ft_realloc(core->map.buf,
 			sizeof(char *) * DEFMAPBUF,
 			sizeof(char *) * (core->map.bufmax + 1));
-	core->map.buflens = (size_t *)malloc(sizeof(size_t)
-			* core->map.buflens_size);
+	core->map.buflens = (size_t *)ft_malloc(sizeof(size_t)
+			* core->map.buflens_size, core);
 	while (y < core->map.bufmax)
 	{
 		ft_recv(&core->map.buflens[y], sizeof(size_t), core);
-		core->map.buf[y] = (char *)malloc(sizeof(char)
-				* (core->map.buflens[y] + 2));
+		core->map.buf[y] = (char *)ft_malloc(sizeof(char)
+				* (core->map.buflens[y] + 2), core);
 		ft_recv(core->map.buf[y], core->map.buflens[y] + 1, core);
 		core->map.buf[y][core->map.buflens[y] + 1] = '\0';
 		y++;
@@ -73,7 +73,8 @@ void	recv_map(t_core *core)
 	ft_recv(&core->player[DISTANT], sizeof(t_player), core);
 	ft_recv(&core->player[LOCAL], sizeof(t_player), core);
 	ft_recv(&core->map.nb_of_doors, sizeof(size_t), core);
-	core->map.doors = (t_door *)malloc(sizeof(t_door) * core->map.nb_of_doors);
+	core->map.doors = (t_door *)ft_malloc(sizeof(t_door)
+			* core->map.nb_of_doors, core);
 	i = 0U;
 	while (i < core->map.nb_of_doors)
 		ft_recv(&core->map.doors[i++], sizeof(t_door), core);

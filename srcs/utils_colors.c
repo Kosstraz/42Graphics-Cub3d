@@ -6,11 +6,33 @@
 /*   By: ymanchon <ymanchon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 16:00:49 by ymanchon          #+#    #+#             */
-/*   Updated: 2025/02/10 15:34:11 by ymanchon         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:13:18 by ymanchon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+/*static inline void	clamp_color(int *r, int *g, int *b, int by)
+{
+	if (*r + by > 255)
+		*r = 255;
+	else if (*r + by < 0)
+		*r = 0;
+	else
+		*r += by;
+	if (*g + by > 255)
+		*g = 255;
+	else if (*g + by < 0)
+		*g = 0;
+	else
+		*g += by;
+	if (*b + by > 255)
+		*b = 255;
+	else if (*b + by < 0)
+		*b = 0;
+	else
+		*b += by;
+}*/
 
 static inline void	clamp_color(int *r, int *g, int *b, int by)
 {
